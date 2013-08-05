@@ -1,0 +1,122 @@
+/* CSS declarations go here */
+
+body {
+	font-family: 'Open Sans', sans-serif;	
+}
+
+.container {
+	max-width: 940px;
+	margin: 0 auto;
+}
+
+.row{
+	margin: 0px;
+}
+
+header {
+	height: 20px;
+	margin-top: 20px;
+	padding: 1px 10px;
+}
+
+.head-logo {
+	background: #CCC;
+	width: 263px;
+	height: 50px;
+}
+
+.head-nav {
+	margin-top: 15px;
+}
+
+.home-wrapper {
+	margin-top: 100px;
+	padding: 1px 10px;
+}
+
+.home-wrapper ul {
+	margin: 0 auto;
+	display: inline-block;
+}
+
+.home-wrapper ul li {
+	list-style-type: none;
+	float: left;
+	margin: 0 26px 40px;
+	width: 132px;
+	text-align: center;
+}
+
+.home-wrapper ul li span {
+	margin-top: 30px;
+	font-size: 18px;
+}
+
+.home-icons {
+	background: #999;
+	width: 132px;
+	height: 132px;
+	margin-bottom: 10px;
+}
+
+.box-titleImg {
+	width: 46px;
+	height: 41px;
+}
+
+.box-hide {
+	display: none;
+}
+
+.table {
+	margin-top: 5px;
+}
+
+.notif-table {
+	margin-top: 10px;
+}
+
+.notif-table span {
+	font-weight: bold;
+	color: #999;
+}
+
+.panel-content {
+	padding: 0px 10px;
+}
+
+.red {
+	background: #F33;
+}
+
+
+body .modal-open {
+	overflow: hidden;
+}
+
+.modal {
+	background-color: transparent;
+	width: 100%;
+	margin-left: 0px;
+}
+
+@media screen and (min-width: 768px) {
+  .modal-dialog {
+    width: 860px;
+    margin-left: -420px;
+  }
+}
+
+.table .tr:hover {
+	cursor: pointer;
+	color: #428bca;
+} 
+
+.form-control {
+	width: 236px;
+}
+
+.form-group {
+	overflow: hidden;
+	margin-bottom: 10px;
+}

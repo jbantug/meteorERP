@@ -1,0 +1,1199 @@
+<head>
+  <title>mercuri</title>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+<div class="container">
+
+	<div class="box box-home">
+		<header>
+			<img src="" class="head-logo pull-left"/>
+			<div class="head-nav pull-right">
+				<a href="#">log in</a> | |
+				<a href="#">sign up</a>
+			</div>
+		</header>
+		<br/>
+
+		<div class="home-wrapper">
+			<ul style="padding:0px;">
+				<a href="#">
+					<li id="box-notif">
+						<img class="home-icons" />
+						<span>Notifications</span>
+					</li>
+				</a>
+				<a href="#accounts-modal" data-toggle="modal">
+					<li id="box-accounts">
+						<img class="home-icons" />
+						<span>Accounts</span>
+					</li>
+				</a>
+				<a href="#">
+					<li id="box-inventory">
+						<img class="home-icons" />
+						<span>Inventory</span>
+					</li>
+				</a>
+				<a href="#">
+					<li id="box-buying">
+						<img class="home-icons" />
+						<span>Buying</span>
+					</li>
+				</a>
+				<a href="#">
+					<li id="box-selling">
+						<img class="home-icons" />
+						<span>Selling</span>
+					</li>
+				</a>
+				<a href="#">
+					<li id="box-notes">
+						<img class="home-icons" />
+						<span>Notes</span>
+					</li>
+				</a>
+				<a href="#">
+					<li id="box-settings">
+						<img class="home-icons" />
+						<span>Settings</span>
+					</li>
+				</a>
+			</ul>
+		</div>
+
+		<footer>
+		</footer>
+	</div>
+
+	<!--  HOME  -->
+
+	<div class="box box-notif box-hide panel" style="margin-top:20px">
+		<div class="panel-heading">
+			<h2 class="panel-title">
+				<button type="button" class="home-access pull-right" aria-hidden="true" style="margin-top: -6px">
+					<i class="icon-home icon-medium"></i>
+				</button>
+				<img class="box-titleImg" style="margin-top: -10px"/>
+				Notifications
+			</h2>
+		</div>
+		<div class="panel-content">
+			<div class="row">
+				<div class="col-lg-8" style="margin-bottom: 20px;">
+					<div class="notif-table">
+						<span>Today</span>
+						<table class="table table-striped">
+							<tr>
+								<th>Date</th>
+								<th>Activity</th>
+							</tr>
+							<tr>
+								<td>Jan 2 at 11:11 AM</td>
+								<td>Customer1 purchased 1 Toyota 86</td>
+							</tr>
+							<tr>
+								<td>Jan 2 at 12:12 PM</td>
+								<td>Customer1 purchased 2 Honda Civic</td>
+							</tr>
+						</table>
+					</div>
+					<div class="notif-table">
+						<span>Yesterday</span>
+						<table class="table table-striped">
+							<tr>
+								<th>Date</th>
+								<th>Activity</th>
+							</tr>
+							<tr>
+								<td>Jan 1 at 11:11 AM</td>
+								<td>Customer1 purchased 1 Toyota 86</td>
+							</tr>
+						</table>
+					</div>
+					<div>
+						<button type="button" class="btn btn-primary btn-small">More</button>
+					</div>
+				</div>
+				<div class="panel col-lg-4">
+					<div class="notif-table">
+						<span>
+							<i class="icon-warning-sign"></i>
+							ALERTS
+						</span>
+						<table class="table table-striped table-condensed">
+							<tr>
+								<th>Activity</th>
+								<th>Note</th>
+							</tr>
+							<tr class="alert-row">
+								<td>Due Encashment</td>
+								<td>Check 1234 on Jan 1, 2000</td>
+							</tr>
+							<tr class="alert-row">
+								<td>Bounced Check</td>
+								<td>Check 2345 on Jan 2, 2000</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!--  WINDOWS  -->
+
+	<div class="box box-accounts box-hide panel" style="margin-top:20px">
+		<div class="panel-heading">
+			<h2 class="panel-title">
+				<button type="button" class="home-access pull-right" aria-hidden="true" style="margin-top: -6px">
+					<i class="icon-home icon-medium"></i>
+				</button>
+				<img class="box-titleImg" style="margin-top: -10px"/>
+				Accounts
+			</h2>
+		</div>
+		<br/><br/>
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="list-group">
+					<a href="#a-receive-modal" data-toggle="modal" class="list-group-item">
+						Account Receivable
+						<span class="badge pull-right">12</span>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="list-group">
+					<a href="#a-payable-modal" data-toggle="modal" class="list-group-item">
+						Account Payable
+						<span class="badge pull-right">12</span>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="list-group">
+					<a href="#encash-modal" data-toggle="modal" class="list-group-item">
+						Due Encashment
+						<span class="badge red pull-right">12</span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="list-group">
+					<div class="list-group-item active">
+						<i class="icon-book"></i>
+						Reports
+					</div>
+					<a href="#s-order-modal"  data-toggle="modal" class="list-group-item">Sales Order</a>
+					<a href="#p-order-modal"  data-toggle="modal" class="list-group-item">Purchase Order</a>
+					<a href="#s-payment-modal"  data-toggle="modal" class="list-group-item">Sales Payment</a>
+					<a href="#ch-issued-modal"  data-toggle="modal" class="list-group-item">Checks Issued</a>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="list-group">
+					<div class="list-group-item active">
+						<i class="icon-user"></i>
+						Registered
+					</div>
+					<a href="#customer-modal"  data-toggle="modal" class="list-group-item">Customers</a>
+					<a href="#supplier-modal"  data-toggle="modal" class="list-group-item">Suppliers</a>
+				</div>
+				<div class="list-group">
+					<div class="list-group-item active">
+						<i class="icon-bar-chart"></i>
+						Analytics
+					</div>
+					<a href="#b-customer-modal"  data-toggle="modal" class="list-group-item">Best Customers</a>
+					<a href="#w-customer-modal"  data-toggle="modal" class="list-group-item">Worst Customers</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="box box-inventory box-hide panel" style="margin-top:20px">
+		<div class="panel-heading">
+			<h2 class="panel-title">
+				<button type="button" class="home-access pull-right" aria-hidden="true" style="margin-top: -6px">
+					<i class="icon-home icon-medium"></i>
+				</button>
+				<img class="box-titleImg" style="margin-top: -10px"/>
+				Inventory
+			</h2>
+		</div>
+		<br/><br/>
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="list-group">
+					<a href="#inventory-modal" data-toggle="modal" class="list-group-item">
+						Inventory
+						<span class="badge pull-right">12</span>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="list-group">
+					<a href="#p-order-modal" data-toggle="modal" class="list-group-item">
+						Purchase Orders
+						<span class="badge pull-right">12</span>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="list-group">
+					<a href="#p-payment-modal" data-toggle="modal" class="list-group-item">
+						Purchase Payments
+						<span class="badge pull-right">12</span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="list-group">
+					<div class="list-group-item active">
+						<i class="icon-book"></i>
+						Reports
+					</div>
+					<a href="#inventory-modal" data-toggle="modal" class="list-group-item">Stock Ledger</a>
+					<a href="#i-delivery-modal" data-toggle="modal" class="list-group-item">Items to be Delivered</a>
+					<a href="#i-receive-modal" data-toggle="modal" class="list-group-item">Items to be Received</a>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="list-group">
+					<div class="list-group-item active">
+						<i class="icon-bar-chart"></i>
+						Analytics
+					</div>
+					<a href="#" data-toggle="modal" class="list-group-item">Most Saleable Cars</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="box box-buying box-hide panel" style="margin-top:20px">
+		<div class="panel-heading">
+			<h2 class="panel-title">
+				<button type="button" class="home-access pull-right" aria-hidden="true" style="margin-top: -6px">
+					<i class="icon-home icon-medium"></i>
+				</button>
+				<img class="box-titleImg" style="margin-top: -10px"/>
+				Buying
+			</h2>
+		</div>
+		<br/><br/>
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="list-group">
+					<a href="#a-receive-modal" data-toggle="modal" class="list-group-item">
+						Suppliers
+						<span class="badge pull-right">12</span>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="list-group">
+					<a href="#a-receive-modal" data-toggle="modal" class="list-group-item">
+						Purchase Order
+						<span class="badge pull-right">12</span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="list-group">
+					<div href="#" class="list-group-item active">
+						<i class="icon-book"></i>
+						Reports
+					</div>
+					<a href="#" class="list-group-item">Stock Ledger</a>
+					<a href="#" class="list-group-item">Price List</a>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="list-group">
+					<div href="#" class="list-group-item active">
+						<i class="icon-bar-chart"></i>
+						Analytics
+					</div>
+					<a class="list-group-item">Purchase Analytics</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="box box-selling box-hide panel" style="margin-top:20px">
+		<div class="panel-heading">
+			<h2 class="panel-title">
+				<button type="button" class="home-access pull-right" aria-hidden="true" style="margin-top: -6px">
+					<i class="icon-home icon-medium"></i>
+				</button>
+				<img class="box-titleImg" style="margin-top: -10px"/>
+				Selling
+			</h2>
+		</div>
+		<br/><br/>
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="list-group">
+					<a href="#a-receive-modal" data-toggle="modal" class="list-group-item">
+						Customers
+						<span class="badge pull-right">12</span>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="list-group">
+					<a href="#a-receive-modal" data-toggle="modal" class="list-group-item">
+						Sales Order
+						<span class="badge pull-right">12</span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="list-group">
+					<div href="#" class="list-group-item active">
+						<i class="icon-book"></i>
+						Reports
+					</div>
+					<a href="#" class="list-group-item">Stock Ledger</a>
+					<a href="#" class="list-group-item">Price List</a>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="list-group">
+					<div href="#" class="list-group-item active">
+						<i class="icon-bar-chart"></i>
+						Analytics
+					</div>
+					<a class="list-group-item">Sales Analytics</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="box box-notes box-hide panel" style="margin-top:20px">
+		<div class="panel-heading">
+			<h2 class="panel-title">
+				<button type="button" class="home-access pull-right" aria-hidden="true" style="margin-top: -6px">
+					<i class="icon-home icon-medium"></i>
+				</button>
+				<img class="box-titleImg" style="margin-top: -10px"/>
+				Notes
+			</h2>
+		</div>
+		Content
+	</div>
+
+	<div class="box box-settings box-hide panel" style="margin-top:20px">
+		<div class="panel-heading">
+			<h2 class="panel-title">
+				<button type="button" class="home-access pull-right" aria-hidden="true" style="margin-top: -6px">
+					<i class="icon-home icon-medium"></i>
+				</button>
+				<img class="box-titleImg" style="margin-top: -10px"/>
+				Settings
+			</h2>
+		</div>
+		Content
+	</div>
+
+
+	<!--  MODALS  -->
+
+	<div id="a-receive-modal" class="modal fade" role="dialog" aria-hidden="true" style="display: none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          			<h3 class="modal-title">Account Receivable</h3>
+				</div>
+				<div class="modal-body">
+					<div class="navbar">
+						<div class="navbar-form">
+							<div class="btn-group">
+								<button id="search" class="btn btn-default modal-nav-btn">
+									<i class="icon-search"></i>
+									Search
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="search modal-nav-box box-hide panel well">
+						<div class="col-lg-4">
+							<input type="text" class="form-control " placeholder="Customer">
+						</div>
+						<button class="btn btn-primary">
+							Find
+						</button>
+					</div>
+          			<table class="table table-striped">
+          				<tr>
+          					<th>ID</th>
+          					<th>Due Date</th>
+          					<th>Customer</th>
+          					<th>Item</th>
+          					<th>Amount</th>
+          					<th>Action</th>
+          				</tr>
+          				<tr>
+          					<td>1</td>
+          					<td>01-01-2000</td>
+          					<td>Customer1</td>
+          					<td>Toyota Corolla</td>
+          					<td>Php 50,000</td>
+          					<td><button href="#s-payform-modal" data-toggle="modal" data-dismiss="modal" type="button" class="btn btn-primary btn-small">Pay</button></td>
+          				</tr>
+          				<tr>
+          					<td>12</td>
+          					<td>01-02-2002</td>
+          					<td>Customer2</td>
+          					<td>Honda Civic</td>
+          					<td>Php 100,000</td>
+          					<td><button href="#s-payform-modal" data-toggle="modal" data-dismiss="modal" type="button" class="btn btn-primary btn-small">Pay</button></td>
+          				</tr>
+          			</table>
+		        </div>
+			</div>
+		</div>
+	</div>
+
+	<div id="a-payable-modal" class="modal fade" role="dialog" aria-hidden="true" style="display: none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          			<h3 class="modal-title">Account Payable</h3>
+				</div>
+				<div class="modal-body">
+					<div class="navbar">
+						<div class="navbar-form">
+							<div class="btn-group">
+								<button id="search" class="btn btn-default modal-nav-btn">
+									<i class="icon-search"></i>
+									Search
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="search modal-nav-box box-hide panel well">
+						<div class="col-lg-4">
+							<input type="text" class="form-control " placeholder="Customer">
+						</div>
+						<button class="btn btn-primary">
+							Find
+						</button>
+					</div>
+          			<table class="table table-striped">
+          				<tr>
+          					<th>ID</th>
+          					<th>Due Date</th>
+          					<th>Supplier</th>
+          					<th>Item</th>
+          					<th>Amount</th>
+          					<th>Action</th>
+          				</tr>
+          				<tr>
+          					<td>1</td>
+          					<td>01-01-2000</td>
+          					<td>Supplier1</td>
+          					<td>Toyota Corolla</td>
+          					<td>Php 50,000</td>
+          					<td><button href="#p-payform-modal" data-toggle="modal" data-dismiss="modal" type="button" class="btn btn-primary btn-small">Pay</button></td>
+          				</tr>
+          				<tr>
+          					<td>12</td>
+          					<td>01-02-2002</td>
+          					<td>Supplier2</td>
+          					<td>Honda Civic</td>
+          					<td>Php 100,000</td>
+          					<td><button href="#p-payform-modal" data-toggle="modal" data-dismiss="modal" type="button" class="btn btn-primary btn-small">Pay</button></td>
+          				</tr>
+          			</table>
+		        </div>
+			</div>
+		</div>
+	</div>
+
+	<div id="encash-modal" class="modal fade" role="dialog" aria-hidden="true" style="display: none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          			<h3 class="modal-title">Checks Due for Encashment</h3>
+				</div>
+				<div class="modal-body">
+					<div class="navbar">
+						<div class="navbar-form">
+							<div class="btn-group">
+								<button id="search" class="btn btn-default modal-nav-btn">
+									<i class="icon-search"></i>
+									Search
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="search modal-nav-box box-hide panel well">
+						<div class="col-lg-4">
+							<input type="text" class="form-control " placeholder="Check No.">
+						</div>
+						<button class="btn btn-default">
+							Find
+						</button>
+					</div>
+          			<table class="table table-striped">
+          				<tr>
+          					<th>Due Date</th>
+          					<th>Issue Date</th>
+          					<th>Check No.</th>
+          					<th>Customer</th>
+          					<th>Amount</th>
+          					<th>Action</th>
+          				</tr>
+          				<tr>
+          					<td>02-01-2000</td>
+          					<td>01-01-2000</td>
+          					<td>12345</td>
+          					<td>Customer1</td>
+          					<td>Php 50,000</td>
+          					<td><button class="btn btn-primary btn-small">Cash</button></td>
+          				</tr>
+          				<tr>
+          					<td>03-01-2000</td>
+          					<td>02-01-2000</td>
+          					<td>23456</td>
+          					<td>Customer2</td>
+          					<td>Php 100,000</td>
+          					<td><button class="btn btn-primary btn-small">Cash</button></td>
+          				</tr>
+          			</table>
+		        </div>
+			</div>
+		</div>
+	</div>
+
+	<div id="s-order-modal" class="modal fade" role="dialog" aria-hidden="true" style="display: none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left:20px;">&times;</button>
+          			<h3 class="modal-title">Sales Order</h3>
+				</div>
+				<div class="modal-body">
+					<div class="navbar">
+						<div class="navbar-form">
+							<div class="btn-group">
+								<button id="search" class="btn btn-default modal-nav-btn">
+									<i class="icon-search"></i>
+									Search
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="search modal-nav-box box-hide panel well">
+						<div class="col-lg-4">
+							<input type="text" class="form-control " placeholder="Check No.">
+						</div>
+						<button class="btn btn-default">
+							Find
+						</button>
+					</div>
+          			<table class="table table-striped">
+          				<tr>
+          					<th>ID</th>
+          					<th>Date Of Sale</th>
+          					<th>Customer</th>
+          					<th>Item</th>
+          					<th>Sale Price</th>
+          					<th>Amount</th>
+          					<th>Total Cost</th>
+          				</tr>
+          				<tr class="tr" href="#b-order-modal" data-toggle="modal" data-dismiss="modal" role="button">
+          					<td>1</td>
+          					<td>01-01-2000</td>
+          					<td>Customer1</td>
+          					<td>Toyota Corolla</td>
+          					<td>Php 2,000,000</td>
+          					<td>1</td>
+          					<td>Php 2,000,000</td>
+          				</tr>
+          				<tr class="tr" href="#b-order-modal" data-toggle="modal" data-dismiss="modal" role="button">
+          					<td>2</td>
+          					<td>02-01-2000</td>
+          					<td>Customer1</td>
+          					<td>Honda Civic</td>
+          					<td>Php 2,000,000</td>
+          					<td>2</td>
+          					<td>Php 4,000,000</td>
+          				</tr>
+          			</table>
+		        </div>
+			</div>
+		</div>
+	</div>
+
+	<div id="b-order-modal" class="modal fade" role="dialog" aria-hidden="true" style="display: none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left:20px;">&times;</button>
+          			<h3 class="modal-title">Billing Order</h3>
+				</div>
+				<div class="modal-body">
+					<div class="navbar">
+						<div class="navbar-form">
+							<p>
+								Customer1<br/>
+          						Date Of Sale: 01-01-2000<br/>
+          						Item: Toyota Corolla<br/>
+          						Sale Price: Php 2,000,000<br/>
+          						Amount: 1<br/>
+          						Total Cost: Php 2,000,000
+							</p>
+						</div>
+					</div>
+          			<table class="table table-striped">
+          				<tr>
+          					<th>Due Date</th>
+          					<th>Amount Due</th>
+          					<th>Status</th>
+          				</tr>
+          				<tr>
+          					<td>01-01-2000</td>
+          					<td>Php 100,000</td>
+          					<td><button href="#s-payform-modal" data-toggle="modal" data-dismiss="modal" class="btn btn-small disabled">Paid</button></td>
+          				</tr>
+          				<tr>
+          					<td>02-01-2000</td>
+          					<td>Php 100,000</td>
+          					<td><button href="#s-payform-modal" data-toggle="modal" data-dismiss="modal" class="btn btn-primary btn-small">Pay</button></td>
+          				</tr>
+          			</table>
+		        </div>
+			</div>
+		</div>
+	</div>
+
+	<div id="p-order-modal" class="modal fade" role="dialog" aria-hidden="true" style="display: none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left:20px;">&times;</button>
+          			<h3 class="modal-title">Purchase Order</h3>
+				</div>
+				<div class="modal-body">					
+					<div class="navbar">
+						<div class="navbar-form">
+							<div class="btn-group">
+								<button id="search" class="btn btn-default modal-nav-btn">
+									<i class="icon-search"></i>
+									Search
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="search modal-nav-box box-hide panel well">
+						<div class="col-lg-4">
+							<input type="text" class="form-control " placeholder="Check No.">
+						</div>
+						<button class="btn btn-default">
+							Find
+						</button>
+					</div>
+          			<table class="table table-striped">
+          				<tr>
+          					<th>ID</th>
+          					<th>Date Of Purchase</th>
+          					<th>Date Of Delivery</th>
+          					<th>Supplier</th>
+          					<th>Item</th>
+          					<th>Purchase Price</th>
+          					<th>Amount</th>
+          					<th>Total Cost</th>
+          				</tr>
+          				<tr class="tr" href="#p-account-modal" data-toggle="modal" data-dismiss="modal" role="button">
+          					<td>1</td>
+          					<td>01-01-2000</td>
+          					<td>02-01-2000</td>
+          					<td>Supplier1</td>
+          					<td>Toyota Corolla</td>
+          					<td>Php 2,000,000</td>
+          					<td>1</td>
+          					<td>Php 2,000,000</td>
+          				</tr>
+          				<tr class="tr" href="#p-account-modal" data-toggle="modal" data-dismiss="modal" role="button">
+          					<td>2</td>
+          					<td>02-01-2000</td>
+          					<td>03-01-2000</td>
+          					<td>Supplier1</td>
+          					<td>Honda Civic</td>
+          					<td>Php 2,000,000</td>
+          					<td>2</td>
+          					<td>Php 4,000,000</td>
+          				</tr>
+          			</table>
+		        </div>
+			</div>
+		</div>
+	</div>
+
+	<div id="p-account-modal" class="modal fade" role="dialog" aria-hidden="true" style="display: none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left:20px;">&times;</button>
+          			<h3 class="modal-title">Purchase Account</h3>
+				</div>
+				<div class="modal-body">
+					<div class="navbar">
+						<div class="navbar-form">
+							<p>
+								Supplier1<br/>
+          						Date Of Purchase: 01-01-2000<br/>
+          						Date Of Delivery: 02-01-2000<br/>
+          						Item: Toyota Corolla<br/>
+          						Sale Price: Php 2,000,000<br/>
+          						Amount: 1<br/>
+          						Total Cost: Php 2,000,000
+							</p>
+						</div>
+					</div>
+          			<table class="table table-striped">
+          				<tr>
+          					<th>Due Date</th>
+          					<th>Amount Due</th>
+          					<th>Status</th>
+          				</tr>
+          				<tr>
+          					<td>01-01-2000</td>
+          					<td>Php 100,000</td>
+          					<td><button href="#s-payform-modal" data-toggle="modal" data-dismiss="modal" class="btn btn-small disabled">Paid</button></td>
+          				</tr>
+          				<tr>
+          					<td>02-01-2000</td>
+          					<td>Php 100,000</td>
+          					<td><button href="#s-payform-modal" data-toggle="modal" data-dismiss="modal" class="btn btn-primary btn-small">Pay</button></td>
+          				</tr>
+          			</table>
+		        </div>
+			</div>
+		</div>
+	</div>
+
+	<div id="s-add-modal" class="modal fade" role="dialog" aria-hidden="true" style="display: none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left:20px;">&times;</button>
+          			<h3 class="modal-title">Add Sales Order</h3>
+				</div>
+				<div class="modal-body">
+					<form>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="p-add-modal" class="modal fade" role="dialog" aria-hidden="true" style="display: none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left:20px;">&times;</button>
+          			<h3 class="modal-title">Add Purchase Order</h3>
+				</div>
+				<div class="modal-body">
+					<form>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="s-payment-modal" class="modal fade" role="dialog" aria-hidden="true" style="display: none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left:20px;">&times;</button>
+          			<h3 class="modal-title">Sales Payment</h3>
+				</div>
+				<div class="modal-body">
+					<div class="navbar">
+						<div class="navbar-form">
+							<div class="btn-group">
+								<button id="search" class="btn btn-default modal-nav-btn">
+									<i class="icon-search"></i>
+									Search
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="search modal-nav-box box-hide panel well">
+						<div class="col-lg-4">
+							<input type="text" class="form-control " placeholder="Check No.">
+						</div>
+						<button class="btn btn-default">
+							Find
+						</button>
+					</div>
+          			<table class="table table-striped">
+          				<tr>
+          					<th>ID</th>
+          					<th>Date Of Sale</th>
+          					<th>Customer</th>
+          					<th>Item Type</th>
+          					<th>Item Model</th>
+          					<th>Sale Price</th>
+          					<th>Amount</th>
+          					<th>Total Cost</th>
+          				</tr>
+          				<tr>
+          					<td>1</td>
+          					<td>01-01-2000</td>
+          					<td>Customer1</td>
+          					<td>Toyota</td>
+          					<td>Corolla</td>
+          					<td>Php 2,000,000</td>
+          					<td>1</td>
+          					<td>Php 2,000,000</td>
+          				</tr>
+          				<tr>
+          					<td>2</td>
+          					<td>02-01-2000</td>
+          					<td>Customer1</td>
+          					<td>Honda</td>
+          					<td>Civic</td>
+          					<td>Php 2,000,000</td>
+          					<td>2</td>
+          					<td>Php 4,000,000</td>
+          				</tr>
+          			</table>
+		        </div>
+			</div>
+		</div>
+	</div>
+
+	<div id="s-payform-modal" class="modal fade" role="dialog" aria-hidden="true" style="display: none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left:20px;">&times;</button>
+          			<h3 class="modal-title">Customer Payment Form</h3>
+				</div>
+				<div class="modal-body">
+					<div class="navbar">
+						<div class="navbar-form">
+							<p>
+								Customer1<br/>
+          						Date Of Sale: 01-01-2000<br/>
+          						Item: Toyota Corolla<br/>
+          						Sale Price: Php 2,000,000<br/>
+          						Amount: 1<br/>
+          						Total Cost: Php 2,000,000
+							</p>
+						</div>
+					</div>
+					<form class="form-inline">
+					  	<span class="form-control" style="marging-right:20px;">
+				      		<label for="exampleInputEmail">Payment Type</label>
+					      	<div class="btn-group">
+						  		<button type="button" class="btn btn-default btn-small dropdown-toggle" data-toggle="dropdown">
+							    - Type - 
+								<span class="caret"></span>
+						  		</button>
+						  		<ul class="dropdown-menu">
+								    <li><a href="#">Cash</a></li>
+								    <li><a href="#">Check</a></li>
+								    <li><a href="#">Credit</a></li>
+						  		</ul>
+							</div>
+						</span>
+	      				<input class="form-control" type="text" placeholder="Check/Credit No.">	
+					</form>
+		        </div>
+		        <div class="modal-footer">
+			        <button type="button" class="btn btn-primary">Issue Receipt</button>
+		      	</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="p-payform-modal" class="modal fade" role="dialog" aria-hidden="true" style="display: none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left:20px;">&times;</button>
+          			<h3 class="modal-title">Supplier Payment Form</h3>
+				</div>
+				<div class="modal-body">
+					<div class="navbar">
+						<div class="navbar-form">
+							<p>
+								Supplier1<br/>
+          						Date Of Sale: 01-01-2000<br/>
+          						Item: Toyota Corolla<br/>
+          						Sale Price: Php 2,000,000<br/>
+          						Amount: 1<br/>
+          						Total Cost: Php 2,000,000
+							</p>
+						</div>
+					</div>
+					<form class="form-inline">
+					  	<span class="form-control" style="marging-right:20px;">
+				      		<label for="exampleInputEmail">Payment Type</label>
+					      	<div class="btn-group">
+						  		<button type="button" class="btn btn-default btn-small dropdown-toggle" data-toggle="dropdown">
+							    - Type - 
+								<span class="caret"></span>
+						  		</button>
+						  		<ul class="dropdown-menu">
+								    <li><a href="#">Cash</a></li>
+								    <li><a href="#">Check</a></li>
+								    <li><a href="#">Credit</a></li>
+						  		</ul>
+							</div>
+						</span>
+	      				<input class="form-control" type="text" placeholder="Check/Credit No.">	
+					</form>
+		        </div>
+		        <div class="modal-footer">
+			        <button type="button" class="btn btn-primary">Issue Receipt</button>
+		      	</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="ch-issued-modal" class="modal fade" role="dialog" aria-hidden="true" style="display: none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          			<h3 class="modal-title">Checks Issued</h3>
+				</div>
+				<div class="modal-body">
+					<div class="navbar">
+						<div class="navbar-form">
+							<div class="btn-group">
+								<button id="search" class="btn btn-default modal-nav-btn">
+									<i class="icon-search"></i>
+									Search
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="search modal-nav-box box-hide panel well">
+						<div class="col-lg-4">
+							<input type="text" class="form-control " placeholder="Check No.">
+						</div>
+						<button class="btn btn-default">
+							Find
+						</button>
+					</div>
+          			<table class="table table-striped">
+          				<tr>
+          					<th>Due Date</th>
+          					<th>Issue Date</th>
+          					<th>Check No.</th>
+          					<th>Issuer</th>
+          					<th>Amount</th>
+          					<th>Action</th>
+          				</tr>
+          				<tr>
+          					<td>02-01-2000</td>
+          					<td>01-01-2000</td>
+          					<td>12345</td>
+          					<td>Customer1</td>
+          					<td>Php 50,000</td>
+          					<td><button class="btn btn-primary btn-small">Cash</button></td>
+          				</tr>
+          				<tr>
+          					<td>03-01-2000</td>
+          					<td>02-01-2000</td>
+          					<td>23456</td>
+          					<td>Supplier1</td>
+          					<td>Php 100,000</td>
+          					<td><button class="btn btn-small disabled">Cashed</button></td>
+          				</tr>
+          			</table>
+		        </div>
+			</div>
+		</div>
+	</div>
+
+	<div id="customer-modal" class="modal fade" role="dialog" aria-hidden="true" style="display: none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left:20px;">&times;</button>
+          			<h3 class="modal-title">Customers</h3>
+				</div>
+				<div class="modal-body">
+					<div class="navbar">
+						<div class="navbar-form">
+							<div class="btn-group">
+								<button id="add" class="btn btn-default modal-nav-btn">
+									<i class="icon-plus"></i>
+									Add
+								</button>
+								<button id="search" class="btn btn-default modal-nav-btn">
+									<i class="icon-search"></i>
+									Search
+								</button>
+							</div>
+						</div>
+					</div>
+					<form class="add modal-nav-box box-hide panel well form-horizontal">
+					  <div class="form-group">
+					    <label class="col-lg-2 control-label">Name</label>
+					    <div class="col-lg-10">
+					      <input type="text" class="form-control">
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label class="col-lg-2 control-label">Company</label>
+					    <div class="col-lg-10">
+					      <input type="password" class="form-control">
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label class="col-lg-2 control-label">Description</label>
+					    <div class="col-lg-10">
+					      <input type="password" class="form-control">
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <div class="col-offset-2 col-lg-10">
+					      <button type="submit" class="btn btn-primary">Add</button>
+					    </div>
+					  </div>
+					</form>
+					<div class="search modal-nav-box box-hide panel well">
+						<div class="col-lg-4">
+							<input type="text" class="form-control " placeholder="Check No.">
+						</div>
+						<button class="btn btn-default">
+							Find
+						</button>
+					</div>
+          			<table class="table table-striped">
+          				<tr>
+          					<th>ID</th>
+          					<th>Customer</th>
+          					<th>Company</th>
+          					<th>Description</th>
+          				</tr>
+          				<tr>
+          					<td>1</td>
+          					<td>Customer1</td>
+          					<td>any.tv</td>
+          					<td>Close friend</td>
+          				</tr>
+          				<tr>
+          					<td>2</td>
+          					<td>Customer2</td>
+          					<td>openkit</td>
+          					<td>Good Customer</td>
+          				</tr>
+          			</table>
+		        </div>
+			</div>
+		</div>
+	</div>
+
+	<div id="supplier-modal" class="modal fade" role="dialog" aria-hidden="true" style="display: none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left:20px;">&times;</button>
+          			<h3 class="modal-title">Suppliers</h3>
+				</div>
+				<div class="modal-body">
+					<div class="navbar">
+						<div class="navbar-form">
+							<div class="btn-group">
+								<button id="add" class="btn btn-default modal-nav-btn">
+									<i class="icon-plus"></i>
+									Add
+								</button>
+								<button id="search" class="btn btn-default modal-nav-btn">
+									<i class="icon-search"></i>
+									Search
+								</button>
+							</div>
+						</div>
+					</div>
+					<form class="add modal-nav-box box-hide panel well form-horizontal">
+					  <div class="form-group">
+					    <label class="col-lg-2 control-label">Name</label>
+					    <div class="col-lg-10">
+					      <input type="text" class="form-control">
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label class="col-lg-2 control-label">Company</label>
+					    <div class="col-lg-10">
+					      <input type="password" class="form-control">
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label class="col-lg-2 control-label">Description</label>
+					    <div class="col-lg-10">
+					      <input type="password" class="form-control">
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <div class="col-offset-2 col-lg-10">
+					      <button type="submit" class="btn btn-primary">Add</button>
+					    </div>
+					  </div>
+					</form>
+					<div class="search modal-nav-box box-hide panel well">
+						<div class="col-lg-4">
+							<input type="text" class="form-control " placeholder="Check No.">
+						</div>
+						<button class="btn btn-default">
+							Find
+						</button>
+					</div>
+          			<table class="table table-striped">
+          				<tr>
+          					<th>ID</th>
+          					<th>Supplier</th>
+          					<th>Company</th>
+          					<th>Description</th>
+          				</tr>
+          				<tr>
+          					<td>1</td>
+          					<td>Supplier1</td>
+          					<td>any.tv</td>
+          					<td>Close friend</td>
+          				</tr>
+          				<tr>
+          					<td>2</td>
+          					<td>Supplier2</td>
+          					<td>openkit</td>
+          					<td>Good Customer</td>
+          				</tr>
+          			</table>
+		        </div>
+			</div>
+		</div>
+	</div>
+
+
+
+</div>
+</body>
