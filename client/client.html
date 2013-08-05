@@ -193,6 +193,7 @@
 					<a href="#s-order-modal"  data-toggle="modal" class="list-group-item">Sales Order</a>
 					<a href="#p-order-modal"  data-toggle="modal" class="list-group-item">Purchase Order</a>
 					<a href="#s-payment-modal"  data-toggle="modal" class="list-group-item">Sales Payment</a>
+					<a href="#p-payment-modal"  data-toggle="modal" class="list-group-item">Purchase Payment</a>
 					<a href="#ch-issued-modal"  data-toggle="modal" class="list-group-item">Checks Issued</a>
 				</div>
 			</div>
@@ -231,8 +232,8 @@
 		<div class="row">
 			<div class="col-lg-4">
 				<div class="list-group">
-					<a href="#inventory-modal" data-toggle="modal" class="list-group-item">
-						Inventory
+					<a href="#pricelist-modal" data-toggle="modal" class="list-group-item">
+						Price List
 						<span class="badge pull-right">12</span>
 					</a>
 				</div>
@@ -440,32 +441,34 @@
 							Find
 						</button>
 					</div>
-          			<table class="table table-striped">
-          				<tr>
-          					<th>ID</th>
-          					<th>Due Date</th>
-          					<th>Customer</th>
-          					<th>Item</th>
-          					<th>Amount</th>
-          					<th>Action</th>
-          				</tr>
-          				<tr>
-          					<td>1</td>
-          					<td>01-01-2000</td>
-          					<td>Customer1</td>
-          					<td>Toyota Corolla</td>
-          					<td>Php 50,000</td>
-          					<td><button href="#s-payform-modal" data-toggle="modal" data-dismiss="modal" type="button" class="btn btn-primary btn-small">Pay</button></td>
-          				</tr>
-          				<tr>
-          					<td>12</td>
-          					<td>01-02-2002</td>
-          					<td>Customer2</td>
-          					<td>Honda Civic</td>
-          					<td>Php 100,000</td>
-          					<td><button href="#s-payform-modal" data-toggle="modal" data-dismiss="modal" type="button" class="btn btn-primary btn-small">Pay</button></td>
-          				</tr>
-          			</table>
+					<div class="table-body">
+	          			<table class="table table-striped">
+	          				<tr>
+	          					<th>ID</th>
+	          					<th>Due Date</th>
+	          					<th>Customer</th>
+	          					<th>Item</th>
+	          					<th>Amount</th>
+	          					<th>Action</th>
+	          				</tr>
+	          				<tr>
+	          					<td>1</td>
+	          					<td>01-01-2000</td>
+	          					<td>Customer1</td>
+	          					<td>Toyota Corolla</td>
+	          					<td>Php 50,000</td>
+	          					<td><button href="#s-payform-modal" data-toggle="modal" data-dismiss="modal" type="button" class="btn btn-primary btn-small">Pay</button></td>
+	          				</tr>
+	          				<tr>
+	          					<td>12</td>
+	          					<td>01-02-2002</td>
+	          					<td>Customer2</td>
+	          					<td>Honda Civic</td>
+	          					<td>Php 100,000</td>
+	          					<td><button href="#s-payform-modal" data-toggle="modal" data-dismiss="modal" type="button" class="btn btn-primary btn-small">Pay</button></td>
+	          				</tr>
+	          			</table>
+	          		</div>
 		        </div>
 			</div>
 		</div>
@@ -497,32 +500,34 @@
 							Find
 						</button>
 					</div>
-          			<table class="table table-striped">
-          				<tr>
-          					<th>ID</th>
-          					<th>Due Date</th>
-          					<th>Supplier</th>
-          					<th>Item</th>
-          					<th>Amount</th>
-          					<th>Action</th>
-          				</tr>
-          				<tr>
-          					<td>1</td>
-          					<td>01-01-2000</td>
-          					<td>Supplier1</td>
-          					<td>Toyota Corolla</td>
-          					<td>Php 50,000</td>
-          					<td><button href="#p-payform-modal" data-toggle="modal" data-dismiss="modal" type="button" class="btn btn-primary btn-small">Pay</button></td>
-          				</tr>
-          				<tr>
-          					<td>12</td>
-          					<td>01-02-2002</td>
-          					<td>Supplier2</td>
-          					<td>Honda Civic</td>
-          					<td>Php 100,000</td>
-          					<td><button href="#p-payform-modal" data-toggle="modal" data-dismiss="modal" type="button" class="btn btn-primary btn-small">Pay</button></td>
-          				</tr>
-          			</table>
+					<div class="table-body">
+	          			<table class="table table-striped">
+	          				<tr>
+	          					<th>ID</th>
+	          					<th>Due Date</th>
+	          					<th>Supplier</th>
+	          					<th>Item</th>
+	          					<th>Amount</th>
+	          					<th>Action</th>
+	          				</tr>
+	          				<tr>
+	          					<td>1</td>
+	          					<td>01-01-2000</td>
+	          					<td>Supplier1</td>
+	          					<td>Toyota Corolla</td>
+	          					<td>Php 50,000</td>
+	          					<td><button href="#p-payform-modal" data-toggle="modal" data-dismiss="modal" type="button" class="btn btn-primary btn-small">Pay</button></td>
+	          				</tr>
+	          				<tr>
+	          					<td>12</td>
+	          					<td>01-02-2002</td>
+	          					<td>Supplier2</td>
+	          					<td>Honda Civic</td>
+	          					<td>Php 100,000</td>
+	          					<td><button href="#p-payform-modal" data-toggle="modal" data-dismiss="modal" type="button" class="btn btn-primary btn-small">Pay</button></td>
+	          				</tr>
+	          			</table>
+	          		</div>
 		        </div>
 			</div>
 		</div>
@@ -554,32 +559,34 @@
 							Find
 						</button>
 					</div>
-          			<table class="table table-striped">
-          				<tr>
-          					<th>Due Date</th>
-          					<th>Issue Date</th>
-          					<th>Check No.</th>
-          					<th>Customer</th>
-          					<th>Amount</th>
-          					<th>Action</th>
-          				</tr>
-          				<tr>
-          					<td>02-01-2000</td>
-          					<td>01-01-2000</td>
-          					<td>12345</td>
-          					<td>Customer1</td>
-          					<td>Php 50,000</td>
-          					<td><button class="btn btn-primary btn-small">Cash</button></td>
-          				</tr>
-          				<tr>
-          					<td>03-01-2000</td>
-          					<td>02-01-2000</td>
-          					<td>23456</td>
-          					<td>Customer2</td>
-          					<td>Php 100,000</td>
-          					<td><button class="btn btn-primary btn-small">Cash</button></td>
-          				</tr>
-          			</table>
+					<div class="table-body">
+	          			<table class="table table-striped">
+	          				<tr>
+	          					<th>Due Date</th>
+	          					<th>Issue Date</th>
+	          					<th>Check No.</th>
+	          					<th>Customer</th>
+	          					<th>Amount</th>
+	          					<th>Action</th>
+	          				</tr>
+	          				<tr>
+	          					<td>02-01-2000</td>
+	          					<td>01-01-2000</td>
+	          					<td>12345</td>
+	          					<td>Customer1</td>
+	          					<td>Php 50,000</td>
+	          					<td><button class="btn btn-primary btn-small">Cash</button></td>
+	          				</tr>
+	          				<tr>
+	          					<td>03-01-2000</td>
+	          					<td>02-01-2000</td>
+	          					<td>23456</td>
+	          					<td>Customer2</td>
+	          					<td>Php 100,000</td>
+	          					<td><button class="btn btn-primary btn-small">Cash</button></td>
+	          				</tr>
+	          			</table>
+	          		</div>
 		        </div>
 			</div>
 		</div>
@@ -596,6 +603,10 @@
 					<div class="navbar">
 						<div class="navbar-form">
 							<div class="btn-group">
+								<button href="#s-add-modal" data-toggle="modal" data-dismiss="modal" id="add" class="btn btn-default modal-nav-btn">
+									<i class="icon-plus"></i>
+									Add
+								</button>
 								<button id="search" class="btn btn-default modal-nav-btn">
 									<i class="icon-search"></i>
 									Search
@@ -611,35 +622,37 @@
 							Find
 						</button>
 					</div>
-          			<table class="table table-striped">
-          				<tr>
-          					<th>ID</th>
-          					<th>Date Of Sale</th>
-          					<th>Customer</th>
-          					<th>Item</th>
-          					<th>Sale Price</th>
-          					<th>Amount</th>
-          					<th>Total Cost</th>
-          				</tr>
-          				<tr class="tr" href="#b-order-modal" data-toggle="modal" data-dismiss="modal" role="button">
-          					<td>1</td>
-          					<td>01-01-2000</td>
-          					<td>Customer1</td>
-          					<td>Toyota Corolla</td>
-          					<td>Php 2,000,000</td>
-          					<td>1</td>
-          					<td>Php 2,000,000</td>
-          				</tr>
-          				<tr class="tr" href="#b-order-modal" data-toggle="modal" data-dismiss="modal" role="button">
-          					<td>2</td>
-          					<td>02-01-2000</td>
-          					<td>Customer1</td>
-          					<td>Honda Civic</td>
-          					<td>Php 2,000,000</td>
-          					<td>2</td>
-          					<td>Php 4,000,000</td>
-          				</tr>
-          			</table>
+					<div class="table-body">
+	          			<table class="table table-striped">
+	          				<tr>
+	          					<th>ID</th>
+	          					<th>Date Of Sale</th>
+	          					<th>Customer</th>
+	          					<th>Item</th>
+	          					<th>Sale Price</th>
+	          					<th>Amount</th>
+	          					<th>Total Cost</th>
+	          				</tr>
+	          				<tr class="tr" href="#b-order-modal" data-toggle="modal" data-dismiss="modal" role="button">
+	          					<td>1</td>
+	          					<td>01-01-2000</td>
+	          					<td>Customer1</td>
+	          					<td>Toyota Corolla</td>
+	          					<td>Php 2,000,000</td>
+	          					<td>1</td>
+	          					<td>Php 2,000,000</td>
+	          				</tr>
+	          				<tr class="tr" href="#b-order-modal" data-toggle="modal" data-dismiss="modal" role="button">
+	          					<td>2</td>
+	          					<td>02-01-2000</td>
+	          					<td>Customer1</td>
+	          					<td>Honda Civic</td>
+	          					<td>Php 2,000,000</td>
+	          					<td>2</td>
+	          					<td>Php 4,000,000</td>
+	          				</tr>
+	          			</table>
+	          		</div>
 		        </div>
 			</div>
 		</div>
@@ -665,23 +678,25 @@
 							</p>
 						</div>
 					</div>
-          			<table class="table table-striped">
-          				<tr>
-          					<th>Due Date</th>
-          					<th>Amount Due</th>
-          					<th>Status</th>
-          				</tr>
-          				<tr>
-          					<td>01-01-2000</td>
-          					<td>Php 100,000</td>
-          					<td><button href="#s-payform-modal" data-toggle="modal" data-dismiss="modal" class="btn btn-small disabled">Paid</button></td>
-          				</tr>
-          				<tr>
-          					<td>02-01-2000</td>
-          					<td>Php 100,000</td>
-          					<td><button href="#s-payform-modal" data-toggle="modal" data-dismiss="modal" class="btn btn-primary btn-small">Pay</button></td>
-          				</tr>
-          			</table>
+					<div class="table-body">
+	          			<table class="table table-striped">
+	          				<tr>
+	          					<th>Due Date</th>
+	          					<th>Amount Due</th>
+	          					<th>Status</th>
+	          				</tr>
+	          				<tr>
+	          					<td>01-01-2000</td>
+	          					<td>Php 100,000</td>
+	          					<td><button href="#s-payform-modal" data-toggle="modal" data-dismiss="modal" class="btn btn-small disabled">Paid</button></td>
+	          				</tr>
+	          				<tr>
+	          					<td>02-01-2000</td>
+	          					<td>Php 100,000</td>
+	          					<td><button href="#s-payform-modal" data-toggle="modal" data-dismiss="modal" class="btn btn-primary btn-small">Pay</button></td>
+	          				</tr>
+	          			</table>
+	          		</div>
 		        </div>
 			</div>
 		</div>
@@ -698,6 +713,10 @@
 					<div class="navbar">
 						<div class="navbar-form">
 							<div class="btn-group">
+								<button href="#p-add-modal" data-toggle="modal" data-dismiss="modal" id="add" class="btn btn-default modal-nav-btn">
+									<i class="icon-plus"></i>
+									Add
+								</button>
 								<button id="search" class="btn btn-default modal-nav-btn">
 									<i class="icon-search"></i>
 									Search
@@ -713,38 +732,40 @@
 							Find
 						</button>
 					</div>
-          			<table class="table table-striped">
-          				<tr>
-          					<th>ID</th>
-          					<th>Date Of Purchase</th>
-          					<th>Date Of Delivery</th>
-          					<th>Supplier</th>
-          					<th>Item</th>
-          					<th>Purchase Price</th>
-          					<th>Amount</th>
-          					<th>Total Cost</th>
-          				</tr>
-          				<tr class="tr" href="#p-account-modal" data-toggle="modal" data-dismiss="modal" role="button">
-          					<td>1</td>
-          					<td>01-01-2000</td>
-          					<td>02-01-2000</td>
-          					<td>Supplier1</td>
-          					<td>Toyota Corolla</td>
-          					<td>Php 2,000,000</td>
-          					<td>1</td>
-          					<td>Php 2,000,000</td>
-          				</tr>
-          				<tr class="tr" href="#p-account-modal" data-toggle="modal" data-dismiss="modal" role="button">
-          					<td>2</td>
-          					<td>02-01-2000</td>
-          					<td>03-01-2000</td>
-          					<td>Supplier1</td>
-          					<td>Honda Civic</td>
-          					<td>Php 2,000,000</td>
-          					<td>2</td>
-          					<td>Php 4,000,000</td>
-          				</tr>
-          			</table>
+					<div class="table-body">
+	          			<table class="table table-striped">
+	          				<tr>
+	          					<th>ID</th>
+	          					<th>Date Of Purchase</th>
+	          					<th>Date Of Delivery</th>
+	          					<th>Supplier</th>
+	          					<th>Item</th>
+	          					<th>Purchase Price</th>
+	          					<th>Amount</th>
+	          					<th>Total Cost</th>
+	          				</tr>
+	          				<tr class="tr" href="#p-account-modal" data-toggle="modal" data-dismiss="modal" role="button">
+	          					<td>1</td>
+	          					<td>01-01-2000</td>
+	          					<td>02-01-2000</td>
+	          					<td>Supplier1</td>
+	          					<td>Toyota Corolla</td>
+	          					<td>Php 2,000,000</td>
+	          					<td>1</td>
+	          					<td>Php 2,000,000</td>
+	          				</tr>
+	          				<tr class="tr" href="#p-account-modal" data-toggle="modal" data-dismiss="modal" role="button">
+	          					<td>2</td>
+	          					<td>02-01-2000</td>
+	          					<td>03-01-2000</td>
+	          					<td>Supplier1</td>
+	          					<td>Honda Civic</td>
+	          					<td>Php 2,000,000</td>
+	          					<td>2</td>
+	          					<td>Php 4,000,000</td>
+	          				</tr>
+	          			</table>
+	          		</div>
 		        </div>
 			</div>
 		</div>
@@ -771,23 +792,25 @@
 							</p>
 						</div>
 					</div>
-          			<table class="table table-striped">
-          				<tr>
-          					<th>Due Date</th>
-          					<th>Amount Due</th>
-          					<th>Status</th>
-          				</tr>
-          				<tr>
-          					<td>01-01-2000</td>
-          					<td>Php 100,000</td>
-          					<td><button href="#s-payform-modal" data-toggle="modal" data-dismiss="modal" class="btn btn-small disabled">Paid</button></td>
-          				</tr>
-          				<tr>
-          					<td>02-01-2000</td>
-          					<td>Php 100,000</td>
-          					<td><button href="#s-payform-modal" data-toggle="modal" data-dismiss="modal" class="btn btn-primary btn-small">Pay</button></td>
-          				</tr>
-          			</table>
+					<div class="table-body">
+	          			<table class="table table-striped">
+	          				<tr>
+	          					<th>Due Date</th>
+	          					<th>Amount Due</th>
+	          					<th>Status</th>
+	          				</tr>
+	          				<tr>
+	          					<td>01-01-2000</td>
+	          					<td>Php 100,000</td>
+	          					<td><button href="#s-payform-modal" data-toggle="modal" data-dismiss="modal" class="btn btn-small disabled">Paid</button></td>
+	          				</tr>
+	          				<tr>
+	          					<td>02-01-2000</td>
+	          					<td>Php 100,000</td>
+	          					<td><button href="#s-payform-modal" data-toggle="modal" data-dismiss="modal" class="btn btn-primary btn-small">Pay</button></td>
+	          				</tr>
+	          			</table>
+	          		</div>
 		        </div>
 			</div>
 		</div>
@@ -802,6 +825,7 @@
 				</div>
 				<div class="modal-body">
 					<form>
+
 					</form>
 				</div>
 			</div>
@@ -849,38 +873,99 @@
 							Find
 						</button>
 					</div>
-          			<table class="table table-striped">
-          				<tr>
-          					<th>ID</th>
-          					<th>Date Of Sale</th>
-          					<th>Customer</th>
-          					<th>Item Type</th>
-          					<th>Item Model</th>
-          					<th>Sale Price</th>
-          					<th>Amount</th>
-          					<th>Total Cost</th>
-          				</tr>
-          				<tr>
-          					<td>1</td>
-          					<td>01-01-2000</td>
-          					<td>Customer1</td>
-          					<td>Toyota</td>
-          					<td>Corolla</td>
-          					<td>Php 2,000,000</td>
-          					<td>1</td>
-          					<td>Php 2,000,000</td>
-          				</tr>
-          				<tr>
-          					<td>2</td>
-          					<td>02-01-2000</td>
-          					<td>Customer1</td>
-          					<td>Honda</td>
-          					<td>Civic</td>
-          					<td>Php 2,000,000</td>
-          					<td>2</td>
-          					<td>Php 4,000,000</td>
-          				</tr>
-          			</table>
+					<div class="table-body">
+	          			<table class="table table-striped">
+	          				<tr>
+	          					<th>ID</th>
+	          					<th>Date Of Sale</th>
+	          					<th>Customer</th>
+	          					<th>Item</th>
+	          					<th>Sale Price</th>
+	          					<th>Amount</th>
+	          					<th>Total Cost</th>
+	          				</tr>
+	          				<tr>
+	          					<td>1</td>
+	          					<td>01-01-2000</td>
+	          					<td>Customer1</td>
+	          					<td>Toyota Corolla</td>
+	          					<td>Php 2,000,000</td>
+	          					<td>1</td>
+	          					<td>Php 2,000,000</td>
+	          				</tr>
+	          				<tr>
+	          					<td>2</td>
+	          					<td>02-01-2000</td>
+	          					<td>Customer1</td>
+	          					<td>Honda Civic</td>
+	          					<td>Php 2,000,000</td>
+	          					<td>2</td>
+	          					<td>Php 4,000,000</td>
+	          				</tr>
+	          			</table>
+	          		</div>
+		        </div>
+			</div>
+		</div>
+	</div>
+
+	<div id="p-payment-modal" class="modal fade" role="dialog" aria-hidden="true" style="display: none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left:20px;">&times;</button>
+          			<h3 class="modal-title">Purchase Payment</h3>
+				</div>
+				<div class="modal-body">
+					<div class="navbar">
+						<div class="navbar-form">
+							<div class="btn-group">
+								<button id="search" class="btn btn-default modal-nav-btn">
+									<i class="icon-search"></i>
+									Search
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="search modal-nav-box box-hide panel well">
+						<div class="col-lg-4">
+							<input type="text" class="form-control " placeholder="Check No.">
+						</div>
+						<button class="btn btn-default">
+							Find
+						</button>
+					</div>
+					<div class="table-body">
+	          			<table class="table table-striped">
+	          				<tr>
+	          					<th>ID</th>
+	          					<th>Date Of Purchase</th>
+	          					<th>Supplier</th>
+	          					<th>Item</th>
+	          					<th>Sale Price</th>
+	          					<th>Amount</th>
+	          					<th>Total Cost</th>
+	          				</tr>
+	          				<tr>
+	          					<td>1</td>
+	          					<td>01-01-2000</td>
+	          					<td>Supplier1</td>
+	          					<td>Toyota Corolla</td>
+	          					<td>Php 2,000,000</td>
+	          					<td>1</td>
+	          					<td>Php 2,000,000</td>
+	          				</tr>
+	          				<tr>
+	          					<td>2</td>
+	          					<td>02-01-2000</td>
+	          					<td>Supplier1</td>
+	          					<td>Honda Civic</td>
+	          					<td>Php 2,000,000</td>
+	          					<td>2</td>
+	          					<td>Php 4,000,000</td>
+	          				</tr>
+	          			</table>
+	          		</div>
 		        </div>
 			</div>
 		</div>
@@ -907,21 +992,27 @@
 						</div>
 					</div>
 					<form class="form-inline">
-					  	<span class="form-control" style="marging-right:20px;">
-				      		<label for="exampleInputEmail">Payment Type</label>
-					      	<div class="btn-group">
-						  		<button type="button" class="btn btn-default btn-small dropdown-toggle" data-toggle="dropdown">
-							    - Type - 
-								<span class="caret"></span>
-						  		</button>
-						  		<ul class="dropdown-menu">
-								    <li><a href="#">Cash</a></li>
-								    <li><a href="#">Check</a></li>
-								    <li><a href="#">Credit</a></li>
-						  		</ul>
-							</div>
-						</span>
-	      				<input class="form-control" type="text" placeholder="Check/Credit No.">	
+						<label>Payment Type</label><br/>
+						<div class="checkbox">
+					        <label>
+					          <input type="checkbox" /> 
+					          <input class="form-control" type="text" placeholder="Check No.">	
+					          <input class="form-control" type="date" placeholder="Post Date">
+					          <input class="form-control" type="text" placeholder="Amount">	
+					        </label>
+				      	</div><br/><br/>
+					  	<div class="checkbox">
+					        <label>
+					          <input type="checkbox" /> 
+					          <input class="form-control" type="text" placeholder="Cash Amount">
+					        </label>
+				      	</div><br/><br/>
+				      	<div class="checkbox">
+					        <label>
+					          <input type="checkbox" /> 
+					          <input class="form-control" type="text" placeholder="Credit No.">	
+					        </label>
+				      	</div>
 					</form>
 		        </div>
 		        <div class="modal-footer">
@@ -952,11 +1043,11 @@
 						</div>
 					</div>
 					<form class="form-inline">
-					  	<span class="form-control" style="marging-right:20px;">
-				      		<label for="exampleInputEmail">Payment Type</label>
+					  	<span class="form-control">
+				      		<label>Payment Type</label>
 					      	<div class="btn-group">
 						  		<button type="button" class="btn btn-default btn-small dropdown-toggle" data-toggle="dropdown">
-							    - Type - 
+							    Choose
 								<span class="caret"></span>
 						  		</button>
 						  		<ul class="dropdown-menu">
@@ -1002,32 +1093,34 @@
 							Find
 						</button>
 					</div>
-          			<table class="table table-striped">
-          				<tr>
-          					<th>Due Date</th>
-          					<th>Issue Date</th>
-          					<th>Check No.</th>
-          					<th>Issuer</th>
-          					<th>Amount</th>
-          					<th>Action</th>
-          				</tr>
-          				<tr>
-          					<td>02-01-2000</td>
-          					<td>01-01-2000</td>
-          					<td>12345</td>
-          					<td>Customer1</td>
-          					<td>Php 50,000</td>
-          					<td><button class="btn btn-primary btn-small">Cash</button></td>
-          				</tr>
-          				<tr>
-          					<td>03-01-2000</td>
-          					<td>02-01-2000</td>
-          					<td>23456</td>
-          					<td>Supplier1</td>
-          					<td>Php 100,000</td>
-          					<td><button class="btn btn-small disabled">Cashed</button></td>
-          				</tr>
-          			</table>
+					<div class="table-body">
+	          			<table class="table table-striped">
+	          				<tr>
+	          					<th>Due Date</th>
+	          					<th>Issue Date</th>
+	          					<th>Check No.</th>
+	          					<th>Issuer</th>
+	          					<th>Amount</th>
+	          					<th>Action</th>
+	          				</tr>
+	          				<tr>
+	          					<td>02-01-2000</td>
+	          					<td>01-01-2000</td>
+	          					<td>12345</td>
+	          					<td>Customer1</td>
+	          					<td>Php 50,000</td>
+	          					<td><button class="btn btn-primary btn-small">Cash</button></td>
+	          				</tr>
+	          				<tr>
+	          					<td>03-01-2000</td>
+	          					<td>02-01-2000</td>
+	          					<td>23456</td>
+	          					<td>Supplier1</td>
+	          					<td>Php 100,000</td>
+	          					<td><button class="btn btn-small disabled">Cashed</button></td>
+	          				</tr>
+	          			</table>
+	          		</div>
 		        </div>
 			</div>
 		</div>
@@ -1056,29 +1149,29 @@
 						</div>
 					</div>
 					<form class="add modal-nav-box box-hide panel well form-horizontal">
-					  <div class="form-group">
-					    <label class="col-lg-2 control-label">Name</label>
-					    <div class="col-lg-10">
-					      <input type="text" class="form-control">
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label class="col-lg-2 control-label">Company</label>
-					    <div class="col-lg-10">
-					      <input type="password" class="form-control">
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label class="col-lg-2 control-label">Description</label>
-					    <div class="col-lg-10">
-					      <input type="password" class="form-control">
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <div class="col-offset-2 col-lg-10">
-					      <button type="submit" class="btn btn-primary">Add</button>
-					    </div>
-					  </div>
+					  	<div class="form-group clearfix">
+					    	<label class="col-lg-2 control-label">Name</label>
+					    	<div class="col-lg-10">
+					      		<input type="text" class="form-control">
+				    		</div>
+					  	</div>
+					  	<div class="form-group clearfix">
+						    <label class="col-lg-2 control-label">Company</label>
+						    <div class="col-lg-10">
+						      <input type="password" class="form-control">
+						    </div>
+					  	</div>
+					  	<div class="form-group clearfix">
+					    	<label class="col-lg-2 control-label">Description</label>
+					    	<div class="col-lg-10">
+					      		<input type="password" class="form-control">
+					    	</div>
+					  	</div>
+						<div class="form-group clearfix">
+							<div class="col-offset-2 col-lg-10">
+							  <button type="submit" class="btn btn-primary">Add</button>
+							</div>
+						</div>
 					</form>
 					<div class="search modal-nav-box box-hide panel well">
 						<div class="col-lg-4">
@@ -1088,26 +1181,28 @@
 							Find
 						</button>
 					</div>
-          			<table class="table table-striped">
-          				<tr>
-          					<th>ID</th>
-          					<th>Customer</th>
-          					<th>Company</th>
-          					<th>Description</th>
-          				</tr>
-          				<tr>
-          					<td>1</td>
-          					<td>Customer1</td>
-          					<td>any.tv</td>
-          					<td>Close friend</td>
-          				</tr>
-          				<tr>
-          					<td>2</td>
-          					<td>Customer2</td>
-          					<td>openkit</td>
-          					<td>Good Customer</td>
-          				</tr>
-          			</table>
+					<div class="table-body">
+	          			<table class="table table-striped">
+	          				<tr>
+	          					<th>ID</th>
+	          					<th>Customer</th>
+	          					<th>Company</th>
+	          					<th>Description</th>
+	          				</tr>
+	          				<tr>
+	          					<td>1</td>
+	          					<td>Customer1</td>
+	          					<td>any.tv</td>
+	          					<td>Close friend</td>
+	          				</tr>
+	          				<tr>
+	          					<td>2</td>
+	          					<td>Customer2</td>
+	          					<td>openkit</td>
+	          					<td>Good Customer</td>
+	          				</tr>
+	          			</table>
+	          		</div>
 		        </div>
 			</div>
 		</div>
@@ -1168,27 +1263,245 @@
 							Find
 						</button>
 					</div>
-          			<table class="table table-striped">
-          				<tr>
-          					<th>ID</th>
-          					<th>Supplier</th>
-          					<th>Company</th>
-          					<th>Description</th>
-          				</tr>
-          				<tr>
-          					<td>1</td>
-          					<td>Supplier1</td>
-          					<td>any.tv</td>
-          					<td>Close friend</td>
-          				</tr>
-          				<tr>
-          					<td>2</td>
-          					<td>Supplier2</td>
-          					<td>openkit</td>
-          					<td>Good Customer</td>
-          				</tr>
-          			</table>
+					<div class="table-body">
+	          			<table class="table table-striped">
+	          				<tr>
+	          					<th>ID</th>
+	          					<th>Supplier</th>
+	          					<th>Company</th>
+	          					<th>Description</th>
+	          				</tr>
+	          				<tr>
+	          					<td>1</td>
+	          					<td>Supplier1</td>
+	          					<td>any.tv</td>
+	          					<td>Close friend</td>
+	          				</tr>
+	          				<tr>
+	          					<td>2</td>
+	          					<td>Supplier2</td>
+	          					<td>openkit</td>
+	          					<td>Good Customer</td>
+	          				</tr>
+	          			</table>
+	          		</div>
 		        </div>
+			</div>
+		</div>
+	</div>
+
+	<div id="pricelist-modal" class="modal fade" role="dialog" aria-hidden="true" style="display: none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left:20px;">&times;</button>
+          			<h3 class="modal-title">Price List</h3>
+				</div>
+				<div class="modal-body">
+					<div class="navbar">
+						<div class="navbar-form">
+							<div class="btn-group">
+								<button id="search" class="btn btn-default modal-nav-btn">
+									<i class="icon-search"></i>
+									Search
+								</button>
+							</div>
+						</div>
+					</div>
+					<form class="add modal-nav-box box-hide panel well form-horizontal">
+			  			<div class="form-group">
+					    	<label class="col-lg-2 control-label">Name</label>
+						    <div class="col-lg-10">
+						      <input type="text" class="form-control">
+					    </div>
+					  	</div>
+					  	<div class="form-group">
+						    <label class="col-lg-2 control-label">Company</label>
+						    <div class="col-lg-10">
+						      <input type="password" class="form-control">
+				    		</div>
+					  	</div>
+					  	<div class="form-group">
+						    <label class="col-lg-2 control-label">Description</label>
+						    <div class="col-lg-10">
+						      <input type="password" class="form-control">
+				    		</div>
+					  	</div>
+					  	<div class="form-group">
+						    <div class="col-offset-2 col-lg-10">
+						      <button type="submit" class="btn btn-primary">Add</button>
+						    </div>
+					  	</div>
+					</form>
+					<div class="search modal-nav-box box-hide panel well">
+						<div class="col-lg-4">
+							<input type="text" class="form-control " placeholder="Check No.">
+						</div>
+						<button class="btn btn-default">
+							Find
+						</button>
+					</div>
+					<div class="table-body">
+	          			<table class="table table-striped">
+	          				<tr>
+	          					<th>ID</th>
+	          					<th>Supplier</th>
+	          					<th>Type</th>
+	          					<th>Model</th>
+	          					<th>Stock</th>
+	          					<th>Sale Cost</th>
+	          				</tr>
+	          				<tr class="tr" href="#i-detail-modal" data-toggle="modal" data-dismiss="modal" role="button">
+	          					<td>1</td>
+	          					<td>Supplier1</td>
+	          					<td>Toyota</td>
+	          					<td>Corolla</td>
+	          					<td>1</td>
+	          					<td>Php 2,000,000</td>
+	          				</tr>
+	          				<tr class="tr" href="#i-order-modal" data-toggle="modal" data-dismiss="modal" role="button">
+	          					<td>2</td>
+	          					<td>Supplier2</td>
+	          					<td>Honda</td>
+	          					<td>Civic</td>
+	          					<td>1</td>
+	          					<td>Php 2,000,000</td>
+	          				</tr>
+	          			</table>
+	          		</div>
+		        </div>
+			</div>
+		</div>
+	</div>
+
+	<div id="inventory-modal" class="modal fade" role="dialog" aria-hidden="true" style="display: none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left:20px;">&times;</button>
+          			<h3 class="modal-title">Inventory</h3>
+				</div>
+				<div class="modal-body">
+					<div class="navbar">
+						<div class="navbar-form">
+							<div class="btn-group">
+								<button href="#i-add-modal" data-toggle="modal" data-dismiss="modal" id="add" class="btn btn-default modal-nav-btn">
+									<i class="icon-plus"></i>
+									Add
+								</button>
+								<button id="search" class="btn btn-default modal-nav-btn">
+									<i class="icon-search"></i>
+									Search
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="search modal-nav-box box-hide panel well">
+						<div class="col-lg-4">
+							<input type="text" class="form-control " placeholder="Check No.">
+						</div>
+						<button class="btn btn-default">
+							Find
+						</button>
+					</div>
+					<div class="table-body">
+	          			<table class="table table-striped">
+	          				<tr>
+	          					<th>ID</th>
+	          					<th>Supplier</th>
+	          					<th>Stock</th>
+	          					<th>Type</th>
+	          					<th>Model</th>
+	          					<th>Color</th>
+	          					<th>Chassis No.</th>
+	          					<th>Engine No.</th>
+	          					<th>Delivery Date</th>
+	          					<th>Freight-Handling Cost</th>
+	          					<th>Brokerage Cost</th>
+	          					<th>Exchange Rate</th>
+	          					<th>Yen Cost</th>
+	          					<th>Peso Cost</th>
+	          				</tr>
+	          				<tr>
+	          					<td>1</td>
+	          					<td>Supplier1</td>
+	          					<td>1</td>
+	          					<td>Toyota</td>
+	          					<td>Corolla</td>
+	          					<td>Black</td>
+	          					<td>12345</td>
+	          					<td>23456</td>
+	          					<td>01-01-2000</td>
+	          					<td>1,000</td>
+	          					<td>2,000</td>
+	          					<td>0.5</td>
+	          					<td>2,000,000</td>
+	          					<td>1,000,000</td>
+	          				</tr>
+	          				<tr>
+	          					<td>1</td>
+	          					<td>Supplier1</td>
+	          					<td>1</td>
+	          					<td>Toyota</td>
+	          					<td>Corolla</td>
+	          					<td>Black</td>
+	          					<td>12345</td>
+	          					<td>23456</td>
+	          					<td>01-01-2000</td>
+	          					<td>1,000</td>
+	          					<td>2,000</td>
+	          					<td>0.5</td>
+	          					<td>2,000,000</td>
+	          					<td>1,000,000</td>
+	          				</tr>
+	          			</table>
+	          		</div>
+		        </div>
+			</div>
+		</div>
+	</div>
+
+	<div id="i-add-modal" class="modal fade" role="dialog" aria-hidden="true" style="display: none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left:20px;">&times;</button>
+          			<h3 class="modal-title">Add Inventory</h3>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+						<div class="form-group clearfix">
+				      		<label class="col-lg-2 control-label">Supplier</label>
+					      	<div class="btn-group col-lg-10">
+						  		<button type="button" class="btn btn-default btn-small dropdown-toggle" data-toggle="dropdown">
+							    Choose
+								<span class="caret"></span>
+						  		</button>
+						  		<ul class="dropdown-menu">
+								    <li><a href="#">Supplier1</a></li>
+								    <li><a href="#">Supplier2</a></li>
+						  		</ul>
+							</div>
+						</div>
+					  	<div class="form-group clearfix">
+						    <label class="col-lg-2 control-label">Type</label>
+						    <div class="col-lg-10">
+						      <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+					    	</div>
+					  	</div>
+					  	<div class="form-group clearfix">
+						    <label class="col-lg-2 control-label">Model</label>
+						    <div class="col-lg-10">
+						      <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+						    </div>
+					  	</div>
+					  	<div class="form-group clearfix">
+						    <div class="col-offset-2 col-lg-10">
+						      <button type="submit" class="btn btn-primary">Add</button>
+						    </div>
+					  	</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
