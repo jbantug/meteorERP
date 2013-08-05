@@ -107,6 +107,10 @@ body .modal-open {
   }
 }
 
+.table-body {
+	overflow-x: scroll;
+}
+
 .table .tr:hover {
 	cursor: pointer;
 	color: #428bca;
@@ -116,7 +120,6 @@ body .modal-open {
 	width: 236px;
 }
 
-.form-group {
-	overflow: hidden;
+.clearfix {
 	margin-bottom: 10px;
 }
