@@ -1591,31 +1591,7 @@
 							</div>
 						</div>
 					</div>
-					<form class="add modal-nav-box box-hide panel well form-horizontal">
-					  <div class="form-group">
-					    <label class="col-lg-2 control-label">Name</label>
-					    <div class="col-lg-10">
-					      <input type="text" class="form-control">
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label class="col-lg-2 control-label">Company</label>
-					    <div class="col-lg-10">
-					      <input type="password" class="form-control">
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label class="col-lg-2 control-label">Description</label>
-					    <div class="col-lg-10">
-					      <input type="password" class="form-control">
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <div class="col-offset-2 col-lg-10">
-					      <button type="submit" class="btn btn-primary">Add</button>
-					    </div>
-					  </div>
-					</form>
+					{{>supplier_form}}
 					<div class="search modal-nav-box box-hide panel well">
 						<div class="col-lg-4">
 							<input type="text" class="form-control " placeholder="Check No.">
@@ -1625,15 +1601,9 @@
 						</button>
 					</div>
 					<div class="table-body">
-	          			<table class="table table-striped">
-	          				<tr >
-	          					<th>ID</th>
-	          					<th>Supplier</th>
-	          					<th>Company</th>
-	          					<th>Description</th>
-	          				</tr>
-	          				{{> suppliers_table}}
-	          			</table>
+	          			
+	          				{{> suppliers}}
+	          			
 	          		</div>
 		        </div>
 			</div>
@@ -2277,50 +2247,3 @@
 
 </div>
 </body>
-
-<!-- TEMPLATES -->
-
-<template name="suppliers_table">
-	{{#each info}}
-		<tr>
-			<td>{{_id}}</td>
-			<td>{{name}}</td>
-			<td>{{company}}</td>
-			<td>{{description}}</td>
-		</tr>
-	{{/each}}
-</template>
-
-<template name="suppliers_list">
-	{{#each info}}
-		<li><a href="#">{{name}}</a></li>
-	{{/each}}
-</template>
-
-<template name="customers_table">
-	{{#each info}}
-		<tr>
-			<td>{{_id}}</td>
-			<td>{{name}}</td>
-			<td>{{company}}</td>
-			<td>{{description}}</td>
-		</tr>
-	{{/each}}
-</template>
-
-<template name="customers_list">
-	{{#each info}}
-		<li><a href="#">{{name}}</a></li>
-	{{/each}}
-</template>
-
-<template name="brokers_table">
-	{{#each info}}
-		<tr>
-			<td>{{_id}}</td>
-			<td>{{name}}</td>
-			<td>{{company}}</td>
-			<td>{{description}}</td>
-		</tr>
-	{{/each}}
-</template>
