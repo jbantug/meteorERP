@@ -2,26 +2,6 @@ Meteor.startup(function(){
     //test data
     suppliers.remove({});
     customers.remove({});
-    suppliers.insert({
-        name: "Test Supplier 1",
-        company: "None",
-        description: "Test 1"
-    });
-    suppliers.insert({
-        name: "Test Supplier 2",
-        company: "None",
-        description: "Test 2"
-    });
-    suppliers.insert({
-        name: "A Supplier Test",
-        company: "None",
-        description: "Test 3"
-    });
-    suppliers.insert({
-        name: "A Supplier Test 2",
-        company: "None",
-        description: "Test 4"
-    });
     customers.insert({
         name: "Test 1",
         company: "None",

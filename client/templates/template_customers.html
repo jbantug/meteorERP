@@ -1,0 +1,16 @@
+<template name="customers_list">
+	{{#each info}} 
+	<li><a href="#">{{name}}</a></li>
+	{{/each}}
+</template>
+
+<template name="customers_table">
+   {{#each info}}
+     <tr>
+      <td>{{_id}}</td>
+       <td>{{name}}</td>
+       <td>{{company}}</td>
+       <td>{{description}}</td>
+     </tr>
+   {{/each}}
+</template>
