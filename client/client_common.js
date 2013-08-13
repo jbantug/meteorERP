@@ -13,3 +13,5 @@ Meteor.subscribe("Users");
 Meteor.autosubscribe(function() {
 	Meteor.subscribe("Suppliers");	
 });
+
+Meteor.subscribe("Customers");
