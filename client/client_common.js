@@ -9,3 +9,5 @@ Accounts.ui.config({
 
 Meteor.subscribe("Purchases");
 Meteor.subscribe("Users");
+Meteor.subscribe("Customers");
+Meteor.subscribe("Suppliers");
