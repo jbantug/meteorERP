@@ -13,8 +13,6 @@
 		<header>
 			<img src="" class="head-logo pull-left"/>
 			<div class="head-nav pull-right">
-				<!-- <a href="#">log in</a> | |
-				<a href="#">sign up</a> -->
 				{{loginButtons}}
 			</div>
 		</header>
@@ -75,9 +73,7 @@
 
 		<footer>
 		</footer>
-	</div>
-
-	
+	</div>	
 
 	<!--  WINDOWS  -->
 
@@ -1447,31 +1443,7 @@
 							</div>
 						</div>
 					</div>
-					<form class="add modal-nav-box box-hide panel well form-horizontal">
-					  <div class="form-group">
-					    <label class="col-lg-2 control-label">Name</label>
-					    <div class="col-lg-10">
-					      <input type="text" class="form-control">
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label class="col-lg-2 control-label">Company</label>
-					    <div class="col-lg-10">
-					      <input type="password" class="form-control">
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label class="col-lg-2 control-label">Description</label>
-					    <div class="col-lg-10">
-					      <input type="password" class="form-control">
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <div class="col-offset-2 col-lg-10">
-					      <button type="submit" class="btn btn-primary">Add</button>
-					    </div>
-					  </div>
-					</form>
+					{{>supplier_form}}
 					<div class="search modal-nav-box box-hide panel well">
 						<div class="col-lg-4">
 							<input type="text" class="form-control " placeholder="Check No.">
@@ -1481,26 +1453,8 @@
 						</button>
 					</div>
 					<div class="table-body">
-	          			<table class="table table-striped">
-	          				<tr>
-	          					<th>ID</th>
-	          					<th>Supplier</th>
-	          					<th>Company</th>
-	          					<th>Description</th>
-	          				</tr>
-	          				<tr>
-	          					<td>1</td>
-	          					<td>Supplier1</td>
-	          					<td>any.tv</td>
-	          					<td>Close friend</td>
-	          				</tr>
-	          				<tr>
-	          					<td>2</td>
-	          					<td>Supplier2</td>
-	          					<td>openkit</td>
-	          					<td>Good Customer</td>
-	          				</tr>
-	          			</table>
+						<!-- Supplier List -->
+	          			{{>suppliers}}
 	          		</div>
 		        </div>
 			</div>

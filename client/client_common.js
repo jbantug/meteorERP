@@ -9,3 +9,7 @@ Accounts.ui.config({
 
 Meteor.subscribe("Purchases");
 Meteor.subscribe("Users");
+
+Meteor.autosubscribe(function() {
+	Meteor.subscribe("Suppliers");	
+});

@@ -13,11 +13,24 @@ Meteor.startup(function(){
         paymentTerms: "thou hast purchase",
     }); 
 
+    //suppliers.remove({});
+
+    // suppliers.insert({
+    //     name: "Alur Leiferrot",
+    //     company: "sugbufm",
+    //     description: "Another supplier",
+    //     dateadded: Date("yyyy-MM-DD HH:mm")
+    // }); 
+ 
     Meteor.publish("Purchases", function(){
       return purchases.find({});
     });
 
     Meteor.publish("Users", function(){
         return Meteor.users.find({});
+    });
+
+    Meteor.publish("Suppliers", function(){
+        return suppliers.find({});
     });
 });
