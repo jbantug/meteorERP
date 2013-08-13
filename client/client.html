@@ -59,6 +59,12 @@
 					</li>
 				</a>
 				<a href="#">
+					<li id="box-expenses">
+						<img class="home-icons" />
+						<span>Expenses</span>
+					</li>
+				</a>
+				<a href="#">
 					<li id="box-notes">
 						<img class="home-icons" />
 						<span>Notes</span>
@@ -448,6 +454,97 @@
 		</div>				
 	</div>
 
+	<div class="box box-expenses box-hide panel" style="margin-top:20px">
+		<div class="panel-heading">
+			<h2 class="panel-title">
+				<button type="button" class="home-access pull-right" aria-hidden="true" style="margin-top: -6px">
+					<i class="icon-home icon-medium"></i>
+				</button>
+				<img class="box-titleImg" style="margin-top: -10px"/>
+				Expenses
+			</h2>
+		</div>
+		<div class="row">
+			<!-- <div class="navbar"> -->
+				<div class="navbar-form">
+					<div class="btn-group">
+						<button id="add" class="btn btn-default modal-nav-btn">
+							<i class="icon-plus"></i>
+							Add
+						</button>
+					</div>
+				</div>
+			<!-- </div> -->
+			<form class="add modal-nav-box box-hide panel well form-horizontal">
+			  	<div class="form-group clearfix">
+			    	<label class="col-lg-2 control-label">Item</label>
+			    	<div class="col-lg-10">
+			      		<input type="text" class="form-control">
+		    		</div>
+			  	</div>
+			  	<div class="form-group clearfix">
+				    <label class="col-lg-2 control-label">Amount</label>
+				    <div class="col-lg-10">
+				      <input type="number" class="form-control">
+				    </div>
+			  	</div>
+			  	<div class="form-group clearfix">
+			    	<label class="col-lg-2 control-label">Supplier</label>
+			    	<div class="col-lg-10">
+			      		<input type="password" class="form-control">
+			    	</div>
+			  	</div>
+			  	<div class="form-group clearfix">
+			    	<label class="col-lg-2 control-label">Date</label>
+			    	<div class="col-lg-10">
+			      		<input type="date" class="form-control">
+			    	</div>
+			  	</div>
+				<div class="form-group clearfix">
+					<div class="col-offset-2 col-lg-10">
+					  <button type="submit" class="btn btn-primary">Add</button>
+					</div>
+				</div>
+			</form>
+			<div class="search modal-nav-box box-hide panel well">
+				<div class="col-lg-4">
+					<input type="text" class="form-control " placeholder="Check No.">
+				</div>
+				<button class="btn btn-default">
+					Find
+				</button>
+			</div>
+			<div class="table-body">
+      			<table class="table table-striped">
+      				<tr>
+      					<th>Item</th>
+      					<th>Amount</th>
+      					<th>Supplier</th>
+      					<th>Date</th>
+      				</tr>
+      				<tr>
+      					<td>Office Supplies</td>
+      					<td>1000</td>
+      					<td>National Bookstore</td>
+      					<td>August 08, 2013</td>
+      				</tr>
+      				<tr>
+      					<td>Water</td>
+      					<td>10000</td>
+      					<td>MCWD</td>
+      					<td>September 08, 2013</td>
+      				</tr>
+      				<tr>
+      					<td>Electricity</td>
+      					<td>20000</td>
+      					<td>VECO</td>
+      					<td>October 10, 2013</td>
+      				</tr>
+      			</table>
+      		</div>
+      	</div>
+	</div>
+
 	<div class="box box-notes box-hide panel" style="margin-top:20px">
 		<div class="panel-heading">
 			<h2 class="panel-title">
@@ -681,31 +778,28 @@
 					<div class="table-body">
 	          			<table class="table table-striped">
 	          				<tr>
-	          					<th>ID</th>
-	          					<th>Date Of Sale</th>
 	          					<th>Customer</th>
 	          					<th>Item</th>
-	          					<th>Sale Price</th>
-	          					<th>Quantity</th>
-	          					<th>Total Cost</th>
+	          					<th>Chassis No.</th>
+	          					<th>Engine No.</th>
+	          					<th>Price</th>
+	          					<th>Delivery Date</th>
 	          				</tr>
-	          				<tr class="tr" href="#s-account-modal" data-toggle="modal" data-dismiss="modal" role="button">
-	          					<td>1</td>
-	          					<td>01-01-2000</td>
-	          					<td>Customer1</td>
+	          				<tr class="tr" href="#s-info-modal" data-toggle="modal" data-dismiss="modal" role="button">
+	          					<td>Customer 2</td>
 	          					<td>Toyota Corolla,	 Blue</td>
-	          					<td>Php 2,000,000</td>
-	          					<td>1</td>
-	          					<td>Php 2,000,000</td>
+	          					<td>1234567890</td>
+	          					<td>1234567890</td>
+	          					<td>1000000</td>
+	          					<td>01-01-2000</td>
 	          				</tr>
-	          				<tr class="tr" href="#s-account-modal" data-toggle="modal" data-dismiss="modal" role="button">
-	          					<td>2</td>
-	          					<td>02-01-2000</td>
-	          					<td>Customer1</td>
-	          					<td>Honda Civic, Black</td>
-	          					<td>Php 2,000,000</td>
-	          					<td>2</td>
-	          					<td>Php 4,000,000</td>
+	          				<tr class="tr" href="#s-info-modal" data-toggle="modal" data-dismiss="modal" role="button">
+	          					<td>Customer 2</td>
+	          					<td>Toyota Corolla,	 Blue</td>
+	          					<td>1234567890</td>
+	          					<td>1234567890</td>
+	          					<td>1000000</td>
+	          					<td>01-01-2000</td>
 	          				</tr>
 	          			</table>
 	          		</div>
@@ -713,6 +807,63 @@
 			</div>
 		</div>
 	</div>
+
+	<div id="s-info-modal" class="modal fade" role="dialog" aria-hidden="true" style="display:none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left:20px;">&times;</button>
+          			<h3 class="modal-title">Toyota Corolla (Blue)</h3>
+				</div>
+				<div class="modal-body">
+					<div class="table-body">
+	          			<table class="table table-striped">
+	          				<tr class="tr">
+	          					<td><strong>Chassis</strong></td>
+	          					<td>1234567890</td>	          					
+	          				</tr>
+	          				<tr>
+	          					<td><strong>Engine</strong></td>
+	          					<td>1234567890</td>
+	          				</tr>
+	          				<tr>
+	          					<td><strong>Yen Cost</strong></td>
+	          					<td>1000000</td>	          						          					
+	          				</tr>
+	          				<tr>
+	          					<td><strong>Forex Rate</strong></td>
+	          					<td>0.5555</td>
+	          				</tr>
+	          				<tr>
+	          					<td><strong>Peso Cost</strong></td>
+	          					<td>555500</td>
+	          				</tr>
+	          				<tr>
+	          					<td><strong>Freight/Hanlding Cost</strong></td>
+	          					<td>1000</td>
+	          				</tr>
+	          				<tr>
+	          					<td><strong>Brokerage Cost</strong></td>
+	          					<td>2000</td>
+	          				</tr>
+	          				<tr>
+	          					<td><strong>Broker</strong></td>
+	          					<td>Will Smith</td>
+	          				</tr>
+	          				<tr>
+	          					<td><strong>Supplier</strong></td>
+	          					<td>Fast Cargo</td>
+	          				</tr>
+	          				<tr>
+	          					<td><strong>Date In</strong></td>
+	          					<td>August 8, 2013</td>
+	          				</tr>
+	          			</table>
+	          		</div>
+		        </div>
+			</div>
+		</div>
+	</div>	
 
 	<div id="p-order-modal" class="modal fade" role="dialog" aria-hidden="true" style="display:none;">
 		<div class="modal-dialog">
@@ -961,9 +1112,9 @@
           			<h3 class="modal-title">Add Sale Order</h3>
 				</div>
 				<div class="modal-body">
-					<form href="#s-order-modal" data-toggle="modal" data-dismiss="modal" class="form-horizontal">
+					<form class="form-horizontal">
 						<div class="form-group clearfix">
-							<label class="col-lg-3 control-label" style="font-weight:normal;">December 31, 2000</label>
+							<label class="col-lg-3 control-label" style="font-weight:normal;">August 14, 2013</label>
 							<div class="col-lg-9"></div>
 						</div>
 						<div class="form-group clearfix">
@@ -974,8 +1125,7 @@
 								<span class="caret"></span>
 						  		</button>
 						  		<ul class="dropdown-menu">
-								    <li><a href="#">Customer1</a></li>
-								    <li><a href="#">Customer2</a></li>
+								    {{> customers_list}}
 						  		</ul>
 							</div>
 						</div>
@@ -993,14 +1143,26 @@
 							</div>
 						</div>
 					  	<div class="form-group clearfix">
-						    <label class="col-lg-2 control-label">Quantity</label>
+						    <label class="col-lg-2 control-label">Chassis No.</label>
 						    <div class="col-lg-10">
-						      <input type="number" class="form-control" placeholder="How many?">
+						      <input type="text" class="form-control" placeholder="Chassis No.">
+						    </div>
+					  	</div>
+					  	<div class="form-group clearfix">
+						    <label class="col-lg-2 control-label">Engine No.</label>
+						    <div class="col-lg-10">
+						      <input type="text" class="form-control" placeholder="Engine No.">
+						    </div>
+					  	</div>
+					  	<div class="form-group clearfix">
+						    <label class="col-lg-2 control-label">Delivery Date</label>
+						    <div class="col-lg-10">
+						      <input type="date" class="form-control">
 						    </div>
 					  	</div>
 					  	<div class="form-group clearfix">
 						    <div class="col-offset-2 col-lg-10">
-						      <button type="submit" class="btn btn-primary">Add</button>
+						      <button type="submit" class="btn btn-primary"  href="#s-order-modal" data-toggle="modal" data-dismiss="modal">Add</button>
 						    </div>
 					  	</div>
 					</form>
@@ -1030,8 +1192,7 @@
 								<span class="caret"></span>
 						  		</button>
 						  		<ul class="dropdown-menu">
-								    <li><a href="#">Supplier1</a></li>
-								    <li><a href="#">Supplier2</a></li>
+								    {{> suppliers_list}}
 						  		</ul>
 							</div>
 						</div>
@@ -1044,13 +1205,7 @@
 					  	<div class="form-group clearfix">
 						    <label class="col-lg-2 control-label">Model</label>
 						    <div class="col-lg-10">
-						      <input type="password" class="form-control" placeholder="Password">
-						    </div>
-					  	</div>
-					  	<div class="form-group clearfix">
-						    <label class="col-lg-2 control-label">Quantity</label>
-						    <div class="col-lg-10">
-						      <input type="number" class="form-control" placeholder="How many?">
+						      <input type="text" class="form-control" placeholder="Password">
 						    </div>
 					  	</div>
 					  	<div class="form-group clearfix">
@@ -1406,18 +1561,7 @@
 	          					<th>Company</th>
 	          					<th>Description</th>
 	          				</tr>
-	          				<tr>
-	          					<td>1</td>
-	          					<td>Customer1</td>
-	          					<td>any.tv</td>
-	          					<td>Close friend</td>
-	          				</tr>
-	          				<tr>
-	          					<td>2</td>
-	          					<td>Customer2</td>
-	          					<td>openkit</td>
-	          					<td>Good Customer</td>
-	          				</tr>
+	          				{{> customers_table}}
 	          			</table>
 	          		</div>
 		        </div>
@@ -1482,24 +1626,13 @@
 					</div>
 					<div class="table-body">
 	          			<table class="table table-striped">
-	          				<tr>
+	          				<tr >
 	          					<th>ID</th>
 	          					<th>Supplier</th>
 	          					<th>Company</th>
 	          					<th>Description</th>
 	          				</tr>
-	          				<tr>
-	          					<td>1</td>
-	          					<td>Supplier1</td>
-	          					<td>any.tv</td>
-	          					<td>Close friend</td>
-	          				</tr>
-	          				<tr>
-	          					<td>2</td>
-	          					<td>Supplier2</td>
-	          					<td>openkit</td>
-	          					<td>Good Customer</td>
-	          				</tr>
+	          				{{> suppliers_table}}
 	          			</table>
 	          		</div>
 		        </div>
@@ -1624,12 +1757,10 @@
 					<div class="table-body">
 	          			<table class="table table-striped">
 	          				<tr>
-	          					<th>ID</th>
-	          					<th>Supplier</th>
-	          					<th>Stock</th>
 	          					<th>Type</th>
 	          					<th>Model</th>
 	          					<th>Color</th>
+	          					<th>Supplier</th>
 	          					<th>Chassis No.</th>
 	          					<th>Engine No.</th>
 	          					<th>Delivery Date</th>
@@ -1640,12 +1771,10 @@
 	          					<th>Peso Cost</th>
 	          				</tr>
 	          				<tr>
-	          					<td>1</td>
-	          					<td>Supplier1</td>
-	          					<td>1</td>
 	          					<td>Toyota</td>
 	          					<td>Corolla</td>
 	          					<td>Black</td>
+	          					<td>Supplier1</td>
 	          					<td>12345</td>
 	          					<td>23456</td>
 	          					<td>01-01-2000</td>
@@ -1656,12 +1785,10 @@
 	          					<td>1,000,000</td>
 	          				</tr>
 	          				<tr>
-	          					<td>1</td>
-	          					<td>Supplier1</td>
-	          					<td>1</td>
 	          					<td>Toyota</td>
 	          					<td>Corolla</td>
 	          					<td>Black</td>
+	          					<td>Supplier1</td>
 	          					<td>12345</td>
 	          					<td>23456</td>
 	          					<td>01-01-2000</td>
@@ -1927,6 +2054,10 @@
 					<div class="navbar">
 						<div class="navbar-form">
 							<div class="btn-group">
+								<button id="add" class="btn btn-default modal-nav-btn">
+									<i class="icon-plus"></i>
+									Add
+								</button>
 								<button id="search" class="btn btn-default modal-nav-btn">
 									<i class="icon-search"></i>
 									Search
@@ -1934,6 +2065,56 @@
 							</div>
 						</div>
 					</div>
+					<form class="add modal-nav-box box-hide panel well form-horizontal">
+					  	<div class="form-group clearfix">
+				      		<label class="col-lg-2 control-label">Customer</label>
+					      	<div class="btn-group col-lg-10">
+						  		<button type="button" class="btn btn-default btn-small dropdown-toggle" data-toggle="dropdown">
+							    Choose
+								<span class="caret"></span>
+						  		</button>
+						  		<ul class="dropdown-menu">
+								    {{> customers_list}}
+						  		</ul>
+							</div>
+						</div>
+					  	<div class="form-group clearfix">
+				      		<label class="col-lg-2 control-label">Item</label>
+					      	<div class="btn-group col-lg-10">
+						  		<button type="button" class="btn btn-default btn-small dropdown-toggle" data-toggle="dropdown">
+							    Choose
+								<span class="caret"></span>
+						  		</button>
+						  		<ul class="dropdown-menu">
+								    <li><a href="#">Toyota Corolla, Blue</a></li>
+								    <li><a href="#">Honda Civic, Black</a></li>
+						  		</ul>
+							</div>
+						</div>
+					  	<div class="form-group clearfix">
+					    	<label class="col-lg-2 control-label">Check Number</label>
+					    	<div class="col-lg-10">
+					      		<input type="text" class="form-control">
+				    		</div>
+					  	</div>
+					  	<div class="form-group clearfix">
+						    <label class="col-lg-2 control-label">Amount</label>
+						    <div class="col-lg-10">
+						      <input type="text" class="form-control">
+						    </div>
+					  	</div>
+					  	<div class="form-group clearfix">
+					    	<label class="col-lg-2 control-label">Due Date</label>
+					    	<div class="col-lg-10">
+					      		<input type="date" class="form-control">
+					    	</div>
+					  	</div>
+						<div class="form-group clearfix">
+							<div class="col-offset-2 col-lg-10">
+							  <button type="submit" class="btn btn-primary">Add</button>
+							</div>
+						</div>
+					</form>
 					<div class="search modal-nav-box box-hide panel well">
 						<div class="col-lg-4">
 							<input type="text" class="form-control " placeholder="Check No.">
@@ -1951,7 +2132,7 @@
 	          					<th>Customer</th>
 	          					<th>Amount</th>
 	          					<th>Bounce</th>
-	          					<th>Cash</th>
+	          					<th>Encashed</th>
 	          				</tr>
 	          				<tr>
 	          					<td>02-01-2000</td>
@@ -1969,7 +2150,7 @@
 	          					<td>Customer2</td>
 	          					<td>Php 100,000</td>
 	          					<td><button class="btn btn-primary btn-small">Bounce</button></td>
-	          					<td><button class="btn btn-primary btn-small">Cash</button></td>
+	          					<td><button class="btn btn-primary btn-small">Encash</button></td>
 	          				</tr>
 	          			</table>
 	          		</div>
@@ -1977,6 +2158,7 @@
 			</div>
 		</div>
 	</div>
+
 	<div id="p-checks-modal" class="modal fade" role="dialog" aria-hidden="true" style="display:none;">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -1988,6 +2170,10 @@
 					<div class="navbar">
 						<div class="navbar-form">
 							<div class="btn-group">
+								<button id="add" class="btn btn-default modal-nav-btn">
+									<i class="icon-plus"></i>
+									Add
+								</button>
 								<button id="search" class="btn btn-default modal-nav-btn">
 									<i class="icon-search"></i>
 									Search
@@ -1995,6 +2181,56 @@
 							</div>
 						</div>
 					</div>
+					<form class="add modal-nav-box box-hide panel well form-horizontal">
+						<div class="form-group clearfix">
+				      		<label class="col-lg-2 control-label">Supplier</label>
+					      	<div class="btn-group col-lg-10">
+						  		<button type="button" class="btn btn-default btn-small dropdown-toggle" data-toggle="dropdown">
+							    Choose
+								<span class="caret"></span>
+						  		</button>
+						  		<ul class="dropdown-menu">
+								    {{> suppliers_list}}
+						  		</ul>
+							</div>
+						</div>
+					  	<div class="form-group clearfix">
+				      		<label class="col-lg-2 control-label">Item</label>
+					      	<div class="btn-group col-lg-10">
+						  		<button type="button" class="btn btn-default btn-small dropdown-toggle" data-toggle="dropdown">
+							    Choose
+								<span class="caret"></span>
+						  		</button>
+						  		<ul class="dropdown-menu">
+								    <li><a href="#">Toyota Corolla, Blue</a></li>
+								    <li><a href="#">Honda Civic, Black</a></li>
+						  		</ul>
+							</div>
+						</div>
+					  	<div class="form-group clearfix">
+					    	<label class="col-lg-2 control-label">Check Number</label>
+					    	<div class="col-lg-10">
+					      		<input type="text" class="form-control">
+				    		</div>
+					  	</div>
+					  	<div class="form-group clearfix">
+						    <label class="col-lg-2 control-label">Amount</label>
+						    <div class="col-lg-10">
+						      <input type="text" class="form-control">
+						    </div>
+					  	</div>
+					  	<div class="form-group clearfix">
+					    	<label class="col-lg-2 control-label">Due Date</label>
+					    	<div class="col-lg-10">
+					      		<input type="date" class="form-control">
+					    	</div>
+					  	</div>
+						<div class="form-group clearfix">
+							<div class="col-offset-2 col-lg-10">
+							  <button type="submit" class="btn btn-primary">Add</button>
+							</div>
+						</div>
+					</form>
 					<div class="search modal-nav-box box-hide panel well">
 						<div class="col-lg-4">
 							<input type="text" class="form-control " placeholder="Check No.">
@@ -2009,16 +2245,16 @@
 	          					<th>Due Date</th>
 	          					<th>Issue Date</th>
 	          					<th>Check No.</th>
-	          					<th>Supplier</th>
+	          					<th>Customer</th>
 	          					<th>Amount</th>
 	          					<th>Bounce</th>
-	          					<th>Cash</th>
+	          					<th>Encashed</th>
 	          				</tr>
 	          				<tr>
 	          					<td>02-01-2000</td>
 	          					<td>01-01-2000</td>
 	          					<td>12345</td>
-	          					<td>Supplier1</td>
+	          					<td>Customer1</td>
 	          					<td>Php 50,000</td>
 	          					<td>01-01-2000</td>
 	          					<td></td>
@@ -2030,7 +2266,7 @@
 	          					<td>Customer2</td>
 	          					<td>Php 100,000</td>
 	          					<td><button class="btn btn-primary btn-small">Bounce</button></td>
-	          					<td><button class="btn btn-primary btn-small">Cash</button></td>
+	          					<td><button class="btn btn-primary btn-small">Encash</button></td>
 	          				</tr>
 	          			</table>
 	          		</div>
@@ -2041,3 +2277,50 @@
 
 </div>
 </body>
+
+<!-- TEMPLATES -->
+
+<template name="suppliers_table">
+	{{#each info}}
+		<tr>
+			<td>{{_id}}</td>
+			<td>{{name}}</td>
+			<td>{{company}}</td>
+			<td>{{description}}</td>
+		</tr>
+	{{/each}}
+</template>
+
+<template name="suppliers_list">
+	{{#each info}}
+		<li><a href="#">{{name}}</a></li>
+	{{/each}}
+</template>
+
+<template name="customers_table">
+	{{#each info}}
+		<tr>
+			<td>{{_id}}</td>
+			<td>{{name}}</td>
+			<td>{{company}}</td>
+			<td>{{description}}</td>
+		</tr>
+	{{/each}}
+</template>
+
+<template name="customers_list">
+	{{#each info}}
+		<li><a href="#">{{name}}</a></li>
+	{{/each}}
+</template>
+
+<template name="brokers_table">
+	{{#each info}}
+		<tr>
+			<td>{{_id}}</td>
+			<td>{{name}}</td>
+			<td>{{company}}</td>
+			<td>{{description}}</td>
+		</tr>
+	{{/each}}
+</template>

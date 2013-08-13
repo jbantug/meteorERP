@@ -123,3 +123,9 @@ body .modal-open {
 .clearfix {
 	margin-bottom: 10px;
 }
+
+.panel-title {
+	font-size: 32px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
