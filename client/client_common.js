@@ -11,10 +11,9 @@ Meteor.subscribe("Purchases");
 Meteor.subscribe("Users");
 
 Meteor.subscribe("Suppliers");
+Meteor.subscribe("Customers");
 Meteor.autosubscribe(function() {
 
 	Meteor.subscribe("SuppInfo", Session.get('sid') );
-});
-Meteor.autosubscribe(function() {
-	Meteor.subscribe("Customers");	
+	Meteor.subscribe("CustomerInfo", Session.get('cid') );
 });
