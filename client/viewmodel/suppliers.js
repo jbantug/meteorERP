@@ -17,7 +17,7 @@ Template.supplier_form.events({
 				if(err.error === 403){
 					alert("Only admins can create new suppliers.")
 				}else{
-					alert("Something went wrong. Pls try again.");
+					alert("Something went wrong. Please try again.");
 					console.log(err);
 				}
 				
