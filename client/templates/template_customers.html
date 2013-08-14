@@ -4,43 +4,82 @@
       <th>Customer</th>
       <th>Company</th>
       <th>Description</th>
+      <th></th>
     </tr>
     {{#each customers}}
     <tr>
       <td>{{name}}</td>
       <td>{{company}}</td>
       <td>{{description}}</td>
+      <td>
+        <button class="btn btn-primary btnEditCustomer" id="{{_id}}">
+          <span class="glyphicon glyphicon-edit"></span>
+        </button>
+        <button class="btn btn-primary btnRemoveCustomer" id="{{_id}}">
+          <span class="glyphicon glyphicon-trash"></span>
+        </button>
+      </td>
     </tr>
     {{/each}}
   </table>
 </template>
 
-<template name="customer_form">
-  <form class="add modal-nav-box box-hide panel well form-horizontal" id="form_addCustomer">
-    <div class="form-group">
-      <label class="col-lg-2 control-label">Name</label>
-      <div class="col-lg-10">
-        <input type="text" class="form-control" name="name" id="cus_name" required pattern="[a-zA-Z. ]*">
+<template name="customer_form">     
+    <form class="add modal-nav-box box-hide panel well form-horizontal" id="form_addCustomer">
+  {{#if editting_customer}}
+    {{#each info}}
+      <input type="hidden" value="{{_id}}" name="id"/>
+      <div class="form-group">
+        <label class="col-lg-2 control-label">Name</label>
+        <div class="col-lg-10">
+          <input type="text" value="{{name}}" class="form-control" name="name" id="cus_name" required pattern="[a-zA-Z. ]*">
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label class="col-lg-2 control-label">Company</label>
-      <div class="col-lg-10">
-        <input type="text" class="form-control" name="company" id="cus_company" required pattern="[a-zA-Z0-9@-&!#. ]*">
+      <div class="form-group">
+        <label class="col-lg-2 control-label">Company</label>
+        <div class="col-lg-10">
+          <input type="text" value="{{company}}" class="form-control" name="company" id="cus_company" required pattern="[a-zA-Z0-9@-&!#. ]*">
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label class="col-lg-2 control-label">Description</label>
-      <div class="col-lg-10">
-        <input type="text" class="form-control" name="description" id="cus_desc" pattern="[a-zA-Z0-9. ]*">
+      <div class="form-group">
+        <label class="col-lg-2 control-label">Description</label>
+        <div class="col-lg-10">
+          <input type="text" value="{{description}}" class="form-control" name="description" id="cus_desc" pattern="[a-zA-Z0-9. ]*">
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <div class="col-offset-2 col-lg-10">
-        <button type="submit" class="btn btn-primary" id="btnAddCustomer">Add</button>
+    {{/each}}
+  {{else}}
+    <form class="add modal-nav-box box-hide panel well form-horizontal" id="form_addCustomer">
+      <div class="form-group">
+        <label class="col-lg-2 control-label">Name</label>
+        <div class="col-lg-10">
+          <input type="text"  class="form-control" name="name" id="cus_name" required pattern="[a-zA-Z. ]*">
+        </div>
       </div>
-    </div>
-  </form>
+      <div class="form-group">
+        <label class="col-lg-2 control-label">Company</label>
+        <div class="col-lg-10">
+          <input type="text" class="form-control" name="company" id="cus_company" required pattern="[a-zA-Z0-9@-&!#. ]*">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-lg-2 control-label">Description</label>
+        <div class="col-lg-10">
+          <input type="text" class="form-control" name="description" id="cus_desc" pattern="[a-zA-Z0-9. ]*">
+        </div>
+      </div>
+  {{/if}} 
+      <div class="form-group">
+        <div class="col-offset-2 col-lg-10">
+          {{#if editting_customer}}
+            <button type="button" class="btn btn-primary" id="btnUpdateCustomer">Update</button>
+            <button type="button" class="btn btn-primary" id="btnCancel">Cancel</button> 
+          {{else}}
+            <button type="submit" class="btn btn-primary" id="btnAddCustomer">Add</button>
+          {{/if}}
+        </div>
+      </div>
+    </form>
 </template>
 
 <template name="customers_list">
