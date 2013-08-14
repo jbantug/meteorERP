@@ -1,10 +1,8 @@
 purchases = new Meteor.Collection("Purchases");
 customers = new Meteor.Collection("Customers");
 suppliers = new Meteor.Collection("Suppliers");
-
-transactions = new Meteor.Collection("Transactions");
-
 brokers = new Meteor.Collection("Brokers");
+transactions = new Meteor.Collection("Transactions");
 //# Account model is initially handled by account-base package
 
 function adminUser(userId) {
