@@ -8,6 +8,9 @@ Meteor.startup(function(){
     Meteor.publish("SuppInfo", function(suppId){
         return suppliers.find({_id:suppId});
     });
+    Meteor.publish("CustomerInfo", function(cusId){
+        return customers.find({_id:cusId});
+    });
     Meteor.publish("Customers", function(){
         return customers.find({});
     });
