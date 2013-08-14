@@ -10,8 +10,10 @@ Accounts.ui.config({
 Meteor.subscribe("Purchases");
 Meteor.subscribe("Users");
 
+Meteor.subscribe("Suppliers");
 Meteor.autosubscribe(function() {
-	Meteor.subscribe("Suppliers");	
+
+	Meteor.subscribe("SuppInfo", Session.get('sid') );
 });
 Meteor.autosubscribe(function() {
 	Meteor.subscribe("Customers");	
