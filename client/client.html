@@ -1520,31 +1520,7 @@
 							</div>
 						</div>
 					</div>
-					<form class="add modal-nav-box box-hide panel well form-horizontal">
-					  	<div class="form-group clearfix">
-					    	<label class="col-lg-2 control-label">Name</label>
-					    	<div class="col-lg-10">
-					      		<input type="text" class="form-control">
-				    		</div>
-					  	</div>
-					  	<div class="form-group clearfix">
-						    <label class="col-lg-2 control-label">Company</label>
-						    <div class="col-lg-10">
-						      <input type="password" class="form-control">
-						    </div>
-					  	</div>
-					  	<div class="form-group clearfix">
-					    	<label class="col-lg-2 control-label">Description</label>
-					    	<div class="col-lg-10">
-					      		<input type="password" class="form-control">
-					    	</div>
-					  	</div>
-						<div class="form-group clearfix">
-							<div class="col-offset-2 col-lg-10">
-							  <button type="submit" class="btn btn-primary">Add</button>
-							</div>
-						</div>
-					</form>
+					{{> customer_form}}
 					<div class="search modal-nav-box box-hide panel well">
 						<div class="col-lg-4">
 							<input type="text" class="form-control " placeholder="Check No.">
@@ -1554,15 +1530,7 @@
 						</button>
 					</div>
 					<div class="table-body">
-	          			<table class="table table-striped">
-	          				<tr>
-	          					<th>ID</th>
-	          					<th>Customer</th>
-	          					<th>Company</th>
-	          					<th>Description</th>
-	          				</tr>
-	          				{{> customers_table}}
-	          			</table>
+	          			{{> customers}}
 	          		</div>
 		        </div>
 			</div>
