@@ -475,37 +475,7 @@
 					</div>
 				</div>
 			<!-- </div> -->
-			<form class="add modal-nav-box box-hide panel well form-horizontal">
-			  	<div class="form-group clearfix">
-			    	<label class="col-lg-2 control-label">Item</label>
-			    	<div class="col-lg-10">
-			      		<input type="text" class="form-control">
-		    		</div>
-			  	</div>
-			  	<div class="form-group clearfix">
-				    <label class="col-lg-2 control-label">Amount</label>
-				    <div class="col-lg-10">
-				      <input type="number" class="form-control">
-				    </div>
-			  	</div>
-			  	<div class="form-group clearfix">
-			    	<label class="col-lg-2 control-label">Supplier</label>
-			    	<div class="col-lg-10">
-			      		<input type="password" class="form-control">
-			    	</div>
-			  	</div>
-			  	<div class="form-group clearfix">
-			    	<label class="col-lg-2 control-label">Date</label>
-			    	<div class="col-lg-10">
-			      		<input type="date" class="form-control">
-			    	</div>
-			  	</div>
-				<div class="form-group clearfix">
-					<div class="col-offset-2 col-lg-10">
-					  <button type="submit" class="btn btn-primary">Add</button>
-					</div>
-				</div>
-			</form>
+			{{>expenses_form}}
 			<div class="search modal-nav-box box-hide panel well">
 				<div class="col-lg-4">
 					<input type="text" class="form-control " placeholder="Check No.">
@@ -515,32 +485,7 @@
 				</button>
 			</div>
 			<div class="table-body">
-      			<table class="table table-striped">
-      				<tr>
-      					<th>Item</th>
-      					<th>Amount</th>
-      					<th>Supplier</th>
-      					<th>Date</th>
-      				</tr>
-      				<tr>
-      					<td>Office Supplies</td>
-      					<td>1000</td>
-      					<td>National Bookstore</td>
-      					<td>August 08, 2013</td>
-      				</tr>
-      				<tr>
-      					<td>Water</td>
-      					<td>10000</td>
-      					<td>MCWD</td>
-      					<td>September 08, 2013</td>
-      				</tr>
-      				<tr>
-      					<td>Electricity</td>
-      					<td>20000</td>
-      					<td>VECO</td>
-      					<td>October 10, 2013</td>
-      				</tr>
-      			</table>
+      			{{>expenses}}
       		</div>
       	</div>
 	</div>

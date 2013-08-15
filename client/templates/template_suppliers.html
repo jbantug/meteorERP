@@ -26,7 +26,7 @@
 
 <template name="supplier_form">
 	<form class="add modal-nav-box box-hide panel well form-horizontal" id="form_addSupplier">
-	  {{#if editting_supplier}}
+	  {{#if editing_supplier}}
 	  	{{#each info}}
 
 		  <input type="hidden" value="{{_id}}" name="id"/>
@@ -71,7 +71,7 @@
 	  {{/if}}
 	  <div class="form-group">
 	    <div class="col-offset-2 col-lg-10">
-	    	{{#if editting_supplier}}
+	    	{{#if editing_supplier}}
 	     		<button type="button" class="btn btn-primary" id="btnUpdateSupplier">Update</button>
 	     		<button type="button" class="btn btn-primary" id="btnCancel">Cancel</button> 	     		
 	     	{{else}}
