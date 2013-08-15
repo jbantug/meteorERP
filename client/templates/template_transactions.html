@@ -7,8 +7,9 @@
       <th>Engine No.</th>
       <th>Price</th>
       <th>Delivery Date</th>
+      <th>Actions</th>
     </tr>
-    {{#each car_models}}
+    {{#each cars_out}}
     <tr>
       <td>{{get_customer customer_id}}</td>
       <td>{{item sku}}</td>
@@ -29,8 +30,8 @@
   </table>
 </template>
 
-<template name="sales_order_for,">
-	<form class="form-horizontal">
+<template name="sales_order_form">
+	<form class="form-horizontal" id="form_addSO">
 		<div class="form-group clearfix">
       		<label class="col-lg-2 control-label">Customer</label>
 	      	<div class="col-lg-10">
@@ -56,15 +57,20 @@
 		    </div>
 	  	</div>
 	  	<div class="form-group clearfix">
+		    <label class="col-lg-2 control-label">Price</label>
+		    <div class="col-lg-10">
+		      <input type="text" class="form-control" name="so_price" id="so_price" required pattern="[0-9,]*" placeholder="Price">
+		    </div>
+	  	</div>
+	  	<div class="form-group clearfix">
 		    <label class="col-lg-2 control-label">Delivery Date</label>
 		    <div class="col-lg-10">
-		      <input type="date" class="form-control">
 		      <input type="date" class="form-control" name="so_delivery" id="so_delivery" required>
 		    </div>
 	  	</div>
 	  	<div class="form-group clearfix">
 		    <div class="col-offset-2 col-lg-10">
-		      <button type="submit" class="btn btn-primary"  href="#s-order-modal" data-toggle="modal" data-dismiss="modal">Add</button>
+		      <input href="#s-order-modal" data-toggle="modal" data-dismiss="modal" type="button" class="btn btn-primary" id="btnAddSO" value="Add">
 		    </div>
 	  	</div>
 	</form>

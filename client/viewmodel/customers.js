@@ -2,7 +2,7 @@ Session.set('editing_customer', false);
 Session.set('cid', null);
 
 Template.customers.customers = function(){
-	return customers.find( {}, {sort: {dateadded: -1}} );
+	return customers.find( {}, {sort: {dateadded: -1} } );
 };
 
 Template.sale_order_customers.customers = function(){
@@ -16,7 +16,6 @@ Template.customers_dropdown.customers = function(){
 Template.customers.events({
 	'click .btnRemoveCustomer': function (e,t){
 		// console.log( e.target.id );
-		Session.set('cid', null);
 		Meteor.flush();
 		customers.remove({_id: this._id });
 		
@@ -58,7 +57,7 @@ Template.customer_form.events({
 			form[this.name] = this.value;
 		});
 			
-		form['dateadded'] = Date.now();
+		form['dateadded'] = Date("yyyy-MM-DD HH:mm");
 
 		customers.insert( form, function(err){
 			if(err){
@@ -98,6 +97,7 @@ Template.customer_form.events({
 });
 
 //handlebar helpers
-Handlebars.registerHelper("get_customer", function(cus_id) {
-  return cars.findOne({_id:cus_id}).name;
+Handlebars.registerHelper("get_customer", function(customer_id) {
+	var result = customers.findOne({_id:customer_id}).name;
+  	return result;
 });
