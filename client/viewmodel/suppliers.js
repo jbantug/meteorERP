@@ -103,6 +103,6 @@ Template.supplier_form.events({
 
 //handlebars
 Handlebars.registerHelper("get_supplier", function(supplier_id) {
-	var result = suppliers.findOne({_id:supplier_id});//.name;
+	var result = suppliers.findOne({_id:supplier_id}).name;
   	return result;
 });

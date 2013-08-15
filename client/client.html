@@ -721,32 +721,7 @@
 						</button>
 					</div>
 					<div class="table-body">
-	          			<table class="table table-striped">
-	          				<tr>
-	          					<th>Customer</th>
-	          					<th>Item</th>
-	          					<th>Chassis No.</th>
-	          					<th>Engine No.</th>
-	          					<th>Price</th>
-	          					<th>Delivery Date</th>
-	          				</tr>
-	          				<tr class="tr" href="#s-info-modal" data-toggle="modal" data-dismiss="modal" role="button">
-	          					<td>Customer 2</td>
-	          					<td>Toyota Corolla,	 Blue</td>
-	          					<td>1234567890</td>
-	          					<td>1234567890</td>
-	          					<td>1000000</td>
-	          					<td>01-01-2000</td>
-	          				</tr>
-	          				<tr class="tr" href="#s-info-modal" data-toggle="modal" data-dismiss="modal" role="button">
-	          					<td>Customer 2</td>
-	          					<td>Toyota Corolla,	 Blue</td>
-	          					<td>1234567890</td>
-	          					<td>1234567890</td>
-	          					<td>1000000</td>
-	          					<td>01-01-2000</td>
-	          				</tr>
-	          			</table>
+	          			{{> sales_orders}}
 	          		</div>
 		        </div>
 			</div>
@@ -1057,43 +1032,7 @@
           			<h3 class="modal-title">Add Sale Order</h3>
 				</div>
 				<div class="modal-body">
-					<form class="form-horizontal">
-						<div class="form-group clearfix">
-				      		<label class="col-lg-2 control-label">Customer</label>
-					      	<div class="col-lg-10">
-								   {{> sale_order_customers}}
-							</div>
-						</div>
-					  	<div class="form-group clearfix">
-				      		<label class="col-lg-2 control-label">Item</label>
-					      	<div class="col-lg-10">
-								   {{> sale_order_items}}
-							</div>
-						</div>
-					  	<div class="form-group clearfix">
-						    <label class="col-lg-2 control-label">Chassis No.</label>
-						    <div class="col-lg-10">
-						      <input type="text" class="form-control" placeholder="Chassis No.">
-						    </div>
-					  	</div>
-					  	<div class="form-group clearfix">
-						    <label class="col-lg-2 control-label">Engine No.</label>
-						    <div class="col-lg-10">
-						      <input type="text" class="form-control" placeholder="Engine No.">
-						    </div>
-					  	</div>
-					  	<div class="form-group clearfix">
-						    <label class="col-lg-2 control-label">Delivery Date</label>
-						    <div class="col-lg-10">
-						      <input type="date" class="form-control">
-						    </div>
-					  	</div>
-					  	<div class="form-group clearfix">
-						    <div class="col-offset-2 col-lg-10">
-						      <button type="submit" class="btn btn-primary"  href="#s-order-modal" data-toggle="modal" data-dismiss="modal">Add</button>
-						    </div>
-					  	</div>
-					</form>
+					{{> sales_order_form}}
 				</div>
 			</div>
 		</div>
