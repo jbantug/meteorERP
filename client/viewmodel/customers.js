@@ -5,6 +5,10 @@ Template.customers.customers = function(){
 	return customers.find( {}, {sort: {dateadded: -1} } );
 };
 
+Template.customers_badge.customers = function(){
+	return customers.find( {}, {sort: {dateadded: -1} } );
+};
+
 Template.sale_order_customers.customers = function(){
 	return customers.find({},{sort:{name: 1}});
 }

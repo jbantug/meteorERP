@@ -7,6 +7,16 @@ Template.sales_orders.cars_out = function(){
 	return car_out.find( {}, {sort: {dateadded: -1} } );
 };
 
+Template.sales_orders_badge.cars_out = function(){
+	return car_out.find();
+}
+
+Template.car_in_badge.cars_in = function(){
+	return car_in.find();
+}
+
+
+
 Template.sales_orders.events({
 	'click .btnRemoveSO': function (e,t){
 		// console.log( e.target.id );
@@ -96,6 +106,10 @@ Template.sales_order_form.info = function(){
 }
 
 Template.purchase_orders.purchases = function(){
+	return purchases.find( {}, {sort: {dateadded: -1} } );
+};
+
+Template.purchase_orders_badge.purchase_orders = function(){
 	return purchases.find( {}, {sort: {dateadded: -1} } );
 };
 

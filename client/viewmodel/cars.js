@@ -226,6 +226,10 @@ Template.search_specific.events({
 	}
 });
 
+Template.price_list.items = function(){
+	return car_in.find({}, {sort: {date_in: -1}});
+}
+
 //handlebar helpers
 Handlebars.registerHelper("peso_cost", function(yen, rate) {
   return (yen * rate);
@@ -236,4 +240,16 @@ Handlebars.registerHelper("item", function(sku) {
   var car_model = cars.findOne({_id:sku}).model;
   var car_color = cars.findOne({_id:sku}).color;
   return (car_maker + " " + car_model + "(" + car_color + ")");
+});
+
+Handlebars.registerHelper("get_maker", function(sku) {
+  return cars.findOne({_id:sku}).maker;
+});
+
+Handlebars.registerHelper("get_model", function(sku) {
+  return cars.findOne({_id:sku}).model;
+});
+
+Handlebars.registerHelper("get_color", function(sku) {
+  return cars.findOne({_id:sku}).color;
 });
