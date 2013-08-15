@@ -5,6 +5,10 @@ Template.customers.customers = function(){
 	return customers.find( {}, {sort: {dateadded: -1} } );
 };
 
+Template.sale_order_customers.customers = function(){
+	return customers.find({},{sort:{name: 1}});
+}
+
 Template.customers_dropdown.customers = function(){
 	return customers.find( {}, {sort: {dateadded: -1} } );
 };
@@ -90,4 +94,9 @@ Template.customer_form.events({
 
 		customers.update({_id: form['id']}, {$set: {name: form['name'], company: form['company'], description: form['description'] } });
 	}
+});
+
+//handlebar helpers
+Handlebars.registerHelper("get_customer", function(cus_id) {
+  return cars.findOne({_id:cus_id}).name;
 });
