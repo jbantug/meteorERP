@@ -296,3 +296,11 @@
     {{/each}}
   </select>
 </template>
+
+<template name="sale_order_items">
+<select class="form-control" id="so_item">
+    {{#each items}}
+      <option value="{{_id}}">{{maker}} {{model}} ({{color}})</option>
+    {{/each}}
+  </select>
+</template>

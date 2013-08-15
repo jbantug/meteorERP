@@ -1,6 +1,5 @@
 Session.set('editing_car_model', false);
 Session.set('current_maker', null);
-Session.set('current_model', null);
 Session.set('sid', null);
 
 Template.car_models.car_models = function(){
@@ -8,60 +7,69 @@ Template.car_models.car_models = function(){
 };
 
 Template.maker_dropdown.makers = function(){
-	// return cars.find({}).distinct('maker', true);
-	return cars.find( {}, {sort: {dateadded: -1} }).distinct('maker', true);
+	var myArray = cars.find().fetch();
+	var distinctArray = _.uniq(myArray, false, function(d) {return d.maker});
+	return distinctArray;
 }
 
 Template.add_inventory_makers.makers = function(){
-	// return cars.find({}).distinct('maker', true);
-	return cars.find( {}, {sort: {dateadded: -1} }).distinct('maker', true);
+	var myArray = cars.find().fetch();
+	var distinctArray = _.uniq(myArray, false, function(d) {return d.maker});
+	return distinctArray;
 }
 
 Template.add_inventory_makers.events({
-	'change #add_maker': function(e,t){
+	'click #add_maker': function(e,t){
 		Session.set('current_maker',$('#add_maker').val());
 	}
 });
 
 Template.purchase_order_makers.makers = function(){
-	// return cars.find({}).distinct('maker', true);
-	return cars.find( {}, {sort: {dateadded: -1} }).distinct('maker', true);
+	var myArray = cars.find().fetch();
+	var distinctArray = _.uniq(myArray, false, function(d) {return d.maker});
+	return distinctArray;
 }
 
 Template.model_dropdown.models = function(){
-	// return cars.find({}).distinct('maker', true);
-	return cars.find( {}, {sort: {dateadded: -1} }).distinct('model', true);
+	var myArray = cars.find().fetch();
+	var distinctArray = _.uniq(myArray, false, function(d) {return d.model});
+	return distinctArray;
 }
 
 Template.add_inventory_models.models = function(){
-	// return cars.find({}).distinct('maker', true);
-	return cars.find( {maker:Session.get('current_maker')}, {sort: {dateadded: -1} }).distinct('model', true);
+	var myArray = cars.find().fetch();
+	var distinctArray = _.uniq(myArray, false, function(d) {return d.model});
+	return distinctArray;
 }
 
 Template.add_inventory_models.events({
-	'change #add_model': function(e,t){
+	'click #add_model': function(e,t){
 		Session.set('current_model',$('#add_model').val());
 	}
 });
 
 Template.purchase_order_models.models = function(){
-	// return cars.find({}).distinct('maker', true);
-	return cars.find( {}, {sort: {dateadded: -1} }).distinct('model', true);
+	var myArray = cars.find().fetch();
+	var distinctArray = _.uniq(myArray, false, function(d) {return d.model});
+	return distinctArray;
 }
 
 Template.color_dropdown.colors = function(){
-	// return cars.find({}).distinct('maker', true);
-	return cars.find( {}, {sort: {dateadded: -1} }).distinct('color', true);
+	var myArray = cars.find().fetch();
+	var distinctArray = _.uniq(myArray, false, function(d) {return d.color});
+	return distinctArray;
 }
 
 Template.add_inventory_colors.colors = function(){
-	// return cars.find({}).distinct('maker', true);
-	return cars.find( {model:Session.get('current_model'),maker:Session.get('current_maker')}, {sort: {dateadded: -1} }).distinct('color', true);
+	var myArray = cars.find().fetch();
+	var distinctArray = _.uniq(myArray, false, function(d) {return d.color});
+	return distinctArray;
 }
 
 Template.purchase_order_colors.colors = function(){
-	// return cars.find({}).distinct('maker', true);
-	return cars.find( {}, {sort: {dateadded: -1} }).distinct('color', true);
+	var myArray = cars.find().fetch();
+	var distinctArray = _.uniq(myArray, false, function(d) {return d.color});
+	return distinctArray;
 }
 
 Template.inventory.inventory_list = function() {
@@ -103,6 +111,10 @@ Template.supplier_form.info = function(){
 	}
 
 };
+
+Template.sale_order_items.items = function(){
+	return cars.find({}, {sort: {date_in: -1}});
+}
 
 Template.car_model_form.events({
 	'submit': function (e,t){
@@ -167,38 +179,6 @@ Template.add_inventory_form.events({
 			supplier_id: document.getElementById("add_supplier").value
 		};
 
-		// $.each( $("#form_addInventory").serializeArray(),function(){
-		// 	form[this.name] = this.value;
-		// });
-
-		//form['date_in'] = Date("yyyy-MM-DD HH:mm");
-
-		// car_in.insert({
-		// 	sku: cars.findOne({maker:form['maker'],model:form['model'],color:form['color']})._id,
-		// 	date_in: form['date_in'],
-		// 	chassis_number: form['chassis_number'],
-		// 	engine_number: form['engine_number'],
-		// 	freight_handling_cost: form['freight_handling_cost'],
-		// 	brokerage_cost: form['brokerage_cost'],
-		// 	yen_cost: form['yen_cost'],
-		// 	exchange_rate: form['exchange_rate'],
-		// 	supplier_id: form['supplier_id']
-		// },function(err){
-		// 	if(err){
-		// 		if(err.error === 403){
-		// 			alert("Only admins can create new items.")
-		// 		}else{
-		// 			alert("Something went wrong. Please try again.");
-		// 			console.log(err);
-		// 		}
-				
-		// 	}
-		// 	else{
-		// 		$('#form_addInventory')[0].reset();
-		// 		alert("Success!");
-		// 	}
-		// });
-
 		car_in.insert( form, function(err){
 			if(err){
 				if(err.error === 403){
@@ -219,7 +199,7 @@ Template.add_inventory_form.events({
 
 });
 
-//handlebars
+//handlebar helpers
 Handlebars.registerHelper("peso_cost", function(yen, rate) {
   return (yen * rate);
 });
