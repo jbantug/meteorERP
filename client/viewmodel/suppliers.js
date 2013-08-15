@@ -5,6 +5,10 @@ Template.suppliers.suppliers = function(){
 	return suppliers.find( {}, {sort: {dateadded: -1} } );
 };
 
+Template.suppliers_badge.suppliers = function(){
+	return suppliers.find( {}, {sort: {dateadded: -1} } );
+};
+
 Template.purchase_order_suppliers.suppliers = function(){
 	return suppliers.find( {}, {sort: {dateadded: -1} } );
 };
