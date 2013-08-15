@@ -1,7 +1,11 @@
-Session.set('editting_customer', false);
+Session.set('editing_customer', false);
 Session.set('cid', null);
 
 Template.customers.customers = function(){
+	return customers.find( {}, {sort: {dateadded: -1} } );
+};
+
+Template.customers_dropdown.customers = function(){
 	return customers.find( {}, {sort: {dateadded: -1} } );
 };
 
@@ -13,7 +17,7 @@ Template.customers.events({
 		
 	},
 	'click .btnEditCustomer': function (e,t){
-		Session.set('editting_customer', true);
+		Session.set('editing_customer', true);
 		Session.set('cid', this._id);
 
 		Meteor.flush();	
@@ -22,8 +26,8 @@ Template.customers.events({
 	}
 });
 
-Template.customer_form.editting_customer = function(){
-	return Session.equals('editting_customer', true);
+Template.customer_form.editing_customer = function(){
+	return Session.equals('editing_customer', true);
 };
 
 Template.customer_form.info = function(){
@@ -69,7 +73,7 @@ Template.customer_form.events({
 		e.preventDefault();
 	},
 	'click #btnCancel': function(e,t){
-		Session.set('editting_customer', false);
+		Session.set('editing_customer', false);
 		Session.set('cid', null);
 
 		

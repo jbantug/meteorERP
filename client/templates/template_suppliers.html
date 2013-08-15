@@ -4,7 +4,7 @@
 			<th>Supplier</th>
 			<th>Company</th>
 			<th>Description</th>
-			<th>   </th>
+			<th>Actions</th>
 		</tr>
 		{{#each suppliers}}
 		<tr>
@@ -82,8 +82,26 @@
 	</form>
 </template>
 
-<template name="suppliers_list">
-  {{#each info}}
-    <li><a href="#">{{name}}</a></li>
-  {{/each}}
+<template name="purchase_order_suppliers">
+	<select class="form-control" id="s_id1">
+	{{#each suppliers}}
+		<option value="{{_id}}">{{name}}</option>
+	{{/each}}
+	</select>
+</template>
+
+<template name="add_inventory_suppliers">
+	<select class="form-control" id="add_supplier">
+	{{#each suppliers}}
+		<option value="{{_id}}">{{name}}</option>
+	{{/each}}
+	</select>
+</template>
+
+<template name="check_suppliers">
+	<select class="form-control" id="s_id3">
+	{{#each suppliers}}
+		<option value="{{_id}}">{{name}}</option>
+	{{/each}}
+	</select>
 </template>

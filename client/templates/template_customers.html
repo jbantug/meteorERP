@@ -4,7 +4,7 @@
       <th>Customer</th>
       <th>Company</th>
       <th>Description</th>
-      <th></th>
+      <th>Actions</th>
     </tr>
     {{#each customers}}
     <tr>
@@ -82,8 +82,10 @@
     </form>
 </template>
 
-<template name="customers_list">
-  {{#each info}}
-  <li><a href="#">{{name}}</a></li>
+<template name="customers_dropdown">
+  <select class="form-control" name="customer_id" id="customer_id">
+  {{#each customers}}
+    <option value="{{_id}}">{{name}}</option>
   {{/each}}
+  </select>
 </template>
