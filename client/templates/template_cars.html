@@ -298,7 +298,7 @@
 </template>
 
 <template name="sale_order_items">
-<select class="form-control" id="so_item">
+<select class="form-control" id="so_item" name="sku">
     {{#each items}}
       <option value="{{_id}}">{{maker}} {{model}} ({{color}})</option>
     {{/each}}

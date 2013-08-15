@@ -7,6 +7,7 @@ car_in = new Meteor.Collection("Car_In");
 car_out = new Meteor.Collection("Car_Out");
 transactions = new Meteor.Collection("Transactions");
 expenses = new Meteor.Collection("Expenses");
+customer_checks = new Meteor.Collection("Customer_Checks");
 //# Account model is initially handled by account-base package
 
 function adminUser(userId) {
@@ -130,6 +131,22 @@ transactions.allow({
 });
 
 expenses.allow({
+  insert: function (userId, doc){
+    return adminUser(userId);
+  },
+  update: function(userId, docs, fields, modifier){
+
+    return adminUser(userId) || _.all(docs, function(doc) {
+
+      return doc._id === userId;
+      });
+    },
+    remove: function (userId, docs){
+    return adminUser(userId); // only admin can remove
+    }
+});
+
+customer_checks.allow({
   insert: function (userId, doc){
     return adminUser(userId);
   },
