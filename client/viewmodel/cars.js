@@ -31,6 +31,12 @@ Template.purchase_order_makers.makers = function(){
 	return distinctArray;
 }
 
+Template.purchase_order_makers.events({
+	'click #purchase_maker': function(e,t){
+		Session.set('current_maker',$('#purchase_maker').val());
+	}
+});
+
 Template.model_dropdown.models = function(){
 	var myArray = cars.find({maker:Session.get('current_maker')}).fetch();
 	var distinctArray = _.uniq(myArray, false, function(d) {return d.model});
@@ -54,6 +60,12 @@ Template.purchase_order_models.models = function(){
 	var distinctArray = _.uniq(myArray, false, function(d) {return d.model});
 	return distinctArray;
 }
+
+Template.purchase_order_models.events({
+	'click #purchase_model': function(e,t){
+		Session.set('current_model',$('#purchase_model').val());
+	}
+});
 
 Template.color_dropdown.colors = function(){
 	var myArray = cars.find({maker:Session.get('current_maker'),model:Session.get('current_model')}).fetch();
