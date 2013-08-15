@@ -248,7 +248,7 @@
 				<div class="list-group">
 					<a href="#pricelist-modal" data-toggle="modal" class="list-group-item">
 						Price List
-						<span class="badge pull-right">12</span>
+						<span class="badge pull-right">{{>car_in_badge}}</span>
 					</a>
 				</div>
 			</div>
@@ -256,7 +256,7 @@
 				<div class="list-group">
 					<a href="#p-order-modal" data-toggle="modal" class="list-group-item">
 						Purchase Orders
-						<span class="badge pull-right">12</span>
+						<span class="badge pull-right">{{>purchase_orders_badge}}</span>
 					</a>
 				</div>
 			</div>
@@ -310,7 +310,7 @@
 				<div class="list-group">
 					<a href="#supplier-modal" data-toggle="modal" class="list-group-item">
 						Suppliers
-						<span class="badge pull-right">12</span>
+						<span class="badge pull-right">{{>suppliers_badge}}</span>
 					</a>
 				</div>
 			</div>
@@ -318,7 +318,7 @@
 				<div class="list-group">
 					<a href="#p-order-modal" data-toggle="modal" class="list-group-item">
 						Purchase Order
-						<span class="badge pull-right">12</span>
+						<span class="badge pull-right">{{>purchase_orders_badge}}</span>
 					</a>
 				</div>
 			</div>
@@ -363,7 +363,7 @@
 				<div class="list-group">
 					<a href="#customer-modal" data-toggle="modal" class="list-group-item">
 						Customers
-						<span class="badge pull-right">12</span>
+						<span class="badge pull-right">{{>customers_badge}}</span>
 					</a>
 				</div>
 			</div>
@@ -371,7 +371,7 @@
 				<div class="list-group">
 					<a href="#s-order-modal" data-toggle="modal" class="list-group-item">
 						Sales Order
-						<span class="badge pull-right">12</span>
+						<span class="badge pull-right">{{>sales_orders_badge}}</span>
 					</a>
 				</div>
 			</div>
@@ -1439,31 +1439,6 @@
 							</div>
 						</div>
 					</div>
-					<form class="add modal-nav-box box-hide panel well form-horizontal">
-			  			<div class="form-group">
-					    	<label class="col-lg-2 control-label">Name</label>
-						    <div class="col-lg-10">
-						      <input type="text" class="form-control">
-					    </div>
-					  	</div>
-					  	<div class="form-group">
-						    <label class="col-lg-2 control-label">Company</label>
-						    <div class="col-lg-10">
-						      <input type="password" class="form-control">
-				    		</div>
-					  	</div>
-					  	<div class="form-group">
-						    <label class="col-lg-2 control-label">Description</label>
-						    <div class="col-lg-10">
-						      <input type="password" class="form-control">
-				    		</div>
-					  	</div>
-					  	<div class="form-group">
-						    <div class="col-offset-2 col-lg-10">
-						      <button type="submit" class="btn btn-primary">Add</button>
-						    </div>
-					  	</div>
-					</form>
 					<div class="search modal-nav-box box-hide panel well">
 						<div class="col-lg-4">
 							<input type="text" class="form-control " placeholder="Check No.">
@@ -1473,32 +1448,7 @@
 						</button>
 					</div>
 					<div class="table-body">
-	          			<table class="table table-striped">
-	          				<tr>
-	          					<th>ID</th>
-	          					<th>Supplier</th>
-	          					<th>Type</th>
-	          					<th>Model</th>
-	          					<th>Stock</th>
-	          					<th>Sale Cost</th>
-	          				</tr>
-	          				<tr class="tr" href="#i-detail-modal" data-toggle="modal" data-dismiss="modal" role="button">
-	          					<td>1</td>
-	          					<td>Supplier1</td>
-	          					<td>Toyota</td>
-	          					<td>Corolla</td>
-	          					<td>1</td>
-	          					<td>Php 2,000,000</td>
-	          				</tr>
-	          				<tr class="tr" href="#i-order-modal" data-toggle="modal" data-dismiss="modal" role="button">
-	          					<td>2</td>
-	          					<td>Supplier2</td>
-	          					<td>Honda</td>
-	          					<td>Civic</td>
-	          					<td>1</td>
-	          					<td>Php 2,000,000</td>
-	          				</tr>
-	          			</table>
+	          			{{>price_list}}
 	          		</div>
 		        </div>
 			</div>
