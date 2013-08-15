@@ -26,7 +26,7 @@
 
 <template name="customer_form">     
     <form class="add modal-nav-box box-hide panel well form-horizontal" id="form_addCustomer">
-  {{#if editting_customer}}
+  {{#if editing_customer}}
     {{#each info}}
       <input type="hidden" value="{{_id}}" name="id"/>
       <div class="form-group">
@@ -71,7 +71,7 @@
   {{/if}} 
       <div class="form-group">
         <div class="col-offset-2 col-lg-10">
-          {{#if editting_customer}}
+          {{#if editing_customer}}
             <button type="button" class="btn btn-primary" id="btnUpdateCustomer">Update</button>
             <button type="button" class="btn btn-primary" id="btnCancel">Cancel</button> 
           {{else}}

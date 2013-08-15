@@ -21,5 +21,5 @@ Meteor.autosubscribe(function() {
 	Meteor.subscribe("SuppInfo", Session.get('sid') );
 	Meteor.subscribe("CustomerInfo", Session.get('cid') );
 	Meteor.subscribe("CarModelInfo", Session.get('cid') );
-	Meteor.subscribe("ExpenseInfo", Session.get('xip') );
+	Meteor.subscribe("ExpenseInfo", Session.get('xid') );
 });

@@ -12,6 +12,7 @@ Template.customers_dropdown.customers = function(){
 Template.customers.events({
 	'click .btnRemoveCustomer': function (e,t){
 		// console.log( e.target.id );
+		Session.set('cid', null);
 		Meteor.flush();
 		customers.remove({_id: this._id });
 		

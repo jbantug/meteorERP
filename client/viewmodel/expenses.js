@@ -25,19 +25,21 @@ Template.expenses_form.info = function(){
 };
 
 Template.expenses.expenses = function(){
-	return expenses.find( {}, {sort: {dateadded: -1} } );
+	return expenses.find( {}, {sort: {date_in: -1} } );
 };
 
 Template.expenses.events({
 	'click .btnRemoveExpense': function (e,t){
 		// console.log( e.target.id );
+		Session.set('xid', null);
 		Meteor.flush();
 		expenses.remove({_id: e.target.id });
+
 		
 	},
 	'click .btnEditExpense': function (e,t){
 		Session.set('editing_expense', true);
-		Session.set('xid', this._id);
+		Session.set('xid',  this._id );
 
 		Meteor.flush();	
 		$("form#form_addExpense").show();
@@ -54,7 +56,7 @@ Template.expenses_form.events({
 		});
 			
 		// form['date_in'] = Date.now();
-
+		console.log(form);
 		expenses.insert( form, function(err){
 			if(err){
 				if(err.error === 403){
@@ -74,7 +76,7 @@ Template.expenses_form.events({
 	},
 	'click #btnCancel': function(e,t){
 		Session.set('editing_expense', false);
-		Session.set('sid', null);
+		Session.set('xid', null);
 
 		
 		$("form#form_addExpense").hide();
@@ -88,6 +90,6 @@ Template.expenses_form.events({
 			form[this.name] = this.value;
 		});
 
-		expenses.update({_id: form['id']}, {$set: {item: form['item'], amount: form['amount'], supplier: form['supplier'], date_in: form['date_in'] } });
+		expenses.update({_id: form['id']}, {$set: {xitem: form['xitem'], amount: form['amount'], supplier: form['supplier'], date_in: form['date_in'] } });
 	}
 });

@@ -35,7 +35,11 @@ Meteor.startup(function(){
     Meteor.publish("Expenses", function(){
         return expenses.find({});
     });
-    Meteor.publish("ExpensesInfo", function(expId){
+    Meteor.publish("ExpenseInfo", function(expId){
         return expenses.find({_id:expId});
     });
+
+
+    
+
 });
