@@ -19,6 +19,70 @@
 			</div>
 	  	</div>
 	  	<div class="form-group clearfix">
+	    	<label class="col-lg-2 control-label">Chassis No</label>
+	    	<div class="col-lg-10">
+	      		<input type="text" class="form-control" name="chassis_number">
+			</div>
+	  	</div>
+	  	<div class="form-group clearfix">
+	    	<label class="col-lg-2 control-label">Engine No</label>
+	    	<div class="col-lg-10">
+	      		<input type="text" class="form-control" name="engine_number">
+			</div>
+	  	</div>
+	  	<div class="form-group clearfix">
+		    <label class="col-lg-2 control-label">Amount</label>
+		    <div class="col-lg-10">
+		      <input type="text" class="form-control" name="amount">
+		    </div>
+	  	</div>
+	  	<div class="form-group clearfix">
+	    	<label class="col-lg-2 control-label">Due Date</label>
+	    	<div class="col-lg-10">
+	      		<input type="date" class="form-control" name="due_date">
+	    	</div>
+	  	</div>
+		<div class="form-group clearfix">
+			<div class="col-offset-2 col-lg-10">
+			  <button type="submit" class="btn btn-primary">Add</button>
+			</div>
+		</div>
+	</form>
+</template>
+
+<template name="purchase_checksform">
+	<form class="add modal-nav-box box-hide panel well form-horizontal" id="addPurchaseChecks">
+		<div class="form-group clearfix">
+	  		<label class="col-lg-2 control-label">Supplier</label>
+	      	<div class="col-lg-10">
+		  		{{>check_suppliers}}
+			</div>
+		</div>
+	  	<div class="form-group clearfix">
+	  		<label class="col-lg-2 control-label">Item</label>
+	      	<div class="btn-group col-lg-10">
+	  			{{>sale_order_items}}
+			</div>
+		</div>
+	  	<div class="form-group clearfix">
+	    	<label class="col-lg-2 control-label">Check Number</label>
+	    	<div class="col-lg-10">
+	      		<input type="text" class="form-control" name="check_number">
+			</div>
+	  	</div>
+	  	<div class="form-group clearfix">
+	    	<label class="col-lg-2 control-label">Chassis No</label>
+	    	<div class="col-lg-10">
+	      		<input type="text" class="form-control" name="chassis_number">
+			</div>
+	  	</div>
+	  	<div class="form-group clearfix">
+	    	<label class="col-lg-2 control-label">Engine No</label>
+	    	<div class="col-lg-10">
+	      		<input type="text" class="form-control" name="engine_number">
+			</div>
+	  	</div>
+	  	<div class="form-group clearfix">
 		    <label class="col-lg-2 control-label">Amount</label>
 		    <div class="col-lg-10">
 		      <input type="text" class="form-control" name="amount">
@@ -75,5 +139,43 @@
 
 		</tr>
 		{{/each}}
+	</table>
+</template>
+<template name="purchase_checks">
+	<table class="table table-striped">
+		<tr>
+			<th>Due Date</th>
+			<th>Issue Date</th>
+			<th>Check No.</th>
+			<th>Customer</th>
+			<th>Amount</th>
+			<th>Bounce</th>
+			<th>Encashed</th>
+		</tr>
+		{{#each purchasechecklist}}
+		<tr>
+			<td> {{due_date}} </td>
+			<td> {{date_in}} </td>
+			<td> {{check_number}} </td>
+			<td> {{get_supplier supplier_id}}</td>
+			<td> {{amount}}</td>
+			<td>
+				{{#if date_bounced }}
+					{{date_bounced}}
+				{{else}}
+				 <button class="btn btn-primary btn-small btnBounce" id="{{_id}}">Bounce</button>
+				{{/if}}
+			</td>
+			<td>
+				{{#if date_encashed }}
+					{{date_encashed}}
+				{{else}}	
+			 		<button class="btn btn-primary btn-small btnEncash" id="{{_id}}">Encash</button>
+			 	{{/if}}	
+			</td>
+
+		</tr>
+		{{/each}}
+		</tr>
 	</table>
 </template>
