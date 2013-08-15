@@ -1,5 +1,6 @@
 Session.set('editing_car_model', false);
 Session.set('current_maker', null);
+Session.set('current_model', null);
 Session.set('sid', null);
 
 Template.car_models.car_models = function(){
@@ -31,13 +32,13 @@ Template.purchase_order_makers.makers = function(){
 }
 
 Template.model_dropdown.models = function(){
-	var myArray = cars.find().fetch();
+	var myArray = cars.find({maker:Session.get('current_maker')}).fetch();
 	var distinctArray = _.uniq(myArray, false, function(d) {return d.model});
 	return distinctArray;
 }
 
 Template.add_inventory_models.models = function(){
-	var myArray = cars.find().fetch();
+	var myArray = cars.find({maker:Session.get('current_maker')}).fetch();
 	var distinctArray = _.uniq(myArray, false, function(d) {return d.model});
 	return distinctArray;
 }
@@ -49,25 +50,25 @@ Template.add_inventory_models.events({
 });
 
 Template.purchase_order_models.models = function(){
-	var myArray = cars.find().fetch();
+	var myArray = cars.find({maker:Session.get('current_maker')}).fetch();
 	var distinctArray = _.uniq(myArray, false, function(d) {return d.model});
 	return distinctArray;
 }
 
 Template.color_dropdown.colors = function(){
-	var myArray = cars.find().fetch();
+	var myArray = cars.find({maker:Session.get('current_maker'),model:Session.get('current_model')}).fetch();
 	var distinctArray = _.uniq(myArray, false, function(d) {return d.color});
 	return distinctArray;
 }
 
 Template.add_inventory_colors.colors = function(){
-	var myArray = cars.find().fetch();
+	var myArray = cars.find({maker:Session.get('current_maker'),model:Session.get('current_model')}).fetch();
 	var distinctArray = _.uniq(myArray, false, function(d) {return d.color});
 	return distinctArray;
 }
 
 Template.purchase_order_colors.colors = function(){
-	var myArray = cars.find().fetch();
+	var myArray = cars.find({maker:Session.get('current_maker'),model:Session.get('current_model')}).fetch();
 	var distinctArray = _.uniq(myArray, false, function(d) {return d.color});
 	return distinctArray;
 }
