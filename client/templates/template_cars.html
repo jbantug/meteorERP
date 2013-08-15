@@ -276,3 +276,28 @@
   </div>
   <input type="button" class="btn btn-default" id="i_search" value="Find">
 </template>
+
+<template name="price_list">
+  <table class="table table-striped">
+    <tr>
+      <th>Maker</th>
+      <th>Model</th>
+      <th>Color</th>
+      <th>Supplier</th>
+      <th>Peso Cost</th>
+    </tr>
+    {{#each items}}
+    <tr class="tr" href="#i-detail-modal" data-toggle="modal" data-dismiss="modal" role="button">
+      <td>{{get_maker sku}}</td>
+      <td>{{get_model sku}}</td>
+      <td>{{get_color sku}}</td>
+      <td>{{get_supplier supplier_id}}</td>
+      <td>{{peso_cost yen_cost exchange_rate}}</td>
+    </tr>
+    {{/each}}
+  </table>
+</template>
+
+<template name="car_in_badge">
+  {{cars_in.count}}
+</template>
