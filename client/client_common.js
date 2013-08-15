@@ -16,6 +16,7 @@ Meteor.subscribe("CarModels");
 Meteor.subscribe("Car_In");
 Meteor.subscribe("Car_Out");
 Meteor.subscribe("Expenses");
+Meteor.subscribe("CustomerChecks");
 Meteor.autosubscribe(function() {
 
 	Meteor.subscribe("SuppInfo", Session.get('sid') );
