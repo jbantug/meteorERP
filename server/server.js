@@ -32,4 +32,14 @@ Meteor.startup(function(){
     Meteor.publish("Users", function(){
         return Meteor.users.find({});
     });
+    Meteor.publish("Expenses", function(){
+        return expenses.find({});
+    });
+    Meteor.publish("ExpenseInfo", function(expId){
+        return expenses.find({_id:expId});
+    });
+
+
+    
+
 });

@@ -20,6 +20,7 @@ Template.check_suppliers.suppliers = function(){
 Template.suppliers.events({
 	'click .btnRemoveSupplier': function (e,t){
 		// console.log( e.target.id );
+		Session.set('sid', null);
 		Meteor.flush();
 		suppliers.remove({_id: e.target.id });
 		
@@ -61,7 +62,7 @@ Template.supplier_form.events({
 			form[this.name] = this.value;
 		});
 			
-		form['dateadded'] = Date("yyyy-MM-DD HH:mm");
+		form['dateadded'] = Date.now();
 
 		suppliers.insert( form, function(err){
 			if(err){
@@ -102,6 +103,6 @@ Template.supplier_form.events({
 
 //handlebars
 Handlebars.registerHelper("get_supplier", function(supplier_id) {
-	var result = suppliers.findOne({_id:supplier_id}).name;
+	var result = suppliers.findOne({_id:supplier_id});//.name;
   	return result;
 });
