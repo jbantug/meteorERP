@@ -1,0 +1,109 @@
+<template name="expenses_form">
+	<form class="add modal-nav-box box-hide panel well form-horizontal" id="form_addExpense">
+	  	{{#if editing_expense}}
+	  		{{#each info}}
+
+	  		<input type="hidden" value="{{_id}}" name="id"/>
+		  	<div class="form-group clearfix">
+		    	<label class="col-lg-2 control-label">Item</label>
+		    	<div class="col-lg-10">
+		      		<input type="text" value="{{item}}" name="item" class="form-control">
+				</div>
+		  	</div>
+		  	<div class="form-group clearfix">
+			    <label class="col-lg-2 control-label">Amount</label>
+			    <div class="col-lg-10">
+			      <input type="number" value="{{amount}}" name="amount" class="form-control">
+			    </div>
+		  	</div>
+		  	<div class="form-group clearfix">
+		    	<label class="col-lg-2 control-label">Supplier</label>
+		    	<div class="col-lg-10">
+		      		<select class="form-control" name ="supplier">
+		      			<option value="{{supplier}}" selected="selected"> {{supplier}} </option>
+			    		{{#each supplier_info}}
+							<option value="{{name}}"> {{name}} </option>
+						{{/each}}				
+					</select>
+		    	</div>
+		  	</div>
+		  	<div class="form-group clearfix">
+		    	<label class="col-lg-2 control-label">Date</label>
+		    	<div class="col-lg-10">
+		      		<input type="date" name="date_in" class="form-control" value="{{date_in}}">
+		    	</div>
+		  	</div>
+			{{/each}}
+			<div class="form-group">
+	    		<div class="col-offset-2 col-lg-10">
+					<button type="button" class="btn btn-primary" id="btnUpdateExpense">Update</button>
+	     			<button type="button" class="btn btn-primary" id="btnCancel">Cancel</button> 
+	     		</div>
+	     	</div>
+		{{else}}			
+			<div class="form-group clearfix">
+		    	<label class="col-lg-2 control-label">Item</label>
+		    	<div class="col-lg-10">
+		      		<input type="text" name="item" class="form-control">
+				</div>
+		  	</div>
+		  	<div class="form-group clearfix">
+			    <label class="col-lg-2 control-label">Amount</label>
+			    <div class="col-lg-10">
+			      <input type="number" class="form-control" name="amount">
+			    </div>
+		  	</div>
+		  	<div class="form-group clearfix">
+		    	<label class="col-lg-2 control-label">Supplier</label>
+		    	<div class="col-lg-10">
+		      		<!-- <input type="password" class="form-control"> -->
+		      		<select class="form-control" name ="supplier">
+			    		{{#each supplier_info}}
+							<option value="{{name}}"> {{name}} </option>
+						{{/each}}				
+					</select>
+		    	</div>
+		    	
+		  	</div>
+		  	<div class="form-group clearfix">
+		    	<label class="col-lg-2 control-label">Date</label>
+		    	<div class="col-lg-10">
+		      		<input type="date" name="date_in" class="form-control">
+		    	</div>
+		  	</div>
+			<div class="form-group clearfix">
+				<div class="col-offset-2 col-lg-10">
+				  <button type="submit" class="btn btn-primary">Add</button>
+				</div>
+			</div>
+		{{/if}}
+	</form>
+</template>
+
+<template name="expenses">
+	<table class="table table-striped">
+		<tr>
+			<th>Item</th>
+			<th>Amount</th>
+			<th>Supplier</th>
+			<th>Date</th>
+			<th>Actions</th>
+		</tr>
+		{{#each expenses}}
+		<tr>
+			<td>{{item}}</td>
+			<td>{{amount}}</td>
+			<td>{{supplier}}</td>
+			<td>{{date_in}}</td>
+			<td>
+				<button class="btn btn-primary btnEditExpense" id="{{_id}}">
+					<span class="glyphicon glyphicon-edit"></span>
+				</button>
+				<button class="btn btn-primary btnRemoveExpense" id="{{_id}}">
+					<span class="glyphicon glyphicon-trash"></span>
+				</button>
+			</td>
+		</tr>
+		{{/each}}
+	</table>
+</template>

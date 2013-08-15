@@ -2,7 +2,7 @@ Session.set('editing_customer', false);
 Session.set('cid', null);
 
 Template.customers.customers = function(){
-	return customers.find( {}, {sort: {dateadded: -1} } );
+	return customers.find( {}, {sort: {dateadded: -1}} );
 };
 
 Template.customers_dropdown.customers = function(){
@@ -53,7 +53,7 @@ Template.customer_form.events({
 			form[this.name] = this.value;
 		});
 			
-		form['dateadded'] = Date("yyyy-MM-DD HH:mm");
+		form['dateadded'] = Date.now();
 
 		customers.insert( form, function(err){
 			if(err){
