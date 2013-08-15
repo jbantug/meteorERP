@@ -41,4 +41,7 @@ Meteor.startup(function(){
     Meteor.publish("CustomerChecks", function(){
         return customer_checks.find({});
     });
+    Meteor.publish("SupplierChecks", function(){
+        return supplier_checks.find({});
+    });
 });
