@@ -1,0 +1,7 @@
+{
+  "packages": {
+    "meteor_nvd3": {},
+    "font-awesome": {},
+    "bootstrap-3": {}
+  }
+}

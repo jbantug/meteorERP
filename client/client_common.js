@@ -12,8 +12,15 @@ Meteor.subscribe("Users");
 
 Meteor.subscribe("Suppliers");
 Meteor.subscribe("Customers");
+Meteor.subscribe("CarModels");
+Meteor.subscribe("Car_In");
+Meteor.subscribe("Car_Out");
+
 Meteor.autosubscribe(function() {
 
 	Meteor.subscribe("SuppInfo", Session.get('sid') );
 	Meteor.subscribe("CustomerInfo", Session.get('cid') );
+	Meteor.subscribe("CarModelInfo", Session.get('cid') );
+
 });
+

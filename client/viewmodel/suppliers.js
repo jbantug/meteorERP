@@ -1,7 +1,19 @@
-Session.set('editting_supplier', false);
+Session.set('editing_supplier', false);
 Session.set('sid', null);
 
 Template.suppliers.suppliers = function(){
+	return suppliers.find( {}, {sort: {dateadded: -1} } );
+};
+
+Template.purchase_order_suppliers.suppliers = function(){
+	return suppliers.find( {}, {sort: {dateadded: -1} } );
+};
+
+Template.add_inventory_suppliers.suppliers = function(){
+	return suppliers.find( {}, {sort: {dateadded: -1} } );
+};
+
+Template.check_suppliers.suppliers = function(){
 	return suppliers.find( {}, {sort: {dateadded: -1} } );
 };
 
@@ -13,7 +25,7 @@ Template.suppliers.events({
 		
 	},
 	'click .btnEditSupplier': function (e,t){
-		Session.set('editting_supplier', true);
+		Session.set('editing_supplier', true);
 		Session.set('sid', this._id);
 
 		Meteor.flush();	
@@ -22,8 +34,8 @@ Template.suppliers.events({
 	}
 });
 
-Template.supplier_form.editting_supplier = function(){
-	return Session.equals('editting_supplier', true);
+Template.supplier_form.editing_supplier = function(){
+	return Session.equals('editing_supplier', true);
 };
 
 Template.supplier_form.info = function(){
@@ -69,7 +81,7 @@ Template.supplier_form.events({
 		e.preventDefault();
 	},
 	'click #btnCancel': function(e,t){
-		Session.set('editting_supplier', false);
+		Session.set('editing_supplier', false);
 		Session.set('sid', null);
 
 		
@@ -86,4 +98,10 @@ Template.supplier_form.events({
 
 		suppliers.update({_id: form['id']}, {$set: {name: form['name'], company: form['company'], description: form['description'] } });
 	}
+});
+
+//handlebars
+Handlebars.registerHelper("get_supplier", function(supplier_id) {
+	var result = suppliers.findOne({_id:supplier_id}).name;
+  	return result;
 });
