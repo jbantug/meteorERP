@@ -809,45 +809,14 @@
 					</div>
 					<div class="search modal-nav-box box-hide panel well">
 						<div class="col-lg-4">
-							<input type="text" class="form-control " placeholder="Check No.">
+							<input type="text" class="form-control " placeholder="">
 						</div>
 						<button class="btn btn-default">
 							Find
 						</button>
 					</div>
 					<div class="table-body">
-	          			<table class="table table-striped">
-	          				<tr>
-	          					<th>ID</th>
-	          					<th>Date Of Purchase</th>
-	          					<th>Date Of Delivery</th>
-	          					<th>Supplier</th>
-	          					<th>Item</th>
-	          					<th>Purchase Price</th>
-	          					<th>Quantity</th>
-	          					<th>Total Cost</th>
-	          				</tr>
-	          				<tr class="tr" href="#p-account-modal" data-toggle="modal" data-dismiss="modal" role="button">
-	          					<td>1</td>
-	          					<td>01-01-2000</td>
-	          					<td>02-01-2000</td>
-	          					<td>Supplier1</td>
-	          					<td>Toyota Corolla</td>
-	          					<td>Php 2,000,000</td>
-	          					<td>1</td>
-	          					<td>Php 2,000,000</td>
-	          				</tr>
-	          				<tr class="tr" href="#p-account-modal" data-toggle="modal" data-dismiss="modal" role="button">
-	          					<td>2</td>
-	          					<td>02-01-2000</td>
-	          					<td>03-01-2000</td>
-	          					<td>Supplier1</td>
-	          					<td>Honda Civic</td>
-	          					<td>Php 2,000,000</td>
-	          					<td>2</td>
-	          					<td>Php 4,000,000</td>
-	          				</tr>
-	          			</table>
+	          			{{>purchase_orders}}
 	          		</div>
 		        </div>
 			</div>
@@ -1046,7 +1015,6 @@
           			<h3 class="modal-title">Add Purchase Order</h3>
 				</div>
 				<div class="modal-body">
-					<!-- <form href="#p-order-modal" data-toggle="modal" data-dismiss="modal" class="form-horizontal" -->
 					{{> purchase_order_form}}
 				</div>
 			</div>
@@ -1560,12 +1528,7 @@
 						</div>
 					</div>
 					<div class="search modal-nav-box box-hide panel well">
-						<div class="col-lg-4">
-							<input type="text" class="form-control " placeholder="Check No.">
-						</div>
-						<button class="btn btn-default">
-							Find
-						</button>
+						{{>search_specific}}
 					</div>
 					<div class="table-body">
 	          			{{> inventory}}
