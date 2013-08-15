@@ -1,7 +1,6 @@
 Session.set('editing_car_model', false);
 Session.set('current_maker', null);
 Session.set('current_model', null);
-Session.set('sid', null);
 
 Template.car_models.car_models = function(){
 	return cars.find( {}, {sort: {dateadded: -1} } );
