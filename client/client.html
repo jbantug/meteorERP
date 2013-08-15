@@ -1,9 +1,10 @@
 <head>
   <title>mercuri</title>
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'> -->
 </head>
 
 <body>
+
 <div class="container">
 
 
@@ -13,8 +14,6 @@
 		<header>
 			<img src="" class="head-logo pull-left"/>
 			<div class="head-nav pull-right">
-				<!-- <a href="#">log in</a> | |
-				<a href="#">sign up</a> -->
 				{{loginButtons}}
 			</div>
 		</header>
@@ -217,8 +216,9 @@
 						<i class="icon-user"></i>
 						Registered
 					</div>
-					<a href="#customer-modal"  data-toggle="modal" class="list-group-item">Customers</a>
-					<a href="#supplier-modal"  data-toggle="modal" class="list-group-item">Suppliers</a>
+					<a href="#customer-modal" data-toggle="modal" class="list-group-item">Customers</a>
+					<a href="#supplier-modal" data-toggle="modal" class="list-group-item">Suppliers</a>
+					<a href="#cars-modal"  data-toggle="modal" class="list-group-item">Cars</a>
 				</div>
 				<div class="list-group">
 					<div class="list-group-item active">
@@ -1119,14 +1119,8 @@
 						</div>
 						<div class="form-group clearfix">
 				      		<label class="col-lg-2 control-label">Customer</label>
-					      	<div class="btn-group col-lg-10">
-						  		<button type="button" class="btn btn-default btn-small dropdown-toggle" data-toggle="dropdown">
-							    Choose
-								<span class="caret"></span>
-						  		</button>
-						  		<ul class="dropdown-menu">
-								    {{> customers_list}}
-						  		</ul>
+					      	<div class="col-lg-10">
+								   {{> customers_dropdown}}
 							</div>
 						</div>
 					  	<div class="form-group clearfix">
@@ -1179,41 +1173,8 @@
           			<h3 class="modal-title">Add Purchase Order</h3>
 				</div>
 				<div class="modal-body">
-					<form href="#p-order-modal" data-toggle="modal" data-dismiss="modal" class="form-horizontal">
-						<div class="form-group clearfix">
-							<label class="col-lg-3 control-label" style="font-weight:normal;">December 31, 2000</label>
-							<div class="col-lg-9"></div>
-						</div>
-						<div class="form-group clearfix">
-				      		<label class="col-lg-2 control-label">Supplier</label>
-					      	<div class="btn-group col-lg-10">
-						  		<button type="button" class="btn btn-default btn-small dropdown-toggle" data-toggle="dropdown">
-							    Choose
-								<span class="caret"></span>
-						  		</button>
-						  		<ul class="dropdown-menu">
-								    {{> suppliers_list}}
-						  		</ul>
-							</div>
-						</div>
-					  	<div class="form-group clearfix">
-						    <label class="col-lg-2 control-label">Type</label>
-						    <div class="col-lg-10">
-						      <input type="text" class="form-control" placeholder="Email">
-					    	</div>
-					  	</div>
-					  	<div class="form-group clearfix">
-						    <label class="col-lg-2 control-label">Model</label>
-						    <div class="col-lg-10">
-						      <input type="text" class="form-control" placeholder="Password">
-						    </div>
-					  	</div>
-					  	<div class="form-group clearfix">
-						    <div class="col-offset-2 col-lg-10">
-						      <button type="submit" class="btn btn-primary">Add</button>
-						    </div>
-					  	</div>
-					</form>
+					<!-- <form href="#p-order-modal" data-toggle="modal" data-dismiss="modal" class="form-horizontal" -->
+					{{> purchase_order_form}}
 				</div>
 			</div>
 		</div>
@@ -1578,6 +1539,47 @@
 		</div>
 	</div>
 
+	<div id="cars-modal" class="modal fade" role="dialog" aria-hidden="true" style="display:none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left:20px;">&times;</button>
+          			<h3 class="modal-title">Cars</h3>
+				</div>
+				<div class="modal-body">
+					<div class="navbar">
+						<div class="navbar-form">
+							<div class="btn-group">
+								<button id="add" class="btn btn-default modal-nav-btn">
+									<i class="icon-plus"></i>
+									Add
+								</button>
+								<button id="search" class="btn btn-default modal-nav-btn">
+									<i class="icon-search"></i>
+									Search
+								</button>
+							</div>
+						</div>
+					</div>
+					{{> car_model_form}}
+					<div class="search modal-nav-box box-hide panel well">
+						<div class="col-lg-4">
+							<input type="text" class="form-control " placeholder="Check No.">
+						</div>
+						<button class="btn btn-default">
+							Find
+						</button>
+					</div>
+					<div class="table-body">
+	          			
+	          				{{> car_models}}
+	          			
+	          		</div>
+		        </div>
+			</div>
+		</div>
+	</div>
+
 	<div id="pricelist-modal" class="modal fade" role="dialog" aria-hidden="true" style="display:none;">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -1693,50 +1695,7 @@
 						</button>
 					</div>
 					<div class="table-body">
-	          			<table class="table table-striped">
-	          				<tr>
-	          					<th>Type</th>
-	          					<th>Model</th>
-	          					<th>Color</th>
-	          					<th>Supplier</th>
-	          					<th>Chassis No.</th>
-	          					<th>Engine No.</th>
-	          					<th>Delivery Date</th>
-	          					<th>Freight-Handling Cost</th>
-	          					<th>Brokerage Cost</th>
-	          					<th>Exchange Rate</th>
-	          					<th>Yen Cost</th>
-	          					<th>Peso Cost</th>
-	          				</tr>
-	          				<tr>
-	          					<td>Toyota</td>
-	          					<td>Corolla</td>
-	          					<td>Black</td>
-	          					<td>Supplier1</td>
-	          					<td>12345</td>
-	          					<td>23456</td>
-	          					<td>01-01-2000</td>
-	          					<td>1,000</td>
-	          					<td>2,000</td>
-	          					<td>0.5</td>
-	          					<td>2,000,000</td>
-	          					<td>1,000,000</td>
-	          				</tr>
-	          				<tr>
-	          					<td>Toyota</td>
-	          					<td>Corolla</td>
-	          					<td>Black</td>
-	          					<td>Supplier1</td>
-	          					<td>12345</td>
-	          					<td>23456</td>
-	          					<td>01-01-2000</td>
-	          					<td>1,000</td>
-	          					<td>2,000</td>
-	          					<td>0.5</td>
-	          					<td>2,000,000</td>
-	          					<td>1,000,000</td>
-	          				</tr>
-	          			</table>
+	          			{{> inventory}}
 	          		</div>
 		        </div>
 			</div>
@@ -1751,83 +1710,7 @@
           			<h3 class="modal-title">Step 1: Add Inventory Item</h3>
 				</div>
 				<div class="modal-body">
-					<form class="form-horizontal">
-						<div class="form-group clearfix">
-				      		<label class="col-lg-2 control-label">Supplier</label>
-					      	<div class="btn-group col-lg-10">
-						  		<button type="button" class="btn btn-default btn-small dropdown-toggle" data-toggle="dropdown">
-							    Choose
-								<span class="caret"></span>
-						  		</button>
-						  		<ul class="dropdown-menu">
-								    <li><a href="#">Supplier1</a></li>
-								    <li><a href="#">Supplier2</a></li>
-						  		</ul>
-							</div>
-						</div>
-					  	<div class="form-group clearfix">
-						    <label class="col-lg-2 control-label">Type</label>
-						    <div class="col-lg-4">
-						      <input type="text" class="form-control" placeholder="Type">
-					    	</div>
-					    	<label class="col-lg-2 control-label">Freight-Handling Cost</label>
-						    <div class="col-lg-4">
-						      <input type="number" class="form-control"  placeholder="Freight-Handling Cost">
-						    </div>
-					  	</div>
-					  	<div class="form-group clearfix">
-						    <label class="col-lg-2 control-label">Model</label>
-						    <div class="col-lg-4">
-						      <input type="text" class="form-control" placeholder="Model">
-						    </div>
-						    <label class="col-lg-2 control-label">Brokerage Cost</label>
-						    <div class="col-lg-4">
-						      <input type="number" class="form-control"  placeholder="Brokerage Cost">
-						    </div>
-					  	</div>
-					  	<div class="form-group clearfix">
-						    <label class="col-lg-2 control-label">Color</label>
-						    <div class="col-lg-4">
-						      <input type="text" class="form-control"  placeholder="Color">
-						    </div>
-						    <label class="col-lg-2 control-label">Exchange Rate</label>
-						    <div class="col-lg-4">
-						      <input type="number" class="form-control"  placeholder="Exchange Rate">
-						    </div>
-					  	</div>
-					  	<div class="form-group clearfix">
-						    <label class="col-lg-2 control-label">Chassis No.</label>
-						    <div class="col-lg-4">
-						      <input type="text" class="form-control"  placeholder="Color">
-						    </div>
-						     <label class="col-lg-2 control-label">Yen Cost</label>
-						    <div class="col-lg-4">
-						      <input type="number" class="form-control"  placeholder="Yen Cost">
-						    </div>
-					  	</div>
-					  	<div class="form-group clearfix">
-						    <label class="col-lg-2 control-label">Engine No.</label>
-						    <div class="col-lg-4">
-						      <input type="text" class="form-control"  placeholder="Color">
-						    </div>
-						    <label class="col-lg-2 control-label">Peso Cost</label>
-						    <div class="col-lg-4">
-						      <input type="number" class="form-control"  placeholder="Color">
-						    </div>
-						   
-					  	</div>
-					  	<div class="form-group clearfix">
-						    <label class="col-lg-2 control-label">Delivery Date</label>
-					    	<div class="col-lg-10">
-						      <input type="date" class="form-control"  placeholder="Delivery Date">
-						    </div>
-					  	</div><br/>
-					  	<div class="form-group clearfix">
-						    <div class="col-offset-10 col-lg-2" style="text-align:right;">
-						      <button href="#i-add2-modal"data-toggle="modal" data-dismiss="modal" type="submit" class="btn btn-primary">Add</button>
-						    </div>
-					  	</div>
-					</form>
+					{{> add_inventory_form}}
 				</div>
 			</div>
 		</div>
@@ -2007,13 +1890,7 @@
 					  	<div class="form-group clearfix">
 				      		<label class="col-lg-2 control-label">Customer</label>
 					      	<div class="btn-group col-lg-10">
-						  		<button type="button" class="btn btn-default btn-small dropdown-toggle" data-toggle="dropdown">
-							    Choose
-								<span class="caret"></span>
-						  		</button>
-						  		<ul class="dropdown-menu">
-								    {{> customers_list}}
-						  		</ul>
+								{{> customers_dropdown}}
 							</div>
 						</div>
 					  	<div class="form-group clearfix">
@@ -2122,14 +1999,8 @@
 					<form class="add modal-nav-box box-hide panel well form-horizontal">
 						<div class="form-group clearfix">
 				      		<label class="col-lg-2 control-label">Supplier</label>
-					      	<div class="btn-group col-lg-10">
-						  		<button type="button" class="btn btn-default btn-small dropdown-toggle" data-toggle="dropdown">
-							    Choose
-								<span class="caret"></span>
-						  		</button>
-						  		<ul class="dropdown-menu">
-								    {{> suppliers_list}}
-						  		</ul>
+					      	<div class="col-lg-10">
+						  		{{>check_suppliers}}
 							</div>
 						</div>
 					  	<div class="form-group clearfix">
