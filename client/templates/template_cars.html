@@ -1,0 +1,298 @@
+<template name="car_models">
+  <table class="table table-striped">
+    <tr>
+      <th>Maker</th>
+      <th>Model</th>
+      <th>Color</th>
+      <th>Actions</th>
+    </tr>
+    {{#each car_models}}
+    <tr>
+      <td>{{maker}}</td>
+      <td>{{model}}</td>
+      <td>{{color}}</td>
+      <td>
+        <button class="btn btn-primary btnEditCarModel" id="{{_id}}">
+          <span class="glyphicon glyphicon-edit"></span>
+        </button>
+        <button class="btn btn-primary btnRemoveCarModel" id="{{_id}}">
+          <span class="glyphicon glyphicon-trash"></span>
+        </button>
+      </td>
+    </tr>
+    {{/each}}
+  </table>
+</template>
+
+<template name="car_model_form">     
+    <form class="add modal-nav-box box-hide panel well form-horizontal" id="form_addCarModel">
+    {{#if editing_car_model}}
+      {{#each info}}
+      <input type="hidden" value="{{_id}}" name="id"/>
+      <div class="form-group">
+        <label class="col-lg-2 control-label">Maker</label>
+        <div class="col-lg-10">
+          <input type="text" value="{{maker}}" class="form-control" name="maker" id="car_maker" required pattern="[a-zA-Z. ]*">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-lg-2 control-label">Model</label>
+        <div class="col-lg-10">
+          <input type="text" value="{{model}}" class="form-control" name="model" id="car_model" required pattern="[a-zA-Z0-9@-&!#. ]*">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-lg-2 control-label">Color</label>
+        <div class="col-lg-10">
+          <input type="text" value="{{color}}" class="form-control" name="color" id="car_color" pattern="[a-zA-Z0-9. ]*">
+        </div>
+      </div>
+      {{/each}}
+    {{else}}
+    <form class="add modal-nav-box box-hide panel well form-horizontal" id="form_addCarModel">
+      <div class="form-group">
+        <label class="col-lg-2 control-label">Maker</label>
+        <div class="col-lg-10">
+          <input type="text" class="form-control" name="maker" id="car_maker" required pattern="[a-zA-Z. ]*">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-lg-2 control-label">Model</label>
+        <div class="col-lg-10">
+          <input type="text" class="form-control" name="model" id="car_model" required pattern="[a-zA-Z0-9@-&!#. ]*">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-lg-2 control-label">Color</label>
+        <div class="col-lg-10">
+          <input type="text" class="form-control" name="color" id="car_color" pattern="[a-zA-Z0-9. ]*">
+        </div>
+      </div>
+      {{/if}}
+      <div class="form-group">
+        <div class="col-offset-2 col-lg-10">
+          {{#if editing_car_model}}
+            <button type="button" class="btn btn-primary" id="btnUpdateCarModel">Update</button>
+            <button type="button" class="btn btn-primary" id="btnCancel">Cancel</button> 
+          {{else}}
+            <button type="submit" class="btn btn-primary" id="btnAddCarModel">Add</button>
+          {{/if}}
+        </div>
+      </div>
+    </form>
+</template>
+
+<template name="purchase_order_form">
+  <form>
+    <div class="form-group clearfix">
+      <label class="col-lg-3 control-label" style="font-weight:normal;">December 31, 2000</label>
+      <div class="col-lg-9"></div>
+    </div>
+    <div class="form-group clearfix">
+      <label class="col-lg-2 control-label">Supplier</label>
+      <div class="col-lg-10">
+        {{> purchase_order_suppliers}}
+      </div>
+    </div>
+    <div class="form-group clearfix">
+      <label class="col-lg-2 control-label">Maker</label>
+      <div class="col-lg-10">
+        {{>purchase_order_makers}}
+      </div>
+    </div>
+    <div class="form-group clearfix">
+      <label class="col-lg-2 control-label">Model</label>
+      <div class="col-lg-10">
+        {{>purchase_order_models}}
+      </div>
+    </div>
+    <div class="form-group clearfix">
+      <label class="col-lg-2 control-label">Color</label>
+      <div class="col-lg-10">
+        {{>purchase_order_colors}}
+      </div>
+    </div>
+    <div class="form-group clearfix">
+      <div class="col-offset-2 col-lg-10">
+        <button href="#p-order-modal" data-toggle="modal" data-dismiss="modal" type="submit" class="btn btn-primary">Add</button>
+      </div>
+    </div>
+  </form>
+</template>
+
+<template name="inventory">
+  <table class="table table-striped">
+    <tr>
+      <th>Delivered</th>
+      <th>Item</th>
+      <th>Supplier</th>
+      <th>Chassis</th>
+      <th>Engine</th>
+      <th>Freight-Handling Cost</th>
+      <th>Brokerage Cost</th>
+      <th>Yen Cost</th>
+      <th>Peso Cost</th>
+      <th>Rate</th>
+      <th>Total Cost</th>
+      <th>Actions</th>
+    </tr>
+    {{#each inventory_list}}
+    <tr>
+      <td>{{date_in}}</td>
+      <td>{{item sku}}</td>
+      <td>{{get_supplier supplier_id}}</td>
+      <td>{{chassis_number}}</td>
+      <td>{{engine_number}}</td>
+      <td>{{freight_handling_cost}}</td>
+      <td>{{brokerage_cost}}</td>
+      <td>{{yen_cost}}</td>
+      <td>{{peso_cost yen_cost exchange_rate}}</td>
+      <td>{{exchange_rate}}</td>
+      <td>Total Cost</td>
+      <td>
+        <button class="btn btn-primary btnEditItem" id="{{_id}}">
+          <span class="glyphicon glyphicon-edit"></span>
+        </button>
+        <button class="btn btn-primary btnRemoveItem" id="{{_id}}">
+          <span class="glyphicon glyphicon-trash"></span>
+        </button>
+      </td>
+    </tr>
+    {{/each}}
+  </table>
+</template>
+
+<template name="add_inventory_form">
+  <form class="add form-horizontal" id="form_addInventory">
+    <div class="form-group clearfix">
+      <label class="col-lg-2 control-label">Supplier</label>
+      <div class="col-lg-10">
+      {{> add_inventory_suppliers}}
+      </div>
+    </div>
+    <div class="form-group clearfix">
+      <label class="col-lg-2 control-label">Maker</label>
+      <div class="col-lg-4">
+        {{> add_inventory_makers}}
+      </div>
+      <label class="col-lg-2 control-label">Freight-Handling Cost</label>
+      <div class="col-lg-4">
+        <input type="text" class="form-control" name="freight_handling_cost" id="freight_handling_cost" required pattern="[0-9.,]*">
+      </div>
+    </div>
+    <div class="form-group clearfix">
+      <label class="col-lg-2 control-label">Model</label>
+      <div class="col-lg-4">
+        {{> add_inventory_models}}
+      </div>
+      <label class="col-lg-2 control-label">Brokerage Cost</label>
+      <div class="col-lg-4">
+        <input type="text" class="form-control" name="brokerage_cost" id="brokerage_cost" required pattern="[0-9.,]*">
+      </div>
+    </div>
+    <div class="form-group clearfix">
+      <label class="col-lg-2 control-label">Color</label>
+      <div class="col-lg-4">
+        {{> add_inventory_colors}}
+      </div>
+      <label class="col-lg-2 control-label">Exchange Rate</label>
+      <div class="col-lg-4">
+        <input type="text" class="form-control" name="exchange_rate" id="exchange_rate" required pattern="[0-9.,]*">
+      </div>
+    </div>
+    <div class="form-group clearfix">
+      <label class="col-lg-2 control-label">Chassis No.</label>
+      <div class="col-lg-4">
+        <input type="text" class="form-control" name="chassis_number" id="chassis_number" pattern="[a-zA-Z0-9. ]*">
+      </div>
+       <label class="col-lg-2 control-label">Yen Cost</label>
+      <div class="col-lg-4">
+        <input type="text" class="form-control" name="yen_cost" id="yen_cost" pattern="[0-9.,]*">
+      </div>
+    </div>
+    <div class="form-group clearfix">
+      <label class="col-lg-2 control-label">Engine No.</label>
+      <div class="col-lg-4">
+        <input type="text" class="form-control" name="engine_number" id="engine_number" pattern="[a-zA-Z0-9. ]*">
+      </div>       
+    </div>
+    <br/>
+    <div class="form-group clearfix">
+      <div class="col-offset-10 col-lg-2" style="text-align:right;">
+        <input href="#inventory-modal" data-toggle="modal" data-dismiss="modal" type="button" class="btn btn-primary" id="btnAddInventory" value="Add">
+      </div>
+    </div>
+  </form>
+</template>
+
+<template name="maker_dropdown">
+  <select class="form-control" id="c_maker">
+    {{#each makers}}
+      <option value="{{maker}}">{{maker}}</option>
+    {{/each}}
+  </select>
+</template>
+
+<template name="add_inventory_makers">
+  <select class="form-control" id="add_maker">
+    {{#each makers}}
+      <option value="{{maker}}">{{maker}}</option>
+    {{/each}}
+  </select>
+</template>
+
+<template name="purchase_order_makers">
+  <select class="form-control" id="c_maker">
+    {{#each makers}}
+      <option value="{{maker}}">{{maker}}</option>
+    {{/each}}
+  </select>
+</template>
+
+<template name="model_dropdown">
+  <select class="form-control" id="c_model">
+    {{#each models}}
+      <option value="{{model}}">{{model}}</option>
+    {{/each}}
+  </select>
+</template>
+
+<template name="add_inventory_models">
+  <select class="form-control" id="add_model">
+    {{#each models}}
+      <option value="{{model}}">{{model}}</option>
+    {{/each}}
+  </select>
+</template>
+
+<template name="purchase_order_models">
+  <select class="form-control" id="c_model">
+    {{#each models}}
+      <option value="{{model}}">{{model}}</option>
+    {{/each}}
+  </select>
+</template>
+
+<template name="color_dropdown">
+  <select class="form-control" id="c_color">
+    {{#each colors}}
+      <option value="{{color}}">{{color}}</option>
+    {{/each}}
+  </select>
+</template>
+
+<template name="add_inventory_colors">
+  <select class="form-control" id="add_color">
+    {{#each colors}}
+      <option value="{{color}}">{{color}}</option>
+    {{/each}}
+  </select>
+</template>
+
+<template name="purchase_order_colors">
+  <select class="form-control" id="c_color">
+    {{#each colors}}
+      <option value="{{color}}">{{color}}</option>
+    {{/each}}
+  </select>
+</template>
