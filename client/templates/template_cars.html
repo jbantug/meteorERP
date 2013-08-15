@@ -111,10 +111,10 @@
       <td>{{peso_cost yen_cost exchange_rate}}</td>
       <td>{{exchange_rate}}</td>
       <td>Total Cost</td>
-      <td>
-        <button class="btn btn-primary btnEditItem" id="{{_id}}">
+      <td class="text-center">
+        <!-- <button class="btn btn-primary btnEditItem" id="{{_id}}">
           <span class="glyphicon glyphicon-edit"></span>
-        </button>
+        </button> -->
         <button class="btn btn-primary btnRemoveItem" id="{{_id}}">
           <span class="glyphicon glyphicon-trash"></span>
         </button>
@@ -265,4 +265,14 @@
       <option value="{{_id}}">{{maker}} {{model}} ({{color}})</option>
     {{/each}}
   </select>
+</template>
+
+<template name="search_specific">
+  <div class="col-lg-4">
+    <input type="text" class="form-control " placeholder="Chassis No." id="ch_input">
+  </div>
+  <div class="col-lg-4">
+    <input type="text" class="form-control " placeholder="Engine No." id="en_input">
+  </div>
+  <input type="button" class="btn btn-default" id="i_search" value="Find">
 </template>

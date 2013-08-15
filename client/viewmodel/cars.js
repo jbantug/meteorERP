@@ -1,6 +1,7 @@
 Session.set('editing_car_model', false);
 Session.set('current_maker', null);
 Session.set('current_model', null);
+Session.set('inventory_find', {});
 
 Template.car_models.car_models = function(){
 	return cars.find( {}, {sort: {dateadded: -1} } );
@@ -85,7 +86,7 @@ Template.purchase_order_colors.colors = function(){
 }
 
 Template.inventory.inventory_list = function() {
-	return car_in.find({}, {sort: {date_in: -1}});
+	return car_in.find(Session.get('inventory_find'), {sort: {date_in: -1}});
 }
 
 Template.car_models.events({
@@ -107,7 +108,7 @@ Template.car_models.events({
 
 Template.supplier_form.editing_car_model = function(){
 	return Session.equals('editing_car_model', true);
-};
+}
 
 Template.supplier_form.info = function(){
 	if(Session.equals('sid', null)){
@@ -122,7 +123,7 @@ Template.supplier_form.info = function(){
 		return info["name"] = "none selected";
 	}
 
-};
+}
 
 Template.sale_order_items.items = function(){
 	return cars.find({}, {sort: {date_in: -1}});
@@ -209,6 +210,20 @@ Template.add_inventory_form.events({
 		e.preventDefault();
 	}
 
+});
+
+Template.search_specific.events({
+	'click #i_search': function(e,t){
+		if($('#ch_input').val() !== "" && $('#en_input').val() !== ""){
+			if(car_in.find({chassis_number:$('#ch_input').val(),engine_number:$('#en_input').val()}, {sort: {date_in: -1}}).count() > 0){
+				Session.set('inventory_find', {chassis_number:$('#ch_input').val(),engine_number:$('#en_input').val()});
+			}else{
+				Session.set('inventory_find', {});	
+			}
+		}else{
+			Session.set('inventory_find', {});
+		}
+	}
 });
 
 //handlebar helpers
