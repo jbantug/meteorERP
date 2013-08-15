@@ -18,10 +18,10 @@
       <td>{{price}}</td>
       <td>{{delivery_date}}</td>
       <td>
-        <button class="btn btn-primary btnEditCarModel" id="{{_id}}">
+        <button class="btn btn-primary btnEditSO" id="{{_id}}">
           <span class="glyphicon glyphicon-edit"></span>
         </button>
-        <button class="btn btn-primary btnRemoveCarModel" id="{{_id}}">
+        <button class="btn btn-primary btnRemoveSO" id="{{_id}}">
           <span class="glyphicon glyphicon-trash"></span>
         </button>
       </td>
@@ -73,5 +73,83 @@
 		      <input href="#s-order-modal" data-toggle="modal" data-dismiss="modal" type="button" class="btn btn-primary" id="btnAddSO" value="Add">
 		    </div>
 	  	</div>
+	</form>
+</template>
+
+<template name="purchase_orders">
+	<table class="table table-striped">
+		<tr>
+			<th>Supplier</th>
+			<th>Item</th>
+			<th>Price</th>
+			<th>Delivery Date</th>
+			<th>Actions</th>
+		</tr>	
+    	{{#each purchases}}
+    	<tr>
+			<td>{{get_supplier supplier_id}}</td>
+			<td>{{item sku}}</td>
+			<td>{{price}}</td>
+			<td>{{delivery_date}}</td>
+			<td>
+				<button class="btn btn-primary btnEditPO" id="{{_id}}">
+			  		<span class="glyphicon glyphicon-edit"></span>
+				</button>
+				<button class="btn btn-primary btnRemovePO" id="{{_id}}">
+			  		<span class="glyphicon glyphicon-trash"></span>
+				</button>
+			</td>
+    	</tr>
+    	{{/each}}
+	</table>
+</template>
+
+<template name="purchase_order_form">
+	<form id="form_addPO">
+		<div class="form-group clearfix">
+			<label class="col-lg-3 control-label" style="font-weight:normal;">December 31, 2000</label>
+			<div class="col-lg-9"></div>
+		</div>
+		<div class="form-group clearfix">
+			<label class="col-lg-2 control-label">Supplier</label>
+			<div class="col-lg-10">
+		    {{> purchase_order_suppliers}}
+		  </div>
+		</div>
+		<div class="form-group clearfix">
+			<label class="col-lg-2 control-label">Maker</label>
+			<div class="col-lg-10">
+		    {{>purchase_order_makers}}
+		  </div>
+		</div>
+		<div class="form-group clearfix">
+			<label class="col-lg-2 control-label">Model</label>
+			<div class="col-lg-10">
+		    {{>purchase_order_models}}
+		  </div>
+		</div>
+		<div class="form-group clearfix">
+			<label class="col-lg-2 control-label">Color</label>
+			<div class="col-lg-10">
+		    {{>purchase_order_colors}}
+		  </div>
+		</div>
+		<div class="form-group clearfix">
+		    <label class="col-lg-2 control-label">Price</label>
+		    <div class="col-lg-10">
+		      <input type="text" class="form-control" name="po_" id="po_price" required pattern="[0-9,]*" placeholder="Price">
+		    </div>
+	  	</div>
+	  	<div class="form-group clearfix">
+		    <label class="col-lg-2 control-label">Delivery Date</label>
+		    <div class="col-lg-10">
+		      <input type="date" class="form-control" name="po_delivery" id="po_delivery" required>
+		    </div>
+	  	</div>
+		<div class="form-group clearfix">
+			<div class="col-offset-2 col-lg-10">
+		      <input href="#p-order-modal" data-toggle="modal" data-dismiss="modal" type="button" class="btn btn-primary" id="btnAddPO" value="Add">
+		    </div>
+		</div>
 	</form>
 </template>

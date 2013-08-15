@@ -82,44 +82,6 @@
     </form>
 </template>
 
-<template name="purchase_order_form">
-  <form>
-    <div class="form-group clearfix">
-      <label class="col-lg-3 control-label" style="font-weight:normal;">December 31, 2000</label>
-      <div class="col-lg-9"></div>
-    </div>
-    <div class="form-group clearfix">
-      <label class="col-lg-2 control-label">Supplier</label>
-      <div class="col-lg-10">
-        {{> purchase_order_suppliers}}
-      </div>
-    </div>
-    <div class="form-group clearfix">
-      <label class="col-lg-2 control-label">Maker</label>
-      <div class="col-lg-10">
-        {{>purchase_order_makers}}
-      </div>
-    </div>
-    <div class="form-group clearfix">
-      <label class="col-lg-2 control-label">Model</label>
-      <div class="col-lg-10">
-        {{>purchase_order_models}}
-      </div>
-    </div>
-    <div class="form-group clearfix">
-      <label class="col-lg-2 control-label">Color</label>
-      <div class="col-lg-10">
-        {{>purchase_order_colors}}
-      </div>
-    </div>
-    <div class="form-group clearfix">
-      <div class="col-offset-2 col-lg-10">
-        <button href="#p-order-modal" data-toggle="modal" data-dismiss="modal" type="submit" class="btn btn-primary">Add</button>
-      </div>
-    </div>
-  </form>
-</template>
-
 <template name="inventory">
   <table class="table table-striped">
     <tr>
@@ -149,10 +111,10 @@
       <td>{{peso_cost yen_cost exchange_rate}}</td>
       <td>{{exchange_rate}}</td>
       <td>Total Cost</td>
-      <td>
-        <button class="btn btn-primary btnEditItem" id="{{_id}}">
+      <td class="text-center">
+        <!-- <button class="btn btn-primary btnEditItem" id="{{_id}}">
           <span class="glyphicon glyphicon-edit"></span>
-        </button>
+        </button> -->
         <button class="btn btn-primary btnRemoveItem" id="{{_id}}">
           <span class="glyphicon glyphicon-trash"></span>
         </button>
@@ -242,7 +204,7 @@
 </template>
 
 <template name="purchase_order_makers">
-  <select class="form-control" id="c_maker">
+  <select class="form-control" id="purchase_maker">
     {{#each makers}}
       <option value="{{maker}}">{{maker}}</option>
     {{/each}}
@@ -266,7 +228,7 @@
 </template>
 
 <template name="purchase_order_models">
-  <select class="form-control" id="c_model">
+  <select class="form-control" id="purchase_model">
     {{#each models}}
       <option value="{{model}}">{{model}}</option>
     {{/each}}
@@ -290,7 +252,7 @@
 </template>
 
 <template name="purchase_order_colors">
-  <select class="form-control" id="c_color">
+  <select class="form-control" id="purchase_color">
     {{#each colors}}
       <option value="{{color}}">{{color}}</option>
     {{/each}}
@@ -303,4 +265,14 @@
       <option value="{{_id}}">{{maker}} {{model}} ({{color}})</option>
     {{/each}}
   </select>
+</template>
+
+<template name="search_specific">
+  <div class="col-lg-4">
+    <input type="text" class="form-control " placeholder="Chassis No." id="ch_input">
+  </div>
+  <div class="col-lg-4">
+    <input type="text" class="form-control " placeholder="Engine No." id="en_input">
+  </div>
+  <input type="button" class="btn btn-default" id="i_search" value="Find">
 </template>
