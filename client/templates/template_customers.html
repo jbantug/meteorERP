@@ -89,3 +89,11 @@
   {{/each}}
   </select>
 </template>
+
+<template name="sale_order_customers">
+  <select class="form-control" id="sell_customer">
+  {{#each customers}}
+    <option value="{{_id}}">{{name}}</option>
+  {{/each}}
+  </select>
+</template>

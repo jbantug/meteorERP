@@ -1,0 +1,71 @@
+<template name="sales_orders">
+  <table class="table table-striped">
+    <tr>
+      <th>Customer</th>
+      <th>Item</th>
+      <th>Chassis No.</th>
+      <th>Engine No.</th>
+      <th>Price</th>
+      <th>Delivery Date</th>
+    </tr>
+    {{#each car_models}}
+    <tr>
+      <td>{{get_customer customer_id}}</td>
+      <td>{{item sku}}</td>
+      <td>{{chassis_number}}</td>
+      <td>{{engine_number}}</td>
+      <td>{{price}}</td>
+      <td>{{delivery_date}}</td>
+      <td>
+        <button class="btn btn-primary btnEditCarModel" id="{{_id}}">
+          <span class="glyphicon glyphicon-edit"></span>
+        </button>
+        <button class="btn btn-primary btnRemoveCarModel" id="{{_id}}">
+          <span class="glyphicon glyphicon-trash"></span>
+        </button>
+      </td>
+    </tr>
+    {{/each}}
+  </table>
+</template>
+
+<template name="sales_order_for,">
+	<form class="form-horizontal">
+		<div class="form-group clearfix">
+      		<label class="col-lg-2 control-label">Customer</label>
+	      	<div class="col-lg-10">
+				   {{> sale_order_customers}}
+			</div>
+		</div>
+	  	<div class="form-group clearfix">
+      		<label class="col-lg-2 control-label">Item</label>
+	      	<div class="col-lg-10">
+				   {{> sale_order_items}}
+			</div>
+		</div>
+	  	<div class="form-group clearfix">
+		    <label class="col-lg-2 control-label">Chassis No.</label>
+		    <div class="col-lg-10">
+		      <input type="text" class="form-control" name="so_chassis" id="so_chassis" required pattern="[a-zA-Z. ]*" placeholder="Chassis No.">
+		    </div>
+	  	</div>
+	  	<div class="form-group clearfix">
+		    <label class="col-lg-2 control-label">Engine No.</label>
+		    <div class="col-lg-10">
+		      <input type="text" class="form-control" name="so_engine" id="so_engine" required pattern="[a-zA-Z. ]*" placeholder="Engine No.">
+		    </div>
+	  	</div>
+	  	<div class="form-group clearfix">
+		    <label class="col-lg-2 control-label">Delivery Date</label>
+		    <div class="col-lg-10">
+		      <input type="date" class="form-control">
+		      <input type="date" class="form-control" name="so_delivery" id="so_delivery" required>
+		    </div>
+	  	</div>
+	  	<div class="form-group clearfix">
+		    <div class="col-offset-2 col-lg-10">
+		      <button type="submit" class="btn btn-primary"  href="#s-order-modal" data-toggle="modal" data-dismiss="modal">Add</button>
+		    </div>
+	  	</div>
+	</form>
+</template>
