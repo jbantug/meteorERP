@@ -13,7 +13,7 @@ Template.search_customers.events({
 		}else{
 			Session.set('customers_find', {});
 		}
-	}*
+	}
 });
 
 Template.customers_badge.customers = function(){
