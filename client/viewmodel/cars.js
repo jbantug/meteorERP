@@ -184,7 +184,7 @@ Template.add_inventory_form.events({
 			control_number: $('#control_number').val(),
 			maker: $('#maker').val(),
 			model: $('#model').val(),
-			dateadded: moment().format("ll");,
+			dateadded: moment().format("ll"),
 			chassis: $('#chassis_number').val(),
 			engine: $('#engine_number').val(),
 			reference_number: $('#reference_number').val(),
