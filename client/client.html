@@ -11,7 +11,7 @@
 
 	<div class="box box-home">
 		<header>
-			<img src="tsi-logo.png" class="head-logo pull-left"/>
+			<img src="" class="head-logo pull-left"/>
 			<div class="head-nav pull-right">
 				{{loginButtons}}
 			</div>
@@ -52,7 +52,7 @@
 				</a>
 				<a href="#sales">
 					<li id="box-selling">
-						<img src="s2.png" width="132" height="132" />
+						<img src="csell2.png" width="132" height="132" />
 						<span>Sales</span>
 					</li>
 				</a>
@@ -176,63 +176,56 @@
 		</div>
 		<br/><br/>
 		<div class="row">
-			<div class="col-lg-4">
-				<div class="list-group">
-					<a href="#a-receive-modal" data-toggle="modal" class="list-group-item">
-						Accounts Receivable
-						<span class="badge pull-right">{{>accounts_receivable_badge}}</span>
-					</a>
-				</div>
-			</div>
-			<div class="col-lg-4">
-				<div class="list-group">
-					<a href="#a-payable-modal" data-toggle="modal" class="list-group-item">
-						Accounts Payable
-						<span class="badge pull-right">{{>accounts_payable_badge}}</span>
-					</a>
-				</div>
-			</div>
-			<div class="col-lg-4">
-				<div class="list-group">
-					<a href="#encash-modal" data-toggle="modal" class="list-group-item">
-						Due Encashment
-						<span class="badge red pull-right">12</span>
-					</a>
-				</div>
-			</div>
 		</div>
-		<br/>
 		<div class="row">
-			<div class="col-lg-6">
-				<div class="list-group">
-					<div class="list-group-item active">
-						<i class="icon-book"></i>
-						Reports
-					</div>
-					<a href="#s-order-modal"  data-toggle="modal" class="list-group-item">Sales Order</a>
-					<a href="#p-order-modal"  data-toggle="modal" class="list-group-item">Purchase Order</a>
-					<a href="#s-payment-modal"  data-toggle="modal" class="list-group-item">Sales Payment</a>
-					<a href="#p-payment-modal"  data-toggle="modal" class="list-group-item">Purchase Payment</a>
-				</div>
-			</div>
-			<div class="col-lg-6">
+			<div class="col-lg-12">
 				<div class="list-group">
 					<div class="list-group-item active">
 						<i class="icon-user"></i>
 						Registered
 					</div>
-					<a href="#customer-modal" data-toggle="modal" class="list-group-item">Customers</a>
-					<a href="#supplier-modal" data-toggle="modal" class="list-group-item">Suppliers</a>
-					<a href="#cars-modal"  data-toggle="modal" class="list-group-item">Cars</a>
-				</div>
-				<div class="list-group">
-					<div class="list-group-item active">
-						<i class="icon-bar-chart"></i>
-						Analytics
+					
+					<ul class="nav nav-tabs">
+					  <li><a href="#customer-modal">Customers</a></li>
+					  <li><a href="#supplier-modal">Suppliers</a></li>
+					  <li><a href="#cars-modal">Cars</a></li>
+					</ul>
+
+					<div class="tab-content">
+					  <div class="tab-pane active" id="customer-modal">
+							<div class="navbar">
+								<div class="navbar-form">
+									<div class="btn-group">
+										<button id="add" class="btn btn-default modal-nav-btn">
+											<i class="icon-plus"></i>
+											Add
+										</button>
+										<button id="search" class="btn btn-default modal-nav-btn">
+											<i class="icon-search"></i>
+											Search
+										</button>
+									</div>
+								</div>
+							</div>
+							{{> customer_form}}
+							<div class="search modal-nav-box box-hide panel well">
+								{{>search_customers}}
+							</div>
+							<div class="table-body">
+			          			{{> customers}}
+			          		</div>
+					  </div>
+					  <div class="tab-pane" id="supplier-modal"></div>
+					  <div class="tab-pane" id="mcars-modal"></div>
 					</div>
-					<a href="#b-customer-modal"  data-toggle="modal" class="list-group-item">Best Customers</a>
-					<a href="#w-customer-modal"  data-toggle="modal" class="list-group-item">Worst Customers</a>
 				</div>
+				
+				
+			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-lg-6">
 			</div>
 		</div>
 	</div>
@@ -1300,7 +1293,7 @@
 		</div>
 	</div>
 
-	<div id="customer-modal" class="modal fade" role="dialog" aria-hidden="true" style="display:none;">
+	<div id="customer-modal" style="display:none;">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -1334,7 +1327,7 @@
 		</div>
 	</div>
 
-	<div id="supplier-modal" class="modal fade" role="dialog" aria-hidden="true" style="display:none;">
+	<div id="supplier-modal" style="display:none;">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
