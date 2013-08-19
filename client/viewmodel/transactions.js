@@ -12,7 +12,7 @@ Template.sales_orders_badge.cars_out = function(){
 }
 
 Template.car_in_badge.cars_in = function(){
-	return car_in.find();
+	return car_info.find();
 }
 
 

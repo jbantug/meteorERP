@@ -4,17 +4,17 @@ Session.set('current_model', null);
 Session.set('inventory_find', {});
 
 Template.car_models.car_models = function(){
-	return cars.find( {}, {sort: {dateadded: -1} } );
+	return car_info.find( {}, {sort: {dateadded: -1} } );
 };
 
 Template.maker_dropdown.makers = function(){
-	var myArray = cars.find().fetch();
+	var myArray = car_info.find().fetch();
 	var distinctArray = _.uniq(myArray, false, function(d) {return d.maker});
 	return distinctArray;
 }
 
 Template.add_inventory_makers.makers = function(){
-	var myArray = cars.find().fetch();
+	var myArray = car_info.find().fetch();
 	var distinctArray = _.uniq(myArray, false, function(d) {return d.maker});
 	return distinctArray;
 }
@@ -26,7 +26,7 @@ Template.add_inventory_makers.events({
 });
 
 Template.purchase_order_makers.makers = function(){
-	var myArray = cars.find().fetch();
+	var myArray = car_info.find().fetch();
 	var distinctArray = _.uniq(myArray, false, function(d) {return d.maker});
 	return distinctArray;
 }
@@ -38,13 +38,13 @@ Template.purchase_order_makers.events({
 });
 
 Template.model_dropdown.models = function(){
-	var myArray = cars.find({maker:Session.get('current_maker')}).fetch();
+	var myArray = car_info.find({maker:Session.get('current_maker')}).fetch();
 	var distinctArray = _.uniq(myArray, false, function(d) {return d.model});
 	return distinctArray;
 }
 
 Template.add_inventory_models.models = function(){
-	var myArray = cars.find({maker:Session.get('current_maker')}).fetch();
+	var myArray = car_info.find({maker:Session.get('current_maker')}).fetch();
 	var distinctArray = _.uniq(myArray, false, function(d) {return d.model});
 	return distinctArray;
 }
@@ -56,7 +56,7 @@ Template.add_inventory_models.events({
 });
 
 Template.purchase_order_models.models = function(){
-	var myArray = cars.find({maker:Session.get('current_maker')}).fetch();
+	var myArray = car_info.find({maker:Session.get('current_maker')}).fetch();
 	var distinctArray = _.uniq(myArray, false, function(d) {return d.model});
 	return distinctArray;
 }
@@ -68,32 +68,32 @@ Template.purchase_order_models.events({
 });
 
 Template.color_dropdown.colors = function(){
-	var myArray = cars.find({maker:Session.get('current_maker'),model:Session.get('current_model')}).fetch();
+	var myArray = car_info.find({maker:Session.get('current_maker'),model:Session.get('current_model')}).fetch();
 	var distinctArray = _.uniq(myArray, false, function(d) {return d.color});
 	return distinctArray;
 }
 
 Template.add_inventory_colors.colors = function(){
-	var myArray = cars.find({maker:Session.get('current_maker'),model:Session.get('current_model')}).fetch();
+	var myArray = car_info.find({maker:Session.get('current_maker'),model:Session.get('current_model')}).fetch();
 	var distinctArray = _.uniq(myArray, false, function(d) {return d.color});
 	return distinctArray;
 }
 
 Template.purchase_order_colors.colors = function(){
-	var myArray = cars.find({maker:Session.get('current_maker'),model:Session.get('current_model')}).fetch();
+	var myArray = car_info.find({maker:Session.get('current_maker'),model:Session.get('current_model')}).fetch();
 	var distinctArray = _.uniq(myArray, false, function(d) {return d.color});
 	return distinctArray;
 }
 
 Template.inventory.inventory_list = function() {
-	return car_in.find(Session.get('inventory_find'), {sort: {date_in: -1}});
+	return car_info.find(Session.get('inventory_find'), {sort: {date_in: -1}});
 }
 
 Template.car_models.events({
 	'click .btnRemoveCarModel': function (e,t){
 		// console.log( e.target.id );
 		Meteor.flush();
-		cars.remove({_id: e.target.id });
+		car_info.remove({_id: e.target.id });
 		
 	},
 	'click .btnEditCarModel': function (e,t){
@@ -116,7 +116,7 @@ Template.supplier_form.info = function(){
 	}
 	else{
 		var sid = Session.get('sid')
-		var info = cars.find( { _id: sid} );
+		var info = car_info.find( { _id: sid} );
 		if(info){
 			return info;
 		}
@@ -126,7 +126,7 @@ Template.supplier_form.info = function(){
 }
 
 Template.sale_order_items.items = function(){
-	return cars.find({}, {sort: {date_in: -1}});
+	return car_info.find({}, {sort: {date_in: -1}});
 }
 
 Template.car_model_form.events({
@@ -139,7 +139,7 @@ Template.car_model_form.events({
 			
 		form['dateadded'] = Date("yyyy-MM-DD HH:mm");
 
-		cars.insert( form, function(err){
+		car_info.insert( form, function(err){
 			if(err){
 				if(err.error === 403){
 					alert("Only admins can create new suppliers.")
@@ -172,7 +172,7 @@ Template.car_model_form.events({
 			form[this.name] = this.value;
 		});
 
-		cars.update({_id: form['id']}, {$set: {maker: form['maker'], model: form['model'], color: form['color'] } });
+		car_info.update({_id: form['id']}, {$set: {maker: form['maker'], model: form['model'], color: form['color'] } });
 	}
 });
 
@@ -190,6 +190,16 @@ Template.add_inventory_form.events({
 			reference_number: $('#reference_number').val(),
 		};
 
+		costs = {
+			control_number: $('#control_number').val(),
+			yen_cost: $('#yen_cost').val(),
+			exchange_rate: $('#exchange_rate').val(),
+			duties_and_taxes: $('#duties_and_taxes').val(),
+			brokerage_factor: $('#brokerage_factor').val(),
+			assembly_reconditioning: $('#assembly_reconditioning').val(),
+			freight_handling: $('#freight_handling').val(),
+		};
+
 		car_info.insert( info, function(err){
 			if(err){
 				if(err.error === 403){
@@ -204,16 +214,6 @@ Template.add_inventory_form.events({
 				$('#form_addInventory')[0].reset();
 			}
 		});
-
-		costs = {
-			control_number: $('#control_number').val(),
-			yen_cost: $('#yen_cost').val(),
-			exchange_rate: $('#exchange_rate').val(),
-			duties_and_taxes: $('#duties_and_taxes').val(),
-			brokerage_factor: $('#brokerage_factor').val(),
-			assembly_reconditioning: $('#assembly_reconditioning').val(),
-			freight_handling: $('#freight_handling').val(),
-		};
 
 		car_costs.insert( costs, function(err){
 			if(err){
@@ -250,7 +250,7 @@ Template.search_specific.events({
 });
 
 Template.price_list.items = function(){
-	return car_in.find({}, {sort: {maker: 1}});
+	return car_info.find({}, {sort: {maker: 1}});
 }
 
 Template.to_deliver.car_out = function(){
@@ -272,21 +272,25 @@ Handlebars.registerHelper("peso_cost", function(yen, rate) {
   return (yen * rate);
 });
 
-Handlebars.registerHelper("item", function(sku) {
-  var car_maker = cars.findOne({_id:sku}).maker;
-  var car_model = cars.findOne({_id:sku}).model;
-  var car_color = cars.findOne({_id:sku}).color;
-  return (car_maker + " " + car_model + "(" + car_color + ")");
-});
+// Handlebars.registerHelper("item", function(sku) {
+//   var car_maker = car_info.findOne({_id:sku}).maker;
+//   var car_model = car_info.findOne({_id:sku}).model;
+//   var car_color = car_info.findOne({_id:sku}).color;
+//   return (car_maker + " " + car_model + "(" + car_color + ")");
+// });
 
-Handlebars.registerHelper("get_maker", function(sku) {
-  return cars.findOne({_id:sku}).maker;
-});
+// Handlebars.registerHelper("get_maker", function(sku) {
+//   return car_info.findOne({_id:sku}).maker;
+// });
 
-Handlebars.registerHelper("get_model", function(sku) {
-  return cars.findOne({_id:sku}).model;
-});
+// Handlebars.registerHelper("get_model", function(sku) {
+//   return car_info.findOne({_id:sku}).model;
+// });
 
-Handlebars.registerHelper("get_color", function(sku) {
-  return cars.findOne({_id:sku}).color;
-});
+// Handlebars.registerHelper("get_color", function(sku) {
+//   return car_info.findOne({_id:sku}).color;
+// });
+
+// Handlebars.registerHelper("car_info", function() {
+//   return car_info.findOne({_id:sku});
+// });

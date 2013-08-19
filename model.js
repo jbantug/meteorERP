@@ -1,14 +1,13 @@
 purchases = new Meteor.Collection("Purchases");
 customers = new Meteor.Collection("Customers");
 suppliers = new Meteor.Collection("Suppliers");
-brokers = new Meteor.Collection("Brokers");
-cars = new Meteor.Collection("Cars");
-car_in = new Meteor.Collection("Car_In");
+car_info = new Meteor.Collection("Cars_Info");
+car_costs = new Meteor.Collection("Car_Costs");
 car_out = new Meteor.Collection("Car_Out");
 transactions = new Meteor.Collection("Transactions");
 expenses = new Meteor.Collection("Expenses");
 customer_checks = new Meteor.Collection("Customer_Checks");
-supplier_checks = new Meteor.Collection("Supplier_Checks");
+general_checks = new Meteor.Collection("General_Checks");
 //# Account model is initially handled by account-base package
 
 function adminUser(userId) {
@@ -67,7 +66,7 @@ suppliers.allow({
     }
 });
 
-brokers.allow({
+car_info.allow({
   insert: function (userId, doc){
     return adminUser(userId);
   },
@@ -83,23 +82,7 @@ brokers.allow({
     }
 });
 
-cars.allow({
-  insert: function (userId, doc){
-    return adminUser(userId);
-  },
-  update: function(userId, docs, fields, modifier){
-
-    return adminUser(userId) || _.all(docs, function(doc) {
-
-      return doc._id === userId;
-      });
-    },
-    remove: function (userId, docs){
-    return adminUser(userId); // only admin can remove
-    }
-});
-
-car_in.allow({
+car_costs.allow({
   insert: function (userId, doc){
     return adminUser(userId);
   },
@@ -179,7 +162,7 @@ customer_checks.allow({
     }
 });
 
-supplier_checks.allow({
+general_checks.allow({
   insert: function (userId, doc){
     return adminUser(userId);
   },
