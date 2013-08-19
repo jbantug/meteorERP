@@ -179,23 +179,46 @@ Template.car_model_form.events({
 
 Template.add_inventory_form.events({
 	'click #btnAddInventory': function (e,t){
-		var car_id = cars.findOne({maker:document.getElementById("add_maker").value,model:document.getElementById("add_model").value,color:document.getElementById("add_color").value})._id;
-		form = {
-			sku: car_id,
-			date_in: Date("yyyy-MM-DD HH:mm"),
-			chassis_number: document.getElementById("chassis_number").value,
-			engine_number: document.getElementById("engine_number").value,
-			freight_handling_cost: document.getElementById("freight_handling_cost").value,
-			brokerage_cost: document.getElementById("brokerage_cost").value,
-			yen_cost: document.getElementById("yen_cost").value,
-			exchange_rate: document.getElementById("exchange_rate").value,
-			supplier_id: document.getElementById("add_supplier").value
+		info = {
+			customer_id: $('#customer_id').val(),
+			control_number: $('#control_number').val(),
+			maker: $('#maker').val(),
+			model: $('#model').val(),
+			dateadded: moment().format("ll");,
+			chassis: $('#chassis_number').val(),
+			engine: $('#engine_number').val(),
+			reference_number: $('#reference_number').val(),
 		};
 
-		car_in.insert( form, function(err){
+		car_info.insert( info, function(err){
 			if(err){
 				if(err.error === 403){
-					alert("Only admins can create new suppliers.")
+					alert("Only admins can add new cars.")
+				}else{
+					alert("Something went wrong. Please try again.");
+					console.log(err);
+				}
+				
+			}
+			else{
+				$('#form_addInventory')[0].reset();
+			}
+		});
+
+		costs = {
+			control_number: $('#control_number').val(),
+			yen_cost: $('#yen_cost').val(),
+			exchange_rate: $('#exchange_rate').val(),
+			duties_and_taxes: $('#duties_and_taxes').val(),
+			brokerage_factor: $('#brokerage_factor').val(),
+			assembly_reconditioning: $('#assembly_reconditioning').val(),
+			freight_handling: $('#freight_handling').val(),
+		};
+
+		car_costs.insert( costs, function(err){
+			if(err){
+				if(err.error === 403){
+					alert("Only admins can add new cars.")
 				}else{
 					alert("Something went wrong. Please try again.");
 					console.log(err);
