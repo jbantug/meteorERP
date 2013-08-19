@@ -7,7 +7,6 @@
 
 <div class="container">
 
-
 	<!--  HOME  -->
 
 	<div class="box box-home">
@@ -21,49 +20,55 @@
 
 		<div class="home-wrapper">
 			<ul style="padding:0px;">
-				<a href="#">
+				<a href="#notifications">
 					<li id="box-notif">
 						<img src="cibell2.png" width="132" height="132" />
 						<span>Notifications</span>
 					</li>
 				</a>
-				<a href="#accounts-modal" data-toggle="modal">
+				<a href="#accounts" data-toggle="modal">
 					<li id="box-accounts">
 						<img src="ciaccounts2.png" width="132" height="132" />
 						<span>Accounts</span>
 					</li>
 				</a>
-				<a href="#">
+				<a href="#customers" data-toggle="modal">
+					<li id="box-accounts">
+						<img src="cichecklist.png" width="132" height="132" />
+						<span>Customers</span>
+					</li>
+				</a>
+				<a href="#inventory">
 					<li id="box-inventory">
 						<img src="cistocks.png" width="132" height="132" />
 						<span>Inventory</span>
 					</li>
 				</a>
-				<a href="#">
+				<a href="#purchases">
 					<li id="box-buying">
 						<img src="ccibuying.png" width="132" height="132" />
-						<span>Buying</span>
+						<span>Purchases</span>
 					</li>
 				</a>
-				<a href="#">
+				<a href="#sales">
 					<li id="box-selling">
 						<img src="csell2.png" width="132" height="132" />
-						<span>Selling</span>
+						<span>Sales</span>
 					</li>
 				</a>
-				<a href="#">
+				<a href="#payments">
 					<li id="box-checks">
-						<img src="cichecklist.png" width="132" height="132" />
-						<span>Checks</span>
+						<img src="cheque.png" width="132" height="132" />
+						<span>Payments</span>
 					</li>
 				</a>
-				<a href="#">
+				<a href="#expenses">
 					<li id="box-expenses">
 						<img src="expensess.png" width="132" height="132" />
 						<span>Expenses</span>
 					</li>
 				</a>
-				<a href="#">
+				<!-- <a href="#">
 					<li id="box-notes">
 						<img src="cinotes.png" width="132" height="132" />
 						<span>Notes</span>
@@ -74,7 +79,7 @@
 						<img src="cisettings.png" width="132" height="132" />
 						<span>Settings</span>
 					</li>
-				</a>
+				</a> -->
 			</ul>
 		</div>
 
@@ -174,16 +179,89 @@
 			<div class="col-lg-4">
 				<div class="list-group">
 					<a href="#a-receive-modal" data-toggle="modal" class="list-group-item">
-						Account Receivable
-						<span class="badge pull-right">12</span>
+						Accounts Receivable
+						<span class="badge pull-right">{{>accounts_receivable_badge}}</span>
 					</a>
 				</div>
 			</div>
 			<div class="col-lg-4">
 				<div class="list-group">
 					<a href="#a-payable-modal" data-toggle="modal" class="list-group-item">
-						Account Payable
-						<span class="badge pull-right">12</span>
+						Accounts Payable
+						<span class="badge pull-right">{{>accounts_payable_badge}}</span>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="list-group">
+					<a href="#encash-modal" data-toggle="modal" class="list-group-item">
+						Due Encashment
+						<span class="badge red pull-right">12</span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="list-group">
+					<div class="list-group-item active">
+						<i class="icon-book"></i>
+						Reports
+					</div>
+					<a href="#s-order-modal"  data-toggle="modal" class="list-group-item">Sales Order</a>
+					<a href="#p-order-modal"  data-toggle="modal" class="list-group-item">Purchase Order</a>
+					<a href="#s-payment-modal"  data-toggle="modal" class="list-group-item">Sales Payment</a>
+					<a href="#p-payment-modal"  data-toggle="modal" class="list-group-item">Purchase Payment</a>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="list-group">
+					<div class="list-group-item active">
+						<i class="icon-user"></i>
+						Registered
+					</div>
+					<a href="#customer-modal" data-toggle="modal" class="list-group-item">Customers</a>
+					<a href="#supplier-modal" data-toggle="modal" class="list-group-item">Suppliers</a>
+					<a href="#cars-modal"  data-toggle="modal" class="list-group-item">Cars</a>
+				</div>
+				<div class="list-group">
+					<div class="list-group-item active">
+						<i class="icon-bar-chart"></i>
+						Analytics
+					</div>
+					<a href="#b-customer-modal"  data-toggle="modal" class="list-group-item">Best Customers</a>
+					<a href="#w-customer-modal"  data-toggle="modal" class="list-group-item">Worst Customers</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="box box-customers box-hide panel" style="margin-top:20px">
+		<div class="panel-heading">
+			<h2 class="panel-title">
+				<button type="button" class="home-access pull-right" aria-hidden="true" style="margin-top: -6px">
+					<i class="icon-home icon-medium"></i>
+				</button>
+				<img src="ciaccounts2.png" width="46" height="41" style="margin-top: -10px"/>
+				Customers
+			</h2>
+		</div>
+		<br/><br/>
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="list-group">
+					<a href="#a-receive-modal" data-toggle="modal" class="list-group-item">
+						Accounts Receivable
+						<span class="badge pull-right">{{>accounts_receivable_badge}}</span>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="list-group">
+					<a href="#a-payable-modal" data-toggle="modal" class="list-group-item">
+						Accounts Payable
+						<span class="badge pull-right">{{>accounts_payable_badge}}</span>
 					</a>
 				</div>
 			</div>
@@ -416,7 +494,7 @@
 				<div class="list-group">
 					<a href="#s-checks-modal" data-toggle="modal" class="list-group-item">
 						Payments from Customers
-						<span class="badge pull-right">12</span>
+						<span class="badge pull-right">{{>sale_checks_badge}}</span>
 					</a>
 				</div>
 			</div>
@@ -424,7 +502,7 @@
 				<div class="list-group">
 					<a href="#p-checks-modal" data-toggle="modal" class="list-group-item">
 						Payments to Supplier
-						<span class="badge pull-right">12</span>
+						<span class="badge pull-right">{{>purchase_checks_badge}}</span>
 					</a>
 				</div>
 			</div>
@@ -524,7 +602,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          			<h3 class="modal-title">Account Receivable</h3>
+          			<h3 class="modal-title">Accounts Receivable</h3>
 				</div>
 				<div class="modal-body">
 					<div class="navbar">
@@ -546,32 +624,7 @@
 						</button>
 					</div>
 					<div class="table-body">
-	          			<table class="table table-striped">
-	          				<tr>
-	          					<th>ID</th>
-	          					<th>Due Date</th>
-	          					<th>Customer</th>
-	          					<th>Item</th>
-	          					<th>Amount</th>
-	          					<th>Action</th>
-	          				</tr>
-	          				<tr>
-	          					<td>1</td>
-	          					<td>01-01-2000</td>
-	          					<td>Customer1</td>
-	          					<td>Toyota Corolla</td>
-	          					<td>Php 50,000</td>
-	          					<td><button href="#s-payform-modal" data-toggle="modal" data-dismiss="modal" type="button" class="btn btn-primary btn-small">Pay</button></td>
-	          				</tr>
-	          				<tr>
-	          					<td>12</td>
-	          					<td>01-02-2002</td>
-	          					<td>Customer2</td>
-	          					<td>Honda Civic</td>
-	          					<td>Php 100,000</td>
-	          					<td><button href="#s-payform-modal" data-toggle="modal" data-dismiss="modal" type="button" class="btn btn-primary btn-small">Pay</button></td>
-	          				</tr>
-	          			</table>
+	          			{{>accounts_receivable}}
 	          		</div>
 		        </div>
 			</div>
@@ -583,7 +636,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          			<h3 class="modal-title">Account Payable</h3>
+          			<h3 class="modal-title">Accounts Payable</h3>
 				</div>
 				<div class="modal-body">
 					<div class="navbar">
@@ -605,32 +658,7 @@
 						</button>
 					</div>
 					<div class="table-body">
-	          			<table class="table table-striped">
-	          				<tr>
-	          					<th>ID</th>
-	          					<th>Due Date</th>
-	          					<th>Supplier</th>
-	          					<th>Item</th>
-	          					<th>Amount</th>
-	          					<th>Action</th>
-	          				</tr>
-	          				<tr>
-	          					<td>1</td>
-	          					<td>01-01-2000</td>
-	          					<td>Supplier1</td>
-	          					<td>Toyota Corolla</td>
-	          					<td>Php 50,000</td>
-	          					<td><button href="#p-payform-modal" data-toggle="modal" data-dismiss="modal" type="button" class="btn btn-primary btn-small">Pay</button></td>
-	          				</tr>
-	          				<tr>
-	          					<td>12</td>
-	          					<td>01-02-2002</td>
-	          					<td>Supplier2</td>
-	          					<td>Honda Civic</td>
-	          					<td>Php 100,000</td>
-	          					<td><button href="#p-payform-modal" data-toggle="modal" data-dismiss="modal" type="button" class="btn btn-primary btn-small">Pay</button></td>
-	          				</tr>
-	          			</table>
+	          			{{>accounts_payable}}
 	          		</div>
 		        </div>
 			</div>
@@ -1110,35 +1138,7 @@
 						</button>
 					</div>
 					<div class="table-body">
-	          			<table class="table table-striped">
-	          				<tr>
-	          					<th>ID</th>
-	          					<th>Date Of Purchase</th>
-	          					<th>Supplier</th>
-	          					<th>Item</th>
-	          					<th>Sale Price</th>
-	          					<th>Quantity</th>
-	          					<th>Total Cost</th>
-	          				</tr>
-	          				<tr>
-	          					<td>1</td>
-	          					<td>01-01-2000</td>
-	          					<td>Supplier1</td>
-	          					<td>Toyota Corolla</td>
-	          					<td>Php 2,000,000</td>
-	          					<td>1</td>
-	          					<td>Php 2,000,000</td>
-	          				</tr>
-	          				<tr>
-	          					<td>2</td>
-	          					<td>02-01-2000</td>
-	          					<td>Supplier1</td>
-	          					<td>Honda Civic</td>
-	          					<td>Php 2,000,000</td>
-	          					<td>2</td>
-	          					<td>Php 4,000,000</td>
-	          				</tr>
-	          			</table>
+	          			{{>purchase_payments}}
 	          		</div>
 		        </div>
 			</div>
@@ -1324,12 +1324,7 @@
 					</div>
 					{{> customer_form}}
 					<div class="search modal-nav-box box-hide panel well">
-						<div class="col-lg-4">
-							<input type="text" class="form-control " placeholder="Check No.">
-						</div>
-						<button class="btn btn-default">
-							Find
-						</button>
+						{{>search_customers}}
 					</div>
 					<div class="table-body">
 	          			{{> customers}}
@@ -1363,17 +1358,10 @@
 					</div>
 					{{>supplier_form}}
 					<div class="search modal-nav-box box-hide panel well">
-						<div class="col-lg-4">
-							<input type="text" class="form-control " placeholder="Check No.">
-						</div>
-						<button class="btn btn-default">
-							Find
-						</button>
+						{{>search_supplier}}
 					</div>
-					<div class="table-body">
-	          			
-	          				{{> suppliers}}
-	          			
+					<div class="table-body">	          			
+	          				{{> suppliers}}	          			
 	          		</div>
 		        </div>
 			</div>
@@ -1493,7 +1481,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left:20px;">&times;</button>
-          			<h3 class="modal-title">Step 1: Add Inventory Item</h3>
+          			<h3 class="modal-title">Add Inventory Item</h3>
 				</div>
 				<div class="modal-body">
 					{{> add_inventory_form}}
@@ -1562,32 +1550,7 @@
 						</button>
 					</div>
 					<div class="table-body">
-	          			<table class="table table-striped">
-	          				<tr>
-	          					<th>ID</th>
-	          					<th>Delivery Date</th>
-	          					<th>Customer</th>
-	          					<th>Item</th>
-	          					<th>Quantity</th>
-	          					<th>Action</th>
-	          				</tr>
-	          				<tr>
-	          					<td>1</td>
-	          					<td>01-01-2000</td>
-	          					<td>Customer1</td>
-	          					<td>Toyota Corolla</td>
-	          					<td>1</td>
-	          					<td><button href="#s-payform-modal" data-toggle="modal" data-dismiss="modal" type="button" class="btn btn-primary btn-small">Delivered</button></td>
-	          				</tr>
-	          				<tr>
-	          					<td>12</td>
-	          					<td>01-02-2002</td>
-	          					<td>Customer2</td>
-	          					<td>Honda Civic</td>
-	          					<td>2</td>
-	          					<td><button href="#" data-toggle="modal" data-dismiss="modal" type="button" class="btn btn-primary btn-small">Delivered</button></td>
-	          				</tr>
-	          			</table>
+	          			{{>to_deliver}}
 	          		</div>
 		        </div>
 			</div>

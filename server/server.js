@@ -29,6 +29,9 @@ Meteor.startup(function(){
     Meteor.publish("Brokers", function(){
         return brokers.find({});
     });
+    Meteor.publish("BrokInfo", function(brokId){
+        return brokers.find({_id:brokId});
+    });
     Meteor.publish("Users", function(){
         return Meteor.users.find({});
     });

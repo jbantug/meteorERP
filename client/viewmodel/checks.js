@@ -1,11 +1,39 @@
 Template.sale_checks.salechecklist = function(){
 	return customer_checks.find({}, {sort: {date_in: -1} } );
+};
 
+Template.sale_checks_badge.sale_checks = function(){
+	return customer_checks.find({}, {sort: {date_in: -1} } );
+};
+
+Template.accounts_receivable.checks = function(){
+	return customer_checks.find({}, {sort: {date_in: -1} } );
+};
+
+Template.accounts_receivable_badge.checks = function(){
+	return customer_checks.find({}, {sort: {date_in: -1} } );
 };
 
 Template.purchase_checks.purchasechecklist = function(){
 	return supplier_checks.find({}, {sort: {date_out: -1} });
 };
+
+Template.purchase_payments.checks = function(){
+	return supplier_checks.find({}, {sort: {date_out: -1} });
+};
+
+Template.accounts_payable.checks = function(){
+	return supplier_checks.find({}, {sort: {date_out: -1} });
+};
+
+Template.accounts_payable_badge.checks = function(){
+	return supplier_checks.find({}, {sort: {date_out: -1} });
+};
+
+Template.purchase_checks_badge.purchase_checks = function(){
+	return supplier_checks.find({}, {sort: {date_out: -1} });
+};
+
 Template.sale_checks.events({
 	'click .btnBounce': function(e,t){
 		console.log(e.target.id);
@@ -39,8 +67,8 @@ Template.sale_checksform.events({
 		form['date_in'] = Date();
 		form['date_encashed'] = "";
 		form['date_bounced'] = "";
-		var cn = car_in.findOne({sku: form['sku'],  }).chassis_number;
-		var en = car_in.findOne({sku: form['sku'] }).engine_number;
+		var cn = car_in.findOne({chassis_number:form['chassis_number']  }).chassis_number;
+		var en = car_in.findOne({engine_number:form['engine_number'] }).engine_number;
 		if(cn === form['chassis_number'] && en === form['engine_number']){	
 
 			customer_checks.insert( form, function(err){
@@ -75,13 +103,13 @@ Template.purchase_checksform.events({
 		$.each( $("#addPurchaseChecks").serializeArray(),function(){
 			form[this.name] = this.value;
 		});
-			
+		form['date_in'] = Date();
 		form['date_out'] = Date();
 		form['date_bounced'] = "";
 		// console.log(form['chassis_number']);
 		// console.log(form['engine_number'])
-		var cn = car_in.findOne({sku: form['sku'],  }).chassis_number;
-		var en = car_in.findOne({sku: form['sku'] }).engine_number;
+		var cn = car_in.findOne({chassis_number:form['chassis_number']  }).chassis_number;
+		var en = car_in.findOne({engine_number:form['engine_number'] }).engine_number;
 		// console.log(cn);
 		// console.log(en);
 		if(cn === form['chassis_number'] && en === form['engine_number']){	
