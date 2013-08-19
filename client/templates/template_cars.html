@@ -85,32 +85,37 @@
 <template name="inventory">
   <table class="table table-striped">
     <tr>
-      <!-- <th>Delivered</th> -->
-      <th>Item</th>
-      <th>Supplier</th>
-      <th>Chassis</th>
-      <th>Engine</th>
-      <th>Freight-Handling Cost</th>
-      <th>Brokerage Cost</th>
-      <th>Yen Cost</th>
-      <th>Peso Cost</th>
-      <th>Rate</th>
-      <!-- <th>Total Cost</th> -->
+      <th>Control #</th>
+      <th>Customer</th>
+      <th>Make</th>
+      <th>Model</th>
+      <th>Yen</th>
+      <th>F/X</th>
+      <th>Peso</th>
+      <th>Duties/Taxes</th>
+      <th>Brokerage Factor</th>
+      <th>Expenses</th>
+      <th>F/H</th>
+      <th>Total Cost</th>
+      <th>Reference #</th>
       <th>Actions</th>
     </tr>
     {{#each inventory_list}}
     <tr>
-      <!-- <td>{{date_in}}</td> -->
-      <td>{{item sku}}</td>
-      <td>{{get_supplier supplier_id}}</td>
-      <td>{{chassis_number}}</td>
-      <td>{{engine_number}}</td>
-      <td>{{freight_handling_cost}}</td>
-      <td>{{brokerage_cost}}</td>
+      <td>{{control_number}}</td>
+      <td>{{customer}}</td>
+      <td>{{maker}}</td>
+      <td>{{model}}</td>
       <td>{{yen_cost}}</td>
-      <td>{{peso_cost yen_cost exchange_rate}}</td>
       <td>{{exchange_rate}}</td>
-      <!-- <td>Total Cost</td> -->
+      <td>{{peso_cost}}</td>
+      <td>{{duties_and_taxes}}</td>
+      <td>{{brokerage_factor}}</td>
+      <td>{{brokerage_cost}}</td>
+      <td>{{assembly_reconditioning}}</td>
+      <td>{{freight_handling}}</td>
+      <td>{{total_landed_cost}}</td>
+      <td>{{reference_number}}</td>
       <td class="text-center">
         <button class="btn btn-primary btnRemoveItem" id="{{_id}}">
           <span class="glyphicon glyphicon-trash"></span>
@@ -124,31 +129,30 @@
 <template name="add_inventory_form">
   <form class="add form-horizontal" id="form_addInventory">
     <div class="form-group clearfix">
+      <label class="col-lg-2 control-label">Control #</label>
+      <div class="col-lg-4">
+         <input type="text" class="form-control" name="control_number" id="control_number" required pattern="[0-9.,]*">
+      </div>
       <label class="col-lg-2 control-label">Maker</label>
       <div class="col-lg-4">
          <input type="text" class="form-control" name="maker" id="maker" required pattern="[0-9.,]*">
-      </div>
-
+      </div>      
+    </div>
+    <div class="form-group clearfix">
       <label class="col-lg-2 control-label">Model</label>
       <div class="col-lg-4">
          <input type="text" class="form-control" name="model" id="model" required pattern="[0-9.,]*">
       </div>
-    </div>
-    <div class="form-group clearfix">
-      <label class="col-lg-2 control-label">Engine</label>
+      <label class="col-lg-2 control-label">Engine No.</label>
       <div class="col-lg-4">
         <input type="text" class="form-control" name="engine" id="engine" required pattern="[0-9.,]*">
-      </div>
+      </div>      
+    </div>
+    <div class="form-group clearfix">
       <label class="col-lg-2 control-label">Chassis No.</label>
       <div class="col-lg-4">
         <input type="text" class="form-control" name="chassis" id="chassis" required pattern="[0-9.,]*">
-      </div>
-    </div>
-    <div class="form-group clearfix">
-      <label class="col-lg-2 control-label">Reference Number</label>
-      <div class="col-lg-4">
-        <input type="text" class="form-control" name="reference_number" id="reference_number" required pattern="[0-9.,]*">
-      </div>
+      </div>      
       <label class="col-lg-2 control-label">Yen Cost</label>
        <div class="col-lg-4">
         <input type="text" class="form-control" name="yen_cost" id="yen_cost" pattern="[0-9.,]*">
@@ -165,19 +169,23 @@
       </div>
     </div>
     <div class="form-group clearfix">
-      <label class="col-lg-2 control-label">Brokerage_factor</label>
+      <label class="col-lg-2 control-label">Brokerage Factor</label>
       <div class="col-lg-4">
         <input type="text" class="form-control" name="brokerage_factor" id="brokerage_factor" required pattern="[0-9.,]*">
       </div>
-      <label class="col-lg-2 control-label">Assembly_recondition</label>
+      <label class="col-lg-2 control-label">Assembly and Reconditioning</label>
       <div class="col-lg-4">
         <input type="text" class="form-control" name="assembly_recondition" id="assembly_recondition" required pattern="[0-9.,]*">
       </div>
     </div>
     <div class="form-group clearfix">
-    <label class="col-lg-2 control-label">Freight-Handling Cost</label>
-      <div class="col-lg-10">
+      <label class="col-lg-2 control-label">Freight/Handling Cost</label>
+      <div class="col-lg-4">
         <input type="text" class="form-control" name="freight_handling" id="freight_handling" required pattern="[0-9.,]*">
+      </div>
+      <label class="col-lg-2 control-label">Reference Number</label>
+      <div class="col-lg-4">
+        <input type="text" class="form-control" name="reference_number" id="reference_number" required pattern="[0-9.,]*">
       </div>
     </div>
 

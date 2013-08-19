@@ -7,7 +7,7 @@
       <th>Company Address</th>
       <th>Contact #</th>
       <th>Email</th>
-      <th>Actions</th>
+      <th colspan="2">Actions</th>
     </tr>
     {{#each customers}}
     <tr>
@@ -21,6 +21,8 @@
         <button class="btn btn-primary btnEditCustomer" id="{{_id}}">
           <span class="glyphicon glyphicon-edit"></span>
         </button>
+      </td>
+      <td>
         <button class="btn btn-primary btnRemoveCustomer" id="{{_id}}">
           <span class="glyphicon glyphicon-trash"></span>
         </button>
