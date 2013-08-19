@@ -47,4 +47,89 @@ Meteor.startup(function(){
     Meteor.publish("SupplierChecks", function(){
         return supplier_checks.find({});
     });
+
+    //dummy data
+    customers.remove({});
+    customers.insert({
+        contact_person: "Rey Necesito",
+        position: "C.E.O",
+        company_name: "My Company",
+        company_address: "My Address",
+        contact_number: "09153460228",
+        email: "reynecesito18@gmail.com",
+        dateadded: moment().format("ll"),
+    });
+    customers.insert({
+        contact_person: "Lester Infiesto",
+        position: "Beer Specialist",
+        company_name: "Beauty and the Beer",
+        company_address: "His Address",
+        contact_number: "09225029183",
+        email: "lesterinfiesto@gmail.com",
+        dateadded: moment().format("ll"),
+    });
+    customers.insert({
+        contact_person: "Slark Enriquez",
+        position: "Philosopher",
+        company_name: "Slark",
+        company_address: "There",
+        contact_number: "23123",
+        email: "slark@slark.com",
+        dateadded: moment().format("ll"),
+    });
+    customers.insert({
+        contact_person: "Vajines Salise",
+        position: "Gobernador",
+        company_name: "The Spotters",
+        company_address: "Anywhere",
+        contact_number: "555-5555",
+        email: "the_spotters@gmail.com",
+        dateadded: moment().format("ll"),
+    });
+    customers.insert({
+        contact_person: "Froi-P Gaviola",
+        position: "High Spotter",
+        company_name: "The Spotters",
+        company_address: "Anywhere",
+        contact_number: "555-5555",
+        email: "the_spotters@gmail.com",
+        dateadded: moment().format("ll"),
+    });
+    suppliers.remove({});
+    suppliers.insert({
+        contact_person: "Supplier 1",
+        position: "Supplier",
+        company_name: "Elite Suppliers",
+        company_address: "Cebu City, Cebu",
+        contact_number: "123-700",
+        email: "elitesuppliers@gmail.com",
+        dateadded: moment().format("ll"),
+    });
+    suppliers.insert({
+        contact_person: "Supplier 2",
+        position: "Supplier",
+        company_name: "Elite Suppliers",
+        company_address: "Cebu City, Cebu",
+        contact_number: "123-700",
+        email: "elitesuppliers@gmail.com",
+        dateadded: moment().format("ll"),
+    });
+    suppliers.insert({
+        contact_person: "John Doe",
+        position: "C.E.O.",
+        company_name: "Suppliers Anonymous",
+        company_address: "Cebu City, Cebu",
+        contact_number: "888-8888",
+        email: "suppliersanonymous@gmail.com",
+        dateadded: moment().format("ll"),
+    });
+    suppliers.insert({
+        contact_person: "Mary Jane",
+        position: "C.O.O.",
+        company_name: "Suppliers Anonymous",
+        company_address: "Cebu City, Cebu",
+        contact_number: "888-8888",
+        email: "suppliersanonymous@gmail.com",
+        dateadded: moment().format("ll"),
+    });
 });
