@@ -17,20 +17,14 @@ Meteor.startup(function(){
     Meteor.publish("CarModels", function(){
         return cars.find({});
     });
-    Meteor.publish("Car_In", function(){
-        return car_in.find({});
+    Meteor.publish("Car_Info", function(){
+        return car_info.find({});
     });
     Meteor.publish("Car_Out", function(){
         return car_out.find({});
     });
     Meteor.publish("CarModelInfo", function(carmodId){
         return suppliers.find({_id:carmodId});
-    });
-    Meteor.publish("Brokers", function(){
-        return brokers.find({});
-    });
-    Meteor.publish("BrokInfo", function(brokId){
-        return brokers.find({_id:brokId});
     });
     Meteor.publish("Users", function(){
         return Meteor.users.find({});

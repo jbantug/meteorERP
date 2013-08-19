@@ -7,7 +7,7 @@
 	        <th>Company Address</th>
 	        <th>Contact #</th>
 	        <th>Email</th>
-	        <td>Actions</td>
+	        <th colspan="2">Actions</th>
 		</tr>
 		{{#each suppliers}}
 		<tr>
@@ -19,10 +19,12 @@
 	        <td>{{email}}</td>
 			<td>
 				<button class="btn btn-primary btnEditSupplier" id="{{_id}}">
-					<span class="glyphicon glyphicon-edit"></span>
+					<i class="icon-edit"></i>
 				</button>
+			</td>
+			<td>
 				<button class="btn btn-primary btnRemoveSupplier" id="{{_id}}">
-					<span class="glyphicon glyphicon-trash"></span>
+					<i class="icon-trash"></i>
 				</button>
 			</td>
 		</tr>

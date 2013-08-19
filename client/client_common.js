@@ -12,12 +12,12 @@ Meteor.subscribe("Users");
 Meteor.subscribe("Brokers")
 Meteor.subscribe("Suppliers");
 Meteor.subscribe("Customers");
-Meteor.subscribe("CarModels");
-Meteor.subscribe("Car_In");
+Meteor.subscribe("Car_Info");
+Meteor.subscribe("Car_Costs")
 Meteor.subscribe("Car_Out");
 Meteor.subscribe("Expenses");
 Meteor.subscribe("CustomerChecks");
-Meteor.subscribe("SupplierChecks");
+Meteor.subscribe("GeneralChecks");
 Meteor.autosubscribe(function() {
 	Meteor.subscribe("BrokInfo", Session.get('bid') );
 	Meteor.subscribe("SuppInfo", Session.get('sid') );
