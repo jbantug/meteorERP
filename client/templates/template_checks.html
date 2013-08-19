@@ -1,34 +1,28 @@
 <template name="sale_checksform">
 	<form class="add modal-nav-box box-hide panel well form-horizontal" id="addSaleChecks">
 	  	<div class="form-group clearfix">
-	  		<label class="col-lg-2 control-label">Customer</label>
-	      	<div class="btn-group col-lg-10">
-				{{> check_customers}}
-			</div>
-		</div>
-	  	<div class="form-group clearfix">
-	  		<label class="col-lg-2 control-label">Item</label>
-	      	<div class="btn-group col-lg-10">
-		  		{{>sale_order_items}}
-			</div>
-		</div>
-	  	<div class="form-group clearfix">
 	    	<label class="col-lg-2 control-label">Check Number</label>
 	    	<div class="col-lg-10">
 	      		<input type="text" class="form-control" name="check_number">
 			</div>
 	  	</div>
 	  	<div class="form-group clearfix">
-	    	<label class="col-lg-2 control-label">Chassis No</label>
+	    	<label class="col-lg-2 control-label">Check Date</label>
 	    	<div class="col-lg-10">
-	      		<input type="text" class="form-control" name="chassis_number">
+	      		<input type="text" class="form-control" name="check_date">
 			</div>
 	  	</div>
 	  	<div class="form-group clearfix">
-	    	<label class="col-lg-2 control-label">Engine No</label>
-	    	<div class="col-lg-10">
-	      		<input type="text" class="form-control" name="engine_number">
-			</div>
+		    <label class="col-lg-2 control-label">Control Number</label>
+		    <div class="col-lg-10">
+		      <input type="text" class="form-control" name="control_number">
+		    </div>
+	  	</div>
+	  	<div class="form-group clearfix">
+		    <label class="col-lg-2 control-label">Bank</label>
+		    <div class="col-lg-10">
+		      <input type="text" class="form-control" name="bank">
+		    </div>
 	  	</div>
 	  	<div class="form-group clearfix">
 		    <label class="col-lg-2 control-label">Amount</label>
@@ -37,9 +31,21 @@
 		    </div>
 	  	</div>
 	  	<div class="form-group clearfix">
-	    	<label class="col-lg-2 control-label">Due Date</label>
+	    	<label class="col-lg-2 control-label">Date In</label>
 	    	<div class="col-lg-10">
-	      		<input type="date" class="form-control" name="due_date">
+	      		<input type="date" class="form-control" name="date_in">
+	    	</div>
+	  	</div>
+	  	<div class="form-group clearfix">
+	    	<label class="col-lg-2 control-label">Date Encashed</label>
+	    	<div class="col-lg-10">
+	      		<input type="date" class="form-control" name="date_encashed">
+	    	</div>
+	  	</div>
+	  	<div class="form-group clearfix">
+	    	<label class="col-lg-2 control-label">Date Bounced</label>
+	    	<div class="col-lg-10">
+	      		<input type="date" class="form-control" name="date_bounced">
 	    	</div>
 	  	</div>
 		<div class="form-group clearfix">
