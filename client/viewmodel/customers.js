@@ -9,11 +9,11 @@ Template.customers.customers = function(){
 Template.search_customers.events({
 	'click #c_search': function(e,t){
 		if($('#c_input').val() !== ""){
-			Session.set('customers_find', {name:$('#c_input').val()});
+			Session.set('customers_find', {contact_person:$('#c_input').val()});
 		}else{
 			Session.set('customers_find', {});
 		}
-	}
+	}*
 });
 
 Template.customers_badge.customers = function(){
@@ -111,7 +111,7 @@ Template.customer_form.events({
 			form[this.name] = this.value;
 		});
 
-		customers.update({_id: form['id']}, {$set: {name: form['name'], company: form['company'], description: form['description'] } });
+		customers.update({_id: form['id']}, {$set: {contact_person: form['comtact_person'], position: form['position'], company_name: form['company_name'], company_address: form['company_address'], contact_number: form['contact_number'], email: form['email'] } });
 	}
 });
 
