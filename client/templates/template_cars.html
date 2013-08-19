@@ -85,7 +85,7 @@
 <template name="inventory">
   <table class="table table-striped">
     <tr>
-      <th>Delivered</th>
+      <!-- <th>Delivered</th> -->
       <th>Item</th>
       <th>Supplier</th>
       <th>Chassis</th>
@@ -95,12 +95,12 @@
       <th>Yen Cost</th>
       <th>Peso Cost</th>
       <th>Rate</th>
-      <th>Total Cost</th>
+      <!-- <th>Total Cost</th> -->
       <th>Actions</th>
     </tr>
     {{#each inventory_list}}
     <tr>
-      <td>{{date_in}}</td>
+      <!-- <td>{{date_in}}</td> -->
       <td>{{item sku}}</td>
       <td>{{get_supplier supplier_id}}</td>
       <td>{{chassis_number}}</td>
@@ -110,11 +110,8 @@
       <td>{{yen_cost}}</td>
       <td>{{peso_cost yen_cost exchange_rate}}</td>
       <td>{{exchange_rate}}</td>
-      <td>Total Cost</td>
+      <!-- <td>Total Cost</td> -->
       <td class="text-center">
-        <!-- <button class="btn btn-primary btnEditItem" id="{{_id}}">
-          <span class="glyphicon glyphicon-edit"></span>
-        </button> -->
         <button class="btn btn-primary btnRemoveItem" id="{{_id}}">
           <span class="glyphicon glyphicon-trash"></span>
         </button>
@@ -300,4 +297,33 @@
 
 <template name="car_in_badge">
   {{cars_in.count}}
+</template>
+
+<template name="to_deliver">
+  <table class="table table-striped">
+    <tr>
+      <th>Item</th>
+      <th>Chassis No.</th>
+      <th>Engine No.</th>
+      <th>Customer</th>
+      <th>Delivery Date</th>
+      <th>Delivered</th>
+    </tr>
+    {{#each car_out}}
+    <tr>
+      <td>{{item sku}}</td>
+      <td>{{chassis_number}}</td>
+      <td>{{engine_number}}</td>
+      <td>{{get_customer customer_id}}</td>
+      <td>{{delivery_date}}</td>
+      <td>
+        {{#if delivered}}
+          <button type="button" class="btn btn-primary btn-small btnUndo" id="{{_id}}">Undo</button>
+        {{else}}
+          <button type="button" class="btn btn-primary btn-small btnDelivered" id="{{_id}}">Delivered</button>
+        {{/if}}
+      </td>
+    </tr>
+    {{/each}}
+  </table>
 </template>

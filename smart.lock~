@@ -2,16 +2,11 @@
   "meteor": {},
   "dependencies": {
     "basePackages": {
-      "meteor_nvd3": {},
       "font-awesome": {},
-      "bootstrap-3": {}
+      "bootstrap-3": {},
+      "moment": {}
     },
     "packages": {
-      "meteor_nvd3": {
-        "git": "https://github.com/wescleveland/meteor_nvd3.git",
-        "tag": "v0.1.1",
-        "commit": "5cf64540339a8d2f3510bae352cb9881b655f013"
-      },
       "font-awesome": {
         "git": "https://github.com/nate-strauser/meteor-font-awesome.git",
         "tag": "v3.2.0",
@@ -19,8 +14,13 @@
       },
       "bootstrap-3": {
         "git": "https://github.com/mangasocial/meteor-bootstrap-3.git",
-        "tag": "v0.3.1",
-        "commit": "fe942e8085fc672ae9ddcc1210a5416055fb39d7"
+        "tag": "v0.3.2",
+        "commit": "a09f87b01f625ca86d97f93206e7ff475cf3db3b"
+      },
+      "moment": {
+        "git": "https://github.com/possibilities/meteor-moment.git",
+        "tag": "v1.7.0",
+        "commit": "c64b6ec0e714b9556f4b6643d430b868ba69d3d7"
       }
     }
   }

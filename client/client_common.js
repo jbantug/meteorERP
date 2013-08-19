@@ -9,7 +9,7 @@ Accounts.ui.config({
 
 Meteor.subscribe("Purchases");
 Meteor.subscribe("Users");
-
+Meteor.subscribe("Brokers")
 Meteor.subscribe("Suppliers");
 Meteor.subscribe("Customers");
 Meteor.subscribe("CarModels");
@@ -19,9 +19,9 @@ Meteor.subscribe("Expenses");
 Meteor.subscribe("CustomerChecks");
 Meteor.subscribe("SupplierChecks");
 Meteor.autosubscribe(function() {
-
+	Meteor.subscribe("BrokInfo", Session.get('bid') );
 	Meteor.subscribe("SuppInfo", Session.get('sid') );
 	Meteor.subscribe("CustomerInfo", Session.get('cid') );
-	Meteor.subscribe("CarModelInfo", Session.get('cid') );
+	Meteor.subscribe("CarModelInfo", Session.get('cmid') );
 	Meteor.subscribe("ExpenseInfo", Session.get('xid') );
 });

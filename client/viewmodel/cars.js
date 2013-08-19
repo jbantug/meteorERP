@@ -227,8 +227,22 @@ Template.search_specific.events({
 });
 
 Template.price_list.items = function(){
-	return car_in.find({}, {sort: {date_in: -1}});
+	return car_in.find({}, {sort: {maker: 1}});
 }
+
+Template.to_deliver.car_out = function(){
+	return car_out.find({}, {sort: {delivered: 1}});
+}
+
+Template.to_deliver.events({
+	'click .btnDelivered': function(e,t){
+		car_out.update({_id: e.target.id}, {$set: {delivered: true} });
+	},
+	'click .btnUndo': function(e,t){
+		car_out.update({_id: e.target.id}, {$set: {delivered: false} });
+	},
+
+});
 
 //handlebar helpers
 Handlebars.registerHelper("peso_cost", function(yen, rate) {
