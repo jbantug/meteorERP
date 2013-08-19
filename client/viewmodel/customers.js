@@ -1,9 +1,20 @@
 Session.set('editing_customer', false);
 Session.set('cid', null);
+Session.set('customers_find', {});
 
 Template.customers.customers = function(){
-	return customers.find( {}, {sort: {dateadded: -1} } );
+	return customers.find( Session.get('customers_find'), {sort: {dateadded: -1} } );
 };
+
+Template.search_customers.events({
+	'click #c_search': function(e,t){
+		if($('#c_input').val() !== ""){
+			Session.set('customers_find', {name:$('#c_input').val()});
+		}else{
+			Session.set('customers_find', {});
+		}
+	}
+});
 
 Template.customers_badge.customers = function(){
 	return customers.find( {}, {sort: {dateadded: -1} } );
@@ -14,6 +25,10 @@ Template.sale_order_customers.customers = function(){
 }
 
 Template.customers_dropdown.customers = function(){
+	return customers.find( {}, {sort: {dateadded: -1} } );
+};
+
+Template.check_customers.customers = function(){
 	return customers.find( {}, {sort: {dateadded: -1} } );
 };
 

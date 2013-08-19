@@ -52,19 +52,35 @@ customers.allow({
 });
 
 suppliers.allow({
-	insert: function (userId, doc){
-		return adminUser(userId);
-	},
-	update: function(userId, docs, fields, modifier){
+  insert: function (userId, doc){
+    return adminUser(userId);
+  },
+  update: function(userId, docs, fields, modifier){
 
     return adminUser(userId) || _.all(docs, function(doc) {
 
       return doc._id === userId;
       });
-  	},
-  	remove: function (userId, docs){
-		return adminUser(userId); // only admin can remove
-  	}
+    },
+    remove: function (userId, docs){
+    return adminUser(userId); // only admin can remove
+    }
+});
+
+brokers.allow({
+  insert: function (userId, doc){
+    return adminUser(userId);
+  },
+  update: function(userId, docs, fields, modifier){
+
+    return adminUser(userId) || _.all(docs, function(doc) {
+
+      return doc._id === userId;
+      });
+    },
+    remove: function (userId, docs){
+    return adminUser(userId); // only admin can remove
+    }
 });
 
 cars.allow({

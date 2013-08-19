@@ -1,9 +1,20 @@
 Session.set('editing_supplier', false);
 Session.set('sid', null);
+Session.set('suppliers_find', {});
 
 Template.suppliers.suppliers = function(){
-	return suppliers.find( {}, {sort: {dateadded: -1} } );
+	return suppliers.find( Session.get('suppliers_find'), {sort: {dateadded: -1} } );
 };
+
+Template.search_supplier.events({
+	'click #s_search': function(e,t){
+		if($('#s_input').val() !== ""){
+			Session.set('suppliers_find', {name:$('#s_input').val()});
+		}else{
+			Session.set('suppliers_find', {});
+		}
+	}
+});
 
 Template.suppliers_badge.suppliers = function(){
 	return suppliers.find( {}, {sort: {dateadded: -1} } );

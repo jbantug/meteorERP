@@ -3,7 +3,7 @@
 	  	<div class="form-group clearfix">
 	  		<label class="col-lg-2 control-label">Customer</label>
 	      	<div class="btn-group col-lg-10">
-				{{> customers_dropdown}}
+				{{> check_customers}}
 			</div>
 		</div>
 	  	<div class="form-group clearfix">
@@ -178,4 +178,92 @@
 		{{/each}}
 		</tr>
 	</table>
+</template>
+
+<template name="accounts_receivable">
+	<table class="table table-striped">
+		<tr>
+			<th>Due Date</th>
+			<th>Issue Date</th>
+			<th>Check No.</th>
+			<th>Customer</th>
+			<th>Item</th>
+			<th>Amount</th>
+		</tr>
+		{{#each checks}}
+		<tr>
+			<td> {{due_date}} </td>
+			<td> {{date_in}} </td>
+			<td> {{check_number}} </td>
+			<td> {{get_customer customer_id}}</td>
+			<td> {{item sku}} </td>
+			<td> {{amount}}</td>
+		</tr>
+		{{/each}}
+		</tr>
+	</table>
+</template>
+
+<template name="accounts_payable">
+	<table class="table table-striped">
+		<tr>
+			<th>Due Date</th>
+			<th>Issue Date</th>
+			<th>Check No.</th>
+			<th>Supplier</th>
+			<th>Item</th>
+			<th>Amount</th>
+		</tr>
+		{{#each checks}}
+		<tr>
+			<td> {{due_date}} </td>
+			<td> {{date_in}} </td>
+			<td> {{check_number}} </td>
+			<td> {{get_supplier supplier_id}}</td>
+			<td> {{item sku}} </td>
+			<td> {{amount}}</td>
+		</tr>
+		{{/each}}
+		</tr>
+	</table>
+</template>
+
+<template name="purchase_payments">
+	<table class="table table-striped">
+		<tr>
+			<th>Due Date</th>
+			<th>Issue Date</th>
+			<th>Check No.</th>
+			<th>Supplier</th>
+			<th>Item</th>
+			<th>Amount</th>
+		</tr>
+		{{#each checks}}
+		<tr>
+			<td> {{due_date}} </td>
+			<td> {{date_in}} </td>
+			<td> {{check_number}} </td>
+			<td> {{get_supplier supplier_id}}</td>
+			<td> {{item sku}} </td>
+			<td> {{amount}}</td>
+		</tr>
+		{{/each}}
+		</tr>
+	</table>
+</template>
+
+<template name="accounts_receivable_badge">
+	{{checks.count}}
+</template>
+
+<template name="accounts_payable_badge">
+	{{checks.count}}
+</template>
+
+<template name="sale_checks_badge">
+	{{sale_checks.count}}
+</template>
+
+<template name="purchase_checks_badge">
+	{{purchase_checks.count}}
 </template>
