@@ -76,7 +76,7 @@ Template.customer_form.events({
 			form[this.name] = this.value;
 		});
 			
-		form['dateadded'] = Date("yyyy-MM-DD HH:mm");
+		form['dateadded'] = moment().format("ll");
 
 		customers.insert( form, function(err){
 			if(err){
