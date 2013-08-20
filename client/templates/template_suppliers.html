@@ -148,6 +148,14 @@
 	</select>
 </template>
 
+<template name="expense_suppliers">
+	<select class="form-control" name="supplier">
+	{{#each suppliers}}
+		<option value="{{_id}}">{{contact_person}}</option>
+	{{/each}}
+	</select>
+</template>
+
 <template name="search_supplier">
   <div class="col-lg-4">
     <input type="text" class="form-control " placeholder="Enter name here" id="s_input">
