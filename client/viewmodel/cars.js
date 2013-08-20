@@ -178,44 +178,96 @@ Template.car_model_form.events({
 
 
 Template.add_inventory_form.events({
-	'click #btnAddInventory': function (e,t){
-		info = {
-			customer_id: $('#customer_id').val(),
-			control_number: $('#control_number').val(),
-			maker: $('#maker').val(),
-			model: $('#model').val(),
-			dateadded: moment().format("ll"),
-			chassis: $('#chassis_number').val(),
-			engine: $('#engine_number').val(),
-			reference_number: $('#reference_number').val(),
-		};
+	'submit': function (e,t){
+		// info = {
+		// 	customer_id: $('#customer_id').val(),
+		// 	control_number: $('#control_number').val(),
+		// 	maker: $('#maker').val(),
+		// 	model: $('#model').val(),
+		// 	dateadded: moment().format("ll"),
+		// 	chassis: $('#chassis_number').val(),
+		// 	engine: $('#engine_number').val(),
+		// 	reference_number: $('#reference_number').val(),
+		// };
 
-		costs = {
-			control_number: $('#control_number').val(),
-			yen_cost: $('#yen_cost').val(),
-			exchange_rate: $('#exchange_rate').val(),
-			duties_and_taxes: $('#duties_and_taxes').val(),
-			brokerage_factor: $('#brokerage_factor').val(),
-			assembly_reconditioning: $('#assembly_reconditioning').val(),
-			freight_handling: $('#freight_handling').val(),
-		};
+		// costs = {
+		// 	control_number: $('#control_number').val(),
+		// 	yen_cost: $('#yen_cost').val(),
+		// 	exchange_rate: $('#exchange_rate').val(),
+		// 	duties_and_taxes: $('#duties_and_taxes').val(),
+		// 	brokerage_factor: $('#brokerage_factor').val(),
+		// 	assembly_reconditioning: $('#assembly_reconditioning').val(),
+		// 	freight_handling: $('#freight_handling').val(),
+		// };
 
-		car_info.insert( info, function(err){
-			if(err){
-				if(err.error === 403){
-					alert("Only admins can add new cars.")
-				}else{
-					alert("Something went wrong. Please try again.");
-					console.log(err);
-				}
+		// out = {
+		// 	control_number: $('#control_number').val(),
+		// 	net_selling_price: null,
+		// 	delivery_date: null,
+		// 	date_out: null,
+		// 	delivered: false,
+		// };
+
+		// car_info.insert( info, function(err){
+		// 	if(err){
+		// 		if(err.error === 403){
+		// 			alert("Only admins can add new cars.")
+		// 		}else{
+		// 			alert("Something went wrong. Please try again.");
+		// 			console.log(err);
+		// 		}
 				
-			}
-			else{
-				$('#form_addInventory')[0].reset();
-			}
-		});
+		// 	}
+		// 	else{
+		// 		$('#form_addInventory')[0].reset();
+		// 	}
+		// });
 
-		car_costs.insert( costs, function(err){
+		// car_costs.insert( costs, function(err){
+		// 	if(err){
+		// 		if(err.error === 403){
+		// 			alert("Only admins can add new cars.")
+		// 		}else{
+		// 			alert("Something went wrong. Please try again.");
+		// 			console.log(err);
+		// 		}
+				
+		// 	}
+		// 	else{
+		// 		$('#form_addInventory')[0].reset();
+		// 	}
+		// });
+
+		// car_out.insert( out, function(err){
+		// 	if(err){
+		// 		if(err.error === 403){
+		// 			alert("Only admins can add new cars.")
+		// 		}else{
+		// 			alert("Something went wrong. Please try again.");
+		// 			console.log(err);
+		// 		}
+				
+		// 	}
+		// 	else{
+		// 		$('#form_addInventory')[0].reset();
+		// 	}
+		// });
+
+		// e.preventDefault();
+
+		form = {};
+
+		$.each( $("#form_addInventory").serializeArray(),function(){
+			form[this.name] = this.value;
+		});
+		
+		form['dateadded'] = Date("yyyy-MM-DD HH:mm");
+		form['net_selling_price'] = null;
+		form['delivery_date'] = null;
+		form['date_out'] = null;
+		form['delivered'] = false;
+
+		car_info.insert( form, function(err){
 			if(err){
 				if(err.error === 403){
 					alert("Only admins can add new cars.")
@@ -272,6 +324,9 @@ Handlebars.registerHelper("peso_cost", function(yen, rate) {
   return (yen * rate);
 });
 
+Handlebars.registerHelper("brokerage", function(yen, rate, factor) {
+	return (factor * yen * rate);
+})
 // Handlebars.registerHelper("item", function(sku) {
 //   var car_maker = car_info.findOne({_id:sku}).maker;
 //   var car_model = car_info.findOne({_id:sku}).model;
