@@ -86,39 +86,43 @@
   <table class="table table-striped">
     <tr>
       <th>Control #</th>
-      <th>Customer</th>
       <th>Make</th>
       <th>Model</th>
       <th>Yen</th>
       <th>F/X</th>
       <th>Peso</th>
-      <th>Duties/Taxes</th>
-      <th>Brokerage Factor</th>
+      <th>D/T</th>
+      <th>Brokerage</th>
+      <th>Factor</th>
       <th>Expenses</th>
       <th>F/H</th>
       <th>Total Cost</th>
       <th>Reference #</th>
-      <th>Actions</th>
+      <th colspan="2">Actions</th>
     </tr>
     {{#each inventory_list}}
     <tr>
       <td>{{control_number}}</td>
-      <td>{{customer}}</td>
       <td>{{maker}}</td>
       <td>{{model}}</td>
       <td>{{yen_cost}}</td>
       <td>{{exchange_rate}}</td>
-      <td>{{peso_cost}}</td>
+      <td>{{peso_cost yen_cost exchange_rate}}</td>
       <td>{{duties_and_taxes}}</td>
+      <td>{{brokerage yen_cost exchange_rate brokerage_factor}}</td>
       <td>{{brokerage_factor}}</td>
-      <td>{{brokerage_cost}}</td>
       <td>{{assembly_reconditioning}}</td>
       <td>{{freight_handling}}</td>
       <td>{{total_landed_cost}}</td>
       <td>{{reference_number}}</td>
       <td class="text-center">
+        <button class="btn btn-primary btnSellItem" id="{{_id}}">
+          <i class="icon-money"></i>
+        </button>
+      </td>
+      <td class="text-center">
         <button class="btn btn-primary btnRemoveItem" id="{{_id}}">
-          <span class="glyphicon glyphicon-trash"></span>
+          <i class="icon-trash"></i>
         </button>
       </td>
     </tr>
@@ -127,7 +131,7 @@
 </template>
 
 <template name="add_inventory_form">
-  <form class="add form-horizontal" id="form_addInventory">
+  <form class="add modal-nav-box box-hide panel well form-horizontal" id="form_addInventory">
     <div class="form-group clearfix">
       <label class="col-lg-2 control-label">Control #</label>
       <div class="col-lg-4">
@@ -175,7 +179,7 @@
       </div>
       <label class="col-lg-2 control-label">Assembly and Reconditioning</label>
       <div class="col-lg-4">
-        <input type="text" class="form-control" name="assembly_recondition" id="assembly_recondition" required pattern="[0-9.,]*">
+        <input type="text" class="form-control" name="assembly_reconditioning" id="assembly_reconditioning" required pattern="[0-9.,]*">
       </div>
     </div>
     <div class="form-group clearfix">
@@ -192,7 +196,7 @@
     <br/>
     <div class="form-group clearfix">
       <div class="col-offset-10 col-lg-2" style="text-align:right;">
-        <input href="#inventory-modal" data-toggle="modal" data-dismiss="modal" type="button" class="btn btn-primary" id="btnAddInventory" value="Add">
+        <button type="submit" class="btn btn-primary">Add</button>
       </div>
     </div>
   </form>
