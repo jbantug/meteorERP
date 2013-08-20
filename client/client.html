@@ -314,10 +314,6 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="list-group col-lg-12">
-					<div class="list-group-item active">
-						<i class="icon-book"></i>
-						Item Lists
-					</div>
 					<ul class="nav nav-tabs">
 					  <li class="active"><a href="#inventory-modal" data-toggle="tab" class="list-group-item">Stock Ledger</a></li>
 					  <li><a href="#sold-items-modal" data-toggle="tab" class="list-group-item">Sold Items (per customer)</a></li>
@@ -365,47 +361,23 @@
 					<i class="icon-home icon-medium"></i>
 				</button>
 				<img src="ccibuying.png" width="46" height="41" style="margin-top: -10px"/>
-				Buying
+				Purchases
 			</h2>
 		</div>
-		<br/><br/>
 		<div class="row">
-			<div class="col-lg-4">
+			<div class="col-lg-12">
 				<div class="list-group">
-					<a href="#supplier-modal" data-toggle="modal" class="list-group-item">
-						Suppliers
-						<span class="badge pull-right">{{>suppliers_badge}}</span>
-					</a>
-				</div>
-			</div>
-			<div class="col-lg-4">
-				<div class="list-group">
-					<a href="#p-order-modal" data-toggle="modal" class="list-group-item">
-						Purchase Order
-						<span class="badge pull-right">{{>purchase_orders_badge}}</span>
-					</a>
-				</div>
-			</div>
-		</div>
-		<br/>
-		<div class="row">
-			<div class="col-lg-6">
-				<div class="list-group">
-					<div href="#" class="list-group-item active">
-						<i class="icon-book"></i>
-						Reports
+					<ul class="nav nav-tabs">
+						<li class="active">
+							<a href="#inventory-modal" data-toggle="modal" class="list-group-item">Stock Ledger</a>
+						</li>
+					</ul>
+				<div class="tab-content">
+					<div class="tab-pane active" id="inventory-modal">
+						
 					</div>
-					<a href="#pricelist-modal" data-toggle="modal" class="list-group-item">Price List</a>
-					<a href="#inventory-modal" data-toggle="modal" class="list-group-item">Stock Ledger</a>
 				</div>
-			</div>
-			<div class="col-lg-6">
-				<div class="list-group">
-					<div href="#" class="list-group-item active">
-						<i class="icon-bar-chart"></i>
-						Analytics
-					</div>
-					<a href="#" data-toggle="modal" class="list-group-item">Purchase Analytics</a>
+					
 				</div>
 			</div>
 		</div>
@@ -418,47 +390,18 @@
 					<i class="icon-home icon-medium"></i>
 				</button>
 				<img src="csell2.png" width="46" height="41" style="margin-top: -10px"/>
-				Selling
+				Sales
 			</h2>
 		</div>
-		<br/><br/>
+
 		<div class="row">
-			<div class="col-lg-4">
-				<div class="list-group">
-					<a href="#customer-modal" data-toggle="modal" class="list-group-item">
-						Customers
-						<span class="badge pull-right">{{>customers_badge}}</span>
-					</a>
-				</div>
-			</div>
-			<div class="col-lg-4">
-				<div class="list-group">
-					<a href="#s-order-modal" data-toggle="modal" class="list-group-item">
-						Sales Order
-						<span class="badge pull-right">{{>sales_orders_badge}}</span>
-					</a>
-				</div>
-			</div>
-		</div>
-		<br/>
-		<div class="row">
-			<div class="col-lg-6">
-				<div class="list-group">
-					<div href="#" class="list-group-item active">
-						<i class="icon-book"></i>
-						Reports
-					</div>
-					<a href="#inventory-modal" data-toggle="modal" class="list-group-item">Stock Ledger</a>
-					<a href="#pricelist-modal" data-toggle="modal" class="list-group-item">Price List</a>
-				</div>
-			</div>
-			<div class="col-lg-6">
-				<div class="list-group">
-					<div href="#" class="list-group-item active">
-						<i class="icon-bar-chart"></i>
-						Analytics
-					</div>
-					<a class="list-group-item">Sales Analytics</a>
+			<ul class="nav nav-tabs">
+				<li class="active" data-toggle="tab" class="list-group-item"><a href="#">Car Sales</a></li>
+			</ul>
+
+			<div class="tab-content">
+				<div class="tab-pane active">
+					
 				</div>
 			</div>
 		</div>
@@ -474,7 +417,6 @@
 				Checks
 			</h2>
 		</div>
-		<br/><br/>
 		<div class="row">
 			<div class="col-lg-12">
 
