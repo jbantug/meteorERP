@@ -1,347 +1,374 @@
 <template name="car_models">
-  <table class="table table-striped">
-    <tr>
-      <th>Maker</th>
-      <th>Model</th>
-      <th>Color</th>
-      <th>Actions</th>
-    </tr>
-    {{#each car_models}}
-    <tr>
-      <td>{{maker}}</td>
-      <td>{{model}}</td>
-      <td>{{color}}</td>
-      <td>
-        <button class="btn btn-primary btnEditCarModel" id="{{_id}}">
-          <span class="glyphicon glyphicon-edit"></span>
-        </button>
-        <button class="btn btn-primary btnRemoveCarModel" id="{{_id}}">
-          <span class="glyphicon glyphicon-trash"></span>
-        </button>
-      </td>
-    </tr>
-    {{/each}}
-  </table>
+    <table class="table table-striped">
+        <tr>
+            <th>Maker</th>
+            <th>Model</th>
+            <th>Color</th>
+            <th>Actions</th>
+        </tr>
+        {{#each car_models}}
+        <tr>
+            <td>{{maker}}</td>
+            <td>{{model}}</td>
+            <td>{{color}}</td>
+            <td>
+                <button class="btn btn-primary btnEditCarModel" id="{{_id}}">
+                    <span class="glyphicon glyphicon-edit"></span>
+                </button>
+                <button class="btn btn-primary btnRemoveCarModel" id="{{_id}}">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </button>
+            </td>
+        </tr>
+        {{/each}}
+    </table>
 </template>
 
 <template name="car_model_form">     
     <form class="add modal-nav-box box-hide panel well form-horizontal" id="form_addCarModel">
-    {{#if editing_car_model}}
-      {{#each info}}
-      <input type="hidden" value="{{_id}}" name="id"/>
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Maker</label>
-        <div class="col-lg-10">
-          <input type="text" value="{{maker}}" class="form-control" name="maker" id="car_maker" required pattern="[a-zA-Z. ]*">
+        {{#if editing_car_model}}
+        {{#each info}}
+        <input type="hidden" value="{{_id}}" name="id"/>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Maker</label>
+            <div class="col-lg-10">
+                <input type="text" value="{{maker}}" class="form-control" name="maker" id="car_maker" required pattern="[a-zA-Z. ]*">
+            </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Model</label>
-        <div class="col-lg-10">
-          <input type="text" value="{{model}}" class="form-control" name="model" id="car_model" required pattern="[a-zA-Z0-9@-&!#. ]*">
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Model</label>
+            <div class="col-lg-10">
+                <input type="text" value="{{model}}" class="form-control" name="model" id="car_model" required pattern="[a-zA-Z0-9@-&!#. ]*">
+            </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Color</label>
-        <div class="col-lg-10">
-          <input type="text" value="{{color}}" class="form-control" name="color" id="car_color" pattern="[a-zA-Z0-9. ]*">
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Color</label>
+            <div class="col-lg-10">
+                <input type="text" value="{{color}}" class="form-control" name="color" id="car_color" pattern="[a-zA-Z0-9. ]*">
+            </div>
         </div>
-      </div>
-      {{/each}}
-    {{else}}
-    <form class="add modal-nav-box box-hide panel well form-horizontal" id="form_addCarModel">
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Maker</label>
-        <div class="col-lg-10">
-          <input type="text" class="form-control" name="maker" id="car_maker" required pattern="[a-zA-Z. ]*">
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Model</label>
-        <div class="col-lg-10">
-          <input type="text" class="form-control" name="model" id="car_model" required pattern="[a-zA-Z0-9@-&!#. ]*">
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Color</label>
-        <div class="col-lg-10">
-          <input type="text" class="form-control" name="color" id="car_color" pattern="[a-zA-Z0-9. ]*">
-        </div>
-      </div>
-      {{/if}}
-      <div class="form-group">
-        <div class="col-offset-2 col-lg-10">
-          {{#if editing_car_model}}
-            <button type="button" class="btn btn-primary" id="btnUpdateCarModel">Update</button>
-            <button type="button" class="btn btn-primary" id="btnCancel">Cancel</button> 
-          {{else}}
-            <button type="submit" class="btn btn-primary" id="btnAddCarModel">Add</button>
-          {{/if}}
-        </div>
-      </div>
-    </form>
+        {{/each}}
+        {{else}}
+        <form class="add modal-nav-box box-hide panel well form-horizontal" id="form_addCarModel">
+            <div class="form-group">
+                <label class="col-lg-2 control-label">Maker</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" name="maker" id="car_maker" required pattern="[a-zA-Z. ]*">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">Model</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" name="model" id="car_model" required pattern="[a-zA-Z0-9@-&!#. ]*">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">Color</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" name="color" id="car_color" pattern="[a-zA-Z0-9. ]*">
+                </div>
+            </div>
+            {{/if}}
+            <div class="form-group">
+                <div class="col-offset-2 col-lg-10">
+                    {{#if editing_car_model}}
+                    <button type="button" class="btn btn-primary" id="btnUpdateCarModel">Update</button>
+                    <button type="button" class="btn btn-primary" id="btnCancel">Cancel</button> 
+                    {{else}}
+                    <button type="submit" class="btn btn-primary" id="btnAddCarModel">Add</button>
+                    {{/if}}
+                </div>
+            </div>
+        </form>
 </template>
 
 <template name="inventory">
-  <table class="table table-striped">
-    <tr>
-      <th>Control #</th>
-      <th>Make</th>
-      <th>Model</th>
-      <th>Yen</th>
-      <th>F/X</th>
-      <th>Peso</th>
-      <th>D/T</th>
-      <th>Brokerage</th>
-      <th>Factor</th>
-      <th>Expenses</th>
-      <th>F/H</th>
-      <th>Total Cost</th>
-      <th>Reference #</th>
-      <th colspan="2">Actions</th>
-    </tr>
-    {{#each inventory_list}}
-    <tr>
-      <td>{{control_number}}</td>
-      <td>{{maker}}</td>
-      <td>{{model}}</td>
-      <td>{{yen_cost}}</td>
-      <td>{{exchange_rate}}</td>
-      <td>{{peso_cost yen_cost exchange_rate}}</td>
-      <td>{{duties_and_taxes}}</td>
-      <td>{{brokerage yen_cost exchange_rate brokerage_factor}}</td>
-      <td>{{brokerage_factor}}</td>
-      <td>{{assembly_reconditioning}}</td>
-      <td>{{freight_handling}}</td>
-      <td>{{total_landed_cost}}</td>
-      <td>{{reference_number}}</td>
-      <td class="text-center">
-        <button class="btn btn-primary btnSellItem" id="{{_id}}">
-          <i class="icon-money"></i>
-        </button>
-      </td>
-      <td class="text-center">
-        <button class="btn btn-primary btnRemoveItem" id="{{_id}}">
-          <i class="icon-trash"></i>
-        </button>
-      </td>
-    </tr>
-    {{/each}}
-  </table>
+    <table class="table table-striped">
+        <tr>
+            <th>Control #</th>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Yen</th>
+            <th>F/X</th>
+            <th>Peso</th>
+            <th>D/T</th>
+            <th>Brokerage</th>
+            <th>Factor</th>
+            <th>Expenses</th>
+            <th>F/H</th>
+            <th>Total Cost</th>
+            <th>Reference #</th>
+            <th colspan="2">Actions</th>
+        </tr>
+        {{#each inventory_list}}
+        <tr>
+            <td>{{control_number}}</td>
+            <td>{{maker}}</td>
+            <td>{{model}}</td>
+            <td>{{yen_cost}}</td>
+            <td>{{exchange_rate}}</td>
+            <td>{{peso_cost yen_cost exchange_rate}}</td>
+            <td>{{duties_and_taxes}}</td>
+            <td>{{brokerage yen_cost exchange_rate brokerage_factor}}</td>
+            <td>{{brokerage_factor}}</td>
+            <td>{{assembly_reconditioning}}</td>
+            <td>{{freight_handling}}</td>
+            <td>{{total_landed_cost}}</td>
+            <td>{{reference_number}}</td>
+            <td class="text-center">
+                <button href="#to-sell-modal" data-toggle="modal" class="btn btn-primary btnSellItem" id="{{_id}}">
+                    <i class="icon-money"></i>
+                </button>
+            </td>
+            <td class="text-center">
+                <button class="btn btn-primary btnRemoveItem" id="{{_id}}">
+                    <i class="icon-trash"></i>
+                </button>
+            </td>
+        </tr>
+        {{/each}}
+    </table>
 </template>
 
 <template name="add_inventory_form">
-  <form class="add modal-nav-box box-hide panel well form-horizontal" id="form_addInventory">
-    <div class="form-group clearfix">
-      <label class="col-lg-2 control-label">Control #</label>
-      <div class="col-lg-4">
-         <input type="text" class="form-control" name="control_number" id="control_number" required pattern="[0-9.,]*">
-      </div>
-      <label class="col-lg-2 control-label">Maker</label>
-      <div class="col-lg-4">
-         <input type="text" class="form-control" name="maker" id="maker" required pattern="[0-9.,]*">
-      </div>      
-    </div>
-    <div class="form-group clearfix">
-      <label class="col-lg-2 control-label">Model</label>
-      <div class="col-lg-4">
-         <input type="text" class="form-control" name="model" id="model" required pattern="[0-9.,]*">
-      </div>
-      <label class="col-lg-2 control-label">Engine No.</label>
-      <div class="col-lg-4">
-        <input type="text" class="form-control" name="engine" id="engine" required pattern="[0-9.,]*">
-      </div>      
-    </div>
-    <div class="form-group clearfix">
-      <label class="col-lg-2 control-label">Chassis No.</label>
-      <div class="col-lg-4">
-        <input type="text" class="form-control" name="chassis" id="chassis" required pattern="[0-9.,]*">
-      </div>      
-      <label class="col-lg-2 control-label">Yen Cost</label>
-       <div class="col-lg-4">
-        <input type="text" class="form-control" name="yen_cost" id="yen_cost" pattern="[0-9.,]*">
-      </div>
-    </div>
-    <div class="form-group clearfix">
-      <label class="col-lg-2 control-label">Exchange Rate</label>
-      <div class="col-lg-4">
-        <input type="text" class="form-control" name="exchange_rate" id="exchange_rate" required pattern="[0-9.,]*">
-      </div>
-      <label class="col-lg-2 control-label">Duties and Taxes</label>
-      <div class="col-lg-4">
-        <input type="text" class="form-control" name="duties_and_taxes" id="duties_and_taxes" required pattern="[0-9.,]*">
-      </div>
-    </div>
-    <div class="form-group clearfix">
-      <label class="col-lg-2 control-label">Brokerage Factor</label>
-      <div class="col-lg-4">
-        <input type="text" class="form-control" name="brokerage_factor" id="brokerage_factor" required pattern="[0-9.,]*">
-      </div>
-      <label class="col-lg-2 control-label">Assembly and Reconditioning</label>
-      <div class="col-lg-4">
-        <input type="text" class="form-control" name="assembly_reconditioning" id="assembly_reconditioning" required pattern="[0-9.,]*">
-      </div>
-    </div>
-    <div class="form-group clearfix">
-      <label class="col-lg-2 control-label">Freight/Handling Cost</label>
-      <div class="col-lg-4">
-        <input type="text" class="form-control" name="freight_handling" id="freight_handling" required pattern="[0-9.,]*">
-      </div>
-      <label class="col-lg-2 control-label">Reference Number</label>
-      <div class="col-lg-4">
-        <input type="text" class="form-control" name="reference_number" id="reference_number" required pattern="[0-9.,]*">
-      </div>
-    </div>
+    <form class="add modal-nav-box box-hide panel well form-horizontal" id="form_addInventory">
+        <div class="form-group clearfix">
+            <label class="col-lg-2 control-label">Control #</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" name="control_number" id="control_number" required pattern="[0-9.,]*">
+            </div>
+            <label class="col-lg-2 control-label">Maker</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" name="maker" id="maker" required pattern="[0-9.,]*">
+            </div>      
+        </div>
+        <div class="form-group clearfix">
+            <label class="col-lg-2 control-label">Model</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" name="model" id="model" required pattern="[0-9.,]*">
+            </div>
+            <label class="col-lg-2 control-label">Engine No.</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" name="engine" id="engine" required pattern="[0-9.,]*">
+            </div>      
+        </div>
+        <div class="form-group clearfix">
+            <label class="col-lg-2 control-label">Chassis No.</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" name="chassis" id="chassis" required pattern="[0-9.,]*">
+            </div>      
+            <label class="col-lg-2 control-label">Yen Cost</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" name="yen_cost" id="yen_cost" pattern="[0-9.,]*">
+            </div>
+        </div>
+        <div class="form-group clearfix">
+            <label class="col-lg-2 control-label">Exchange Rate</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" name="exchange_rate" id="exchange_rate" required pattern="[0-9.,]*">
+            </div>
+            <label class="col-lg-2 control-label">Duties and Taxes</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" name="duties_and_taxes" id="duties_and_taxes" required pattern="[0-9.,]*">
+            </div>
+        </div>
+        <div class="form-group clearfix">
+            <label class="col-lg-2 control-label">Brokerage Factor</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" name="brokerage_factor" id="brokerage_factor" required pattern="[0-9.,]*">
+            </div>
+            <label class="col-lg-2 control-label">Assembly and Reconditioning</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" name="assembly_reconditioning" id="assembly_reconditioning" required pattern="[0-9.,]*">
+            </div>
+        </div>
+        <div class="form-group clearfix">
+            <label class="col-lg-2 control-label">Freight/Handling Cost</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" name="freight_handling" id="freight_handling" required pattern="[0-9.,]*">
+            </div>
+            <label class="col-lg-2 control-label">Reference Number</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" name="reference_number" id="reference_number" required pattern="[0-9.,]*">
+            </div>
+        </div>
 
-    <br/>
-    <div class="form-group clearfix">
-      <div class="col-offset-10 col-lg-2" style="text-align:right;">
-        <button type="submit" class="btn btn-primary">Add</button>
-      </div>
-    </div>
-  </form>
+        <br/>
+        <div class="form-group clearfix">
+            <div class="col-offset-10 col-lg-2" style="text-align:right;">
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+        </div>
+    </form>
 </template>
 
 <template name="maker_dropdown">
-  <select class="form-control" id="c_maker">
-    {{#each makers}}
-      <option value="{{maker}}">{{maker}}</option>
-    {{/each}}
-  </select>
+    <select class="form-control" id="c_maker">
+        {{#each makers}}
+        <option value="{{maker}}">{{maker}}</option>
+        {{/each}}
+    </select>
 </template>
 
 <template name="add_inventory_makers">
-  <select class="form-control" id="add_maker">
-    {{#each makers}}
-      <option value="{{maker}}">{{maker}}</option>
-    {{/each}}
-  </select>
+    <select class="form-control" id="add_maker">
+        {{#each makers}}
+        <option value="{{maker}}">{{maker}}</option>
+        {{/each}}
+    </select>
 </template>
 
 <template name="purchase_order_makers">
-  <select class="form-control" id="purchase_maker">
-    {{#each makers}}
-      <option value="{{maker}}">{{maker}}</option>
-    {{/each}}
-  </select>
+    <select class="form-control" id="purchase_maker">
+        {{#each makers}}
+        <option value="{{maker}}">{{maker}}</option>
+        {{/each}}
+    </select>
 </template>
 
 <template name="model_dropdown">
-  <select class="form-control" id="c_model">
-    {{#each models}}
-      <option value="{{model}}">{{model}}</option>
-    {{/each}}
-  </select>
+    <select class="form-control" id="c_model">
+        {{#each models}}
+        <option value="{{model}}">{{model}}</option>
+        {{/each}}
+    </select>
 </template>
 
 <template name="add_inventory_models">
-  <select class="form-control" id="add_model">
-    {{#each models}}
-      <option value="{{model}}">{{model}}</option>
-    {{/each}}
-  </select>
+    <select class="form-control" id="add_model">
+        {{#each models}}
+        <option value="{{model}}">{{model}}</option>
+        {{/each}}
+    </select>
 </template>
 
 <template name="purchase_order_models">
-  <select class="form-control" id="purchase_model">
-    {{#each models}}
-      <option value="{{model}}">{{model}}</option>
-    {{/each}}
-  </select>
+    <select class="form-control" id="purchase_model">
+        {{#each models}}
+        <option value="{{model}}">{{model}}</option>
+        {{/each}}
+    </select>
 </template>
 
 <template name="color_dropdown">
-  <select class="form-control" id="c_color">
-    {{#each colors}}
-      <option value="{{color}}">{{color}}</option>
-    {{/each}}
-  </select>
+    <select class="form-control" id="c_color">
+        {{#each colors}}
+        <option value="{{color}}">{{color}}</option>
+        {{/each}}
+    </select>
 </template>
 
 <template name="add_inventory_colors">
-  <select class="form-control" id="add_color">
-    {{#each colors}}
-      <option value="{{color}}">{{color}}</option>
-    {{/each}}
-  </select>
+    <select class="form-control" id="add_color">
+        {{#each colors}}
+        <option value="{{color}}">{{color}}</option>
+        {{/each}}
+    </select>
 </template>
 
 <template name="purchase_order_colors">
-  <select class="form-control" id="purchase_color">
-    {{#each colors}}
-      <option value="{{color}}">{{color}}</option>
-    {{/each}}
-  </select>
+    <select class="form-control" id="purchase_color">
+        {{#each colors}}
+        <option value="{{color}}">{{color}}</option>
+        {{/each}}
+    </select>
 </template>
 
 <template name="sale_order_items">
-<select class="form-control" id="so_item" name="sku">
-    {{#each items}}
-      <option value="{{_id}}">{{maker}} {{model}} ({{color}})</option>
-    {{/each}}
-  </select>
+    <select class="form-control" id="so_item" name="sku">
+        {{#each items}}
+        <option value="{{_id}}">{{maker}} {{model}} ({{color}})</option>
+        {{/each}}
+    </select>
 </template>
 
 <template name="search_specific">
-  <div class="col-lg-4">
-    <input type="text" class="form-control " placeholder="Chassis No." id="ch_input">
-  </div>
-  <div class="col-lg-4">
-    <input type="text" class="form-control " placeholder="Engine No." id="en_input">
-  </div>
-  <input type="button" class="btn btn-default" id="i_search" value="Find">
+    <div class="col-lg-4">
+        <input type="text" class="form-control " placeholder="Chassis No." id="ch_input">
+    </div>
+    <div class="col-lg-4">
+        <input type="text" class="form-control " placeholder="Engine No." id="en_input">
+    </div>
+    <input type="button" class="btn btn-default" id="i_search" value="Find">
 </template>
 
 <template name="price_list">
-  <table class="table table-striped">
-    <tr>
-      <th>Maker</th>
-      <th>Model</th>
-      <th>Color</th>
-      <th>Supplier</th>
-      <th>Peso Cost</th>
-    </tr>
-    {{#each items}}
-    <tr class="tr" href="#i-detail-modal" data-toggle="modal" data-dismiss="modal" role="button">
-      <td>{{get_maker sku}}</td>
-      <td>{{get_model sku}}</td>
-      <td>{{get_color sku}}</td>
-      <td>{{get_supplier supplier_id}}</td>
-      <td>{{peso_cost yen_cost exchange_rate}}</td>
-    </tr>
-    {{/each}}
-  </table>
+    <table class="table table-striped">
+        <tr>
+            <th>Maker</th>
+            <th>Model</th>
+            <th>Color</th>
+            <th>Supplier</th>
+            <th>Peso Cost</th>
+        </tr>
+        {{#each items}}
+        <tr class="tr" href="#i-detail-modal" data-toggle="modal" data-dismiss="modal" role="button">
+            <td>{{get_maker sku}}</td>
+            <td>{{get_model sku}}</td>
+            <td>{{get_color sku}}</td>
+            <td>{{get_supplier supplier_id}}</td>
+            <td>{{peso_cost yen_cost exchange_rate}}</td>
+        </tr>
+        {{/each}}
+    </table>
 </template>
 
 <template name="car_in_badge">
-  {{cars_in.count}}
+    {{cars_in.count}}
 </template>
 
 <template name="to_deliver">
-  <table class="table table-striped">
-    <tr>
-      <th>Item</th>
-      <th>Chassis No.</th>
-      <th>Engine No.</th>
-      <th>Customer</th>
-      <th>Delivery Date</th>
-      <th>Delivered</th>
-    </tr>
-    {{#each car_out}}
-    <tr>
-      <td>{{item sku}}</td>
-      <td>{{chassis_number}}</td>
-      <td>{{engine_number}}</td>
-      <td>{{get_customer customer_id}}</td>
-      <td>{{delivery_date}}</td>
-      <td>
-        {{#if delivered}}
-          <button type="button" class="btn btn-primary btn-small btnUndo" id="{{_id}}">Undo</button>
-        {{else}}
-          <button type="button" class="btn btn-primary btn-small btnDelivered" id="{{_id}}">Delivered</button>
-        {{/if}}
-      </td>
-    </tr>
-    {{/each}}
-  </table>
+    <table class="table table-striped">
+        <tr>
+            <th>Item</th>
+            <th>Chassis No.</th>
+            <th>Engine No.</th>
+            <th>Customer</th>
+            <th>Delivery Date</th>
+            <th>Delivered</th>
+        </tr>
+        {{#each car_out}}
+        <tr>
+            <td>{{item sku}}</td>
+            <td>{{chassis_number}}</td>
+            <td>{{engine_number}}</td>
+            <td>{{get_customer customer_id}}</td>
+            <td>{{delivery_date}}</td>
+            <td>
+                {{#if delivered}}
+                <button type="button" class="btn btn-primary btn-small btnUndo" id="{{_id}}">Undo</button>
+                {{else}}
+                <button type="button" class="btn btn-primary btn-small btnDelivered" id="{{_id}}">Delivered</button>
+                {{/if}}
+            </td>
+        </tr>
+        {{/each}}
+    </table>
+</template>
+
+<template name="to_be_sold">
+    <div id="to-sell-modal" class="modal fade" role="dialog" aria-hidden="true" style="display:none;"> 
+        <div class="modal-dialog">
+            <form id="form_addCarSale">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left:20px;">&times;</button>
+                        <h3 class="modal-title">Sell Car</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group clearfix">
+                            <label class="col-lg-2 control-label">Customer</label>
+                            <div class="col-lg-4">
+                                {{>customer_to_sell}}
+                            </div>
+                            <label class="col-lg-2 control-label">Maker</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control" name="delivery_date" id="delivery_date" required>
+                            </div>      
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </template>
