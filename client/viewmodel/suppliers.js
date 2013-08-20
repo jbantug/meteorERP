@@ -81,7 +81,7 @@ Template.supplier_form.events({
 			form[this.name] = this.value;
 		});
 			
-		form['dateadded'] = moment().format("ll");
+		form['dateadded'] = moment().format("MMM DD YYYY");
 
 		suppliers.insert( form, function(err){
 			if(err){
