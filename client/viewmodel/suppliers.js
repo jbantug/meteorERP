@@ -32,6 +32,10 @@ Template.check_suppliers.suppliers = function(){
 	return suppliers.find( {}, {sort: {dateadded: -1} } );
 };
 
+Template.expense_suppliers.suppliers = function(){
+	return suppliers.find( {}, {sort: {dateadded: -1} } );
+};
+
 Template.suppliers.events({
 	'click .btnRemoveSupplier': function (e,t){
 		// console.log( e.target.id );
@@ -77,7 +81,7 @@ Template.supplier_form.events({
 			form[this.name] = this.value;
 		});
 			
-		form['dateadded'] = Date.now();
+		form['dateadded'] = moment().format("ll");
 
 		suppliers.insert( form, function(err){
 			if(err){
@@ -118,6 +122,6 @@ Template.supplier_form.events({
 
 //handlebars
 Handlebars.registerHelper("get_supplier", function(supplier_id) {
-	var result = suppliers.findOne({_id:supplier_id}).name;
+	var result = suppliers.findOne({_id:supplier_id}).contact_person;
   	return result;
 });
