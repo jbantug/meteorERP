@@ -1,158 +1,167 @@
 <template name="customers">
-  <table class="table table-striped">
-    <tr>
-      <th>Contact Person</th>
-      <th>Position</th>
-      <th>Company Name</th>
-      <th>Company Address</th>
-      <th>Contact #</th>
-      <th>Email</th>
-      <th colspan="2">Actions</th>
-    </tr>
-    {{#each customers}}
-    <tr>
-      <td>{{contact_person}}</td>
-      <td>{{position}}</td>
-      <td>{{company_name}}</td>
-      <td>{{company_address}}</td>
-      <td>{{contact_number}}</td>
-      <td>{{email}}</td>
-      <td>
-        <button class="btn btn-primary btnEditCustomer" id="{{_id}}">
-          <span class="glyphicon glyphicon-edit"></span>
-        </button>
-      </td>
-      <td>
-        <button class="btn btn-primary btnRemoveCustomer" id="{{_id}}">
-          <span class="glyphicon glyphicon-trash"></span>
-        </button>
-      </td>
-    </tr>
-    {{/each}}
-  </table>
+    <table class="table table-striped">
+        <tr>
+            <th>Contact Person</th>
+            <th>Position</th>
+            <th>Company Name</th>
+            <th>Company Address</th>
+            <th>Contact #</th>
+            <th>Email</th>
+            <th colspan="2">Actions</th>
+        </tr>
+        {{#each customers}}
+        <tr>
+            <td>{{contact_person}}</td>
+            <td>{{position}}</td>
+            <td>{{company_name}}</td>
+            <td>{{company_address}}</td>
+            <td>{{contact_number}}</td>
+            <td>{{email}}</td>
+            <td>
+                <button class="btn btn-primary btnEditCustomer" id="{{_id}}">
+                    <span class="glyphicon glyphicon-edit"></span>
+                </button>
+            </td>
+            <td>
+                <button class="btn btn-primary btnRemoveCustomer" id="{{_id}}">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </button>
+            </td>
+        </tr>
+        {{/each}}
+    </table>
 </template>
 
 <template name="customer_form">     
     <form class="add modal-nav-box box-hide panel well form-horizontal" id="form_addCustomer">
-  {{#if editing_customer}}
-    {{#each info}}
-      <input type="hidden" value="{{_id}}" name="id"/>
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Contact Person</label>
-        <div class="col-lg-10">
-          <input type="text" value="{{contact_person}}" class="form-control" name="contact_person" required pattern="[a-zA-Z. ]*">
+        {{#if editing_customer}}
+        {{#each info}}
+        <input type="hidden" value="{{_id}}" name="id"/>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Contact Person</label>
+            <div class="col-lg-10">
+                <input type="text" value="{{contact_person}}" class="form-control" name="contact_person" required pattern="[a-zA-Z. ]*">
+            </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Position</label>
-        <div class="col-lg-10">
-          <input type="text" value="{{position}}" class="form-control" name="position"  required pattern="[a-zA-Z. ]*">
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Position</label>
+            <div class="col-lg-10">
+                <input type="text" value="{{position}}" class="form-control" name="position"  required pattern="[a-zA-Z. ]*">
+            </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Company Name</label>
-        <div class="col-lg-10">
-          <input type="text" value="{{company_name}}" class="form-control" name="company_name" required pattern="[a-zA-Z0-9@-&!#. ]*">
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Company Name</label>
+            <div class="col-lg-10">
+                <input type="text" value="{{company_name}}" class="form-control" name="company_name" required pattern="[a-zA-Z0-9@-&!#. ]*">
+            </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Company Address</label>
-        <div class="col-lg-10">
-          <input type="text" value="{{company_address}}" class="form-control" name="company_address" required pattern="[a-zA-Z0-9@-&!#. ]*">
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Company Address</label>
+            <div class="col-lg-10">
+                <input type="text" value="{{company_address}}" class="form-control" name="company_address" required pattern="[a-zA-Z0-9@-&!#. ]*">
+            </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Contact Number</label>
-        <div class="col-lg-10">
-          <input type="text" value="{{contact_number}}" class="form-control" name="contact_number" required pattern="[a-zA-Z0-9@-&!#. ]*">
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Contact Number</label>
+            <div class="col-lg-10">
+                <input type="text" value="{{contact_number}}" class="form-control" name="contact_number" required pattern="[a-zA-Z0-9@-&!#. ]*">
+            </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Email</label>
-        <div class="col-lg-10">
-          <input type="text" value="{{email}}" class="form-control" name="email" required pattern="[a-zA-Z0-9@-&!#. ]*">
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Email</label>
+            <div class="col-lg-10">
+                <input type="text" value="{{email}}" class="form-control" name="email" required pattern="[a-zA-Z0-9@-&!#. ]*">
+            </div>
         </div>
-      </div>
-    
+    </form>
+
     {{/each}}
-  {{else}}
+    {{else}}
     <form class="add modal-nav-box box-hide panel well form-horizontal" id="form_addCustomer">
-      <input type="hidden" value="{{_id}}" name="id"/>
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Contact Persons</label>
-        <div class="col-lg-4">
-          <input type="text"class="form-control" name="contact_person" required pattern="[a-zA-Z. ]*">
+        <input type="hidden" value="{{_id}}" name="id"/>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Contact Persons</label>
+            <div class="col-lg-4">
+                <input type="text"class="form-control" name="contact_person" required pattern="[a-zA-Z. ]*">
+            </div>
+            <label class="col-lg-2 control-label">Position</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" name="position"  required pattern="[a-zA-Z. ]*">
+            </div>
         </div>
-        <label class="col-lg-2 control-label">Position</label>
-        <div class="col-lg-4">
-          <input type="text" class="form-control" name="position"  required pattern="[a-zA-Z. ]*">
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Company Name</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" name="company_name" required pattern="[a-zA-Z0-9@-&!#. ]*">
+            </div>
+            <label class="col-lg-2 control-label">Company Address</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" name="company_address" required pattern="[a-zA-Z0-9@-&!#. ]*">
+            </div>
+        </div>     
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Contact Number</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" name="contact_number" required pattern="[a-zA-Z0-9@-&!#. ]*">
+            </div>
+            <label class="col-lg-2 control-label">Email</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" name="email" required pattern="[a-zA-Z0-9@-&!#. ]*">
+            </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Company Name</label>
-        <div class="col-lg-4">
-          <input type="text" class="form-control" name="company_name" required pattern="[a-zA-Z0-9@-&!#. ]*">
+        {{/if}} 
+        <div class="form-group">
+            <div class="col-offset-8 col-lg-4">
+                {{#if editing_customer}}
+                <button type="button" class="btn btn-primary" id="btnUpdateCustomer">Update</button>
+                <button type="button" class="btn btn-primary" id="btnCancel">Cancel</button> 
+                {{else}}
+                <button type="submit" class="btn btn-primary" id="btnAddCustomer">Add</button>
+                {{/if}}
+            </div>
         </div>
-        <label class="col-lg-2 control-label">Company Address</label>
-        <div class="col-lg-4">
-          <input type="text" class="form-control" name="company_address" required pattern="[a-zA-Z0-9@-&!#. ]*">
-        </div>
-      </div>     
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Contact Number</label>
-        <div class="col-lg-4">
-          <input type="text" class="form-control" name="contact_number" required pattern="[a-zA-Z0-9@-&!#. ]*">
-        </div>
-        <label class="col-lg-2 control-label">Email</label>
-        <div class="col-lg-4">
-          <input type="text" class="form-control" name="email" required pattern="[a-zA-Z0-9@-&!#. ]*">
-        </div>
-      </div>
-  {{/if}} 
-      <div class="form-group">
-        <div class="col-offset-8 col-lg-4">
-          {{#if editing_customer}}
-            <button type="button" class="btn btn-primary" id="btnUpdateCustomer">Update</button>
-            <button type="button" class="btn btn-primary" id="btnCancel">Cancel</button> 
-          {{else}}
-            <button type="submit" class="btn btn-primary" id="btnAddCustomer">Add</button>
-          {{/if}}
-        </div>
-      </div>
     </form>
 </template>
 
 <template name="customers_dropdown">
-  <select class="form-control" name="customer_id" id="customer_id">
-  {{#each customers}}
-    <option value="{{_id}}">{{name}}</option>
-  {{/each}}
-  </select>
+    <select class="form-control" name="customer_id" id="customer_id">
+        {{#each customers}}
+        <option value="{{_id}}">{{name}}</option>
+        {{/each}}
+    </select>
 </template>
 
 <template name="check_customers">
-  <select class="form-control" name="customer_id" id="customer_id">
-  {{#each customers}}
-    <option value="{{_id}}">{{name}}</option>
-  {{/each}}
-  </select>
+    <select class="form-control" name="customer_id" id="customer_id">
+        {{#each customers}}
+        <option value="{{_id}}">{{name}}</option>
+        {{/each}}
+    </select>
 </template>
 
 <template name="sale_order_customers">
-  <select class="form-control" id="sale_customer">
-  {{#each customers}}
-    <option value="{{_id}}">{{name}}</option>
-  {{/each}}
-  </select>
+    <select class="form-control" id="sale_customer">
+        {{#each customers}}
+        <option value="{{_id}}">{{name}}</option>
+        {{/each}}
+    </select>
 </template>
 
 <template name="search_customers">
-  <div class="col-lg-4">
-    <input type="text" class="form-control " placeholder="Enter name here" id="c_input">
-  </div>
-  <input type="button" class="btn btn-default" id="c_search" value="Find">
+    <div class="col-lg-4">
+        <input type="text" class="form-control " placeholder="Enter name here" id="c_input">
+    </div>
+    <input type="button" class="btn btn-default" id="c_search" value="Find">
 </template>
 
 <template name="customers_badge">
-  {{customers.count}}
+    {{customers.count}}
+</template>
+
+<template name="customer_to_sell">
+    <select class="form-control" name="customer_id" id="car_customer">
+        {{#each customers}}
+        <option value="{{_id}}">{{contact_person}}</option>
+        {{/each}}
+    </select>
 </template>

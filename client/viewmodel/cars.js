@@ -1,6 +1,8 @@
-Session.set('editing_car_model', false);
+Session.set('editing_car', false);
 Session.set('current_maker', null);
 Session.set('current_model', null);
+Session.set('car_id', null);
+Session.set('car_to_sell', null);
 Session.set('inventory_find', {});
 
 Template.car_models.car_models = function(){
@@ -89,6 +91,30 @@ Template.inventory.inventory_list = function() {
 	return car_info.find(Session.get('inventory_find'), {sort: {date_in: -1}});
 }
 
+Template.inventory.events({
+	'click .btnRemoveItem': function (e,t){
+		Session.set('car_id', null);
+		Meteor.flush();
+		car_info.remove({_id: e.target.id });
+		
+	},
+	'click .btnSellItem' : function (e,t){
+		Session.set('car_to_sell', this._id);
+	},
+	// 'click .btnUpdateItem': function (e,t){
+	// 	Session.set('editing_car', true);
+	// 	Session.set('car_id',  this._id );
+
+	// 	Meteor.flush();	
+	// 	$("form#form_addInventory").show();
+		
+	// }
+});
+
+Template.to_be_sold.car_info = function() {
+	return car_info.findOne({id: Session.get('car_to_sell')});
+}
+
 Template.car_models.events({
 	'click .btnRemoveCarModel': function (e,t){
 		// console.log( e.target.id );
@@ -137,7 +163,7 @@ Template.car_model_form.events({
 			form[this.name] = this.value;
 		});
 			
-		form['dateadded'] = Date("yyyy-MM-DD HH:mm");
+		form['dateadded'] = Date("yyyy-MMM-DD HH:mmM");
 
 		car_info.insert( form, function(err){
 			if(err){
@@ -159,11 +185,9 @@ Template.car_model_form.events({
 	'click #btnCancel': function(e,t){
 		Session.set('editing_car_model', false);
 		Session.set('sid', null);
-
 		
 		$("form#form_addCarModel").hide();
 		$('#form_addCarModel')[0].reset();
-		// Meteor.flush();	
 	},
 	'click #btnUpdateCarModel': function (e,t){
 		form = {};
@@ -185,7 +209,7 @@ Template.add_inventory_form.events({
 			form[this.name] = this.value;
 		});
 		
-		form['dateadded'] = moment().format("ll");
+		form['dateadded'] = moment().format("MMM DD YYYY");
 		form['net_selling_price'] = null;
 		form['delivery_date'] = null;
 		form['date_out'] = null;
@@ -199,10 +223,10 @@ Template.add_inventory_form.events({
 					alert("Something went wrong. Please try again.");
 					console.log(err);
 				}
-				
 			}
 			else{
 				$('#form_addInventory')[0].reset();
+				$('#control_number').focus();
 			}
 		});
 
