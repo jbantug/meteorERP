@@ -2,39 +2,33 @@
 	<form class="add modal-nav-box box-hide panel well form-horizontal" id="addSaleChecks">
 	  	<div class="form-group clearfix">
 	    	<label class="col-lg-2 control-label">Check Number</label>
-	    	<div class="col-lg-10">
+	    	<div class="col-lg-4">
 	      		<input type="text" class="form-control" name="check_number">
 			</div>
-	  	</div>
-	  	<div class="form-group clearfix">
-	    	<label class="col-lg-2 control-label">Check Date</label>
-	    	<div class="col-lg-10">
+			<label class="col-lg-2 control-label">Check Date</label>
+	    	<div class="col-lg-4">
 	      		<input type="text" class="form-control" name="check_date">
 			</div>
 	  	</div>
 	  	<div class="form-group clearfix">
 		    <label class="col-lg-2 control-label">Control Number</label>
-		    <div class="col-lg-10">
+		    <div class="col-lg-4">
 		      <input type="text" class="form-control" name="control_number">
 		    </div>
-	  	</div>
-	  	<div class="form-group clearfix">
 		    <label class="col-lg-2 control-label">Bank</label>
-		    <div class="col-lg-10">
+		    <div class="col-lg-4">
 		      <input type="text" class="form-control" name="bank">
 		    </div>
 	  	</div>
 	  	<div class="form-group clearfix">
 		    <label class="col-lg-2 control-label">Amount</label>
-		    <div class="col-lg-10">
+		    <div class="col-lg-4">
 		      <input type="text" class="form-control" name="amount">
 		    </div>
-	  	</div>
-		<div class="form-group clearfix">
-			<div class="col-offset-2 col-lg-10">
+		    <div class="col-offset-2 col-lg-2">
 			  <button type="submit" class="btn btn-primary">Add</button>
 			</div>
-		</div>
+	  	</div>
 	</form>
 </template>
 
@@ -42,51 +36,43 @@
 	<form class="add modal-nav-box box-hide panel well form-horizontal" id="addPurchaseChecks">
 		<div class="form-group clearfix">
 	  		<label class="col-lg-2 control-label">Supplier</label>
-	      	<div class="col-lg-10">
+	      	<div class="col-lg-4">
 		  		{{>check_suppliers}}
 			</div>
-		</div>
-	  	<div class="form-group clearfix">
-	  		<label class="col-lg-2 control-label">Item</label>
-	      	<div class="btn-group col-lg-10">
+			<label class="col-lg-2 control-label">Item</label>
+	      	<div class="btn-group col-lg-4">
 	  			{{>sale_order_items}}
 			</div>
 		</div>
 	  	<div class="form-group clearfix">
 	    	<label class="col-lg-2 control-label">Check Number</label>
-	    	<div class="col-lg-10">
+	    	<div class="col-lg-4">
 	      		<input type="text" class="form-control" name="check_number">
 			</div>
-	  	</div>
-	  	<div class="form-group clearfix">
-	    	<label class="col-lg-2 control-label">Chassis No</label>
-	    	<div class="col-lg-10">
+			<label class="col-lg-2 control-label">Chassis No</label>
+	    	<div class="col-lg-4">
 	      		<input type="text" class="form-control" name="chassis_number">
 			</div>
 	  	</div>
 	  	<div class="form-group clearfix">
 	    	<label class="col-lg-2 control-label">Engine No</label>
-	    	<div class="col-lg-10">
+	    	<div class="col-lg-4">
 	      		<input type="text" class="form-control" name="engine_number">
 			</div>
-	  	</div>
-	  	<div class="form-group clearfix">
-		    <label class="col-lg-2 control-label">Amount</label>
-		    <div class="col-lg-10">
+			<label class="col-lg-2 control-label">Amount</label>
+		    <div class="col-lg-4">
 		      <input type="text" class="form-control" name="amount">
 		    </div>
 	  	</div>
 	  	<div class="form-group clearfix">
 	    	<label class="col-lg-2 control-label">Due Date</label>
-	    	<div class="col-lg-10">
+	    	<div class="col-lg-4">
 	      		<input type="date" class="form-control" name="due_date">
 	    	</div>
-	  	</div>
-		<div class="form-group clearfix">
-			<div class="col-offset-2 col-lg-10">
+	    	<div class="col-offset-2 col-lg-2">
 			  <button type="submit" class="btn btn-primary">Add</button>
 			</div>
-		</div>
+	  	</div>
 	</form>
 </template>
 

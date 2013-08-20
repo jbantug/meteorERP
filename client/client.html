@@ -508,47 +508,85 @@
 		</div>
 		<br/><br/>
 		<div class="row">
-			<div class="col-lg-4">
-				<div class="list-group">
-					<a href="#s-checks-modal" data-toggle="modal" class="list-group-item">
-						Payments from Customers
-						<span class="badge pull-right">{{>sale_checks_badge}}</span>
-					</a>
+			<div class="col-lg-12">
+
+				<ul class="nav nav-tabs">
+					  <li><a href="#s-checks-modal" data-toggle="tab" class="list-group-item">Payments from Customers</a></li>
+					  <li><a href="#p-checks-modal" data-toggle="tab" class="list-group-item">Payments to Suppliers</a></li>
+				</ul>
+
+				<div class="tab-content">
+				    <div class="tab-pane active" id="s-checks-modal">
+				    	<div class="navbar">
+							<div class="navbar-form">
+								<div class="btn-group">
+									<button id="add" class="btn btn-default modal-nav-btn">
+										<i class="icon-plus"></i>
+										Add
+									</button>
+									<button id="search" class="btn btn-default modal-nav-btn">
+										<i class="icon-search"></i>
+										Search
+									</button>
+								</div>
+							</div>
+						</div>
+						<!-- FORM SALES CHECKS -->
+							{{>sale_checksform}}
+						<!--  -->
+						<div class="search modal-nav-box box-hide panel well">
+							<div class="col-lg-4">
+								<input type="text" class="form-control " placeholder="Check No.">
+							</div>
+							<button class="btn btn-default">
+								Find
+							</button>
+						</div>
+						<div class="table-body">
+		          			<!-- sale checks -->
+		          			{{>sale_checks}}
+		          			<!-- end sale checks -->
+		          		</div>
+					</div>
+				    <div class="tab-pane" id="p-checks-modal">
+				    	<div class="navbar">
+							<div class="navbar-form">
+								<div class="btn-group">
+									<button id="add" class="btn btn-default modal-nav-btn">
+										<i class="icon-plus"></i>
+										Add
+									</button>
+									<button id="search" class="btn btn-default modal-nav-btn">
+										<i class="icon-search"></i>
+										Search
+									</button>
+								</div>
+							</div>
+						</div>
+						<!-- PURCHASE CHECKS -->
+						{{>purchase_checksform}}
+						<!-- END PURCHASE CHECKS -->
+						<div class="search modal-nav-box box-hide panel well">
+							<div class="col-lg-4">
+								<input type="text" class="form-control " placeholder="Check No.">
+							</div>
+							<button class="btn btn-default">
+								Find
+							</button>
+						</div>
+						<div class="table-body">
+	          			
+	          				<!--  -->
+	          				{{>purchase_checks}}
+	          				<!--  -->
+		          			
+		          		</div>
+				    </div>
 				</div>
+
 			</div>
-			<div class="col-lg-4">
-				<div class="list-group">
-					<a href="#p-checks-modal" data-toggle="modal" class="list-group-item">
-						Payments to Supplier
-						<span class="badge pull-right">{{>purchase_checks_badge}}</span>
-					</a>
-				</div>
-			</div>
+		<br/>				
 		</div>
-		<br/>
-		<div class="row">
-			<div class="col-lg-6">
-				<div class="list-group">
-					<div class="list-group-item active">
-						<i class="icon-book"></i>
-						Reports
-					</div>
-					<a href="#s-order-modal"  data-toggle="modal" class="list-group-item">Sales Order</a>
-					<a href="#p-order-modal"  data-toggle="modal" class="list-group-item">Purchase Order</a>
-				</div>
-			</div>
-			<div class="col-lg-6">
-				<div class="list-group">
-					<div class="list-group-item active">
-						<i class="icon-user"></i>
-						Registered
-					</div>
-					<a href="#customer-modal"  data-toggle="modal" class="list-group-item">Customers</a>
-					<a href="#supplier-modal"  data-toggle="modal" class="list-group-item">Suppliers</a>
-				</div>
-			</div>
-		</div>				
-	</div>
 
 	<div class="box box-expenses box-hide panel" style="margin-top:20px">
 		<div class="panel-heading">
