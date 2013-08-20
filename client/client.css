@@ -129,3 +129,7 @@ body .modal-open {
 	margin-top: 20px;
 	margin-bottom: 10px;
 }
+
+#login-dropdown-list .additional-link-container #forgot-password-link {
+	float: right;
+}
