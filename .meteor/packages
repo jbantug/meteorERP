@@ -10,3 +10,8 @@ accounts-password
 email
 accounts-ui
 jquery
+standard-app-packages
+bootstrap-3
+moment
+font-awesome
+select2

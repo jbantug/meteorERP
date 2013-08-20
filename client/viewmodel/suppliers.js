@@ -29,16 +29,15 @@ Template.add_inventory_suppliers.suppliers = function(){
 };
 
 Template.check_suppliers.suppliers = function(){
-	return suppliers.find( {}, {sort: {dateadded: -1} } );
+	return suppliers.find( {}, {sort: {contact_person: -1} } );
 };
 
 Template.expense_suppliers.suppliers = function(){
-	return suppliers.find( {}, {sort: {dateadded: -1} } );
+	return suppliers.find( {}, {sort: {contact_person: -1} } );
 };
 
 Template.suppliers.events({
 	'click .btnRemoveSupplier': function (e,t){
-		// console.log( e.target.id );
 		Session.set('sid', null);
 		Meteor.flush();
 		suppliers.remove({_id: e.target.id });
