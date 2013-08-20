@@ -28,10 +28,6 @@ Template.customers_dropdown.customers = function(){
 	return customers.find( {}, {sort: {dateadded: -1} } );
 };
 
-Template.customer_to_sell.customers = function() {
-	return customers.find({},{sort: {contact_person: 1}});
-};
-
 Template.check_customers.customers = function(){
 	return customers.find( {}, {sort: {dateadded: -1} } );
 };
@@ -80,7 +76,7 @@ Template.customer_form.events({
 			form[this.name] = this.value;
 		});
 			
-		form['dateadded'] = moment().format("MMM DD YYYY");
+		form['dateadded'] = moment().format("ll");
 
 		customers.insert( form, function(err){
 			if(err){

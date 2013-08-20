@@ -15,6 +15,8 @@ Template.car_in_badge.cars_in = function(){
 	return car_info.find();
 }
 
+
+
 Template.sales_orders.events({
 	'click .btnRemoveSO': function (e,t){
 		// console.log( e.target.id );
@@ -38,7 +40,7 @@ Template.sales_order_form.events({
 		form = {
 			customer_id: $('#sale_customer').val(),
 			sku: $('#so_item').val(),
-			date_in: moment().format("MM DD YYYY"),
+			date_in: Date("yyyy-MM-DD HH:mm"),
 			chassis_number: $('#so_chassis').val(),
 			engine_number: $('#so_engine').val(),
 			delivery_date: $('#so_delivery').val(),
@@ -135,7 +137,7 @@ Template.purchase_order_form.events({
 		form = {
 			supplier_id: $('#purchase_supplier').val(),
 			sku: car_id,
-			date_in: moment().format("MM DD YYYY"),
+			date_in: Date("yyyy-MM-DD HH:mm"),
 			delivery_date: $('#po_delivery').val(),
 			price: $('#po_price').val(),
 			delivered: false

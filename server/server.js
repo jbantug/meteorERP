@@ -51,7 +51,7 @@ Meteor.startup(function(){
         company_address: "My Address",
         contact_number: "09153460228",
         email: "reynecesito18@gmail.com",
-        dateadded: moment().format("MMM DD YYYY"),
+        dateadded: moment().format("ll"),
     });
     customers.insert({
         contact_person: "Lester Infiesto",
@@ -60,7 +60,7 @@ Meteor.startup(function(){
         company_address: "His Address",
         contact_number: "09225029183",
         email: "lesterinfiesto@gmail.com",
-        dateadded: moment().format("MMM DD YYYY"),
+        dateadded: moment().format("ll"),
     });
     customers.insert({
         contact_person: "Slark Enriquez",
@@ -69,7 +69,7 @@ Meteor.startup(function(){
         company_address: "There",
         contact_number: "23123",
         email: "slark@slark.com",
-        dateadded: moment().format("MMM DD YYYY"),
+        dateadded: moment().format("ll"),
     });
     customers.insert({
         contact_person: "Vajines Salise",
@@ -78,7 +78,7 @@ Meteor.startup(function(){
         company_address: "Anywhere",
         contact_number: "555-5555",
         email: "the_spotters@gmail.com",
-        dateadded: moment().format("MMM DD YYYY"),
+        dateadded: moment().format("ll"),
     });
     customers.insert({
         contact_person: "Froi-P Gaviola",
@@ -87,7 +87,7 @@ Meteor.startup(function(){
         company_address: "Anywhere",
         contact_number: "555-5555",
         email: "the_spotters@gmail.com",
-        dateadded: moment().format("MMM DD YYYY"),
+        dateadded: moment().format("ll"),
     });
     suppliers.remove({});
     suppliers.insert({
@@ -97,7 +97,7 @@ Meteor.startup(function(){
         company_address: "Cebu City, Cebu",
         contact_number: "123-700",
         email: "elitesuppliers@gmail.com",
-        dateadded: moment().format("MMM DD YYYY"),
+        dateadded: moment().format("ll"),
     });
     suppliers.insert({
         contact_person: "Supplier 2",
@@ -106,7 +106,7 @@ Meteor.startup(function(){
         company_address: "Cebu City, Cebu",
         contact_number: "123-700",
         email: "elitesuppliers@gmail.com",
-        dateadded: moment().format("MMM DD YYYY"),
+        dateadded: moment().format("ll"),
     });
     suppliers.insert({
         contact_person: "John Doe",
@@ -115,7 +115,7 @@ Meteor.startup(function(){
         company_address: "Cebu City, Cebu",
         contact_number: "888-8888",
         email: "suppliersanonymous@gmail.com",
-        dateadded: moment().format("MMM DD YYYY"),
+        dateadded: moment().format("ll"),
     });
     suppliers.insert({
         contact_person: "Mary Jane",
@@ -124,6 +124,6 @@ Meteor.startup(function(){
         company_address: "Cebu City, Cebu",
         contact_number: "888-8888",
         email: "suppliersanonymous@gmail.com",
-        dateadded: moment().format("MMM DD YYYY"),
+        dateadded: moment().format("ll"),
     });
 });
