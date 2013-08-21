@@ -1,0 +1,72 @@
+<template name="billings">
+    <table class="table table-striped">
+        <tr>
+            <th>Item</th>
+            <th>Check #</th>
+            <th>Date Due/Encashed</th>
+            <th>Amount</th>
+       
+        </tr>
+        <tr>
+            <td>000069</td>
+            <td>434-029-457</td>
+            <td>September 15, 2013</td>
+            <td>$ 500,000</td>
+        </tr>
+        <tr>
+            <td>041069</td>
+            <td>434-029-999</td>
+            <td>December 15, 2013</td>
+            <td>$ 1,200,000</td>
+        </tr>
+         <tr>
+            <td>910692</td>
+            <td>268-029-999</td>
+            <td>August 15, 2013</td>
+            <td>$ 4,200,000</td>
+        </tr>
+    </table>
+</template>
+
+<template name="billing_form">     
+    <form class="add modal-nav-box box-hide panel well form-horizontal" id="form_addCustomer">
+       
+        <input type="hidden" value="{{_id}}" name="id"/>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Contact Person</label>
+            <div class="col-lg-10">
+                <input type="text" value="{{contact_person}}" class="form-control" name="contact_person" required pattern="[a-zA-Z. ]*">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Position</label>
+            <div class="col-lg-10">
+                <input type="text" value="{{position}}" class="form-control" name="position"  required pattern="[a-zA-Z. ]*">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Company Name</label>
+            <div class="col-lg-10">
+                <input type="text" value="{{company_name}}" class="form-control" name="company_name" required pattern="[a-zA-Z0-9@-&!#. ]*">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Company Address</label>
+            <div class="col-lg-10">
+                <input type="text" value="{{company_address}}" class="form-control" name="company_address" required pattern="[a-zA-Z0-9@-&!#. ]*">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Contact Number</label>
+            <div class="col-lg-10">
+                <input type="text" value="{{contact_number}}" class="form-control" name="contact_number" required pattern="[a-zA-Z0-9@-&!#. ]*">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Email</label>
+            <div class="col-lg-10">
+                <input type="text" value="{{email}}" class="form-control" name="email" required pattern="[a-zA-Z0-9@-!#. ]*">
+            </div>
+        </div>
+    </form>
+</template>
