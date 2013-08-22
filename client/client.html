@@ -410,11 +410,29 @@
 							<a href="#inventory-modal" data-toggle="modal" class="list-group-item">Stock Ledger</a>
 						</li>
 					</ul>
-				<div class="tab-content">
-					<div class="tab-pane active" id="inventory-modal">
-						{{>inventory}}
+					<div class="tab-content">
+						<div class="tab-pane active" id="inventory-modal">
+							<div class="navbar-form">
+								<div class="btn-group">
+									<button id="add" class="btn btn-default modal-nav-btn">
+										<i class="icon-plus"></i>
+										Add
+									</button>
+									<button id="search" class="btn btn-default modal-nav-btn">
+										<i class="icon-search"></i>
+										Search
+									</button>
+								</div>
+							</div>
+							{{>add_inventory_form}}
+							<div class="search modal-nav-box box-hide panel well">
+								{{>search_specific}}
+							</div>
+							<div class="table-body">
+							{{>purchase_inventory}}
+							</div>
+						</div>
 					</div>
-				</div>
 					
 				</div>
 			</div>
@@ -433,14 +451,46 @@
 		</div>
 
 		<div class="row">
-			<ul class="nav nav-tabs">
-				<li class="active" data-toggle="tab" class="list-group-item"><a href="#">Car Sales</a></li>
-			</ul>
-
-			<div class="tab-content">
-				<div class="tab-pane active">
-					<div class="table-body">
-						{{>to_deliver}}
+			<div class="col-lg-12">
+				<div class="list-group col-lg-12">
+					<ul class="nav nav-tabs">
+					  <li class="active"><a href="#car-sales" data-toggle="tab" class="list-group-item">Car Sales</a></li>
+					  <li><a href="#car-list" data-toggle="tab" class="list-group-item">Car List</a></li>
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane active" id="car-sales">
+							<div class="navbar-form">
+								<div class="btn-group">
+									<button id="search" class="btn btn-default modal-nav-btn">
+										<i class="icon-search"></i>
+										Search
+									</button>
+								</div>
+							</div>
+							<div class="search modal-nav-box box-hide panel well">
+								{{>search_specific}}
+							</div>
+							<div class="table-body">
+			          			{{>to_deliver}}
+			          		</div>
+						</div>
+						<div class="tab-pane" id="car-list">
+							<div class="navbar-form">
+								<div class="btn-group">
+									<button id="search" class="btn btn-default modal-nav-btn">
+										<i class="icon-search"></i>
+										Search
+									</button>
+								</div>
+							</div>
+							<div class="search modal-nav-box box-hide panel well">
+								{{>search_specific}}
+							</div>
+							<div class="table-body">
+			          			{{> inventory}}
+			          			{{> to_be_sold}}
+			          		</div>
+						</div>
 					</div>
 				</div>
 			</div>
