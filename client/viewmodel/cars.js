@@ -91,6 +91,10 @@ Template.inventory.inventory_list = function() {
 	return car_info.find(Session.get('inventory_find'), {sort: {date_in: -1}});
 }
 
+Template.purchase_inventory.inventory_list = function() {
+	return car_info.find(Session.get('inventory_find'), {sort: {date_in: -1}});
+}
+
 Template.inventory.events({
 	'click .btnRemoveItem': function (e,t){
 		Session.set('car_id', null);
