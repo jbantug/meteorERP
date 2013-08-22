@@ -130,6 +130,43 @@
     </table>
 </template>
 
+<template name="purchase_inventory">
+    <table class="table table-striped">
+        <tr>
+            <th>Control #</th>
+            <th>Item</th>
+            <th>Yen</th>
+            <th>F/X</th>
+            <th>Peso</th>
+            <th>D/T</th>
+            <th>Brokerage</th>
+            <th>Factor</th>
+            <th>Expenses</th>
+            <th>F/H</th>
+            <th>Total Cost</th>
+            <th>Reference #</th>
+        </tr>
+        {{#each inventory_list}}
+        {{#unless customer_id}}
+        <tr class="text-right">
+            <td>{{control_number}}</td>
+            <td>{{maker}} {{model}}</td>
+            <td>{{yen_cost}}</td>
+            <td>{{exchange_rate}}</td>
+            <td>{{peso_cost yen_cost exchange_rate}}</td>
+            <td>{{duties_and_taxes}}</td>
+            <td>{{brokerage yen_cost exchange_rate brokerage_factor}}</td>
+            <td>{{brokerage_factor}}</td>
+            <td>{{assembly_reconditioning}}</td>
+            <td>{{freight_handling}}</td>
+            <td>{{total_cost}}</td>
+            <td>{{reference_number}}</td>
+        </tr>
+        {{/unless}}
+        {{/each}}
+    </table>
+</template>
+
 <template name="sold_items">
     <table class="table table-striped">
         <tr>
