@@ -74,6 +74,14 @@
 						<span>Billings</span>
 					</li>
 				</a>
+
+				<a href="#">
+					<li id="box-salesinvoice">
+						<img src="cisettings.png" width="132" height="132" />
+						<span>Sales Invoice</span>
+					</li>
+				</a>
+
 				<!-- <a href="#">
 					<li id="box-notes">
 						<img src="cinotes.png" width="132" height="132" />
@@ -101,7 +109,7 @@
 				<button type="button" class="home-access pull-right" aria-hidden="true" style="margin-top: -6px">
 					<i class="icon-home icon-medium"></i>
 				</button>
-				<img src="ciaccounts2.png" width="46" height="41" style="margin-top: -10px"/>
+				<img src="cinotes.png" width="46" height="41" style="margin-top: -10px"/>
 				Billings
 			</h2>
 		</div>
@@ -243,18 +251,18 @@
 			          		</div>
 					  	</div>
 						<div class="tab-pane" id="supplier-modal">
-							<div class="navbar-form">
-								<div class="btn-group">
-									<button id="add" class="btn btn-default modal-nav-btn">
-										<i class="icon-plus"></i>
-										Add
-									</button>
-									<button id="search" class="btn btn-default modal-nav-btn">
-										<i class="icon-search"></i>
-										Search
-									</button>
+								<div class="navbar-form">
+									<div class="btn-group">
+										<button id="add" class="btn btn-default modal-nav-btn">
+											<i class="icon-plus"></i>
+											Add
+										</button>
+										<button id="search" class="btn btn-default modal-nav-btn">
+											<i class="icon-search"></i>
+											Search
+										</button>
+									</div>
 								</div>
-							</div>
 							{{>supplier_form}}
 							<div class="search modal-nav-box box-hide panel well">
 								{{>search_supplier}}
@@ -281,7 +289,7 @@
 								<div class="col-lg-4">
 									<input type="text" class="form-control " placeholder="Check No.">
 								</div>
-								<button class="btn btn-default">
+								<button class="btn btn-primary">
 									Find
 								</button>
 							</div>
@@ -509,7 +517,7 @@
 							<div class="col-lg-4">
 								<input type="text" class="form-control " placeholder="Check No.">
 							</div>
-							<button class="btn btn-default">
+							<button class="btn btn-primary">
 								Find
 							</button>
 						</div>
@@ -535,7 +543,7 @@
 							<div class="col-lg-4">
 								<input type="text" class="form-control " placeholder="Check No.">
 							</div>
-							<button class="btn btn-default">
+							<button class="btn btn-primary">
 								Find
 							</button>
 						</div>
@@ -561,7 +569,7 @@
 							<div class="col-lg-4">
 								<input type="text" class="form-control " placeholder="Check No.">
 							</div>
-							<button class="btn btn-default">
+							<button class="btn btn-primary">
 								Find
 							</button>
 						</div>
@@ -602,7 +610,7 @@
 				<div class="col-lg-4">
 					<input type="text" class="form-control " placeholder="Check No.">
 				</div>
-				<button class="btn btn-default">
+				<button class="btn btn-primary">
 					Find
 				</button>
 			</div>
@@ -610,6 +618,36 @@
       			{{>expenses}}
       		</div>
       	</div>
+	</div>
+
+	<div class="box box-salesinvoice box-hide panel" style="margin-top:20px">
+		<div class="panel-heading">
+			<h2 class="panel-title">
+				<button type="button" class="home-access pull-right" aria-hidden="true" style="margin-top: -6px">
+					<i class="icon-home icon-medium"></i>
+				</button>
+				<img src="cisettings.png" width="46" height="41" style="margin-top: -10px"/>
+				Sales Invoice
+			</h2>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="list-group col-lg-12">
+					<h2><span><u>Item</u></span></h2>
+					<div class="tab-pane active" id="invoice-modal">
+						{{> invoice_form}}
+						<div class="table-body">
+		          			{{> invoice}}
+		          		</div>
+					  </div>
+				  	<div class="col-lg-4 invoice-receivedby">
+				  		<p>Received by:</p>
+				  		<p>______________________</p>
+				  		<p>Signature over printed name</p>
+				  	</div>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<div class="box box-notes box-hide panel" style="margin-top:20px">
@@ -626,19 +664,19 @@
 	</div>
 
 	<div class="box box-settings box-hide panel" style="margin-top:20px">
-		<div class="panel-heading">
-			<h2 class="panel-title">
-				<button type="button" class="home-access pull-right" aria-hidden="true" style="margin-top: -6px">
-					<i class="icon-home icon-medium"></i>
-				</button>
-				<img src="cisettings.png" width="46" height="41" style="margin-top: -10px"/>
-				Settings
-			</h2>
+			<div class="panel-heading">
+				<h2 class="panel-title">
+					<button type="button" class="home-access pull-right" aria-hidden="true" style="margin-top: -6px">
+						<i class="icon-home icon-medium"></i>
+					</button>
+					<img src="cisettings.png" width="46" height="41" style="margin-top: -10px"/>
+					Settings
+				</h2>
+			</div>
+			Feature Coming Soon
 		</div>
-		Feature Coming Soon
-	</div>
 
-</div>
+	</div>
 
 	<!--  MODALS  -->
 
@@ -732,7 +770,7 @@
 						<div class="col-lg-4">
 							<input type="text" class="form-control " placeholder="Check No.">
 						</div>
-						<button class="btn btn-default">
+						<button class="btn btn-primary">
 							Find
 						</button>
 					</div>
@@ -789,7 +827,7 @@
 						<div class="col-lg-4">
 							<input type="text" class="form-control " placeholder="Check No.">
 						</div>
-						<button class="btn btn-default">
+						<button class="btn btn-primary">
 							Find
 						</button>
 					</div>
@@ -884,7 +922,7 @@
 						<div class="col-lg-4">
 							<input type="text" class="form-control " placeholder="">
 						</div>
-						<button class="btn btn-default">
+						<button class="btn btn-primary">
 							Find
 						</button>
 					</div>
@@ -1116,7 +1154,7 @@
 						<div class="col-lg-4">
 							<input type="text" class="form-control " placeholder="Check No.">
 						</div>
-						<button class="btn btn-default">
+						<button class="btn btn-primary">
 							Find
 						</button>
 					</div>
@@ -1178,7 +1216,7 @@
 						<div class="col-lg-4">
 							<input type="text" class="form-control " placeholder="Check No.">
 						</div>
-						<button class="btn btn-default">
+						<button class="btn btn-primary">
 							Find
 						</button>
 					</div>
@@ -1308,7 +1346,7 @@
 						<div class="col-lg-4">
 							<input type="text" class="form-control " placeholder="Check No.">
 						</div>
-						<button class="btn btn-default">
+						<button class="btn btn-primary">
 							Find
 						</button>
 					</div>
@@ -1440,7 +1478,7 @@
 						<div class="col-lg-4">
 							<input type="text" class="form-control " placeholder="Check No.">
 						</div>
-						<button class="btn btn-default">
+						<button class="btn btn-primary">
 							Find
 						</button>
 					</div>
@@ -1476,7 +1514,7 @@
 						<div class="col-lg-4">
 							<input type="text" class="form-control " placeholder="Check No.">
 						</div>
-						<button class="btn btn-default">
+						<button class="btn btn-primary">
 							Find
 						</button>
 					</div>
@@ -1686,7 +1724,7 @@
 						<div class="col-lg-4">
 							<input type="text" class="form-control " placeholder="Check No.">
 						</div>
-						<button class="btn btn-default">
+						<button class="btn btn-primary">
 							Find
 						</button>
 					</div>
@@ -1729,7 +1767,7 @@
 						<div class="col-lg-4">
 							<input type="text" class="form-control " placeholder="Check No.">
 						</div>
-						<button class="btn btn-default">
+						<button class="btn btn-primary">
 							Find
 						</button>
 					</div>
