@@ -133,6 +133,11 @@ body .modal-open {
 #login-dropdown-list .additional-link-container #forgot-password-link {
 	float: right;
 }
-.billing-signature {
+.billing-signature, .invoice-receivedby {
 	margin-top: 20px;
+}
+
+.style-btn {
+	float: right;
+	margin-top: -50px;
 }
