@@ -381,10 +381,36 @@
 			          		</div>
 						</div>
 						<div class="tab-pane" id="sold-items-modal">
-							
+							<div class="navbar-form">
+								<div class="btn-group">
+									<button id="search" class="btn btn-default modal-nav-btn">
+										<i class="icon-search"></i>
+										Search
+									</button>
+								</div>
+							</div>
+							<div class="search modal-nav-box box-hide panel well">
+								{{>search_specific}}
+							</div>
+							<div class="table-body">
+								{{>sold_checks}}
+			          		</div>
 						</div>
 						<div class="tab-pane" id="sold-customers-modal">
-							
+							<div class="navbar-form">
+								<div class="btn-group">
+									<button id="search" class="btn btn-default modal-nav-btn">
+										<i class="icon-search"></i>
+										Search
+									</button>
+								</div>
+							</div>
+							<div class="search modal-nav-box box-hide panel well">
+								{{>search_specific}}
+							</div>
+							<div class="table-body">
+								{{>customer_item_list}}
+			          		</div>
 						</div>
 					</div>
 				</div>
@@ -461,43 +487,11 @@
 				<ul class="nav nav-tabs">
 					  <li class="active"><a href="#s-checks-modal" data-toggle="tab" class="list-group-item">Payments from Customers</a></li>
 					  <li><a href="#p-checks-modal" data-toggle="tab" class="list-group-item">Payments to Suppliers</a></li>
+					  <li><a href="#cashflow-modal" data-toggle="tab" class="list-group-item">Cash Flow</a></li>
 				</ul>
 
 				<div class="tab-content">
 				    <div class="tab-pane active" id="s-checks-modal">
-				    	<div class="navbar">
-							<div class="navbar-form">
-								<div class="btn-group">
-									<button id="add" class="btn btn-default modal-nav-btn">
-										<i class="icon-plus"></i>
-										Add
-									</button>
-									<button id="search" class="btn btn-default modal-nav-btn">
-										<i class="icon-search"></i>
-										Search
-									</button>
-								</div>
-							</div>
-						</div>
-						<!-- FORM SALES CHECKS -->
-							{{>sale_checksform}}
-						<!--  -->
-						<div class="search modal-nav-box box-hide panel well">
-							<div class="col-lg-4">
-								<input type="text" class="form-control " placeholder="Check No.">
-							</div>
-							<button class="btn btn-default">
-								Find
-							</button>
-						</div>
-						<div class="table-body">
-		          			<!-- sale checks -->
-		          			{{>sale_checks}}
-		          			<!-- end sale checks -->
-		          		</div>
-					</div>
-				    <div class="tab-pane" id="p-checks-modal">
-				    	<div class="navbar">
 						<div class="navbar-form">
 							<div class="btn-group">
 								<button id="add" class="btn btn-default modal-nav-btn">
@@ -510,25 +504,70 @@
 								</button>
 							</div>
 						</div>
-					</div>
-					<!-- PURCHASE CHECKS -->
-					{{>purchase_checksform}}
-					<!-- END PURCHASE CHECKS -->
-					<div class="search modal-nav-box box-hide panel well">
-						<div class="col-lg-4">
-							<input type="text" class="form-control " placeholder="Check No.">
+						{{>sale_checksform}}
+						<div class="search modal-nav-box box-hide panel well">
+							<div class="col-lg-4">
+								<input type="text" class="form-control " placeholder="Check No.">
+							</div>
+							<button class="btn btn-default">
+								Find
+							</button>
 						</div>
-						<button class="btn btn-default">
-							Find
-						</button>
+						<div class="table-body">
+		          			{{>sale_checks}}
+		          		</div>
 					</div>
-					<div class="table-body">
-          			
-          				<!--  -->
-          				{{>purchase_checks}}
-          				<!--  -->
-	          			
-	          		</div>
+				    <div class="tab-pane" id="p-checks-modal">
+						<div class="navbar-form">
+							<div class="btn-group">
+								<button id="add" class="btn btn-default modal-nav-btn">
+									<i class="icon-plus"></i>
+									Add
+								</button>
+								<button id="search" class="btn btn-default modal-nav-btn">
+									<i class="icon-search"></i>
+									Search
+								</button>
+							</div>
+						</div>
+						{{>purchase_checksform}}
+						<div class="search modal-nav-box box-hide panel well">
+							<div class="col-lg-4">
+								<input type="text" class="form-control " placeholder="Check No.">
+							</div>
+							<button class="btn btn-default">
+								Find
+							</button>
+						</div>
+						<div class="table-body">
+	          				{{>purchase_checks}}		          			
+		          		</div>
+				    </div>
+				    <div class="tab-pane" id="cashflow-">
+						<div class="navbar-form">
+							<div class="btn-group">
+								<button id="add" class="btn btn-default modal-nav-btn">
+									<i class="icon-plus"></i>
+									Add
+								</button>
+								<button id="search" class="btn btn-default modal-nav-btn">
+									<i class="icon-search"></i>
+									Search
+								</button>
+							</div>
+						</div>
+						{{>purchase_checksform}}
+						<div class="search modal-nav-box box-hide panel well">
+							<div class="col-lg-4">
+								<input type="text" class="form-control " placeholder="Check No.">
+							</div>
+							<button class="btn btn-default">
+								Find
+							</button>
+						</div>
+						<div class="table-body">
+	          				{{>purchase_checks}}		          			
+		          		</div>
 				    </div>
 				</div>
 
@@ -536,6 +575,7 @@
 		<br/>				
 		</div>
 	</div>
+
 	<div class="box box-expenses box-hide panel" style="margin-top:20px">
 		<div class="panel-heading">
 			<h2 class="panel-title">
@@ -597,7 +637,8 @@
 		</div>
 		Feature Coming Soon
 	</div>
-	</div>
+
+</div>
 
 	<!--  MODALS  -->
 

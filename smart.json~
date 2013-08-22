@@ -1,7 +1,9 @@
 {
   "packages": {
-    "meteor_nvd3": {},
     "font-awesome": {},
-    "bootstrap-3": {}
+    "bootstrap-3": {},
+    "moment": {},
+    "chosen-package": {},
+    "select2": {}
   }
 }

@@ -360,10 +360,24 @@
                             <div class="col-lg-4">
                                 {{>customer_to_sell}}
                             </div>
-                            <label class="col-lg-2 control-label">Maker</label>
+                            <label class="col-lg-2 control-label">Price</label>
                             <div class="col-lg-4">
-                                <input type="text" class="form-control" name="delivery_date" id="delivery_date" required>
+                                <input type="text" class="form-control" name="selling_price" id="selling_price" required>
                             </div>      
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group clearfix">
+                            <label class="col-lg-2 control-label">Delivery Date</label>
+                            <div class="col-lg-4">
+                                <input type="date" class="form-control" name="delivery_date" id="delivery_date" required>
+                            </div>
+                            <br/>
+                            <div class="form-group clearfix">
+                                <div class="col-offset-10 col-lg-2" style="text-align:right;">
+                                    <button type="submit" class="btn btn-primary">Sell</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
