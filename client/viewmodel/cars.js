@@ -115,6 +115,20 @@ Template.to_be_sold.car_info = function() {
 	return car_info.findOne({id: Session.get('car_to_sell')});
 }
 
+Template.to_be_sold.events({
+	'submit': function(e,t){
+		form = {};
+
+		$.each( $("#form_addCarSale").serializeArray(),function(){
+			form[this.name] = this.value;
+		});
+
+		car_info.update({_id: Session.get('car_to_sell')}, {$set: {customer_id: form['customer_id'], delivery_date: form['delivery_date'], selling_price: form['selling_price']} });
+
+		Session.set('car_to_sell',null);
+	}
+});
+
 Template.car_models.events({
 	'click .btnRemoveCarModel': function (e,t){
 		// console.log( e.target.id );
@@ -209,10 +223,11 @@ Template.add_inventory_form.events({
 			form[this.name] = this.value;
 		});
 		
-		form['dateadded'] = moment().format("MMM DD YYYY");
-		form['net_selling_price'] = null;
-		form['delivery_date'] = null;
-		form['date_out'] = null;
+		form['dateadded'] = moment().format("YYYY-MM-DD");
+		form['selling_price'] = "";
+		form['net_selling_price'] = "";
+		form['delivery_date'] = "";
+		form['date_out'] = "";
 		form['delivered'] = false;
 
 		car_info.insert( form, function(err){
@@ -274,7 +289,16 @@ Handlebars.registerHelper("peso_cost", function(yen, rate) {
 
 Handlebars.registerHelper("brokerage", function(yen, rate, factor) {
 	return (factor * yen * rate);
-})
+});
+
+Handlebars.registerHelper("get_car_maker", function(control_number) {
+	return car_info.findOne({control_number: control_number}).maker;
+});
+
+Handlebars.registerHelper("get_car_model", function(control_number) {
+	return car_info.findOne({control_number: control_number}).model;
+});
+
 // Handlebars.registerHelper("item", function(sku) {
 //   var car_maker = car_info.findOne({_id:sku}).maker;
 //   var car_model = car_info.findOne({_id:sku}).model;

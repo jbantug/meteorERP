@@ -80,7 +80,7 @@ Template.customer_form.events({
 			form[this.name] = this.value;
 		});
 			
-		form['dateadded'] = moment().format("MMM DD YYYY");
+		form['dateadded'] = moment().format("YYYY-MM-DD");
 
 		customers.insert( form, function(err){
 			if(err){
@@ -115,12 +115,16 @@ Template.customer_form.events({
 			form[this.name] = this.value;
 		});
 
-		customers.update({_id: form['id']}, {$set: {contact_person: form['comtact_person'], position: form['position'], company_name: form['company_name'], company_address: form['company_address'], contact_number: form['contact_number'], email: form['email'] } });
+		customers.update({_id: form['id']}, {$set: {contact_person: form['contact_person'], position: form['position'], company_name: form['company_name'], company_address: form['company_address'], contact_number: form['contact_number'], email: form['email'] } });
 	}
 });
 
+Template.customer_item_list.customers = function(){
+	return customers.find({}, {sort: {contact_person: 1} } );
+}
+
 //handlebar helpers
 Handlebars.registerHelper("get_customer", function(customer_id) {
-	var result = customers.findOne({_id:customer_id}).name;
+	var result = customers.findOne({_id:customer_id}).contact_person;
   	return result;
 });

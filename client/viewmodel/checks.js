@@ -2,6 +2,10 @@ Template.sale_checks.salechecklist = function(){
 	return customer_checks.find({}, {sort: {date_in: -1} } );
 };
 
+Template.purchase_checks.purchasechecklist = function(){
+	return supplier_checks.find({}, {sort: {date_in: -1} } );
+};
+
 Template.sale_checks_badge.sale_checks = function(){
 	return customer_checks.find({}, {sort: {date_in: -1} } );
 };
@@ -14,25 +18,9 @@ Template.accounts_receivable_badge.checks = function(){
 	return customer_checks.find({}, {sort: {date_in: -1} } );
 };
 
-// Template.purchase_checks.purchasechecklist = function(){
-// 	return supplier_checks.find({}, {sort: {date_out: -1} });
-// };
-
-// Template.purchase_payments.checks = function(){
-// 	return supplier_checks.find({}, {sort: {date_out: -1} });
-// };
-
-// Template.accounts_payable.checks = function(){
-// 	return supplier_checks.find({}, {sort: {date_out: -1} });
-// };
-
-// Template.accounts_payable_badge.checks = function(){
-// 	return supplier_checks.find({}, {sort: {date_out: -1} });
-// };
-
-// Template.purchase_checks_badge.purchase_checks = function(){
-// 	return supplier_checks.find({}, {sort: {date_out: -1} });
-// };
+Template.sold_checks.checklist = function(){
+	return customer_checks.find({}, {sort: {contact_person: 1} } );
+};
 
 Template.sale_checks.events({
 	'click .btnBounce': function(e,t){
@@ -42,7 +30,12 @@ Template.sale_checks.events({
 	'click .btnEncash': function(e,t){
 		customer_checks.update({_id: e.target.id}, {$set: {date_encashed: Date()} });
 	},
-
+	'click .btnRemoveCheck': function (e,t){
+		// console.log( e.target.id );
+		Meteor.flush();
+		customer_checks.remove({_id: e.target.id });
+		
+	},
 });
 
 Template.purchase_checks.events({
@@ -51,7 +44,13 @@ Template.purchase_checks.events({
 		supplier_checks.update({_id: e.target.id}, {$set: {date_bounced: Date()} });
 	},
 	'click .btnEncash': function(e,t){
-		customer_checks.update({_id: e.target.id}, {$set: {date_encashed: Date()} });
+		supplier_checks.update({_id: e.target.id}, {$set: {date_encashed: Date()} });
+	},
+	'click .btnRemoveCheck': function (e,t){
+		// console.log( e.target.id );
+		Meteor.flush();
+		supplier_checks.remove({_id: e.target.id });
+		
 	},
 
 });
@@ -64,13 +63,12 @@ Template.sale_checksform.events({
 			form[this.name] = this.value;
 		});
 			
-		form['date_in'] = Date();
+		form['date_in'] = moment().format("YYYY-MM-DD");
 		form['date_encashed'] = "";
 		form['date_bounced'] = "";
-		var cn = car_in.findOne({chassis_number:form['chassis_number']  }).chassis_number;
-		var en = car_in.findOne({engine_number:form['engine_number'] }).engine_number;
-		if(cn === form['chassis_number'] && en === form['engine_number']){	
-
+		// var cn = car_info.findOne({chassis_number:form['chassis_number']  }).chassis_number;
+		// var en = car_info.findOne({engine_number:form['engine_number'] }).engine_number;
+		// if(cn === form['chassis_number'] && en === form['engine_number']){	
 			customer_checks.insert( form, function(err){
 				if(err){
 					if(err.error === 403){
@@ -85,56 +83,52 @@ Template.sale_checksform.events({
 					$('#addSaleChecks')[0].reset();
 				}
 			});
-		}
-		else{
-			alert("Chassis/Enginer Number not found!");
-			e.preventDefault();
-		}
+		// }
+		// else{
+		// 	alert("Chassis/Enginer Number not found!");
+		// 	e.preventDefault();
+		// }
 		
 
 		e.preventDefault();
 	}
 });
 
-// Template.purchase_checksform.events({
-// 	'submit': function (e,t){
-// 		form = {};
+Template.purchase_checksform.events({
+	'submit': function (e,t){
+		form = {};
 
-// 		$.each( $("#addPurchaseChecks").serializeArray(),function(){
-// 			form[this.name] = this.value;
-// 		});
-// 		form['date_in'] = Date();
-// 		form['date_out'] = Date();
-// 		form['date_bounced'] = "";
-// 		// console.log(form['chassis_number']);
-// 		// console.log(form['engine_number'])
-// 		var cn = car_in.findOne({chassis_number:form['chassis_number']  }).chassis_number;
-// 		var en = car_in.findOne({engine_number:form['engine_number'] }).engine_number;
-// 		// console.log(cn);
-// 		// console.log(en);
-// 		if(cn === form['chassis_number'] && en === form['engine_number']){	
-
-// 			supplier_checks.insert( form, function(err){
-// 				if(err){
-// 					if(err.error === 403){
-// 						alert("Only admins can add sale checks.")
-// 					}else{
-// 						alert("Something went wrong. Please try again.");
-// 						console.log(err);
-// 					}
+		$.each( $("#addPurchaseChecks").serializeArray(),function(){
+			form[this.name] = this.value;
+		});
+			
+		form['date_in'] = moment().format("YYYY-MM-DD");
+		form['date_encashed'] = "";
+		form['date_bounced'] = "";
+		// var cn = car_info.findOne({chassis_number:form['chassis_number']  }).chassis_number;
+		// var en = car_info.findOne({engine_number:form['engine_number'] }).engine_number;
+		// if(cn === form['chassis_number'] && en === form['engine_number']){	
+			supplier_checks.insert( form, function(err){
+				if(err){
+					if(err.error === 403){
+						alert("Only admins can add checks.")
+					}else{
+						alert("Something went wrong. Please try again.");
+						console.log(err);
+					}
 					
-// 				}
-// 				else{
-// 					$('#addPurchaseChecks')[0].reset();
-// 				}
-// 			});
-// 		}
-// 		else{
-// 			alert("Chassis/Enginer Number not found!");
-// 			e.preventDefault();
-// 		}
+				}
+				else{
+					$('#addPurchaseChecks')[0].reset();
+				}
+			});
+		// }
+		// else{
+		// 	alert("Chassis/Enginer Number not found!");
+		// 	e.preventDefault();
+		// }
 		
 
-// 		e.preventDefault();
-// 	}
-// });
+		e.preventDefault();
+	}
+});
