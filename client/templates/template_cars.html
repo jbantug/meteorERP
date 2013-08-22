@@ -86,8 +86,7 @@
     <table class="table table-striped">
         <tr>
             <th>Control #</th>
-            <th>Make</th>
-            <th>Model</th>
+            <th>Item</th>
             <th>Yen</th>
             <th>F/X</th>
             <th>Peso</th>
@@ -101,10 +100,10 @@
             <th colspan="2">Actions</th>
         </tr>
         {{#each inventory_list}}
+        {{#unless customer_id}}
         <tr>
             <td>{{control_number}}</td>
-            <td>{{maker}}</td>
-            <td>{{model}}</td>
+            <td>{{maker}} {{model}}</td>
             <td>{{yen_cost}}</td>
             <td>{{exchange_rate}}</td>
             <td>{{peso_cost yen_cost exchange_rate}}</td>
@@ -113,7 +112,7 @@
             <td>{{brokerage_factor}}</td>
             <td>{{assembly_reconditioning}}</td>
             <td>{{freight_handling}}</td>
-            <td>{{total_landed_cost}}</td>
+            <td>{{total_cost}}</td>
             <td>{{reference_number}}</td>
             <td class="text-center">
                 <button href="#to-sell-modal" data-toggle="modal" class="btn btn-primary btnSellItem" id="{{_id}}">
@@ -126,6 +125,32 @@
                 </button>
             </td>
         </tr>
+        {{/unless}}
+        {{/each}}
+    </table>
+</template>
+
+<template name="sold_items">
+    <table class="table table-striped">
+        <tr>
+            <th>Control #</th>
+            <th>Item</th>
+            <th>Total Cost</th>
+            <th>Sale Price</th>
+            <th>Customer</th>
+            <th>Reference #</th>
+        </tr>
+        {{#each inventory_list}}
+        {{#if customer_id}}
+        <tr>
+            <td>{{control_number}}</td>
+            <td>{{maker}} {{model}}</td>
+            <td>{{total_cost}}</td>
+            <td>{{selling_price}}</td>
+            <td>{{get_customer customer_id}}</td>
+            <td>{{reference_number}}</td>
+        </tr>
+        {{/if}}
         {{/each}}
     </table>
 </template>
@@ -326,9 +351,9 @@
             <th>Delivery Date</th>
             <th>Delivered</th>
         </tr>
-        {{#each car_out}}
+        {{#each car_info}}
         <tr>
-            <td>{{item sku}}</td>
+            <td>{{maker}} {{model}}</td>
             <td>{{chassis_number}}</td>
             <td>{{engine_number}}</td>
             <td>{{get_customer customer_id}}</td>

@@ -101,14 +101,6 @@ Template.inventory.events({
 	'click .btnSellItem' : function (e,t){
 		Session.set('car_to_sell', this._id);
 	},
-	// 'click .btnUpdateItem': function (e,t){
-	// 	Session.set('editing_car', true);
-	// 	Session.set('car_id',  this._id );
-
-	// 	Meteor.flush();	
-	// 	$("form#form_addInventory").show();
-		
-	// }
 });
 
 Template.to_be_sold.car_info = function() {
@@ -222,10 +214,11 @@ Template.add_inventory_form.events({
 		$.each( $("#form_addInventory").serializeArray(),function(){
 			form[this.name] = this.value;
 		});
-		
+		form['customer_id'] = "";
+		form['total_cost'] = (form['yen_cost'] * form['exchange_rate']) + form['duties_and_taxes'] + ((form['yen_cost'] * form['exchange_rate']) * form['brokerage_factor'])  + form['assembly_reconditioning'] + form['freight_handling'];
 		form['dateadded'] = moment().format("YYYY-MM-DD");
 		form['selling_price'] = "";
-		form['net_selling_price'] = "";
+		form['net_margin'] = "";
 		form['delivery_date'] = "";
 		form['date_out'] = "";
 		form['delivered'] = false;
@@ -268,8 +261,8 @@ Template.price_list.items = function(){
 	return car_info.find({}, {sort: {maker: 1}});
 }
 
-Template.to_deliver.car_out = function(){
-	return car_out.find({}, {sort: {delivered: 1}});
+Template.to_deliver.car_info = function(){
+	return car_info.find({}, {sort: {delivery_date: 1}});
 }
 
 Template.to_deliver.events({
@@ -279,8 +272,11 @@ Template.to_deliver.events({
 	'click .btnUndo': function(e,t){
 		car_out.update({_id: e.target.id}, {$set: {delivered: false} });
 	},
-
 });
+
+Template.sold_items.inventory_list = function() {
+	return car_info.find({}, {sort: {dateadded: -1}});
+}
 
 //handlebar helpers
 Handlebars.registerHelper("peso_cost", function(yen, rate) {
@@ -298,26 +294,3 @@ Handlebars.registerHelper("get_car_maker", function(control_number) {
 Handlebars.registerHelper("get_car_model", function(control_number) {
 	return car_info.findOne({control_number: control_number}).model;
 });
-
-// Handlebars.registerHelper("item", function(sku) {
-//   var car_maker = car_info.findOne({_id:sku}).maker;
-//   var car_model = car_info.findOne({_id:sku}).model;
-//   var car_color = car_info.findOne({_id:sku}).color;
-//   return (car_maker + " " + car_model + "(" + car_color + ")");
-// });
-
-// Handlebars.registerHelper("get_maker", function(sku) {
-//   return car_info.findOne({_id:sku}).maker;
-// });
-
-// Handlebars.registerHelper("get_model", function(sku) {
-//   return car_info.findOne({_id:sku}).model;
-// });
-
-// Handlebars.registerHelper("get_color", function(sku) {
-//   return car_info.findOne({_id:sku}).color;
-// });
-
-// Handlebars.registerHelper("car_info", function() {
-//   return car_info.findOne({_id:sku});
-// });

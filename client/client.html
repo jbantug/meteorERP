@@ -225,32 +225,6 @@
 			          				{{> suppliers}}	          			
 			          		</div>
 						</div>
-						<div class="tab-pane" id="cars-modal">
-							<div class="navbar-form">
-								<div class="btn-group">
-									<button id="add" class="btn btn-default modal-nav-btn">
-										<i class="icon-plus"></i>
-										Add
-									</button>
-									<button id="search" class="btn btn-default modal-nav-btn">
-										<i class="icon-search"></i>
-										Search
-									</button>
-								</div>
-							</div>
-							{{> car_model_form}}
-							<div class="search modal-nav-box box-hide panel well">
-								<div class="col-lg-4">
-									<input type="text" class="form-control " placeholder="Check No.">
-								</div>
-								<button class="btn btn-default">
-									Find
-								</button>
-							</div>
-							<div class="table-body">		          			
-		          				{{> car_models}}
-			          		</div>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -355,7 +329,7 @@
 								{{>search_specific}}
 							</div>
 							<div class="table-body">
-								{{>sold_checks}}
+								{{>sold_items}}
 			          		</div>
 						</div>
 						<div class="tab-pane" id="sold-customers-modal">
@@ -400,7 +374,7 @@
 					</ul>
 				<div class="tab-content">
 					<div class="tab-pane active" id="inventory-modal">
-						
+						{{>inventory}}
 					</div>
 				</div>
 					
@@ -427,7 +401,9 @@
 
 			<div class="tab-content">
 				<div class="tab-pane active">
-					
+					<div class="table-body">
+						{{>to_deliver}}
+					</div>
 				</div>
 			</div>
 		</div>

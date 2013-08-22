@@ -196,11 +196,13 @@ Meteor.startup(function(){
             freight_handling: "3000",
             reference_number: "05930",
             dateadded: moment().format("YYYY-MM-DD"),
-            selling_price: "",
-            net_selling_price: "",
-            delivery_date: "",
-            date_out: "",
-            delivered : false
+            selling_price: "1000000",
+            total_cost: "319857.5",
+            net_margin: "680142.5",
+            delivery_date: "2013-09-09",
+            date_out: "2013-08-22",
+            delivered : false,
+            customer_id: c1
         });
         car_info.insert({
             control_number: "asdf1235",
@@ -216,10 +218,13 @@ Meteor.startup(function(){
             freight_handling: "3000",
             reference_number: "05930",
             dateadded: moment().format("YYYY-MM-DD"),
+            total_cost: "508172",
             selling_price: "",
-            net_selling_price: "",
+            net_margin: "",
             delivery_date: "",
             date_out: "",
+            delivered: false,
+            customer_id: ""
         });
         car_info.insert({
             control_number: "asdf1236",
@@ -235,10 +240,13 @@ Meteor.startup(function(){
             freight_handling: "3000",
             reference_number: "05930",
             dateadded: moment().format("YYYY-MM-DD"),
+            total_cost: "508172",
             selling_price: "",
-            net_selling_price: "",
+            net_margin: "",
             delivery_date: "",
             date_out: "",
+            delivered: false,
+            customer_id: ""
         });
     }
 

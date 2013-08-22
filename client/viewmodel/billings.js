@@ -6,36 +6,6 @@ Template.billings.billings = function(){
 	return billings.find( Session.get('billings_find'), {sort: {dateadded: -1} } );
 };
 
-Template.search_billings.events({
-	'click #c_search': function(e,t){
-		if($('#c_input').val() !== ""){
-			Session.set('billings_find', {contact_person:$('#c_input').val()});
-		}else{
-			Session.set('billings_find', {});
-		}
-	}
-});
-
-Template.billings_badge.billings = function(){
-	return billings.find( {}, {sort: {dateadded: -1} } );
-};
-
-Template.sale_order_billings.billings = function(){
-	return billings.find({},{sort:{name: 1}});
-}
-
-Template.billings_dropdown.billings = function(){
-	return billings.find( {}, {sort: {dateadded: -1} } );
-};
-
-Template.customer_to_sell.billings = function() {
-	return billings.find({},{sort: {contact_person: 1}});
-};
-
-Template.check_billings.billings = function(){
-	return billings.find( {}, {sort: {dateadded: -1} } );
-};
-
 Template.billings.events({
 	'click .btnRemoveCustomer': function (e,t){
 		// console.log( e.target.id );
@@ -117,10 +87,4 @@ Template.billing_form.events({
 
 		billings.update({_id: form['id']}, {$set: {contact_person: form['comtact_person'], position: form['position'], company_name: form['company_name'], company_address: form['company_address'], contact_number: form['contact_number'], email: form['email'] } });
 	}
-});
-
-//handlebar helpers
-Handlebars.registerHelper("get_customer", function(customer_id) {
-	var result = billings.findOne({_id:customer_id}).name;
-  	return result;
 });
