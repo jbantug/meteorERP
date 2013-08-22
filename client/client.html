@@ -122,7 +122,7 @@
 					<div class="tab-content">
 					  	<div class="tab-pane active" id="billing-modal">
 							{{> billing_form}}
-							<div class="table-body">
+							<div class="table-body hidexbar">
 			          			{{> billings}}
 			          		</div>
 					  	</div>
@@ -271,7 +271,6 @@
 			          				{{> suppliers}}	          			
 			          		</div>
 						</div>
-<<<<<<< HEAD
 						<div class="tab-pane" id="cars-modal">
 							<div class="navbar-form">
 								<div class="btn-group">
@@ -298,8 +297,6 @@
 		          				{{> car_models}}
 			          		</div>
 						</div>
-=======
->>>>>>> 564736dea405d34625f351a76f44f4da29bb9174
 					</div>
 				</div>
 			</div>
@@ -688,10 +685,17 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="list-group col-lg-12">
-					<h2><span><u>Item</u></span></h2>
+					<span>Date: November 4, 2013</span>
+					<h2>John Doe</h2>
+					
+					<div class="col-offset-2 col-lg-8">
+						<center><p>Received from <strong>COMPANY NAME</strong> c/o <strong>CONTACT PERSON</strong> the amount of <strong>ONE MILLION TWO HUNDRED EIGHTY THOUSAND PESOS ONLY (P 1,280,000.00)</strong> down payment for two (2) units Fuso wing van SN:FU510UZ-5009;FUS10TY-5100Y4.</p></center>
+					</div>
+					<br><br><br><br>
+					<h4><span><strong>Item</strong></span></h4>
 					<div class="tab-pane active" id="invoice-modal">
 						{{> invoice_form}}
-						<div class="table-body">
+						<div class="table-body hidexbar">
 		          			{{> invoice}}
 		          		</div>
 					  </div>

@@ -141,3 +141,7 @@ body .modal-open {
 	float: right;
 	margin-top: -50px;
 }
+
+.hidexbar {
+	overflow-x: hidden;
+}
