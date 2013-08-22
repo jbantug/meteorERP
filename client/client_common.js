@@ -14,7 +14,7 @@ Meteor.subscribe("Car_Costs")
 Meteor.subscribe("Car_Out");
 Meteor.subscribe("Expenses");
 Meteor.subscribe("CustomerChecks");
-Meteor.subscribe("GeneralChecks");
+Meteor.subscribe("SupplierChecks");
 Meteor.autosubscribe(function() {
 	Meteor.subscribe("BrokInfo", Session.get('bid') );
 	Meteor.subscribe("SuppInfo", Session.get('sid') );

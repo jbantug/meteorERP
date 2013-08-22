@@ -54,7 +54,7 @@
 			$.each( $("#form_addExpense").serializeArray(),function(){
 				form[this.name] = this.value;
 			});
-
+			form['dateadded'] = moment().format("YYYY-MM-DD");
 			expenses.insert( form, function(err){
 				if(err){
 					if(err.error === 403){

@@ -1,63 +1,29 @@
 <template name="sale_checksform">
 	<form class="add modal-nav-box box-hide panel well form-horizontal" id="addSaleChecks">
 	  	<div class="form-group clearfix">
-	    	<label class="col-lg-2 control-label">Check Number</label>
-	    	<div class="col-lg-4">
-	      		<input type="text" class="form-control" name="check_number">
-			</div>
-			<label class="col-lg-2 control-label">Check Date</label>
-	    	<div class="col-lg-4">
-	      		<input type="text" class="form-control" name="check_date">
-			</div>
-	  	</div>
-	  	<div class="form-group clearfix">
-		    <label class="col-lg-2 control-label">Control Number</label>
-		    <div class="col-lg-4">
-		      <input type="text" class="form-control" name="control_number">
-		    </div>
-		    <label class="col-lg-2 control-label">Bank</label>
-		    <div class="col-lg-4">
-		      <input type="text" class="form-control" name="bank">
-		    </div>
-	  	</div>
-	  	<div class="form-group clearfix">
-		    <label class="col-lg-2 control-label">Amount</label>
-		    <div class="col-lg-4">
-		      <input type="text" class="form-control" name="amount">
-		    </div>
-		    <div class="col-offset-2 col-lg-2">
-			  <button type="submit" class="btn btn-primary">Add</button>
-			</div>
-	  	</div>
-	</form>
-</template>
-
-<template name="purchase_checksform">
-	<form class="add modal-nav-box box-hide panel well form-horizontal" id="addPurchaseChecks">
-		<div class="form-group clearfix">
-	  		<label class="col-lg-2 control-label">Supplier</label>
+	  		<label class="col-lg-2 control-label">Customer</label>
 	      	<div class="col-lg-4">
-		  		{{>check_suppliers}}
+		  		{{>check_customers}}
 			</div>
-			<label class="col-lg-2 control-label">Item</label>
+			<label class="col-lg-2 control-label">Control Number</label>
 	      	<div class="btn-group col-lg-4">
-	  			{{>sale_order_items}}
+	  			<input type="text" class="form-control" name="control_number">
 			</div>
 		</div>
+		<div class="form-group clearfix">
+	    	<label class="col-lg-2 control-label">Bank</label>
+	    	<div class="col-lg-4">
+	      		<input type="text" class="form-control" name="bank">
+			</div>
+			<label class="col-lg-2 control-label">Branch</label>
+	    	<div class="col-lg-4">
+	      		<input type="text" class="form-control" name="branch">
+			</div>
+	  	</div>
 	  	<div class="form-group clearfix">
 	    	<label class="col-lg-2 control-label">Check Number</label>
 	    	<div class="col-lg-4">
 	      		<input type="text" class="form-control" name="check_number">
-			</div>
-			<label class="col-lg-2 control-label">Chassis No</label>
-	    	<div class="col-lg-4">
-	      		<input type="text" class="form-control" name="chassis_number">
-			</div>
-	  	</div>
-	  	<div class="form-group clearfix">
-	    	<label class="col-lg-2 control-label">Engine No</label>
-	    	<div class="col-lg-4">
-	      		<input type="text" class="form-control" name="engine_number">
 			</div>
 			<label class="col-lg-2 control-label">Amount</label>
 		    <div class="col-lg-4">
@@ -76,26 +42,76 @@
 	</form>
 </template>
 
+<template name="purchase_checksform">
+	<form class="add modal-nav-box box-hide panel well form-horizontal" id="addPurchaseChecks">
+	  	<div class="form-group clearfix">
+			<label class="col-lg-2 control-label">Control Number (if any)</label>
+	      	<div class="btn-group col-lg-4">
+	  			<input type="text" class="form-control" name="control_number">
+			</div>
+			<label class="col-lg-2 control-label">Description</label>
+	      	<div class="btn-group col-lg-4">
+	  			<input type="text" class="form-control" name="description">
+			</div>
+		</div>
+		<div class="form-group clearfix">
+	    	<label class="col-lg-2 control-label">Bank</label>
+	    	<div class="col-lg-4">
+	      		<input type="text" class="form-control" name="bank">
+			</div>
+			<label class="col-lg-2 control-label">Branch</label>
+	    	<div class="col-lg-4">
+	      		<input type="text" class="form-control" name="branch">
+			</div>
+	  	</div>
+	  	<div class="form-group clearfix">
+	    	<label class="col-lg-2 control-label">Check Number</label>
+	    	<div class="col-lg-4">
+	      		<input type="text" class="form-control" name="check_number">
+			</div>
+			<label class="col-lg-2 control-label">Amount</label>
+		    <div class="col-lg-4">
+		      <input type="text" class="form-control" name="amount">
+		    </div>
+	  	</div>
+	  	<div class="form-group clearfix">
+	    	<label class="col-lg-2 control-label">Date Issued</label>
+	    	<div class="col-lg-4">
+	      		<input type="date" class="form-control" name="date_issued">
+	    	</div>
+	    	<div class="col-offset-2 col-lg-2">
+			  <button type="submit" class="btn btn-primary">Add</button>
+			</div>
+	  	</div>
+	</form>
+</template>
+
 <template name="sale_checks">
 	<table class="table table-striped">
 		<tr>
-			<th>Due Date</th>
-			<th>Issue Date</th>
-			<th>Check No.</th>
+			<th>Check Number</th>
+			<th>Control Number</th>
+			<th>Bank - Branch</th>
 			<th>Customer</th>
 			<th>Amount</th>
-			<th>Bounce</th>
 			<th>Encashed</th>
+			<th>Bounce</th>
+			<th colspan="2">Actions</th>
 		</tr>
 		{{#each salechecklist}}
-
 		<tr>
-			
-			<td> {{due_date}} </td>
-			<td> {{date_in}} </td>
 			<td> {{check_number}} </td>
+			<td> {{control_number}} </td>
+			<td> {{bank}} - {{branch}} </td>
 			<td> {{get_customer customer_id}}</td>
 			<td> {{amount}}</td>
+			<td>
+				{{#if date_encashed }}
+					{{date_encashed}}
+				{{else}}	
+			 		<button class="btn btn-primary btn-small btnEncash" id="{{_id}}">Encash</button>
+			 	{{/if}}	
+			</td>
 			<td>
 				{{#if date_bounced }}
 					{{date_bounced}}
@@ -104,50 +120,49 @@
 				{{/if}}
 			</td>
 			<td>
-				{{#if date_encashed }}
-					{{date_encashed}}
-				{{else}}	
-			 		<button class="btn btn-primary btn-small btnEncash" id="{{_id}}">Encash</button>
-			 	{{/if}}	
-			</td>
-
+                <button class="btn btn-primary btnEditCheck" id="{{_id}}">
+                    <span class="glyphicon glyphicon-edit"></span>
+                </button>
+            </td>
+            <td>
+                <button class="btn btn-primary btnRemoveCheck" id="{{_id}}">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </button>
+            </td>
 		</tr>
 		{{/each}}
 	</table>
 </template>
+
 <template name="purchase_checks">
 	<table class="table table-striped">
 		<tr>
-			<th>Due Date</th>
-			<th>Issue Date</th>
-			<th>Check No.</th>
-			<th>Customer</th>
+			<th>Check Number</th>
+			<th>Description</th>
+			<th>Control Number</th>
+			<th>Bank - Branch</th>
 			<th>Amount</th>
-			<th>Bounce</th>
-			<th>Encashed</th>
+			<th>Date Issued</th>
+			<th colspan="2">Actions</th>
 		</tr>
 		{{#each purchasechecklist}}
 		<tr>
-			<td> {{due_date}} </td>
-			<td> {{date_in}} </td>
-			<td> {{check_number}} </td>
-			<td> {{get_supplier supplier_id}}</td>
-			<td> {{amount}}</td>
+			<td>{{check_number}}</td>
+			<td>{{description}}</td>
+			<td>{{control_number}} </td>
+			<td>{{bank}} - {{branch}}</td>
+			<td>{{amount}}</td>
+			<td>{{date_issued}}</td>
 			<td>
-				{{#if date_bounced }}
-					{{date_bounced}}
-				{{else}}
-				 <button class="btn btn-primary btn-small btnBounce" id="{{_id}}">Bounce</button>
-				{{/if}}
-			</td>
-			<td>
-				{{#if date_encashed }}
-					{{date_encashed}}
-				{{else}}	
-			 		<button class="btn btn-primary btn-small btnEncash" id="{{_id}}">Encash</button>
-			 	{{/if}}	
-			</td>
-
+                <button class="btn btn-primary btnEditCheck" id="{{_id}}">
+                    <span class="glyphicon glyphicon-edit"></span>
+                </button>
+            </td>
+            <td>
+                <button class="btn btn-primary btnRemoveCheck" id="{{_id}}">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </button>
+            </td>
 		</tr>
 		{{/each}}
 		</tr>
@@ -240,4 +255,29 @@
 
 <template name="purchase_checks_badge">
 	{{purchase_checks.count}}
+</template>
+
+<template name="sold_checks">
+	<table class="table table-striped">
+		<tr>
+			<th>Check Number</th>
+			<th>Control Number</th>
+			<th>Car Info</th>
+			<th>Bank - Branch</th>
+			<th>Customer</th>
+			<th>Amount</th>
+		</tr>
+		{{#each checklist}}
+		{{#if customer_id}}
+		<tr>
+			<td>{{check_number}}</td>
+			<td>{{control_number}}</td>
+			<td>{{get_car_maker control_number}} {{get_car_model control_number}}</td>
+			<td>{{bank}} - {{branch}}</td>
+			<td>{{get_customer customer_id}}</td>
+			<td>{{amount}}</td>
+		</tr>
+		{{/if}}
+		{{/each}}
+	</table>
 </template>

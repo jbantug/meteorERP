@@ -133,7 +133,7 @@
 <template name="check_customers">
     <select class="form-control" name="customer_id" id="customer_id">
         {{#each customers}}
-        <option value="{{_id}}">{{name}}</option>
+        <option value="{{_id}}">{{contact_person}}</option>
         {{/each}}
     </select>
 </template>
@@ -163,4 +163,23 @@
         <option value="{{_id}}">{{contact_person}}</option>
         {{/each}}
     </select>
+</template>
+
+<template name="customer_item_list">
+    <div class="accordion" id="accordion2">
+        {{#each customers}}
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#{{_id}}">
+                    {{contact_person}}
+                </a>
+            </div>
+            <div id="{{_id}}" class="accordion-body collapse">
+                <div class="accordion-inner">
+                    {{company_name}}
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
 </template>
