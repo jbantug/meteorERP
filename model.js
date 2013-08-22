@@ -7,6 +7,7 @@ car_out = new Meteor.Collection("Car_Out");
 transactions = new Meteor.Collection("Transactions");
 expenses = new Meteor.Collection("Expenses");
 customer_checks = new Meteor.Collection("Customer_Checks");
+supplier_checks = new Meteor.Collection("Supplier_Checks");
 general_checks = new Meteor.Collection("General_Checks");
 //# Account model is initially handled by account-base package
 
@@ -162,7 +163,7 @@ customer_checks.allow({
     }
 });
 
-general_checks.allow({
+supplier_checks.allow({
   insert: function (userId, doc){
     return adminUser(userId);
   },
