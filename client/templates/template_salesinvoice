@@ -1,0 +1,33 @@
+<template name="invoice">
+    <table class="table table-striped">
+        <tr>
+            <th>Payment Date</th>
+            <th>Bank</th>
+            <th>Branch</th>
+            <th>Check #</th>
+       
+        </tr>
+        <tr>
+            <td>September 15, 2013</td>
+            <td>EastWest Bank</td>
+            <td>000069</td>
+            <td>434-029-999</td>
+        </tr>
+        <tr>
+            <td>December 15, 2013</td>
+            <td>RCBC</td>
+            <td>041069</td>
+            <td>525-753-771</td>
+        </tr>
+         <tr>
+            <td>August 15, 2013</td>
+            <td>Central Union Bank</td>
+            <td>910692</td>
+            <td>924-658-684</td>
+        </tr>
+    </table>
+</template>
+
+<template name="invoice_form">     
+    
+</template>

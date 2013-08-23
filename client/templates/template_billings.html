@@ -1,4 +1,5 @@
 <template name="billings">
+<<<<<<< HEAD
     {{#each get_car_list}}    
         <table class="table table-striped">
             <span><h5>{{maker}} {{model}}  C/N: {{control_number}}</h5></span>
@@ -86,9 +87,39 @@
             {{/each}}
         </table>
     {{/each}}        
+=======
+    <table class="table table-striped">
+        <tr>
+            <th>Item</th>
+            <th>Check #</th>
+            <th>Date</th>
+            <th>Amount</th>
+       
+        </tr>
+        <tr>
+            <td>000069</td>
+            <td>434-029-457</td>
+            <td>September 15, 2013</td>
+            <td>$ 500,000</td>
+        </tr>
+        <tr>
+            <td>041069</td>
+            <td>434-029-999</td>
+            <td>December 15, 2013</td>
+            <td>$ 1,200,000</td>
+        </tr>
+         <tr>
+            <td>910692</td>
+            <td>268-029-999</td>
+            <td>August 15, 2013</td>
+            <td>$ 4,200,000</td>
+        </tr>
+    </table>
+>>>>>>> 268ca4d0c2628d85cbff3ba9527f83767b224a3d
 </template>
 
 <template name="billing_form">     
+
     <form class="add modal-nav-box box-hide panel well form-horizontal" id="form_addCustomer">
        
         <input type="hidden"  name="id"/>
