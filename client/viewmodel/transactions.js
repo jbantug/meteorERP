@@ -11,10 +11,6 @@ Template.sales_orders_badge.cars_out = function(){
 	return car_out.find();
 }
 
-Template.car_in_badge.cars_in = function(){
-	return car_info.find();
-}
-
 Template.sales_orders.events({
 	'click .btnRemoveSO': function (e,t){
 		// console.log( e.target.id );

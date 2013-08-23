@@ -1,90 +1,77 @@
-Session.set('editing_customer', false);
-Session.set('cid', null);
 Session.set('billings_find', {});
 
-Template.billings.billings = function(){
-	return billings.find( Session.get('billings_find'), {sort: {dateadded: -1} } );
+Template.billing.events({
+	"click #receipt-button": function(){
+      var divToPrint = document.getElementById('print-receipt');
+      var newWin = window.open('','Print-Window','width=800,height=800,top=100,left=100');
+      newWin.document.open();
+      newWin.document.write('<html><head></head><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>');
+      newWin.document.close();
+      setTimeout(function(){newWin.close();},10);
+    }
+
+});
+
+Template.billing.customer = function(){	
+	var to_return = null;
+	if (Session.get('billing_customer')) {
+		to_return = customers.findOne(Session.get('billing_customer')).contact_person;
+	}
+	return to_return;
 };
 
-Template.billings.events({
-	'click .btnRemoveCustomer': function (e,t){
-		// console.log( e.target.id );
-		Meteor.flush();
-		billings.remove({_id: this._id });
-		
-	},
-	'click .btnEditCustomer': function (e,t){
-		Session.set('editing_customer', true);
-		Session.set('cid', this._id);
+Template.billing.date = function(){
+	return moment().format("MMMM DD YYYY");
+};
 
-		Meteor.flush();	
-		$("form#form_addCustomer").show();
-		
+Template.billings.payments = function(){
+	var to_return = customer_checks.find(Session.get('billing_id'), {});
+	return to_return;
+}
+
+Template.billings.helpers({
+	get_car_list: function(){
+		return car_info.find(Session.get('billing_id'), {});
+	},
+	get_payments: function(control_number){
+		return customer_checks.find({control_number: control_number},{});
 	}
 });
 
-Template.billing_form.editing_customer = function(){
-	return Session.equals('editing_customer', true);
+Template.sales_invoice.events({
+	"click #receipt-button": function(){
+      var divToPrint = document.getElementById('print-receipt2');
+      var newWin = window.open('','Print-Window','width=800,height=800,top=100,left=100');
+      newWin.document.open();
+      newWin.document.write('<html><head></head><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>');
+      newWin.document.close();
+      setTimeout(function(){newWin.close();},10);
+    }
+
+});
+
+Template.sales_invoice.customer = function(){	
+	var to_return = null;
+	if (Session.get('billing_customer')) {
+		to_return = customers.findOne(Session.get('billing_customer')).contact_person;
+	}
+	return to_return;
 };
 
-Template.billing_form.info = function(){
-	if(Session.equals('cid', null)){
-		return null;
-	}
-	else{
-		var sid = Session.get('cid')
-		var info = billings.find( { _id: sid} );
-		if(info){
-			return info;
-		}
-		return info["name"] = "none selected";
-	}
-
+Template.sales_invoice.date = function(){
+	return moment().format("MMMM DD YYYY");
 };
 
-Template.billing_form.events({
-	'submit': function (e,t){
-		form = {};
+Template.invoices.payments = function(){
+	var to_return = customer_checks.find(Session.get('billing_id'), {});
+	return to_return;
+}
 
-		$.each( $("#form_addCustomer").serializeArray(),function(){
-			form[this.name] = this.value;
-		});
-			
-		form['dateadded'] = moment().format("MMM DD YYYY");
-
-		billings.insert( form, function(err){
-			if(err){
-				if(err.error === 403){
-					alert("Only admins can create new billings.")
-				}else{
-					alert("Something went wrong. Please try again.");
-					console.log(err);
-				}
-				
-			}
-			else{
-				$('#form_addCustomer')[0].reset();
-			}
-		});
-
-		e.preventDefault();
+Template.invoices.helpers({
+	get_car_list: function(){
+		return car_info.find(Session.get('billing_id'), {});
 	},
-	'click #btnCancel': function(e,t){
-		Session.set('editing_customer', false);
-		Session.set('cid', null);
-
-		
-		$("form#form_addCustomer").hide();
-		$('#form_addCustomer')[0].reset();
-		// Meteor.flush();	
-	},
-	'click #btnUpdateCustomer': function (e,t){
-		form = {};
-
-		$.each( $("#form_addCustomer").serializeArray(),function(){
-			form[this.name] = this.value;
-		});
-
-		billings.update({_id: form['id']}, {$set: {contact_person: form['comtact_person'], position: form['position'], company_name: form['company_name'], company_address: form['company_address'], contact_number: form['contact_number'], email: form['email'] } });
+	get_payments: function(control_number){
+		return customer_checks.find({control_number: control_number},{});
 	}
 });

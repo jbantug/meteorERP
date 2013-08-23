@@ -9,84 +9,6 @@ Template.car_models.car_models = function(){
 	return car_info.find( {}, {sort: {dateadded: -1} } );
 };
 
-Template.maker_dropdown.makers = function(){
-	var myArray = car_info.find().fetch();
-	var distinctArray = _.uniq(myArray, false, function(d) {return d.maker});
-	return distinctArray;
-}
-
-Template.add_inventory_makers.makers = function(){
-	var myArray = car_info.find().fetch();
-	var distinctArray = _.uniq(myArray, false, function(d) {return d.maker});
-	return distinctArray;
-}
-
-Template.add_inventory_makers.events({
-	'click #add_maker': function(e,t){
-		Session.set('current_maker',$('#add_maker').val());
-	}
-});
-
-Template.purchase_order_makers.makers = function(){
-	var myArray = car_info.find().fetch();
-	var distinctArray = _.uniq(myArray, false, function(d) {return d.maker});
-	return distinctArray;
-}
-
-Template.purchase_order_makers.events({
-	'click #purchase_maker': function(e,t){
-		Session.set('current_maker',$('#purchase_maker').val());
-	}
-});
-
-Template.model_dropdown.models = function(){
-	var myArray = car_info.find({maker:Session.get('current_maker')}).fetch();
-	var distinctArray = _.uniq(myArray, false, function(d) {return d.model});
-	return distinctArray;
-}
-
-Template.add_inventory_models.models = function(){
-	var myArray = car_info.find({maker:Session.get('current_maker')}).fetch();
-	var distinctArray = _.uniq(myArray, false, function(d) {return d.model});
-	return distinctArray;
-}
-
-Template.add_inventory_models.events({
-	'click #add_model': function(e,t){
-		Session.set('current_model',$('#add_model').val());
-	}
-});
-
-Template.purchase_order_models.models = function(){
-	var myArray = car_info.find({maker:Session.get('current_maker')}).fetch();
-	var distinctArray = _.uniq(myArray, false, function(d) {return d.model});
-	return distinctArray;
-}
-
-Template.purchase_order_models.events({
-	'click #purchase_model': function(e,t){
-		Session.set('current_model',$('#purchase_model').val());
-	}
-});
-
-Template.color_dropdown.colors = function(){
-	var myArray = car_info.find({maker:Session.get('current_maker'),model:Session.get('current_model')}).fetch();
-	var distinctArray = _.uniq(myArray, false, function(d) {return d.color});
-	return distinctArray;
-}
-
-Template.add_inventory_colors.colors = function(){
-	var myArray = car_info.find({maker:Session.get('current_maker'),model:Session.get('current_model')}).fetch();
-	var distinctArray = _.uniq(myArray, false, function(d) {return d.color});
-	return distinctArray;
-}
-
-Template.purchase_order_colors.colors = function(){
-	var myArray = car_info.find({maker:Session.get('current_maker'),model:Session.get('current_model')}).fetch();
-	var distinctArray = _.uniq(myArray, false, function(d) {return d.color});
-	return distinctArray;
-}
-
 Template.inventory.inventory_list = function() {
 	return car_info.find(Session.get('inventory_find'), {sort: {date_in: -1}});
 }
@@ -95,9 +17,12 @@ Template.purchase_inventory.inventory_list = function() {
 	return car_info.find(Session.get('inventory_find'), {sort: {date_in: -1}});
 }
 
+Template.sales_inventory.inventory_list = function() {
+	return car_info.find(Session.get('inventory_find'), {sort: {date_in: -1}});
+}
+
 Template.inventory.events({
 	'click .btnRemoveItem': function (e,t){
-		Session.set('car_id', null);
 		Meteor.flush();
 		car_info.remove({_id: e.target.id });
 		
@@ -112,10 +37,39 @@ Template.to_be_sold.car_info = function() {
 }
 
 Template.to_be_sold.events({
-	'submit': function(e,t){
+	'click #toSell': function(e,t){
 		form = {};
 
 		$.each( $("#form_addCarSale").serializeArray(),function(){
+			form[this.name] = this.value;
+		});
+
+		car_info.update({_id: Session.get('car_to_sell')}, {$set: {customer_id: form['customer_id'], delivery_date: form['delivery_date'], selling_price: form['selling_price']} });
+
+		Session.set('car_to_sell',null);
+	}
+});
+
+Template.sales_inventory.events({
+	'click .btnRemoveItem': function (e,t){
+		Meteor.flush();
+		car_info.remove({_id: e.target.id });
+		
+	},
+	'click .btnSellItem' : function (e,t){
+		Session.set('car_to_sell', this._id);
+	},
+});
+
+Template.to_be_sold_sales.car_info = function() {
+	return car_info.findOne({id: Session.get('car_to_sell')});
+}
+
+Template.to_be_sold_sales.events({
+	'click #toSell2': function(e,t){
+		form = {};
+
+		$.each( $("#form_addCarSale2").serializeArray(),function(){
 			form[this.name] = this.value;
 		});
 
@@ -218,29 +172,39 @@ Template.add_inventory_form.events({
 		$.each( $("#form_addInventory").serializeArray(),function(){
 			form[this.name] = this.value;
 		});
+		var yen = parseFloat(form['yen_cost']);
+		var rate = parseFloat(form['exchange_rate']);
+		var factor = parseFloat(form['brokerage_factor']);
+		var fh = parseFloat(form['freight_handling']);
+		var dt = parseFloat(form['duties_and_taxes']);
 		form['customer_id'] = "";
-		form['total_cost'] = (form['yen_cost'] * form['exchange_rate']) + form['duties_and_taxes'] + ((form['yen_cost'] * form['exchange_rate']) * form['brokerage_factor'])  + form['assembly_reconditioning'] + form['freight_handling'];
+		form['total_cost'] = ((yen*rate)+dt+(yen*rate*factor)+fh);
 		form['dateadded'] = moment().format("YYYY-MM-DD");
+		form['assembly_reconditioning'] = 0;
 		form['selling_price'] = "";
 		form['net_margin'] = "";
 		form['delivery_date'] = "";
 		form['date_out'] = "";
 		form['delivered'] = false;
 
-		car_info.insert( form, function(err){
-			if(err){
-				if(err.error === 403){
-					alert("Only admins can add new cars.")
-				}else{
-					alert("Something went wrong. Please try again.");
-					console.log(err);
+		if(car_info.find({control_number: form['control_number']}).count() === 0 ){
+			car_info.insert( form, function(err){
+				if(err){
+					if(err.error === 403){
+						alert("Only admins can add new cars.")
+					}else{
+						alert("Something went wrong. Please try again.");
+						console.log(err);
+					}
 				}
-			}
-			else{
-				$('#form_addInventory')[0].reset();
-				$('#control_number').focus();
-			}
-		});
+				else{
+					$('#form_addInventory')[0].reset();
+					$('#control_number').focus();
+				}
+			});
+		}else{
+			alert("Warning: Control Number already exists.");
+		}
 
 		e.preventDefault();
 	}
@@ -248,13 +212,244 @@ Template.add_inventory_form.events({
 });
 
 Template.search_specific.events({
-	'click #i_search': function(e,t){
-		if($('#ch_input').val() !== "" && $('#en_input').val() !== ""){
-			if(car_in.find({chassis_number:$('#ch_input').val(),engine_number:$('#en_input').val()}, {sort: {date_in: -1}}).count() > 0){
-				Session.set('inventory_find', {chassis_number:$('#ch_input').val(),engine_number:$('#en_input').val()});
-			}else{
-				Session.set('inventory_find', {});	
-			}
+	'keydown input#ch_input': function(e,t){
+		query = $("#ch_input").val();
+		if($('#ch_input').val() !== ""){
+			Session.set('inventory_find', {$or: [
+				{control_number: {$regex: query, $options: 'i'}},
+				{maker: {$regex: query, $options: 'i'}},
+				{model: {$regex: query, $options: 'i'}},
+				{engine: {$regex: query, $options: 'i'}},
+				{chassis: {$regex: query, $options: 'i'}},
+				{yen_cost: {$regex: query, $options: 'i'}},
+				{exchange_rate: {$regex: query, $options: 'i'}},
+				{duties_and_taxes: {$regex: query, $options: 'i'}},
+				{brokerage_factor: {$regex: query, $options: 'i'}},
+				{assembly_reconditioning: {$regex: query, $options: 'i'}},
+				{freight_handling: {$regex: query, $options: 'i'}},
+				{reference_number: {$regex: query, $options: 'i'}},
+				{total_cost: {$regex: query, $options: 'i'}},
+				{selling_price: {$regex: query, $options: 'i'}},
+			]});
+		}else{
+			Session.set('inventory_find', {});
+		}
+	},
+	'keyup input#ch_input': function(e,t){
+		query = $("#ch_input").val();
+		if($('#ch_input').val() !== ""){
+			Session.set('inventory_find', {$or: [
+				{control_number: {$regex: query, $options: 'i'}},
+				{maker: {$regex: query, $options: 'i'}},
+				{model: {$regex: query, $options: 'i'}},
+				{engine: {$regex: query, $options: 'i'}},
+				{chassis: {$regex: query, $options: 'i'}},
+				{yen_cost: {$regex: query, $options: 'i'}},
+				{exchange_rate: {$regex: query, $options: 'i'}},
+				{duties_and_taxes: {$regex: query, $options: 'i'}},
+				{brokerage_factor: {$regex: query, $options: 'i'}},
+				{assembly_reconditioning: {$regex: query, $options: 'i'}},
+				{freight_handling: {$regex: query, $options: 'i'}},
+				{reference_number: {$regex: query, $options: 'i'}},
+				{total_cost: {$regex: query, $options: 'i'}},
+				{selling_price: {$regex: query, $options: 'i'}},
+			]});
+		}else{
+			Session.set('inventory_find', {});
+		}
+	}
+});
+
+Template.search_specific3.events({
+	'keydown input#ch_input3': function(e,t){
+		query = $("#ch_input3").val();
+		if($('#ch_input3').val() !== ""){
+			Session.set('inventory_find', {$or: [
+				{control_number: {$regex: query, $options: 'i'}},
+				{maker: {$regex: query, $options: 'i'}},
+				{model: {$regex: query, $options: 'i'}},
+				{engine: {$regex: query, $options: 'i'}},
+				{chassis: {$regex: query, $options: 'i'}},
+				{yen_cost: {$regex: query, $options: 'i'}},
+				{exchange_rate: {$regex: query, $options: 'i'}},
+				{duties_and_taxes: {$regex: query, $options: 'i'}},
+				{brokerage_factor: {$regex: query, $options: 'i'}},
+				{assembly_reconditioning: {$regex: query, $options: 'i'}},
+				{freight_handling: {$regex: query, $options: 'i'}},
+				{reference_number: {$regex: query, $options: 'i'}},
+				{total_cost: {$regex: query, $options: 'i'}},
+				{selling_price: {$regex: query, $options: 'i'}},
+			]});
+		}else{
+			Session.set('inventory_find', {});
+		}
+	},
+	'keyup input#ch_input3': function(e,t){
+		query = $("#ch_input3").val();
+		if($('#ch_input3').val() !== ""){
+			Session.set('inventory_find', {$or: [
+				{control_number: {$regex: query, $options: 'i'}},
+				{maker: {$regex: query, $options: 'i'}},
+				{model: {$regex: query, $options: 'i'}},
+				{engine: {$regex: query, $options: 'i'}},
+				{chassis: {$regex: query, $options: 'i'}},
+				{yen_cost: {$regex: query, $options: 'i'}},
+				{exchange_rate: {$regex: query, $options: 'i'}},
+				{duties_and_taxes: {$regex: query, $options: 'i'}},
+				{brokerage_factor: {$regex: query, $options: 'i'}},
+				{assembly_reconditioning: {$regex: query, $options: 'i'}},
+				{freight_handling: {$regex: query, $options: 'i'}},
+				{reference_number: {$regex: query, $options: 'i'}},
+				{total_cost: {$regex: query, $options: 'i'}},
+				{selling_price: {$regex: query, $options: 'i'}},
+			]});
+		}else{
+			Session.set('inventory_find', {});
+		}
+	}
+});
+
+Template.search_specific4.events({
+	'keydown input#ch_input4': function(e,t){
+		query = $("#ch_input4").val();
+		if($('#ch_input4').val() !== ""){
+			Session.set('inventory_find', {$or: [
+				{control_number: {$regex: query, $options: 'i'}},
+				{maker: {$regex: query, $options: 'i'}},
+				{model: {$regex: query, $options: 'i'}},
+				{engine: {$regex: query, $options: 'i'}},
+				{chassis: {$regex: query, $options: 'i'}},
+				{yen_cost: {$regex: query, $options: 'i'}},
+				{exchange_rate: {$regex: query, $options: 'i'}},
+				{duties_and_taxes: {$regex: query, $options: 'i'}},
+				{brokerage_factor: {$regex: query, $options: 'i'}},
+				{assembly_reconditioning: {$regex: query, $options: 'i'}},
+				{freight_handling: {$regex: query, $options: 'i'}},
+				{reference_number: {$regex: query, $options: 'i'}},
+				{total_cost: {$regex: query, $options: 'i'}},
+				{selling_price: {$regex: query, $options: 'i'}},
+			]});
+		}else{
+			Session.set('inventory_find', {});
+		}
+	},
+	'keyup input#ch_input4': function(e,t){
+		query = $("#ch_input4").val();
+		if($('#ch_input4').val() !== ""){
+			Session.set('inventory_find', {$or: [
+				{control_number: {$regex: query, $options: 'i'}},
+				{maker: {$regex: query, $options: 'i'}},
+				{model: {$regex: query, $options: 'i'}},
+				{engine: {$regex: query, $options: 'i'}},
+				{chassis: {$regex: query, $options: 'i'}},
+				{yen_cost: {$regex: query, $options: 'i'}},
+				{exchange_rate: {$regex: query, $options: 'i'}},
+				{duties_and_taxes: {$regex: query, $options: 'i'}},
+				{brokerage_factor: {$regex: query, $options: 'i'}},
+				{assembly_reconditioning: {$regex: query, $options: 'i'}},
+				{freight_handling: {$regex: query, $options: 'i'}},
+				{reference_number: {$regex: query, $options: 'i'}},
+				{total_cost: {$regex: query, $options: 'i'}},
+				{selling_price: {$regex: query, $options: 'i'}},
+			]});
+		}else{
+			Session.set('inventory_find', {});
+		}
+	}
+});
+
+Template.search_specific5.events({
+	'keydown input#ch_input5': function(e,t){
+		query = $("#ch_input5").val();
+		if($('#ch_input5').val() !== ""){
+			Session.set('inventory_find', {$or: [
+				{control_number: {$regex: query, $options: 'i'}},
+				{maker: {$regex: query, $options: 'i'}},
+				{model: {$regex: query, $options: 'i'}},
+				{engine: {$regex: query, $options: 'i'}},
+				{chassis: {$regex: query, $options: 'i'}},
+				{yen_cost: {$regex: query, $options: 'i'}},
+				{exchange_rate: {$regex: query, $options: 'i'}},
+				{duties_and_taxes: {$regex: query, $options: 'i'}},
+				{brokerage_factor: {$regex: query, $options: 'i'}},
+				{assembly_reconditioning: {$regex: query, $options: 'i'}},
+				{freight_handling: {$regex: query, $options: 'i'}},
+				{reference_number: {$regex: query, $options: 'i'}},
+				{total_cost: {$regex: query, $options: 'i'}},
+				{selling_price: {$regex: query, $options: 'i'}},
+			]});
+		}else{
+			Session.set('inventory_find', {});
+		}
+	},
+	'keyup input#ch_input5': function(e,t){
+		query = $("#ch_input5").val();
+		if($('#ch_input5').val() !== ""){
+			Session.set('inventory_find', {$or: [
+				{control_number: {$regex: query, $options: 'i'}},
+				{maker: {$regex: query, $options: 'i'}},
+				{model: {$regex: query, $options: 'i'}},
+				{engine: {$regex: query, $options: 'i'}},
+				{chassis: {$regex: query, $options: 'i'}},
+				{yen_cost: {$regex: query, $options: 'i'}},
+				{exchange_rate: {$regex: query, $options: 'i'}},
+				{duties_and_taxes: {$regex: query, $options: 'i'}},
+				{brokerage_factor: {$regex: query, $options: 'i'}},
+				{assembly_reconditioning: {$regex: query, $options: 'i'}},
+				{freight_handling: {$regex: query, $options: 'i'}},
+				{reference_number: {$regex: query, $options: 'i'}},
+				{total_cost: {$regex: query, $options: 'i'}},
+				{selling_price: {$regex: query, $options: 'i'}},
+			]});
+		}else{
+			Session.set('inventory_find', {});
+		}
+	}
+});
+
+Template.search_specific6.events({
+	'keydown input#ch_input6': function(e,t){
+		query = $("#ch_input6").val();
+		if($('#ch_input6').val() !== ""){
+			Session.set('inventory_find', {$or: [
+				{control_number: {$regex: query, $options: 'i'}},
+				{maker: {$regex: query, $options: 'i'}},
+				{model: {$regex: query, $options: 'i'}},
+				{engine: {$regex: query, $options: 'i'}},
+				{chassis: {$regex: query, $options: 'i'}},
+				{yen_cost: {$regex: query, $options: 'i'}},
+				{exchange_rate: {$regex: query, $options: 'i'}},
+				{duties_and_taxes: {$regex: query, $options: 'i'}},
+				{brokerage_factor: {$regex: query, $options: 'i'}},
+				{assembly_reconditioning: {$regex: query, $options: 'i'}},
+				{freight_handling: {$regex: query, $options: 'i'}},
+				{reference_number: {$regex: query, $options: 'i'}},
+				{total_cost: {$regex: query, $options: 'i'}},
+				{selling_price: {$regex: query, $options: 'i'}},
+			]});
+		}else{
+			Session.set('inventory_find', {});
+		}
+	},
+	'keyup input#ch_input6': function(e,t){
+		query = $("#ch_input6").val();
+		if($('#ch_input6').val() !== ""){
+			Session.set('inventory_find', {$or: [
+				{control_number: {$regex: query, $options: 'i'}},
+				{maker: {$regex: query, $options: 'i'}},
+				{model: {$regex: query, $options: 'i'}},
+				{engine: {$regex: query, $options: 'i'}},
+				{chassis: {$regex: query, $options: 'i'}},
+				{yen_cost: {$regex: query, $options: 'i'}},
+				{exchange_rate: {$regex: query, $options: 'i'}},
+				{duties_and_taxes: {$regex: query, $options: 'i'}},
+				{brokerage_factor: {$regex: query, $options: 'i'}},
+				{assembly_reconditioning: {$regex: query, $options: 'i'}},
+				{freight_handling: {$regex: query, $options: 'i'}},
+				{reference_number: {$regex: query, $options: 'i'}},
+				{total_cost: {$regex: query, $options: 'i'}},
+				{selling_price: {$regex: query, $options: 'i'}},
+			]});
 		}else{
 			Session.set('inventory_find', {});
 		}
@@ -266,22 +461,25 @@ Template.price_list.items = function(){
 }
 
 Template.to_deliver.car_info = function(){
-	return car_info.find({}, {sort: {delivery_date: 1}});
+	return car_info.find(Session.get('inventory_find'), {sort: {delivered: 1}});
 }
 
 Template.to_deliver.events({
 	'click .btnDelivered': function(e,t){
-		car_out.update({_id: e.target.id}, {$set: {delivered: true} });
+		car_info.update({_id: e.target.id}, {$set: {delivered: true} });
 	},
 	'click .btnUndo': function(e,t){
-		car_out.update({_id: e.target.id}, {$set: {delivered: false} });
+		car_info.update({_id: e.target.id}, {$set: {delivered: false} });
 	},
 });
 
 Template.sold_items.inventory_list = function() {
-	return car_info.find({}, {sort: {dateadded: -1}});
+	return car_info.find(Session.get('inventory_find'), {sort: {dateadded: -1}});
 }
 
+Template.items_per_customer.inventory_list = function() {
+	return car_info.find(Session.get('car_customer_id'), {sort: {dateadded: -1}});
+}
 //handlebar helpers
 Handlebars.registerHelper("peso_cost", function(yen, rate) {
   return (yen * rate);

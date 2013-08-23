@@ -7,9 +7,32 @@ Template.suppliers.suppliers = function(){
 };
 
 Template.search_supplier.events({
-	'click #s_search': function(e,t){
+	'keydown input#s_input': function(e,t){
+		query = $("#s_input").val();
+		if($('#c_input').val() !== ""){
+			Session.set('suppliers_find', {$or: [
+				{contact_person: {$regex: query, $options: 'i'}},
+				{position: {$regex: query, $options: 'i'}},
+				{company_name: {$regex: query, $options: 'i'}},
+				{company_address: {$regex: query, $options: 'i'}},
+				{contact_number: {$regex: query, $options: 'i'}},
+				{email: {$regex: query, $options: 'i'}}
+			]});
+		}else{
+			Session.set('suppliers_find', {});
+		}
+	},
+	'keyup input#s_input': function(e,t){
+		query = $("#s_input").val(); 
 		if($('#s_input').val() !== ""){
-			Session.set('suppliers_find', {name:$('#s_input').val()});
+			Session.set('suppliers_find', {$or: [
+				{contact_person: {$regex: query, $options: 'i'}},
+				{position: {$regex: query, $options: 'i'}},
+				{company_name: {$regex: query, $options: 'i'}},
+				{company_address: {$regex: query, $options: 'i'}},
+				{contact_number: {$regex: query, $options: 'i'}},
+				{email: {$regex: query, $options: 'i'}}
+			]});
 		}else{
 			Session.set('suppliers_find', {});
 		}
@@ -38,9 +61,8 @@ Template.expense_suppliers.suppliers = function(){
 
 Template.suppliers.events({
 	'click .btnRemoveSupplier': function (e,t){
-		Session.set('sid', null);
 		Meteor.flush();
-		suppliers.remove({_id: e.target.id });
+		suppliers.remove({_id: this._id });
 		
 	},
 	'click .btnEditSupplier': function (e,t){
@@ -115,7 +137,7 @@ Template.supplier_form.events({
 			form[this.name] = this.value;
 		});
 
-		suppliers.update({_id: form['id']}, {$set: {name: form['name'], company: form['company'], description: form['description'] } });
+		suppliers.update({_id: form['id']}, {$set: {contact_person: form['contact_person'], position: form['position'], company_name: form['company_name'], company_address: form['company_address'], contact_number: form['contact_number'], email: form['email'] } });
 	}
 });
 

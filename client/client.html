@@ -20,12 +20,12 @@
 
 		<div class="home-wrapper">
 			<ul style="padding:0px;">
-				<a href="#notifications">
+				<!-- <a href="#notifications">
 					<li id="box-notif">
 						<img src="cibell2.png" width="132" height="132" />
 						<span>Notifications</span>
 					</li>
-				</a>
+				</a> -->
 				<a href="#accounts" data-toggle="modal">
 					<li id="box-accounts">
 						<img src="ciaccounts2.png" width="132" height="132" />
@@ -68,20 +68,6 @@
 						<span>Expenses</span>
 					</li>
 				</a>
-				<a href="#">
-					<li id="box-billing">
-						<img src="cinotes.png" width="132" height="132" />
-						<span>Billings</span>
-					</li>
-				</a>
-
-				<a href="#">
-					<li id="box-salesinvoice">
-						<img src="cisettings.png" width="132" height="132" />
-						<span>Sales Invoice</span>
-					</li>
-				</a>
-
 				<!-- <a href="#">
 					<li id="box-notes">
 						<img src="cinotes.png" width="132" height="132" />
@@ -102,40 +88,6 @@
 	</div>
 
 	<!--  WINDOWS  -->
-
-	<div class="box box-billing box-hide panel" style="margin-top:20px">
-		<div class="panel-heading">
-			<h2 class="panel-title">
-				<button type="button" class="home-access pull-right" aria-hidden="true" style="margin-top: -6px">
-					<i class="icon-home icon-medium"></i>
-				</button>
-				<img src="cinotes.png" width="46" height="41" style="margin-top: -10px"/>
-				Billings
-			</h2>
-		</div>
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="list-group col-lg-12">
-					<ul class="nav nav-tabs">
-					  <li class="active"><a href="#billing-modal" data-toggle="tab" class="list-group-item">Customer Name</a></li>
-					</ul>
-					<div class="tab-content">
-					  	<div class="tab-pane active" id="billing-modal">
-							{{> billing_form}}
-							<div class="table-body hidexbar">
-			          			{{> billings}}
-			          		</div>
-					  	</div>
-					  	<div class="col-lg-4 billing-signature">
-					  		<p>Approved by:</p>
-					  		<p>______________________</p>
-					  		<p>Signature over printed name</p>
-					  	</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<div class="box box-notif box-hide panel" style="margin-top:20px">
 		<div class="panel-heading">
@@ -226,7 +178,6 @@
 					<ul class="nav nav-tabs">
 					  <li class="active"><a href="#customer-modal" data-toggle="tab" class="list-group-item">Customers</a></li>
 					  <li><a href="#supplier-modal" data-toggle="tab" class="list-group-item">Suppliers</a></li>
-					  <li><a href="#cars-modal" data-toggle="tab">Cars</a></li>
 					</ul>
 					<div class="tab-content">
 					  	<div class="tab-pane active" id="customer-modal">
@@ -242,36 +193,17 @@
 									</button>
 								</div>
 							</div>
-							{{> customer_form}}
+							{{>customer_form}}
 							<div class="search modal-nav-box box-hide panel well">
 								{{>search_customers}}
 							</div>
 							<div class="table-body">
 			          			{{> customers}}
+			          			{{> billing}}
+			          			{{> sales_invoice}}
 			          		</div>
 					  	</div>
 						<div class="tab-pane" id="supplier-modal">
-								<div class="navbar-form">
-									<div class="btn-group">
-										<button id="add" class="btn btn-default modal-nav-btn">
-											<i class="icon-plus"></i>
-											Add
-										</button>
-										<button id="search" class="btn btn-default modal-nav-btn">
-											<i class="icon-search"></i>
-											Search
-										</button>
-									</div>
-								</div>
-							{{>supplier_form}}
-							<div class="search modal-nav-box box-hide panel well">
-								{{>search_supplier}}
-							</div>
-							<div class="table-body">	          			
-			          				{{> suppliers}}	          			
-			          		</div>
-						</div>
-						<div class="tab-pane" id="cars-modal">
 							<div class="navbar-form">
 								<div class="btn-group">
 									<button id="add" class="btn btn-default modal-nav-btn">
@@ -284,17 +216,12 @@
 									</button>
 								</div>
 							</div>
-							{{> car_model_form}}
+							{{>supplier_form}}
 							<div class="search modal-nav-box box-hide panel well">
-								<div class="col-lg-4">
-									<input type="text" class="form-control " placeholder="Check No.">
-								</div>
-								<button class="btn btn-primary">
-									Find
-								</button>
+								{{>search_supplier}}
 							</div>
-							<div class="table-body">		          			
-		          				{{> car_models}}
+							<div class="table-body">	          			
+			          				{{> suppliers}}	          			
 			          		</div>
 						</div>
 					</div>
@@ -313,39 +240,39 @@
 				Customers
 			</h2>
 		</div>
-		
 		<div class="row">
-				<div class="col-lg-12">
-					<ul class="nav nav-tabs">
-					  <li class="active"><a href="#customer-modal" data-toggle="tab" class="list-group-item">Customers</a></li>
-					</ul>
-					<div class="tab-content">
-					  	<div class="tab-pane active" id="customer-modal">
-							<div class="navbar-form">
-								<div class="btn-group">
-									<button id="add" class="btn btn-default modal-nav-btn">
-										<i class="icon-plus"></i>
-										Add
-									</button>
-									<button id="search" class="btn btn-default modal-nav-btn">
-										<i class="icon-search"></i>
-										Search
-									</button>
-								</div>
+			<div class="col-lg-12">
+				<ul class="nav nav-tabs">
+				  <li class="active"><a href="#customer-modal" data-toggle="tab" class="list-group-item">Customers</a></li>
+				</ul>
+				<div class="tab-content">
+				  	<div class="tab-pane active" id="customer-modal">
+						<div class="navbar-form">
+							<div class="btn-group">
+								<button id="add" class="btn btn-default modal-nav-btn">
+									<i class="icon-plus"></i>
+									Add
+								</button>
+								<button id="search" class="btn btn-default modal-nav-btn">
+									<i class="icon-search"></i>
+									Search
+								</button>
 							</div>
-							{{> customer_form}}
-							<div class="search modal-nav-box box-hide panel well">
-								{{>search_customers}}
-							</div>
-							<div class="table-body">
-			          			{{> customers}}
-			          		</div>
-					  	</div>
-					</div>
+						</div>
+						{{> customer_form2}}
+						<div class="search modal-nav-box box-hide panel well">
+							{{>search_customers2}}
+						</div>
+						<div class="table-body">
+		          			{{> customers}}
+		          			{{> billing}}
+		          		</div>
+				  	</div>
 				</div>
-		
 			</div>
+	
 		</div>
+	</div>
 
 	<div class="box box-inventory box-hide panel" style="margin-top:20px">
 		<div class="panel-heading">
@@ -398,11 +325,9 @@
 								</div>
 							</div>
 							<div class="search modal-nav-box box-hide panel well">
-								{{>search_specific}}
+								{{>search_specific2}}
 							</div>
-							<div class="table-body">
-								{{>sold_items}}
-			          		</div>
+								{{>customer_item_list}}
 						</div>
 						<div class="tab-pane" id="sold-customers-modal">
 							<div class="navbar-form">
@@ -414,10 +339,10 @@
 								</div>
 							</div>
 							<div class="search modal-nav-box box-hide panel well">
-								{{>search_specific}}
+								{{>search_specific3}}
 							</div>
 							<div class="table-body">
-								{{>customer_item_list}}
+								{{>sold_items}}								
 			          		</div>
 						</div>
 					</div>
@@ -460,7 +385,7 @@
 							</div>
 							{{>add_inventory_form}}
 							<div class="search modal-nav-box box-hide panel well">
-								{{>search_specific}}
+								{{>search_specific4}}
 							</div>
 							<div class="table-body">
 							{{>purchase_inventory}}
@@ -483,7 +408,6 @@
 				Sales
 			</h2>
 		</div>
-
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="list-group col-lg-12">
@@ -502,7 +426,7 @@
 								</div>
 							</div>
 							<div class="search modal-nav-box box-hide panel well">
-								{{>search_specific}}
+								{{>search_specific5}}
 							</div>
 							<div class="table-body">
 			          			{{>to_deliver}}
@@ -518,11 +442,11 @@
 								</div>
 							</div>
 							<div class="search modal-nav-box box-hide panel well">
-								{{>search_specific}}
+								{{>search_specific6}}
 							</div>
 							<div class="table-body">
-			          			{{> inventory}}
-			          			{{> to_be_sold}}
+			          			{{> sales_inventory}}			          			
+			          			{{> to_be_sold_sales}}
 			          		</div>
 						</div>
 					</div>
@@ -538,7 +462,7 @@
 					<i class="icon-home icon-medium"></i>
 				</button>
 				<img src="cichecklist.png" width="46" height="41" style="margin-top: -10px"/>
-				Checks
+				Payments
 			</h2>
 		</div>
 		<div class="row">
@@ -566,12 +490,7 @@
 						</div>
 						{{>sale_checksform}}
 						<div class="search modal-nav-box box-hide panel well">
-							<div class="col-lg-4">
-								<input type="text" class="form-control " placeholder="Check No.">
-							</div>
-							<button class="btn btn-primary">
-								Find
-							</button>
+							{{>search_checks}}
 						</div>
 						<div class="table-body">
 		          			{{>sale_checks}}
@@ -592,42 +511,25 @@
 						</div>
 						{{>purchase_checksform}}
 						<div class="search modal-nav-box box-hide panel well">
-							<div class="col-lg-4">
-								<input type="text" class="form-control " placeholder="Check No.">
-							</div>
-							<button class="btn btn-primary">
-								Find
-							</button>
+							{{>search_checks2}}
 						</div>
 						<div class="table-body">
 	          				{{>purchase_checks}}		          			
 		          		</div>
 				    </div>
-				    <div class="tab-pane" id="cashflow-">
-						<div class="navbar-form">
+				    <div class="tab-pane" id="cashflow-modal">
+				    	<div class="navbar-form">
 							<div class="btn-group">
-								<button id="add" class="btn btn-default modal-nav-btn">
-									<i class="icon-plus"></i>
-									Add
-								</button>
 								<button id="search" class="btn btn-default modal-nav-btn">
 									<i class="icon-search"></i>
 									Search
 								</button>
 							</div>
 						</div>
-						{{>purchase_checksform}}
 						<div class="search modal-nav-box box-hide panel well">
-							<div class="col-lg-4">
-								<input type="text" class="form-control " placeholder="Check No.">
-							</div>
-							<button class="btn btn-primary">
-								Find
-							</button>
+							{{>search_banks}}
 						</div>
-						<div class="table-body">
-	          				{{>purchase_checks}}		          			
-		          		</div>
+							{{>bank_list}}
 				    </div>
 				</div>
 
@@ -654,59 +556,21 @@
 							<i class="icon-plus"></i>
 							Add
 						</button>
+						<button id="search" class="btn btn-default modal-nav-btn">
+							<i class="icon-search"></i>
+							Search
+						</button>
 					</div>
 				</div>
 			<!-- </div> -->
 			{{>expenses_form}}
 			<div class="search modal-nav-box box-hide panel well">
-				<div class="col-lg-4">
-					<input type="text" class="form-control " placeholder="Check No.">
-				</div>
-				<button class="btn btn-primary">
-					Find
-				</button>
+				{{>search_expenses}}
 			</div>
 			<div class="table-body">
       			{{>expenses}}
       		</div>
       	</div>
-	</div>
-
-	<div class="box box-salesinvoice box-hide panel" style="margin-top:20px">
-		<div class="panel-heading">
-			<h2 class="panel-title">
-				<button type="button" class="home-access pull-right" aria-hidden="true" style="margin-top: -6px">
-					<i class="icon-home icon-medium"></i>
-				</button>
-				<img src="cisettings.png" width="46" height="41" style="margin-top: -10px"/>
-				Sales Invoice
-			</h2>
-		</div>
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="list-group col-lg-12">
-					<span>Date: November 4, 2013</span>
-					<h2>John Doe</h2>
-					
-					<div class="col-offset-2 col-lg-8">
-						<center><p>Received from <strong>COMPANY NAME</strong> c/o <strong>CONTACT PERSON</strong> the amount of <strong>ONE MILLION TWO HUNDRED EIGHTY THOUSAND PESOS ONLY (P 1,280,000.00)</strong> down payment for two (2) units Fuso wing van SN:FU510UZ-5009;FUS10TY-5100Y4.</p></center>
-					</div>
-					<br><br><br><br>
-					<h4><span><strong>Item</strong></span></h4>
-					<div class="tab-pane active" id="invoice-modal">
-						{{> invoice_form}}
-						<div class="table-body hidexbar">
-		          			{{> invoice}}
-		          		</div>
-					  </div>
-				  	<div class="col-lg-4 invoice-receivedby">
-				  		<p>Received by:</p>
-				  		<p>______________________</p>
-				  		<p>Signature over printed name</p>
-				  	</div>
-				</div>
-			</div>
-		</div>
 	</div>
 
 	<div class="box box-notes box-hide panel" style="margin-top:20px">
@@ -717,6 +581,19 @@
 				</button>
 				<img src="cinotes.png" width="46" height="41" style="margin-top: -10px"/>
 				Notes
+			</h2>
+		</div>
+		Feature Coming Soon
+	</div>
+
+	<div class="box box-settings box-hide panel" style="margin-top:20px">
+		<div class="panel-heading">
+			<h2 class="panel-title">
+				<button type="button" class="home-access pull-right" aria-hidden="true" style="margin-top: -6px">
+					<i class="icon-home icon-medium"></i>
+				</button>
+				<img src="cisettings.png" width="46" height="41" style="margin-top: -10px"/>
+				Settings
 			</h2>
 		</div>
 		Feature Coming Soon
@@ -1442,40 +1319,6 @@
 		</div>
 	</div>
 
-	<div id="customer-modal" style="display:none;">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left:20px;">&times;</button>
-          			<h3 class="modal-title">Customers</h3>
-				</div>
-				<div class="modal-body">
-					<div class="navbar">
-						<div class="navbar-form">
-							<div class="btn-group">
-								<button id="add" class="btn btn-default modal-nav-btn">
-									<i class="icon-plus"></i>
-									Add
-								</button>
-								<button id="search" class="btn btn-default modal-nav-btn">
-									<i class="icon-search"></i>
-									Search
-								</button>
-							</div>
-						</div>
-					</div>
-					{{> customer_form}}
-					<div class="search modal-nav-box box-hide panel well">
-						{{>search_customers}}
-					</div>
-					<div class="table-body">
-	          			{{> customers}}
-	          		</div>
-		        </div>
-			</div>
-		</div>
-	</div>
-
 	<div id="supplier-modal" style="display:none;">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -1777,7 +1620,6 @@
 						</div>
 					</div>
 					<!-- FORM SALES CHECKS -->
-						{{>sale_checksform}}
 					<!--  -->
 					<div class="search modal-nav-box box-hide panel well">
 						<div class="col-lg-4">
@@ -1789,7 +1631,6 @@
 					</div>
 					<div class="table-body">
 	          			<!-- sale checks -->
-	          			{{>sale_checks}}
 	          			<!-- end sale checks -->
 	          		</div>
 		        </div>
