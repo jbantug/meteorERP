@@ -73,8 +73,8 @@
 				<input type="text" value="{{email}}" class="form-control" name="email" required pattern="[a-zA-Z0-9@-&!#. ]*">
 			</div>
 		</div>
-		{{/each}}
-		{{else}}
+	{{/each}}
+	{{else}}
 		<div class="form-group">
 			<label class="col-lg-2 control-label">Contact Person</label>
 			<div class="col-lg-4">
@@ -110,7 +110,7 @@
 			<div class="col-offset-8 col-lg-4">
 				{{#if editing_supplier}}
 				<button type="button" class="btn btn-primary" id="btnUpdateSupplier">Update</button>
-				<button type="button" class="btn btn-primary" id="btnCancel">Cancel</button> 	     		
+				<button type="button" class="btn btn-primary" id="btnCancel">Cancel</button> 
 				{{else}}
 				<button type="submit" class="btn btn-primary" id="btnAddSupplier">Add</button>	
 				{{/if}}

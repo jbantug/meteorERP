@@ -1,4 +1,93 @@
 <template name="billings">
+<<<<<<< HEAD
+    {{#each get_car_list}}    
+        <table class="table table-striped">
+            <span><h5>{{maker}} {{model}}  C/N: {{control_number}}</h5></span>
+            <tr>
+                <th>Check Number</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Status</th>
+            </tr>
+            {{#each get_payments control_number}}
+            <tr>
+                {{#if check_number}}
+                <td>{{check_number}}</td>
+                {{else}}
+                <td>CASH</td>
+                {{/if}}
+
+                {{#if check_number}}
+                    {{#if date_encashed}}
+                <td>{{date_encashed}}</td>
+                    {{else}}
+                <td>{{due_date}}</td>
+                    {{/if}}
+                {{else}}
+                <td>{{date_in}}</td>
+                {{/if}}
+
+                <td>{{amount}}</td>
+
+                {{#if check_number}}
+                    {{#if date_encashed}}
+                <td>PAID</td>
+                    {{else}}
+                <td>DUE</td>
+                    {{/if}}
+                {{else}}
+                <td>PAID</td>
+                {{/if}}
+            </tr>
+            {{/each}}
+        </table>
+    {{/each}}        
+</template>
+
+<template name="invoices">
+    {{#each get_car_list}}    
+        <table class="table table-striped">
+            <span><h5>{{maker}} {{model}}  C/N: {{control_number}}</h5></span>
+            <tr>
+                <th>Check Number</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Status</th>
+            </tr>
+            {{#each get_payments control_number}}
+            <tr>
+                {{#if check_number}}
+                <td>{{check_number}}</td>
+                {{else}}
+                <td>CASH</td>
+                {{/if}}
+
+                {{#if check_number}}
+                    {{#if date_encashed}}
+                <td>{{date_encashed}}</td>
+                    {{else}}
+                <td>{{due_date}}</td>
+                    {{/if}}
+                {{else}}
+                <td>{{date_in}}</td>
+                {{/if}}
+
+                <td>{{amount}}</td>
+
+                {{#if check_number}}
+                    {{#if date_encashed}}
+                <td>PAID</td>
+                    {{else}}
+                <td>DUE</td>
+                    {{/if}}
+                {{else}}
+                <td>PAID</td>
+                {{/if}}
+            </tr>
+            {{/each}}
+        </table>
+    {{/each}}        
+=======
     <table class="table table-striped">
         <tr>
             <th>Item</th>
@@ -26,6 +115,7 @@
             <td>$ 4,200,000</td>
         </tr>
     </table>
+>>>>>>> 268ca4d0c2628d85cbff3ba9527f83767b224a3d
 </template>
 
 <template name="billing_form">     
