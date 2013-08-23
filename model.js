@@ -1,4 +1,3 @@
-purchases = new Meteor.Collection("Purchases");
 customers = new Meteor.Collection("Customers");
 suppliers = new Meteor.Collection("Suppliers");
 car_info = new Meteor.Collection("Car_Info");
@@ -8,7 +7,7 @@ transactions = new Meteor.Collection("Transactions");
 expenses = new Meteor.Collection("Expenses");
 customer_checks = new Meteor.Collection("Customer_Checks");
 supplier_checks = new Meteor.Collection("Supplier_Checks");
-general_checks = new Meteor.Collection("General_Checks");
+purchases = new Meteor.Collection("Purchases");
 //# Account model is initially handled by account-base package
 
 function adminUser(userId) {
@@ -18,40 +17,55 @@ function adminUser(userId) {
 
 };
 
-purchases.allow({
-	insert: function (userId, doc){
-		return adminUser(userId);
-	},
-	update: function(userId, docs, fields, modifier){
+customers.allow({
+  insert: function (userId, doc){
+    return adminUser(userId);
+  },
+  update: function(userId, docs, fields, modifier){
 
     return adminUser(userId) || _.all(docs, function(doc) {
 
       return doc._id === userId;
       });
-  	},
-  	remove: function (userId, docs){
-		return adminUser(userId); // only admin can remove
-  	}
-
+    },
+    remove: function (userId, docs){
+    return adminUser(userId); // only admin can remove
+    }
 });
 
-customers.allow({
-	insert: function (userId, doc){
-		return adminUser(userId);
-	},
-	update: function(userId, docs, fields, modifier){
+customer_checks.allow({
+  insert: function (userId, doc){
+    return adminUser(userId);
+  },
+  update: function(userId, docs, fields, modifier){
 
     return adminUser(userId) || _.all(docs, function(doc) {
 
       return doc._id === userId;
       });
-  	},
-  	remove: function (userId, docs){
-		return adminUser(userId); // only admin can remove
-  	}
+    },
+    remove: function (userId, docs){
+    return adminUser(userId); // only admin can remove
+    }
 });
 
 suppliers.allow({
+  insert: function (userId, doc){
+    return adminUser(userId);
+  },
+  update: function(userId, docs, fields, modifier){
+
+    return adminUser(userId) || _.all(docs, function(doc) {
+
+      return doc._id === userId;
+      });
+    },
+    remove: function (userId, docs){
+    return adminUser(userId); // only admin can remove
+    }
+});
+
+supplier_checks.allow({
   insert: function (userId, doc){
     return adminUser(userId);
   },
@@ -132,38 +146,6 @@ transactions.allow({
 });
 
 expenses.allow({
-  insert: function (userId, doc){
-    return adminUser(userId);
-  },
-  update: function(userId, docs, fields, modifier){
-
-    return adminUser(userId) || _.all(docs, function(doc) {
-
-      return doc._id === userId;
-      });
-    },
-    remove: function (userId, docs){
-    return adminUser(userId); // only admin can remove
-    }
-});
-
-customer_checks.allow({
-  insert: function (userId, doc){
-    return adminUser(userId);
-  },
-  update: function(userId, docs, fields, modifier){
-
-    return adminUser(userId) || _.all(docs, function(doc) {
-
-      return doc._id === userId;
-      });
-    },
-    remove: function (userId, docs){
-    return adminUser(userId); // only admin can remove
-    }
-});
-
-supplier_checks.allow({
   insert: function (userId, doc){
     return adminUser(userId);
   },

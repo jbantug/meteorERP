@@ -4,21 +4,18 @@ Accounts.ui.config({
 	passwordSignupFields: 'USERNAME_AND_OPTIONAL_EMAIL'
 });
 
-Meteor.subscribe("Purchases");
 Meteor.subscribe("Users");
-Meteor.subscribe("Brokers")
 Meteor.subscribe("Suppliers");
 Meteor.subscribe("Customers");
 Meteor.subscribe("Car_Info");
-Meteor.subscribe("Car_Costs")
-Meteor.subscribe("Car_Out");
 Meteor.subscribe("Expenses");
 Meteor.subscribe("CustomerChecks");
 Meteor.subscribe("SupplierChecks");
-Meteor.autosubscribe(function() {
-	Meteor.subscribe("BrokInfo", Session.get('bid') );
-	Meteor.subscribe("SuppInfo", Session.get('sid') );
+Meteor.autosubscribe(function() {	
+	Meteor.subscribe("SaleCheckInfo", Session.get('scid'));
+	Meteor.subscribe("PurchaseCheckInfo", Session.get('pcid'));
 	Meteor.subscribe("CustomerInfo", Session.get('cid') );
+	Meteor.subscribe("SuppInfo", Session.get('sid') );
 	Meteor.subscribe("CarModelInfo", Session.get('cmid') );
 	Meteor.subscribe("ExpenseInfo", Session.get('xid') );
 });

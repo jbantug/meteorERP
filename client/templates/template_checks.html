@@ -1,6 +1,49 @@
 <template name="sale_checksform">
 	<form class="add modal-nav-box box-hide panel well form-horizontal" id="addSaleChecks">
+		{{#if editing_sale_check}}
+		{{#each info}}
+		<input type="hidden" value="{{_id}}" name="id"/>
 	  	<div class="form-group clearfix">
+	  		<label class="col-lg-2 control-label">Customer</label>
+	      	<div class="col-lg-4 form">
+	      		<div class="form-control">	      			
+		  			{{get_customer customer_id}}
+	      		</div>
+			</div>
+			<label class="col-lg-2 control-label">Control Number</label>
+	      	<div class="col-lg-4">
+	  			<input type="text" value="{{control_number}}" class="form-control" name="control_number" required>
+			</div>
+		</div>
+		<div class="form-group clearfix">
+	    	<label class="col-lg-2 control-label">Bank</label>
+	    	<div class="col-lg-4">
+	      		<input type="text" value="{{bank}}" class="form-control" name="bank">
+			</div>
+			<label class="col-lg-2 control-label">Branch</label>
+	    	<div class="col-lg-4">
+	      		<input type="text" value="{{branch}}" class="form-control" name="branch">
+			</div>
+	  	</div>
+	  	<div class="form-group clearfix">
+	    	<label class="col-lg-2 control-label">Check Number</label>
+	    	<div class="col-lg-4">
+	      		<input type="text" value="{{check_number}}" class="form-control" name="check_number">
+			</div>
+			<label class="col-lg-2 control-label">Amount</label>
+		    <div class="col-lg-4">
+		      <input type="text" value="{{amount}}" class="form-control" name="amount">
+		    </div>
+	  	</div>
+	  	<div class="form-group clearfix">
+	    	<label class="col-lg-2 control-label">Due Date</label>
+	    	<div class="col-lg-4">
+				<input type="date" value="{{due_date}}" class="form-control" name="due_date">
+	    	</div>
+	    </div>
+	  	{{/each}}
+		{{else}}
+		<div class="form-group clearfix">
 	  		<label class="col-lg-2 control-label">Customer</label>
 	      	<div class="col-lg-4">
 		  		{{>check_customers}}
@@ -35,15 +78,64 @@
 	    	<div class="col-lg-4">
 	      		<input type="date" class="form-control" name="due_date">
 	    	</div>
-	    	<div class="col-offset-2 col-lg-2">
-			  <button type="submit" class="btn btn-primary">Add</button>
-			</div>
+	    </div>
+	    {{/if}}	    
+		<div class="form-group clearfix">
+			<div class="col-offset-8 col-lg-4">
+				{{#if editing_sale_check}}
+				<button type="button" class="btn btn-primary" id="btnUpdateSaleCheck">Update</button>
+				<button type="button" class="btn btn-primary" id="btnCancel">Cancel</button> 
+				{{else}}
+				<button type="submit" class="btn btn-primary">Add</button>	
+				{{/if}}
+			</div>  			
 	  	</div>
 	</form>
 </template>
 
 <template name="purchase_checksform">
 	<form class="add modal-nav-box box-hide panel well form-horizontal" id="addPurchaseChecks">
+		{{#if editing_purchase_check}}
+		{{#each info}}
+		<input type="hidden" value="{{_id}}" name="id"/>
+	  	<div class="form-group clearfix">
+			<label class="col-lg-2 control-label">Control Number (if any)</label>
+	      	<div class="btn-group col-lg-4">
+	  			<input type="text" value="{{control_number}}" class="form-control" name="control_number">
+			</div>
+			<label class="col-lg-2 control-label">Description</label>
+	      	<div class="btn-group col-lg-4">
+	  			<input type="text" value="{{description}}" class="form-control" name="description">
+			</div>
+		</div>
+		<div class="form-group clearfix">
+	    	<label class="col-lg-2 control-label">Bank</label>
+	    	<div class="col-lg-4">
+	      		<input type="text" value="{{bank}}" class="form-control" name="bank">
+			</div>
+			<label class="col-lg-2 control-label">Branch</label>
+	    	<div class="col-lg-4">
+	      		<input type="text" value="{{branch}}" class="form-control" name="branch">
+			</div>
+	  	</div>
+	  	<div class="form-group clearfix">
+	    	<label class="col-lg-2 control-label">Check Number</label>
+	    	<div class="col-lg-4">
+	      		<input type="text" value="{{check_number}}" class="form-control" name="check_number">
+			</div>
+			<label class="col-lg-2 control-label">Amount</label>
+		    <div class="col-lg-4">
+		      <input type="text" value="{{amount}}" class="form-control" name="amount">
+		    </div>
+	  	</div>
+	  	<div class="form-group clearfix">
+	    	<label class="col-lg-2 control-label">Due Date</label>
+	    	<div class="col-lg-4">
+	      		<input type="date" value="{{due_date}}" class="form-control" name="due_date">
+	    	</div>
+	  	</div>
+	  	{{/each}}
+	  	{{else}}
 	  	<div class="form-group clearfix">
 			<label class="col-lg-2 control-label">Control Number (if any)</label>
 	      	<div class="btn-group col-lg-4">
@@ -75,13 +167,21 @@
 		    </div>
 	  	</div>
 	  	<div class="form-group clearfix">
-	    	<label class="col-lg-2 control-label">Date Issued</label>
+	    	<label class="col-lg-2 control-label">Due Date</label>
 	    	<div class="col-lg-4">
-	      		<input type="date" class="form-control" name="date_issued">
+	      		<input type="date" class="form-control" name="due_date">
 	    	</div>
-	    	<div class="col-offset-2 col-lg-2">
-			  <button type="submit" class="btn btn-primary">Add</button>
-			</div>
+	  	</div>
+	  	{{/if}}	    
+		<div class="form-group clearfix">
+			<div class="col-offset-8 col-lg-4">
+				{{#if editing_purchase_check}}
+				<button type="button" class="btn btn-primary" id="btnUpdatePurchaseCheck">Update</button>
+				<button type="button" class="btn btn-primary" id="btnCancel">Cancel</button> 
+				{{else}}
+				<button type="submit" class="btn btn-primary">Add</button>	
+				{{/if}}
+			</div>  			
 	  	</div>
 	</form>
 </template>
@@ -89,6 +189,7 @@
 <template name="sale_checks">
 	<table class="table table-striped">
 		<tr>
+			<th>Due Date</th>
 			<th>Check Number</th>
 			<th>Control Number</th>
 			<th>Bank - Branch</th>
@@ -100,11 +201,12 @@
 		</tr>
 		{{#each salechecklist}}
 		<tr>
-			<td> {{check_number}} </td>
-			<td> {{control_number}} </td>
-			<td> {{bank}} - {{branch}} </td>
-			<td> {{get_customer customer_id}}</td>
-			<td> {{amount}}</td>
+			<td>{{due_date}}</td>
+			<td>{{check_number}}</td>
+			<td>{{control_number}}</td>
+			<td>{{bank}} - {{branch}}</td>
+			<td>{{get_customer customer_id}}</td>
+			<td>{{amount}}</td>
 			<td>
 				{{#if date_encashed }}
 					{{date_encashed}}
@@ -137,22 +239,24 @@
 <template name="purchase_checks">
 	<table class="table table-striped">
 		<tr>
+			<th>Due Date</th>
 			<th>Check Number</th>
 			<th>Description</th>
 			<th>Control Number</th>
 			<th>Bank - Branch</th>
 			<th>Amount</th>
-			<th>Date Issued</th>
+			<th>Due Date</th>
 			<th colspan="2">Actions</th>
 		</tr>
 		{{#each purchasechecklist}}
 		<tr>
+			<td>{{due_date}}</td>
 			<td>{{check_number}}</td>
 			<td>{{description}}</td>
 			<td>{{control_number}} </td>
 			<td>{{bank}} - {{branch}}</td>
 			<td>{{amount}}</td>
-			<td>{{date_issued}}</td>
+			<td>{{due_date}}</td>
 			<td>
                 <button class="btn btn-primary btnEditCheck" id="{{_id}}">
                     <span class="glyphicon glyphicon-edit"></span>
@@ -280,4 +384,64 @@
 		{{/if}}
 		{{/each}}
 	</table>
+</template>
+
+<template name="search_checks">
+	<div class="col-lg-4">
+		<input type="text" class="form-control " placeholder="Enter item to search" id="checksearch">
+	</div>
+	<button class="btn btn-default">
+		Find
+	</button>
+</template>
+
+<template name="search_checks2">
+	<div class="col-lg-4">
+		<input type="text" class="form-control " placeholder="Enter item to search" id="checksearch2">
+	</div>
+	<button class="btn btn-default">
+		Find
+	</button>
+</template>
+
+<template name="search_banks">
+	<div class="col-lg-4">
+		<input type="text" class="form-control " placeholder="Enter item to search" id="banksearch">
+	</div>
+	<button class="btn btn-default">
+		Find
+	</button>
+</template>
+
+
+<template name="bank_list">
+    <div class="accordion" id="accordion3">
+        {{#each banks}}
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#accordion{{bank}}">
+                    {{bank}}
+                </a>
+            </div>
+            <div id="accordion{{bank}}" class="accordion-body collapse">
+                <div class="accordion-inner">
+                    <div class="table-body">
+                    	<table class="table table-striped">
+                    		<tr>
+                    			<th>Cash In</th>
+                    			<th>Cash Out</th>
+                    			<th>Net Amount</th>
+                    		</tr>
+                    		<tr>
+                    			<td>{{cash_in}}</td>
+                    			<td>{{cash_out}}</td>
+                    			<td>{{total}}</td>
+                    		</tr>
+                    	</table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
 </template>

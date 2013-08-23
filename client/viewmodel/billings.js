@@ -1,5 +1,3 @@
-Session.set('editing_customer', false);
-Session.set('cid', null);
 Session.set('billings_find', {});
 
 Template.billings.billings = function(){
@@ -13,14 +11,6 @@ Template.billings.events({
 		billings.remove({_id: this._id });
 		
 	},
-	'click .btnEditCustomer': function (e,t){
-		Session.set('editing_customer', true);
-		Session.set('cid', this._id);
-
-		Meteor.flush();	
-		$("form#form_addCustomer").show();
-		
-	}
 });
 
 Template.billing_form.editing_customer = function(){
@@ -88,3 +78,19 @@ Template.billing_form.events({
 		billings.update({_id: form['id']}, {$set: {contact_person: form['comtact_person'], position: form['position'], company_name: form['company_name'], company_address: form['company_address'], contact_number: form['contact_number'], email: form['email'] } });
 	}
 });
+
+Template.billing.customer = function(){	
+	var to_return = null;
+	if (Session.get('billing_customer')) {
+		to_return = customers.findOne(Session.get('billing_customer')).contact_person;
+	};
+	return to_return;
+};
+
+Template.billing.date = function(){
+	return moment().format("MMMM DD YYYY");
+};
+
+Template.billing.car_info = function(){
+	return car_info.find(Session.get('car_customer_id'), {sort: {encashed}});
+}

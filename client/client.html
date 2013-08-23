@@ -218,7 +218,6 @@
 					<ul class="nav nav-tabs">
 					  <li class="active"><a href="#customer-modal" data-toggle="tab" class="list-group-item">Customers</a></li>
 					  <li><a href="#supplier-modal" data-toggle="tab" class="list-group-item">Suppliers</a></li>
-					  <li><a href="#cars-modal" data-toggle="tab">Cars</a></li>
 					</ul>
 					<div class="tab-content">
 					  	<div class="tab-pane active" id="customer-modal">
@@ -234,12 +233,13 @@
 									</button>
 								</div>
 							</div>
-							{{> customer_form}}
+							{{>customer_form}}
 							<div class="search modal-nav-box box-hide panel well">
 								{{>search_customers}}
 							</div>
 							<div class="table-body">
 			          			{{> customers}}
+			          			{{> billing}}
 			          		</div>
 					  	</div>
 						<div class="tab-pane" id="supplier-modal">
@@ -279,39 +279,39 @@
 				Customers
 			</h2>
 		</div>
-		
 		<div class="row">
-				<div class="col-lg-12">
-					<ul class="nav nav-tabs">
-					  <li class="active"><a href="#customer-modal" data-toggle="tab" class="list-group-item">Customers</a></li>
-					</ul>
-					<div class="tab-content">
-					  	<div class="tab-pane active" id="customer-modal">
-							<div class="navbar-form">
-								<div class="btn-group">
-									<button id="add" class="btn btn-default modal-nav-btn">
-										<i class="icon-plus"></i>
-										Add
-									</button>
-									<button id="search" class="btn btn-default modal-nav-btn">
-										<i class="icon-search"></i>
-										Search
-									</button>
-								</div>
+			<div class="col-lg-12">
+				<ul class="nav nav-tabs">
+				  <li class="active"><a href="#customer-modal" data-toggle="tab" class="list-group-item">Customers</a></li>
+				</ul>
+				<div class="tab-content">
+				  	<div class="tab-pane active" id="customer-modal">
+						<div class="navbar-form">
+							<div class="btn-group">
+								<button id="add" class="btn btn-default modal-nav-btn">
+									<i class="icon-plus"></i>
+									Add
+								</button>
+								<button id="search" class="btn btn-default modal-nav-btn">
+									<i class="icon-search"></i>
+									Search
+								</button>
 							</div>
-							{{> customer_form}}
-							<div class="search modal-nav-box box-hide panel well">
-								{{>search_customers}}
-							</div>
-							<div class="table-body">
-			          			{{> customers}}
-			          		</div>
-					  	</div>
-					</div>
+						</div>
+						{{> customer_form2}}
+						<div class="search modal-nav-box box-hide panel well">
+							{{>search_customers2}}
+						</div>
+						<div class="table-body">
+		          			{{> customers}}
+		          		</div>		          	
+    					{{>billing}}
+				  	</div>
 				</div>
-		
 			</div>
+	
 		</div>
+	</div>
 
 	<div class="box box-inventory box-hide panel" style="margin-top:20px">
 		<div class="panel-heading">
@@ -364,11 +364,9 @@
 								</div>
 							</div>
 							<div class="search modal-nav-box box-hide panel well">
-								{{>search_specific}}
+								{{>search_specific2}}
 							</div>
-							<div class="table-body">
-								{{>sold_items}}
-			          		</div>
+								{{>customer_item_list}}
 						</div>
 						<div class="tab-pane" id="sold-customers-modal">
 							<div class="navbar-form">
@@ -380,10 +378,10 @@
 								</div>
 							</div>
 							<div class="search modal-nav-box box-hide panel well">
-								{{>search_specific}}
+								{{>search_specific3}}
 							</div>
 							<div class="table-body">
-								{{>customer_item_list}}
+								{{>sold_items}}								
 			          		</div>
 						</div>
 					</div>
@@ -426,7 +424,7 @@
 							</div>
 							{{>add_inventory_form}}
 							<div class="search modal-nav-box box-hide panel well">
-								{{>search_specific}}
+								{{>search_specific4}}
 							</div>
 							<div class="table-body">
 							{{>purchase_inventory}}
@@ -449,7 +447,6 @@
 				Sales
 			</h2>
 		</div>
-
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="list-group col-lg-12">
@@ -468,7 +465,7 @@
 								</div>
 							</div>
 							<div class="search modal-nav-box box-hide panel well">
-								{{>search_specific}}
+								{{>search_specific5}}
 							</div>
 							<div class="table-body">
 			          			{{>to_deliver}}
@@ -484,11 +481,11 @@
 								</div>
 							</div>
 							<div class="search modal-nav-box box-hide panel well">
-								{{>search_specific}}
+								{{>search_specific6}}
 							</div>
 							<div class="table-body">
-			          			{{> inventory}}
-			          			{{> to_be_sold}}
+			          			{{> sales_inventory}}			          			
+			          			{{> to_be_sold_sales}}
 			          		</div>
 						</div>
 					</div>
@@ -532,12 +529,7 @@
 						</div>
 						{{>sale_checksform}}
 						<div class="search modal-nav-box box-hide panel well">
-							<div class="col-lg-4">
-								<input type="text" class="form-control " placeholder="Check No.">
-							</div>
-							<button class="btn btn-default">
-								Find
-							</button>
+							{{>search_checks}}
 						</div>
 						<div class="table-body">
 		          			{{>sale_checks}}
@@ -558,42 +550,25 @@
 						</div>
 						{{>purchase_checksform}}
 						<div class="search modal-nav-box box-hide panel well">
-							<div class="col-lg-4">
-								<input type="text" class="form-control " placeholder="Check No.">
-							</div>
-							<button class="btn btn-default">
-								Find
-							</button>
+							{{>search_checks2}}
 						</div>
 						<div class="table-body">
 	          				{{>purchase_checks}}		          			
 		          		</div>
 				    </div>
-				    <div class="tab-pane" id="cashflow-">
-						<div class="navbar-form">
+				    <div class="tab-pane" id="cashflow-modal">
+				    	<div class="navbar-form">
 							<div class="btn-group">
-								<button id="add" class="btn btn-default modal-nav-btn">
-									<i class="icon-plus"></i>
-									Add
-								</button>
 								<button id="search" class="btn btn-default modal-nav-btn">
 									<i class="icon-search"></i>
 									Search
 								</button>
 							</div>
 						</div>
-						{{>purchase_checksform}}
 						<div class="search modal-nav-box box-hide panel well">
-							<div class="col-lg-4">
-								<input type="text" class="form-control " placeholder="Check No.">
-							</div>
-							<button class="btn btn-default">
-								Find
-							</button>
+							{{>search_banks}}
 						</div>
-						<div class="table-body">
-	          				{{>purchase_checks}}		          			
-		          		</div>
+							{{>bank_list}}
 				    </div>
 				</div>
 
@@ -620,17 +595,16 @@
 							<i class="icon-plus"></i>
 							Add
 						</button>
+						<button id="search" class="btn btn-default modal-nav-btn">
+							<i class="icon-search"></i>
+							Search
+						</button>
 					</div>
 				</div>
 			<!-- </div> -->
 			{{>expenses_form}}
 			<div class="search modal-nav-box box-hide panel well">
-				<div class="col-lg-4">
-					<input type="text" class="form-control " placeholder="Check No.">
-				</div>
-				<button class="btn btn-default">
-					Find
-				</button>
+				{{>search_expenses}}
 			</div>
 			<div class="table-body">
       			{{>expenses}}
@@ -1371,40 +1345,6 @@
 		</div>
 	</div>
 
-	<div id="customer-modal" style="display:none;">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left:20px;">&times;</button>
-          			<h3 class="modal-title">Customers</h3>
-				</div>
-				<div class="modal-body">
-					<div class="navbar">
-						<div class="navbar-form">
-							<div class="btn-group">
-								<button id="add" class="btn btn-default modal-nav-btn">
-									<i class="icon-plus"></i>
-									Add
-								</button>
-								<button id="search" class="btn btn-default modal-nav-btn">
-									<i class="icon-search"></i>
-									Search
-								</button>
-							</div>
-						</div>
-					</div>
-					{{> customer_form}}
-					<div class="search modal-nav-box box-hide panel well">
-						{{>search_customers}}
-					</div>
-					<div class="table-body">
-	          			{{> customers}}
-	          		</div>
-		        </div>
-			</div>
-		</div>
-	</div>
-
 	<div id="supplier-modal" style="display:none;">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -1706,7 +1646,6 @@
 						</div>
 					</div>
 					<!-- FORM SALES CHECKS -->
-						{{>sale_checksform}}
 					<!--  -->
 					<div class="search modal-nav-box box-hide panel well">
 						<div class="col-lg-4">
@@ -1718,7 +1657,6 @@
 					</div>
 					<div class="table-body">
 	          			<!-- sale checks -->
-	          			{{>sale_checks}}
 	          			<!-- end sale checks -->
 	          		</div>
 		        </div>
