@@ -2,7 +2,10 @@ Session.set('editing_customer', false);
 Session.set('cid', null);
 Session.set('customers_find', {});
 Session.set('car_customer_id', {});
-Session.set('billing_customer', null)
+Session.set('billing_customer', null);
+Session.set('billing_id', null)
+Session.set('invoice_customer', null);
+Session.set('invoice_id', null)
 
 Template.customers.customers = function(){
 	return customers.find( Session.get('customers_find'), {sort: {dateadded: -1} } );
@@ -143,6 +146,8 @@ Template.customers.events({
 	},
 	'click .btnBilling': function(e,t){
 		Session.set('billing_customer', {_id: this._id});
+		Session.set('billing_id', {customer_id: this._id});
+		console.log(Session.get('billing_id'));
 	}
 });
 

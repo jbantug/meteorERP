@@ -413,35 +413,36 @@
 	</button>
 </template>
 
-
 <template name="bank_list">
     <div class="accordion" id="accordion3">
         {{#each banks}}
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#accordion{{bank}}">
-                    {{bank}}
-                </a>
-            </div>
-            <div id="accordion{{bank}}" class="accordion-body collapse">
-                <div class="accordion-inner">
-                    <div class="table-body">
-                    	<table class="table table-striped">
-                    		<tr>
-                    			<th>Cash In</th>
-                    			<th>Cash Out</th>
-                    			<th>Net Amount</th>
-                    		</tr>
-                    		<tr>
-                    			<td>{{cash_in}}</td>
-                    			<td>{{cash_out}}</td>
-                    			<td>{{total}}</td>
-                    		</tr>
-                    	</table>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {{#if bank}}
+	        <div class="accordion-group">
+	            <div class="accordion-heading">
+	                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#accordion{{bank}}">
+	                    {{bank}}
+	                </a>
+	            </div>
+	            <div id="accordion{{bank}}" class="accordion-body collapse">
+	                <div class="accordion-inner">
+	                    <div class="table-body">
+	                    	<table class="table table-striped">
+	                    		<tr>
+	                    			<th>Cash In</th>
+	                    			<th>Cash Out</th>
+	                    			<th>Net Amount</th>
+	                    		</tr>
+	                    		<tr>
+	                    			<td>{{cash_in}}</td>
+	                    			<td>{{cash_out}}</td>
+	                    			<td>{{total}}</td>
+	                    		</tr>
+	                    	</table>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    {{/if}}
         {{/each}}
     </div>
 </template>

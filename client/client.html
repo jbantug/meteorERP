@@ -20,12 +20,12 @@
 
 		<div class="home-wrapper">
 			<ul style="padding:0px;">
-				<a href="#notifications">
+				<!-- <a href="#notifications">
 					<li id="box-notif">
 						<img src="cibell2.png" width="132" height="132" />
 						<span>Notifications</span>
 					</li>
-				</a>
+				</a> -->
 				<a href="#accounts" data-toggle="modal">
 					<li id="box-accounts">
 						<img src="ciaccounts2.png" width="132" height="132" />
@@ -68,12 +68,6 @@
 						<span>Expenses</span>
 					</li>
 				</a>
-				<a href="#">
-					<li id="box-billing">
-						<img src="cinotes.png" width="132" height="132" />
-						<span>Billings</span>
-					</li>
-				</a>
 				<!-- <a href="#">
 					<li id="box-notes">
 						<img src="cinotes.png" width="132" height="132" />
@@ -94,40 +88,6 @@
 	</div>
 
 	<!--  WINDOWS  -->
-
-	<div class="box box-billing box-hide panel" style="margin-top:20px">
-		<div class="panel-heading">
-			<h2 class="panel-title">
-				<button type="button" class="home-access pull-right" aria-hidden="true" style="margin-top: -6px">
-					<i class="icon-home icon-medium"></i>
-				</button>
-				<img src="ciaccounts2.png" width="46" height="41" style="margin-top: -10px"/>
-				Billings
-			</h2>
-		</div>
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="list-group col-lg-12">
-					<ul class="nav nav-tabs">
-					  <li class="active"><a href="#billing-modal" data-toggle="tab" class="list-group-item">Customer Name</a></li>
-					</ul>
-					<div class="tab-content">
-					  	<div class="tab-pane active" id="billing-modal">
-							{{> billing_form}}
-							<div class="table-body">
-			          			{{> billings}}
-			          		</div>
-					  	</div>
-					  	<div class="col-lg-4 billing-signature">
-					  		<p>Approved by:</p>
-					  		<p>______________________</p>
-					  		<p>Signature over printed name</p>
-					  	</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<div class="box box-notif box-hide panel" style="margin-top:20px">
 		<div class="panel-heading">
@@ -240,6 +200,7 @@
 							<div class="table-body">
 			          			{{> customers}}
 			          			{{> billing}}
+			          			{{> sales_invoice}}
 			          		</div>
 					  	</div>
 						<div class="tab-pane" id="supplier-modal">
@@ -304,8 +265,8 @@
 						</div>
 						<div class="table-body">
 		          			{{> customers}}
-		          		</div>		          	
-    					{{>billing}}
+		          			{{> billing}}
+		          		</div>
 				  	</div>
 				</div>
 			</div>
@@ -501,7 +462,7 @@
 					<i class="icon-home icon-medium"></i>
 				</button>
 				<img src="cichecklist.png" width="46" height="41" style="margin-top: -10px"/>
-				Checks
+				Payments
 			</h2>
 		</div>
 		<div class="row">

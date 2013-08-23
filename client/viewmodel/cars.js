@@ -175,11 +175,10 @@ Template.add_inventory_form.events({
 		var yen = parseFloat(form['yen_cost']);
 		var rate = parseFloat(form['exchange_rate']);
 		var factor = parseFloat(form['brokerage_factor']);
-		var ar = parseFloat(form['assembly_reconditioning']);
 		var fh = parseFloat(form['freight_handling']);
 		var dt = parseFloat(form['duties_and_taxes']);
 		form['customer_id'] = "";
-		form['total_cost'] = ((yen*rate)+dt+(yen*rate*factor)+ar+fh);
+		form['total_cost'] = ((yen*rate)+dt+(yen*rate*factor)+fh);
 		form['dateadded'] = moment().format("YYYY-MM-DD");
 		form['assembly_reconditioning'] = 0;
 		form['selling_price'] = "";

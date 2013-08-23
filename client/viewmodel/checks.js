@@ -3,6 +3,7 @@ Session.set('scid', null);
 Session.set('editing_purchase_check', false);
 Session.set('pcid', null);
 Session.set('checks_find', {});
+Session.set('banks_find', {});
 Session.set('bank_check', {});
 Template.sale_checks.salechecklist = function(){
 	return customer_checks.find(Session.get('checks_find'), {sort: {due_date: -1} } );
@@ -269,9 +270,42 @@ Template.search_checks2.events({
 	}
 });
 
+Template.search_banks.events({
+	'keydown input#banksearch': function(e,t){
+		query = $("#banksearch").val();
+		if($('#banksearch').val() !== ""){
+			Session.set('banks_find', {$or: [
+				{due_date: {$regex: query, $options: 'i'}},
+				{check_number: {$regex: query, $options: 'i'}},
+				{control_number: {$regex: query, $options: 'i'}},
+				{bank: {$regex: query, $options: 'i'}},
+				{branch: {$regex: query, $options: 'i'}},
+				{amount: {$regex: query, $options: 'i'}},
+			]});
+		}else{
+			Session.set('banks_find', {});
+		}
+	},
+	'keyup input#checksbanksearchearch2': function(e,t){
+		query = $("#banksearch").val(); 
+		if($('#banksearch').val() !== ""){
+			Session.set('banks_find', {$or: [
+				{due_date: {$regex: query, $options: 'i'}},
+				{check_number: {$regex: query, $options: 'i'}},
+				{control_number: {$regex: query, $options: 'i'}},
+				{bank: {$regex: query, $options: 'i'}},
+				{branch: {$regex: query, $options: 'i'}},
+				{amount: {$regex: query, $options: 'i'}},
+			]});
+		}else{
+			Session.set('banks_find', {});
+		}
+	}
+});
+
 Template.bank_list.banks = function(){
-	var myArray = supplier_checks.find().fetch();
-	myArray = myArray.concat(myArray, customer_checks.find().fetch());
+	var myArray = supplier_checks.find(Session.get('banks_find')).fetch();
+	myArray = myArray.concat(myArray, customer_checks.find(Session.get('banks_find')).fetch());
 	var distinctArray = _.uniq(myArray, false, function(d) {return d.bank});
 	return distinctArray;
 };
