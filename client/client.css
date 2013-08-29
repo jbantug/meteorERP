@@ -150,10 +150,26 @@ body .modal-open {
 	border: 1px solid black;
 }
 
- #billing-note, #billing-header {
+ #billing-note, {
+ 	text-align: center;
+ }
+
+ #billing-header p {
  	text-align: center;
  }
 
  #billing-total {
  	text-align: right;
+ }
+ #table-style table tr {
+ 	padding: 0px;
+ }
+
+ #printable {
+ 	display: none;
+ }
+
+ @media print {
+ 	#non-printable {display:none;}
+ 	#printable {display:block;}
  }
