@@ -1,5 +1,5 @@
 <template name="inventory">
-    <table class="table table-striped">
+    <table class="table table-striped table-condensed">
         <tr>
             <th>Control #</th>
             <th>Item</th>
@@ -95,40 +95,46 @@
 </template>
 
 <template name="sales_inventory">
-    <table class="table table-striped">
+    <table class="table table-striped table-condensed">
         <tr>
             <th>Control #</th>
             <th>Item</th>
-            <th>Yen</th>
-            <th>F/X</th>
-            <th>Peso</th>
-            <th>D/T</th>
-            <th>Brokerage</th>
-            <th>Factor</th>
-            <th>Expenses</th>
-            <th>F/H</th>
-            <th>Total Cost</th>
+            <th colspan="2" class="text-center">Yen</th>
+            <th colspan="2" class="text-center">F/X</th>
+            <th colspan="2" class="text-center">Peso</th>
+            <th colspan="2" class="text-center">D/T</th>
+            <th colspan="2" class="text-center">Brokerage</th>
+            <th colspan="2" class="text-center">Expenses</th>
+            <th colspan="2" class="text-center">F/H</th>
+            <th colspan="2" class="text-center">Total Cost</th>
             <th>Reference #</th>
             <th>Actions</th>
         </tr>
         {{#each inventory_list}}
         {{#unless customer_id}}
         <tr>
-            <td>{{control_number}}</td>
+            <td><a href="#add-expense-modal" data-toggle="modal" class="add_expense" id="{{_id}}">{{control_number}}</a></td>
             <td>{{maker}} {{model}}</td>
-            <td class="text-right">{{yen_cost}}</td>
-            <td class="text-right">{{exchange_rate}}</td>
-            <td class="text-right">{{peso_cost yen_cost exchange_rate}}</td>
-            <td class="text-right">{{duties_and_taxes}}</td>
-            <td class="text-right">{{brokerage yen_cost exchange_rate brokerage_factor}}</td>
-            <td class="text-right">{{brokerage_factor}}</td>
-            <td class="text-right">{{assembly_reconditioning}}</td>
-            <td class="text-right">{{freight_handling}}</td>
-            <td class="text-right">{{total_cost}}</td>
+            <td class="text-right" style="padding-right:0;">{{get_whole yen_cost}}</td>
+            <td class="text-left" style="padding-left:0;">.{{get_decimal yen_cost}}</td>
+            <td class="text-right" style="padding-right:0;">{{get_whole exchange_rate}}</td>
+            <td class="text-left" style="padding-left:0;">.{{get_decimal exchange_rate}}</td>
+            <td class="text-right" style="padding-right:0;">{{get_whole peso_cost}}</td>
+            <td class="text-left" style="padding-left:0;">.{{get_decimal peso_cost}}</td>
+            <td class="text-right" style="padding-right:0;">{{get_whole duties_and_taxes}}</td>
+            <td class="text-left" style="padding-left:0;">.{{get_decimal duties_and_taxes}}</td>
+            <td class="text-right" style="padding-right:0;">{{get_whole brokerage}}</td>
+            <td class="text-left" style="padding-left:0;">.{{get_decimal brokerage}}</td>
+            <td class="text-right" style="padding-right:0;">{{get_whole assembly_reconditioning}}</td>
+            <td class="text-left" style="padding-left:0;">.{{get_decimal assembly_reconditioning}}</td>
+            <td class="text-right" style="padding-right:0;">{{get_whole freight_handling}}</td>
+            <td class="text-left" style="padding-left:0;">.{{get_decimal freight_handling}}</td>
+            <td class="text-right" style="padding-right:0;">{{get_whole total_cost}}</td>
+            <td class="text-left" style="padding-left:0;">.{{get_decimal total_cost}}</td>
             <td>{{reference_number}}</td>
             <td class="text-center">
-                <button href="#to-sell-modal2" data-toggle="modal" class="btn btn-primary btnSellItem" id="{{_id}}">
-                    <i class="icon-money icon-large"></i>
+                <button href="#to-sell-modal" data-toggle="modal" class="btn btn-small btn-primary btnSellItem" id="{{_id}}">
+                    <i class="icon-money"></i>
                 </button>
             </td>
         </tr>
@@ -368,22 +374,42 @@
 </template>
 
 <template name="to_deliver">
-    <table class="table table-striped">
+    <table class="table table-striped table-condensed">
         <tr>
+            <th>Control #</th>
             <th>Item</th>
-            <th>Control No.</th>
+            <th colspan="2" class="text-center">Yen</th>
+            <th colspan="2" class="text-center">F/X</th>
+            <th colspan="2" class="text-center">Peso</th>
+            <th colspan="2" class="text-center">D/T</th>
+            <th colspan="2" class="text-center">Brokerage</th>
+            <th colspan="2" class="text-center">Expenses</th>
+            <th colspan="2" class="text-center">F/H</th>
             <th>Sale Price</th>
-            <th>Customer</th>
             <th>Sale Date</th>
-            <th>Delivery Date</th>
-            <th>Action</th>
+            <th>Delivery</th>
+            <th>Actions</th>
         </tr>
         {{#each car_info}}
+        {{#if customer_id}}
         <tr>
+            <td><a href="#add-expense-modal" data-toggle="modal" class="add_expense" id="{{_id}}">{{control_number}}</a></td>
             <td>{{maker}} {{model}}</td>
-            <td>{{control_number}}</td>
-            <td>{{selling_price}}</td>
-            <td>{{get_customer customer_id}}</td>
+            <td class="text-right" style="padding-right:0;">{{get_whole yen_cost}}</td>
+            <td class="text-left" style="padding-left:0;">.{{get_decimal yen_cost}}</td>
+            <td class="text-right" style="padding-right:0;">{{get_whole exchange_rate}}</td>
+            <td class="text-left" style="padding-left:0;">.{{get_decimal exchange_rate}}</td>
+            <td class="text-right" style="padding-right:0;">{{get_whole peso_cost}}</td>
+            <td class="text-left" style="padding-left:0;">.{{get_decimal peso_cost}}</td>
+            <td class="text-right" style="padding-right:0;">{{get_whole duties_and_taxes}}</td>
+            <td class="text-left" style="padding-left:0;">.{{get_decimal duties_and_taxes}}</td>
+            <td class="text-right" style="padding-right:0;">{{get_whole brokerage}}</td>
+            <td class="text-left" style="padding-left:0;">.{{get_decimal brokerage}}</td>
+            <td class="text-right" style="padding-right:0;">{{get_whole assembly_reconditioning}}</td>
+            <td class="text-left" style="padding-left:0;">.{{get_decimal assembly_reconditioning}}</td>
+            <td class="text-right" style="padding-right:0;">{{get_whole freight_handling}}</td>
+            <td class="text-left" style="padding-left:0;">.{{get_decimal freight_handling}}</td>
+            <td>{{sale_price}}</td>
             <td>{{date_out}}</td>
             <td>{{delivery_date}}</td>
             <td>
@@ -394,6 +420,7 @@
                 {{/if}}
             </td>
         </tr>
+        {{/if}}
         {{/each}}
     </table>
 </template>
