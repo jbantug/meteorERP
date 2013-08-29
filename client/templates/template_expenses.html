@@ -1,4 +1,46 @@
 <template name="expenses_form">
+	<form class="add modal-nav-box panel well form-horizontal" id="form_addExpense">			
+		<div class="form-group">
+			<label class="col-lg-2 control-label">Control Number</label>
+			<div class="col-lg-4">
+				<input type="text" name="control_number" class="form-control">
+			</div>
+			<label class="col-lg-2 control-label">Item</label>
+			<div class="col-lg-4">
+				<input type="text" name="item" class="form-control">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-2 control-label">Description</label>
+			<div class="col-lg-4">
+				<input type="text" name="description" class="form-control">
+			</div>
+			<label class="col-lg-2 control-label">Amount</label>
+			<div class="col-lg-4">
+				<input type="number" class="form-control" name="amount">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-lg-2 control-label">Supplier</label>
+			<div class="col-lg-4">
+				<!-- <input type="password" class="form-control"> -->
+				{{>expense_suppliers}}
+			</div>
+			<label class="col-lg-2 control-label">Date</label>
+			<div class="col-lg-4">
+				<input type="date" name="date_in" class="form-control">
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-offset-8 col-lg-4">
+				<button type="submit" class="btn btn-primary" id="btnAddExpense">Add</button>	
+			</div>
+		</div>
+	</form>
+</template>
+
+<template name="expenses_form2">
 	<form class="add modal-nav-box box-hide panel well form-horizontal" id="form_addExpense">
 		{{#if editing_expense}}
 		{{#each info}}
@@ -103,10 +145,10 @@
 			<td>{{get_supplier supplier}}</td>
 			<td>{{date_in}}</td>
 			<td>
-				<button class="btn btn-primary btnEditExpense" id="{{_id}}">
+				<button class="btn btn-primary btn-small btnEditExpense" id="{{_id}}">
 					<span class="glyphicon glyphicon-edit"></span>
 				</button>
-				<button class="btn btn-primary btnRemoveExpense" id="{{_id}}">
+				<button class="btn btn-primary btn-small btnRemoveExpense" id="{{_id}}">
 					<span class="glyphicon glyphicon-trash"></span>
 				</button>
 			</td>

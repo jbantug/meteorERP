@@ -7,7 +7,7 @@
             <th>Company Address</th>
             <th>Contact #</th>
             <th>Email</th>
-            <th colspan="2" class="text-center">Generate</th>
+            <th colspan="3" class="text-center">Generate</th>
             <th colspan="2">Actions</th>
         </tr>
         {{#each customers}}
@@ -19,18 +19,21 @@
             <td>{{contact_number}}</td>
             <td>{{email}}</td>
             <td>
-                <button href="#billing-statement-modal" data-toggle="modal" class="btn btn-primary btnBilling" id="{{_id}}">Billing</button>
+                <button href="#billing-statement-modal" data-toggle="modal" class="btn btn-primary btn-small btnBilling" id="{{_id}}">B/S</button>
             </td>
             <td>
-                <button href="#billing-statement-modal" data-toggle="modal" class="btn btn-primary btnSalesInvoice" id="{{_id}}">Sales Invoice</button>
+                <button href="#invoice-modal" data-toggle="modal" class="btn btn-primary btn-small btnSalesInvoice" id="{{_id}}">S/I</button>
             </td>
             <td>
-                <button class="btn btn-primary btnEditCustomer" id="{{_id}}">
+                <button href="#statement-modal" data-toggle="modal" class="btn btn-primary btn-small btnSalesInvoice" id="{{_id}}">S/A</button>
+            </td>
+            <td>
+                <button class="btn btn-primary btn-small btnEditCustomer" id="{{_id}}">
                     <i class="icon-edit"></i>
                 </button>
             </td>
             <td>
-                <button class="btn btn-primary btnRemoveCustomer" id="{{_id}}">
+                <button class="btn btn-primary btn-small btnRemoveCustomer" id="{{_id}}">
                     <i class="icon-trash"></i>
                 </button>
             </td>
@@ -54,19 +57,15 @@
                                 <label class="col-lg-2 control-label">{{date}}</label>
                                 <br>
                                 <div class="col-lg-12">
-                                    <h4 class="col-lg-2 control-label">{{customer}}</h4>
-                                    <div class="list-group col-lg-12">             
-                                        <div class="tab-content">
-                                            <div class="tab-pane active" id="billing-modal">
-                                                <div class="table-body" style="overflow-x:hidden;" >
-                                                    {{> billings}}
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 billing-signature">
-                                                <p>Approved by:</p>
-                                                <p>______________________</p>
-                                                <p>Signature over printed name</p>
-                                            </div>
+                                    <h4 class="col-lg-4 control-label">{{customer}}</h4>
+                                    <div class="list-group col-lg-12">
+                                        <div class="table-body" style="overflow-x:hidden;" >
+                                            {{> billings}}
+                                        </div>
+                                        <div class="col-lg-4 billing-signature">
+                                            <p>Approved by:</p>
+                                            <p>______________________</p>
+                                            <p>Signature over printed name</p>
                                         </div>
                                     </div>
                                 </div>
@@ -300,6 +299,46 @@
                 {{else}}
                 <button type="submit" class="btn btn-primary" id="btnAddCustomer">Add</button>
                 {{/if}}
+            </div>
+        </div>
+    </form>
+</template>
+
+<template name="customer_form3">     
+    <form class="add modal-nav-box box-hide panel well form-horizontal" id="form_addCustomer3">
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Contact Persons</label>
+            <div class="col-lg-4">
+                <input type="text"class="form-control" name="contact_person" required pattern="[a-zA-Z. ]*">
+            </div>
+            <label class="col-lg-2 control-label">Position</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" name="position"  required pattern="[a-zA-Z. ]*">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Company Name</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" name="company_name" required pattern="[a-zA-Z0-9@-&!#. ]*">
+            </div>
+            <label class="col-lg-2 control-label">Company Address</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" name="company_address" required pattern="[a-zA-Z0-9@-&!#. ]*">
+            </div>
+        </div>     
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Contact Number</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" name="contact_number" required pattern="[a-zA-Z0-9@-&!#. ]*">
+            </div>
+            <label class="col-lg-2 control-label">Email</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" name="email" required pattern="[a-zA-Z0-9@-&!#. ]*">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-offset-8 col-lg-4">
+                <button type="submit" class="btn btn-primary" data-dismiss="modal" id="btnAddCustomer">Add</button>
             </div>
         </div>
     </form>
