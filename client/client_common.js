@@ -16,6 +16,6 @@ Meteor.autosubscribe(function() {
 	Meteor.subscribe("PurchaseCheckInfo", Session.get('pcid'));
 	Meteor.subscribe("CustomerInfo", Session.get('cid') );
 	Meteor.subscribe("SuppInfo", Session.get('sid') );
-	Meteor.subscribe("CarModelInfo", Session.get('cmid') );
+	Meteor.subscribe("CarInfo", Session.get('car_id') );
 	Meteor.subscribe("ExpenseInfo", Session.get('xid') );
 });
