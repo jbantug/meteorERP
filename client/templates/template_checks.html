@@ -44,12 +44,19 @@
 	  	{{/each}}
 		{{else}}
 		<div class="form-group clearfix">
-	  		<label class="col-lg-2 control-label">Customer</label>
-	      	<div class="col-lg-4">
+	  		<label class="col-lg-2 control-label">
+	  			Customer
+  			</label>
+	      	<div class="col-lg-3">
 		  		{{>check_customers}}
 			</div>
+			<div class="col-lg-1">
+				<a data-toggle="modal" href="#new-customer-modal" class="btn btn-default">
+					<i class="icon-plus"></i>
+				</a>
+			</div>
 			<label class="col-lg-2 control-label">Control Number</label>
-	      	<div class="btn-group col-lg-4">
+	      	<div class="col-lg-4">
 	  			<input type="text" class="form-control" name="control_number">
 			</div>
 		</div>
@@ -195,8 +202,8 @@
 			<th>Bank - Branch</th>
 			<th>Customer</th>
 			<th>Amount</th>
-			<th>Encashed</th>
-			<th>Bounce</th>
+			<th>Cleared</th>
+			<th>RTCK</th>
 			<th colspan="2">Actions</th>
 		</tr>
 		{{#each salechecklist}}
@@ -209,25 +216,25 @@
 			<td>{{amount}}</td>
 			<td>
 				{{#if date_encashed }}
-					{{date_encashed}}
+					<a class="btnRevertEncash" href="#undo" id="{{_id}}">{{date_encashed}}</a>
 				{{else}}	
-			 		<button class="btn btn-primary btn-small btnEncash" id="{{_id}}">Encash</button>
+			 		<button class="btn btn-primary btn-small btnEncash" id="{{_id}}">Clear</button>
 			 	{{/if}}	
 			</td>
 			<td>
 				{{#if date_bounced }}
-					{{date_bounced}}
+					<a class="btnRevertBounce" href="#undo" id="{{_id}}">{{date_bounced}}</a>
 				{{else}}
-				 <button class="btn btn-primary btn-small btnBounce" id="{{_id}}">Bounce</button>
+				 <button class="btn btn-primary btn-small btnBounce" id="{{_id}}">RTCK</button>
 				{{/if}}
 			</td>
 			<td>
-                <button class="btn btn-primary btnEditCheck" id="{{_id}}">
+                <button class="btn btn-primary btn-small btnEditCheck" id="{{_id}}">
                     <span class="glyphicon glyphicon-edit"></span>
                 </button>
             </td>
             <td>
-                <button class="btn btn-primary btnRemoveCheck" id="{{_id}}">
+                <button class="btn btn-primary btn-small btnRemoveCheck" id="{{_id}}">
                     <span class="glyphicon glyphicon-trash"></span>
                 </button>
             </td>
@@ -258,12 +265,12 @@
 			<td>{{amount}}</td>
 			<td>{{due_date}}</td>
 			<td>
-                <button class="btn btn-primary btnEditCheck" id="{{_id}}">
+                <button class="btn btn-primary btn-small btnEditCheck" id="{{_id}}">
                     <span class="glyphicon glyphicon-edit"></span>
                 </button>
             </td>
             <td>
-                <button class="btn btn-primary btnRemoveCheck" id="{{_id}}">
+                <button class="btn btn-primary btn-small btnRemoveCheck" id="{{_id}}">
                     <span class="glyphicon glyphicon-trash"></span>
                 </button>
             </td>
@@ -285,12 +292,12 @@
 		</tr>
 		{{#each checks}}
 		<tr>
-			<td> {{due_date}} </td>
-			<td> {{date_in}} </td>
-			<td> {{check_number}} </td>
-			<td> {{get_customer customer_id}}</td>
-			<td> {{item sku}} </td>
-			<td> {{amount}}</td>
+			<td>{{due_date}}</td>
+			<td>{{date_in}}</td>
+			<td>{{check_number}}</td>
+			<td>{{get_customer customer_id}}</td>
+			<td>{{item sku}}</td>
+			<td>{{amount}}</td>
 		</tr>
 		{{/each}}
 		</tr>
@@ -309,12 +316,12 @@
 		</tr>
 		{{#each checks}}
 		<tr>
-			<td> {{due_date}} </td>
-			<td> {{date_in}} </td>
-			<td> {{check_number}} </td>
-			<td> {{get_supplier supplier_id}}</td>
-			<td> {{item sku}} </td>
-			<td> {{amount}}</td>
+			<td>{{due_date}}</td>
+			<td>{{date_in}}</td>
+			<td>{{check_number}}</td>
+			<td>{{get_supplier supplier_id}}</td>
+			<td>{{item sku}}</td>
+			<td>{{amount}}</td>
 		</tr>
 		{{/each}}
 		</tr>
@@ -333,12 +340,12 @@
 		</tr>
 		{{#each checks}}
 		<tr>
-			<td> {{due_date}} </td>
-			<td> {{date_in}} </td>
-			<td> {{check_number}} </td>
-			<td> {{get_supplier supplier_id}}</td>
-			<td> {{item sku}} </td>
-			<td> {{amount}}</td>
+			<td>{{due_date}}</td>
+			<td>{{date_in}}</td>
+			<td>{{check_number}}</td>
+			<td>{{get_supplier supplier_id}}</td>
+			<td>{{item sku}}</td>
+			<td>{{amount}}</td>
 		</tr>
 		{{/each}}
 		</tr>
@@ -415,6 +422,18 @@
 
 <template name="bank_list">
     <div class="accordion" id="accordion3">
+    	<div class="form-horizontal">
+	    	<div class="form-group clearfix">
+		    	<label class="col-lg-2 control-label">Start Date</label>
+		    	<div class="col-lg-4">
+					<input type="date" class="form-control" name="start_date" id="start_date">
+		    	</div>
+		    	<label class="col-lg-2 control-label">End Date</label>
+		    	<div class="col-lg-4">
+					<input type="date" class="form-control" name="end_date" id="end_date">
+		    	</div>
+		    </div>
+	   	</div>
         {{#each banks}}
         {{#if bank}}
 	        <div class="accordion-group">
@@ -425,7 +444,7 @@
 	            </div>
 	            <div id="accordion{{bank}}" class="accordion-body collapse">
 	                <div class="accordion-inner">
-	                    <div class="table-body">
+	                    <div class="table-body hidexbar">
 	                    	<table class="table table-striped">
 	                    		<tr>
 	                    			<th>Cash In</th>
@@ -439,6 +458,40 @@
 	                    		</tr>
 	                    	</table>
 	                    </div>
+	                    {{#each months}}
+	                    {{#if month_due}}
+	                    <div class="table-body hidexbar">
+	                    <br/>
+	                    {{month_due}}
+	                    	<table class="table table-striped">
+	                    		<tr>
+	                    			<th>Date</th>
+	                    			<th>Check #</th>
+	                    			<th>Amount</th>
+	                    			<th>I/O</th>
+	                    			<th>C/N</th>
+	                    		</tr>
+                    		{{#each get_checks bank month_due}}
+                    			<tr>
+                    				<td>{{due_date}}</td>
+                    				<td>{{check_number}}</td>
+                    				<td>{{amount}}</td>
+                    				{{#if customer_id}}
+                    				<td>IN</td>
+                    				{{else}}
+                    				<td>OUT</td>
+                    				{{/if}}
+                    				{{#if control_number}}
+                    				<td>{{control_number}}</td>
+                    				{{else}}
+                    				<td>Not Available</td>
+                    				{{/if}}
+                    			</tr>
+                    		{{/each}}
+                    		</table>
+	                    </div>
+	                    {{/if}}
+	                    {{/each}}
 	                </div>
 	            </div>
 	        </div>
