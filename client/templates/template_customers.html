@@ -22,7 +22,7 @@
                 <button href="#billing-statement-modal" data-toggle="modal" class="btn btn-primary btn-small btnBilling" id="{{_id}}">B/S</button>
             </td>
             <td>
-                <button href="#invoice-modal" data-toggle="modal" class="btn btn-primary btn-small btnSalesInvoice" id="{{_id}}">S/I</button>
+                <button href="#sales-invoice-modal" data-toggle="modal" class="btn btn-primary btn-small btnSalesInvoice" id="{{_id}}">S/I</button>
             </td>
             <td>
                 <button href="#statement-modal" data-toggle="modal" class="btn btn-primary btn-small btnSalesInvoice" id="{{_id}}">S/A</button>
@@ -40,103 +40,6 @@
         </tr>
         {{/each}}
     </table>
-</template>
-
-<template name="billing">
-    <div id="billing-statement-modal" class="modal fade" role="dialog" aria-hidden="true" style="display:none;"> 
-        <div class="modal-dialog">
-            <form id="billing">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left:20px;">&times;</button>
-                        <h3 class="modal-title">Billing Statement</h3>
-                    </div>                    
-                    <div class="modal-body" id="print-receipt">
-                        <div class="form-group clearfix">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <label class="col-lg-12 control-label">{{date}}</label>
-                                    <h4 class="col-lg-12 control-label"></h4>
-                                    <div class="col-offset-4 col-lg-4" id="billing-header" style="text-align: center;">
-                                               <p><strong>STATEMENT OF ACCOUNT</strong></p>
-                                               <p>PHIL. RORO TERMINAL CORP.</p>
-                                               <p>NRA, MANDAUE CITY</p>
-                                            </div>
-                                    <div class="list-group col-lg-12">             
-                                        <div class="tab-content" style="padding-left: 15px;">
-                                            <div class="tab-pane active" id="billing-modal">
-                                                <div class="table-body" style="overflow-x:hidden;" >
-                                                    {{> billings}}
-                                                </div>
-                                            </div>
-                                            <div class="col-offset-9 col-lg-3" id="billing-total" style="text-align: right; margin-top: 50px;">
-                                                <p>TOTAL Php  <u>900000</u></p>
-                                            </div>
-                                            <div class="col-offset-2 col-lg-8" id="billing-note" style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
-                                                <p>NOTE : PLEASE ISSUE CHECK PAYABLE TO: TRUCK SPECIALISTS,INC.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <div class="form-group clearfix">
-                        <div class="col-offset-10 col-lg-2" style="text-align:right;">
-                            <input type="button" value="Print" class="btn btn-primary" id="receipt-button">
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</template>
-
-<template name="sales_invoice">
-    <div id="sales-invoice-modal" class="modal fade" role="dialog" aria-hidden="true" style="display:none;"> 
-        <div class="modal-dialog">
-            <form id="billing">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left:20px;">&times;</button>
-                        <h3 class="modal-title">Sales Invoice</h3>
-                    </div>                    
-                    <div class="modal-body" id="print-receipt">
-                        <div class="form-group clearfix">
-                            <div class="row">
-                                <label class="col-lg-2 control-label">{{date}}</label>
-                                <br>
-                                <div class="col-lg-12">
-                                    <h4 class="col-lg-2 control-label">{{customer}}</h4>
-                                    <div class="list-group col-lg-12">             
-                                        <div class="tab-content">
-                                            <div class="tab-pane active" id="invoice-modal">
-                                                <div class="table-body" style="overflow-x:hidden;" >
-                                                    {{> invoices}}
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 billing-signature">
-                                                <p>Approved by:</p>
-                                                <p>______________________</p>
-                                                <p>Signature over printed name</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <div class="form-group clearfix">
-                        <div class="col-offset-10 col-lg-2" style="text-align:right;">
-                            <input type="button" value="Print" class="btn btn-primary" id="receipt-button">
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
 </template>
 
 <template name="customer_form">     

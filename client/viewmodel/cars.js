@@ -80,8 +80,9 @@ Template.to_be_sold_sales.events({
 		$.each( $("#form_addCarSale2").serializeArray(),function(){
 			form[this.name] = this.value;
 		});
+		var sp = parseFloat(Math.round(form['selling_price']*100)/100).toFixed(2);
 
-		car_info.update({_id: Session.get('car_to_sell')}, {$set: {customer_id: form['customer_id'], delivery_date: form['delivery_date'], selling_price: form['selling_price']} });
+		car_info.update({_id: Session.get('car_to_sell')}, {$set: {customer_id: form['customer_id'], delivery_date: form['delivery_date'], selling_price: sp} });
 
 		Session.set('car_to_sell',null);
 	}
