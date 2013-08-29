@@ -5,7 +5,7 @@ body {
 }
 
 .container {
-/*	max-width: 940px;*/
+	max-width: 940px;
 	margin: 0 auto;
 }
 
@@ -147,9 +147,27 @@ body .modal-open {
 }
 
 #print-receipt table td, #print-receipt table th, #print-receipt table tr { 
-	border: 1px solid black;
+	border: 0px solid black;
 }
 
+<<<<<<< HEAD
+#billing-note, #billing-header {
+	text-align: center;
+}
+
+#billing-total {
+	text-align: right;
+}
+
+#printable { 
+	display: none; 
+}
+
+@media print {
+	#non-printable { display: none; }
+	#printable { display: block; }
+}
+=======
  #billing-note, {
  	text-align: center;
  }
@@ -173,3 +191,4 @@ body .modal-open {
  	#non-printable {display:none;}
  	#printable {display:block;}
  }
+>>>>>>> 3b8b446839a134e4df6ec6f5732747095de4785e
