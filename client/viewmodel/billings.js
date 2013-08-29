@@ -5,7 +5,7 @@ Template.billing.events({
       var divToPrint = document.getElementById('print-receipt');
       var newWin = window.open('','Print-Window','width=800,height=800,top=100,left=100');
       newWin.document.open();
-      newWin.document.write('<html><head></head><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>');
+      newWin.document.write('<html><head></head><body onload="window.print()">'+divToPrint.innerHTML+'</body><footer><div class="col-lg-4 billing-approved" style="float:left;"><p>Approved by:</p><p>______________________</p><p>Signature over printed name</p></div><div class="col-lg-4 billing-received" style="float:right;"><p>Received by:</p><p>______________________</p><p>Signature over printed name</p></div></footer></html>');
       newWin.document.close();
       setTimeout(function(){newWin.close();},10);
     }

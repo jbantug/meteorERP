@@ -133,8 +133,8 @@ body .modal-open {
 #login-dropdown-list .additional-link-container #forgot-password-link {
 	float: right;
 }
-.billing-signature, .invoice-receivedby {
-	margin-top: 20px;
+.billing-approved, .billing-received, .invoice-receivedby {
+	margin-top: 30px;
 }
 
 .style-btn {
@@ -145,3 +145,15 @@ body .modal-open {
 .hidexbar {
 	overflow-x: hidden;
 }
+
+#print-receipt table td, #print-receipt table th, #print-receipt table tr { 
+	border: 1px solid black;
+}
+
+ #billing-note, #billing-header {
+ 	text-align: center;
+ }
+
+ #billing-total {
+ 	text-align: right;
+ }

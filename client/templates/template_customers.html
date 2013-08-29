@@ -54,18 +54,27 @@
                     <div class="modal-body" id="print-receipt">
                         <div class="form-group clearfix">
                             <div class="row">
-                                <label class="col-lg-2 control-label">{{date}}</label>
-                                <br>
                                 <div class="col-lg-12">
-                                    <h4 class="col-lg-4 control-label">{{customer}}</h4>
-                                    <div class="list-group col-lg-12">
-                                        <div class="table-body" style="overflow-x:hidden;" >
-                                            {{> billings}}
-                                        </div>
-                                        <div class="col-lg-4 billing-signature">
-                                            <p>Approved by:</p>
-                                            <p>______________________</p>
-                                            <p>Signature over printed name</p>
+                                    <label class="col-lg-12 control-label">{{date}}</label>
+                                    <h4 class="col-lg-12 control-label"></h4>
+                                    <div class="col-offset-4 col-lg-4" id="billing-header" style="text-align: center;">
+                                               <p><strong>STATEMENT OF ACCOUNT</strong></p>
+                                               <p>PHIL. RORO TERMINAL CORP.</p>
+                                               <p>NRA, MANDAUE CITY</p>
+                                            </div>
+                                    <div class="list-group col-lg-12">             
+                                        <div class="tab-content" style="padding-left: 15px;">
+                                            <div class="tab-pane active" id="billing-modal">
+                                                <div class="table-body" style="overflow-x:hidden;" >
+                                                    {{> billings}}
+                                                </div>
+                                            </div>
+                                            <div class="col-offset-9 col-lg-3" id="billing-total" style="text-align: right; margin-top: 50px;">
+                                                <p>TOTAL Php  <u>900000</u></p>
+                                            </div>
+                                            <div class="col-offset-2 col-lg-8" id="billing-note" style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+                                                <p>NOTE : PLEASE ISSUE CHECK PAYABLE TO: TRUCK SPECIALISTS,INC.</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
