@@ -88,7 +88,7 @@ Template.sale_checksform.events({
 		$.each( $("#addSaleChecks").serializeArray(),function(){
 			form[this.name] = this.value;
 		});
-			
+		form['amount'] = parseFloat(Math.round(form['amount']*100)/100).toFixed(2);
 		form['date_in'] = moment().format("YYYY-MM-DD");
 		form['month_in'] = moment().format("MMMM") ;
 		form['year_in'] = moment().format("YYYY");
@@ -158,7 +158,7 @@ Template.purchase_checksform.events({
 		$.each( $("#addPurchaseChecks").serializeArray(),function(){
 			form[this.name] = this.value;
 		});
-			
+		form['amount'] = parseFloat(Math.round(form['amount']*100)/100).toFixed(2);
 		form['date_in'] = moment().format("YYYY-MM-DD");
 		form['month_in'] = moment().format("MMMM") ;
 		form['year_in'] = moment().format("YYYY");
@@ -368,10 +368,10 @@ Template.bank_list.total = function(){
 	var checks_out = supplier_checks.find(Session.get('bank_check'));
 	var checks_in = customer_checks.find(Session.get('bank_check'));
 	checks_out.forEach(function (checks){
-		total_out += parseFloat(checks.amount);
+		total_out += parseFloat(Math.round(checks.amount*100)/100).toFixed(2);
 	});
 	checks_in.forEach(function (checks){
-		total_in += parseFloat(checks.amount);
+		total_in += parseFloat(Math.round(checks.amount*100)/100).toFixed(2);
 	});
 	total = total_in - total_out;
 	return total;
