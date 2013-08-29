@@ -26,19 +26,15 @@
                 {{/if}}
 
                 <td style="border: 1px solid; padding:10px;">{{amount}}</td>
-
-                {{#if check_number}}
-                    {{#if date_encashed}}
-                <td>PAID</td>
-                    {{else}}
-                <td>DUE</td>
-                    {{/if}}
-                {{else}}
-                <td>PAID</td>
-                {{/if}}
             </tr>
             {{/each}}
         </table>
+    {{/each}}        
+</template>
+
+<template name="billing_item_list">
+    {{#each get_car_list}}    
+        <span><h5>{{maker}} {{model}}  C/N: {{control_number}}</h5></span>
     {{/each}}        
 </template>
 
@@ -114,46 +110,126 @@
     </table>
 </template>
 
-<template name="billing_form">     
+<template name="billing">
+    <div id="billing-statement-modal" class="modal fade" role="dialog" aria-hidden="true" style="display:none;">
+        <div class="modal-dialog">
+            <form id="billing">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left:20px;">&times;</button>
+                        <h3 class="modal-title">Billing Statement</h3>
+                    </div>                    
+                    <div class="modal-body" id="printable">
+                        <div class="form-group clearfix">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label class="col-lg-12 control-label">{{date}}</label>
+                                    <h4 class="col-lg-12 control-label"></h4>
+                                    <div class="col-offset-4 col-lg-4" id="billing-header" style="text-align: center;">
+                                               <p><strong>{{customer.contact_person}}</strong></p>
+                                               <p>{{customer.company_name}}</p>
+                                               <p>{{customer.company_address}}</p>
+                                            </div>
+                                    <div class="list-group col-lg-12">             
+                                        <div class="tab-content" style="padding-left: 15px;">
+                                            <div class="tab-pane active" id="billing-modal">
+                                                <div class="table-body" style="overflow-x:hidden;" >
+                                                    {{> billings}}
+                                                </div>
+                                            </div>
+                                            <div class="col-offset-9 col-lg-3" id="billing-total" style="text-align: right; margin-top: 50px;">
+                                                <p>TOTAL Php  <u>{{to_pay}}</u></p>
+                                            </div>
+                                            <div class="col-offset-2 col-lg-8" id="billing-note" style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+                                                <p>NOTE : PLEASE ISSUE CHECK PAYABLE TO: TRUCK SPECIALISTS,INC.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="modal-body" id="non-printable">
+                        <div class="form-group clearfix">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label class="col-lg-12 control-label">{{date}}</label>
+                                    <div class="col-offset-4 col-lg-4">
+                                       <p><strong>{{customer.contact_person}}</strong></p>
+                                       <p>{{customer.company_name}}</p>
+                                       <p>{{customer.company_address}}</p>
+                                    </div>
+                                    <div class="list-group col-lg-12">             
+                                        <div class="tab-content" style="padding-left: 15px;">
+                                            <div class="tab-pane active" id="billing-modal">
+                                                <div class="table-body" style="overflow-x:hidden;" >
+                                                    {{> billing_item_list}}
+                                                </div>
+                                            </div>
+                                            <div class="col-offset-2 col-lg-8" id="billing-note" style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+                                                <p>NOTE : PLEASE ISSUE CHECK PAYABLE TO: TRUCK SPECIALISTS,INC.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="col-offset-10 col-lg-2" style="text-align:right;">
+                            <input type="button" value="Print" class="btn btn-primary" id="receipt-button">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</template>
 
-    <form class="add modal-nav-box box-hide panel well form-horizontal" id="form_addCustomer">
-       
-        <input type="hidden"  name="id"/>
-        <div class="form-group">
-            <label class="col-lg-2 control-label">Contact Person</label>
-            <div class="col-lg-10">
-                <input type="text" class="form-control" name="contact_person" required pattern="[a-zA-Z. ]*">
-            </div>
+<template name="sales_invoice">
+    <div id="sales-invoice-modal" class="modal fade" role="dialog" aria-hidden="true" style="display:none;"> 
+        <div class="modal-dialog">
+            <form id="billing">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left:20px;">&times;</button>
+                        <h3 class="modal-title">Sales Invoice</h3>
+                    </div>                    
+                    <div class="modal-body" id="print-receipt">
+                        <div class="form-group clearfix">
+                            <div class="row">
+                                <label class="col-lg-2 control-label">{{date}}</label>
+                                <br>
+                                <div class="col-lg-12">
+                                    <h4 class="col-lg-2 control-label">{{customer}}</h4>
+                                    <div class="list-group col-lg-12">             
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="invoice-modal">
+                                                <div class="table-body" style="overflow-x:hidden;" >
+                                                    {{> invoices}}
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 billing-signature">
+                                                <p>Approved by:</p>
+                                                <p>______________________</p>
+                                                <p>Signature over printed name</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="col-offset-10 col-lg-2" style="text-align:right;">
+                            <input type="button" value="Print" class="btn btn-primary" id="receipt-button">
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-            <label class="col-lg-2 control-label">Position</label>
-            <div class="col-lg-10">
-                <input type="text" class="form-control" name="position"  required pattern="[a-zA-Z. ]*">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-lg-2 control-label">Company Name</label>
-            <div class="col-lg-10">
-                <input type="text" class="form-control" name="company_name" required pattern="[a-zA-Z0-9@-&!#. ]*">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-lg-2 control-label">Company Address</label>
-            <div class="col-lg-10">
-                <input type="text" class="form-control" name="company_address" required pattern="[a-zA-Z0-9@-&!#. ]*">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-lg-2 control-label">Contact Number</label>
-            <div class="col-lg-10">
-                <input type="text" class="form-control" name="contact_number" required pattern="[a-zA-Z0-9@-&!#. ]*">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-lg-2 control-label">Email</label>
-            <div class="col-lg-10">
-                <input type="text" class="form-control" name="email" required pattern="[a-zA-Z0-9@-!#. ]*">
-            </div>
-        </div>
-    </form>
+    </div>
 </template>

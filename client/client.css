@@ -5,7 +5,7 @@ body {
 }
 
 .container {
-/*	max-width: 940px;*/
+	max-width: 940px;
 	margin: 0 auto;
 }
 
@@ -147,13 +147,22 @@ body .modal-open {
 }
 
 #print-receipt table td, #print-receipt table th, #print-receipt table tr { 
-	border: 1px solid black;
+	border: 0px solid black;
 }
 
- #billing-note, #billing-header {
- 	text-align: center;
- }
+#billing-note, #billing-header {
+	text-align: center;
+}
 
- #billing-total {
- 	text-align: right;
- }
+#billing-total {
+	text-align: right;
+}
+
+#printable { 
+	display: none; 
+}
+
+@media print {
+	#non-printable { display: none; }
+	#printable { display: block; }
+}
