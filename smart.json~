@@ -3,7 +3,7 @@
     "font-awesome": {},
     "bootstrap-3": {},
     "moment": {},
-    "chosen-package": {},
-    "select2": {}
+    "select2": {},
+    "accounts-ui-bootstrap-3": {}
   }
 }
