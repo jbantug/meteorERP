@@ -283,6 +283,35 @@ Template.customer_form2.events({
 	}
 });
 
+Template.customer_form3.events({
+	'submit': function (e,t){
+		form = {};
+
+		$.each( $("#form_addCustomer3").serializeArray(),function(){
+			form[this.name] = this.value;
+		});
+			
+		form['dateadded'] = moment().format("YYYY-MM-DD");
+
+		customers.insert( form, function(err){
+			if(err){
+				if(err.error === 403){
+					alert("Only admins can create new customers.")
+				}else{
+					alert("Something went wrong. Please try again.");
+					console.log(err);
+				}
+				
+			}
+			else{
+				$('#form_addCustomer3')[0].reset();
+			}
+		});
+
+		e.preventDefault();
+	}
+});
+
 Template.customer_item_list.customers = function(){
 	return customers.find(Session.get('customers_find'), {sort: {contact_person: 1} } );
 }

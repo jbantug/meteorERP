@@ -5,6 +5,11 @@ Session.set('pcid', null);
 Session.set('checks_find', {});
 Session.set('banks_find', {});
 Session.set('bank_check', {});
+Session.set('bank_specific', "");
+Session.set('check_range', "");
+Session.set('start_range', "");
+Session.set('end_range', "");
+
 Template.sale_checks.salechecklist = function(){
 	return customer_checks.find(Session.get('checks_find'), {sort: {due_date: -1} } );
 };
@@ -29,6 +34,13 @@ Template.sale_checks.events({
 	'click .btnEncash': function(e,t){
 		customer_checks.update({_id: e.target.id}, {$set: {date_encashed: moment().format("YYYY-MM-DD")} });
 	},
+	'click .btnRevertBounce': function(e,t){
+		console.log(e.target.id);
+		customer_checks.update({_id: e.target.id}, {$set: {date_bounced: ""} });
+	},
+	'click .btnRevertEncash': function(e,t){
+		customer_checks.update({_id: e.target.id}, {$set: {date_encashed: ""} });
+	},
 	'click .btnRemoveCheck': function (e,t){
 		// console.log( e.target.id );
 		Meteor.flush();
@@ -41,7 +53,6 @@ Template.sale_checks.events({
 
 		Meteor.flush();	
 		$("form#addSaleChecks").show();
-		
 	}
 });
 
@@ -79,6 +90,10 @@ Template.sale_checksform.events({
 		});
 			
 		form['date_in'] = moment().format("YYYY-MM-DD");
+		form['month_in'] = moment().format("MMMM") ;
+		form['year_in'] = moment().format("YYYY");
+		form['month_due'] = moment(form['due_date']).format("MMMM") ;
+		form['year_due'] = moment(form['due_date']).format("YYYY");
 		form['date_encashed'] = "";
 		form['date_bounced'] = "";
 			customer_checks.insert( form, function(err){
@@ -102,7 +117,6 @@ Template.sale_checksform.events({
 		Session.set('editing_sale_check', false);
 		Session.set('scid', null);
 
-		
 		$("form#addSaleChecks").hide();
 		$('#addSaleChecks')[0].reset();
 		// Meteor.flush();	
@@ -146,6 +160,10 @@ Template.purchase_checksform.events({
 		});
 			
 		form['date_in'] = moment().format("YYYY-MM-DD");
+		form['month_in'] = moment().format("MMMM") ;
+		form['year_in'] = moment().format("YYYY");
+		form['month_due'] = moment(form['due_date']).format("MMMM") ;
+		form['year_due'] = moment(form['due_date']).format("YYYY");
 		form['date_encashed'] = "";
 		form['date_bounced'] = "";
 
@@ -312,32 +330,72 @@ Template.bank_list.banks = function(){
 
 Template.bank_list.events({
 	'click .accordion-toggle': function(e,t){
-		var total_out = 0;
-		var total_in = 0;
-		var total = 0;
-		var checks_out = supplier_checks.find({bank: this.bank});
-		var checks_in = customer_checks.find({bank: this.bank});
-		checks_out.forEach(function (checks){
-			total_out += parseFloat(checks.amount);
-		});
-		checks_in.forEach(function (checks){
-			total_in += parseFloat(checks.amount);
-		});
-		total = total_in - total_out;
-		Session.set('total_in',total_in);
-		Session.set('total_out',total_out);
-		Session.set('total',total);
+		Session.set('bank_check',{bank: this.bank});
+		Session.set('bank_specific', this.bank);
 	},
+	'change input#start_date' : function(e,t){
+		Session.set('check_range', {$gte: $("#start_date").val(), $lte: $("#end_date").val()} );
+		Session.set('start_range', $("#start_date").val());
+	},
+	'change input#end_date' : function(e,t){
+		Session.set('check_range', {$gte: $("#start_date").val(), $lte: $("#end_date").val()} );
+		Session.set('end_range', $("#end_date").val());
+	}
 });
 
 Template.bank_list.cash_in = function(){
-	return Session.get('total_in');
+	var total_in = 0;
+	var checks_in = customer_checks.find(Session.get('bank_check'));
+	checks_in.forEach(function (checks){
+		total_in += parseFloat(checks.amount);
+	});
+	return total_in;
 };
 
 Template.bank_list.cash_out = function(){
-	return Session.get('total_out');
+	var total_out = 0;
+	var checks_out = supplier_checks.find(Session.get('bank_check'));
+	checks_out.forEach(function (checks){
+		total_out += parseFloat(checks.amount);
+	});
+	return total_out;
 };
 
 Template.bank_list.total = function(){
-	return Session.get('total');
+	var total_out = 0;
+	var total_in = 0;
+	var total = 0;
+	var checks_out = supplier_checks.find(Session.get('bank_check'));
+	var checks_in = customer_checks.find(Session.get('bank_check'));
+	checks_out.forEach(function (checks){
+		total_out += parseFloat(checks.amount);
+	});
+	checks_in.forEach(function (checks){
+		total_in += parseFloat(checks.amount);
+	});
+	total = total_in - total_out;
+	return total;
 }
+
+Template.bank_list.months = function(){
+	var myArray = supplier_checks.find(Session.get('bank_check')).fetch();
+	myArray = myArray.concat(myArray, customer_checks.find(Session.get('bank_check')).fetch());
+	var distinctArray = _.uniq(myArray, false, function(d) {return d.month_due});
+	return distinctArray;
+}
+
+Template.bank_list.helpers({
+	get_checks: function(bank,month){
+		if(Session.get('check_range') === ""){
+			var myArray = supplier_checks.find({bank: bank, month_due: month}).fetch();
+			myArray = myArray.concat(myArray, customer_checks.find({bank: bank, month_due: month}).fetch());
+		}else{
+			var myArray = supplier_checks.find({bank: bank, month_due: month, due_date: {$gte: Session.get('start_range'), $lte: Session.get('end_range')}}).fetch();
+			myArray = myArray.concat(myArray, customer_checks.find({bank: bank, month_due: month, due_date: {$gte: Session.get('start_range'), $lte: Session.get('end_range')}}).fetch());
+		}
+		return myArray;
+	},
+	get_monthly: function(){
+
+	}
+});
