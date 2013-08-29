@@ -26,6 +26,9 @@ Meteor.startup(function(){
     Meteor.publish("CarModelInfo", function(carmodId){
         return suppliers.find({_id:carmodId});
     });
+    Meteor.publish("CarInfo", function(car_id){
+        return car_info.find({_id:car_id});
+    });
     Meteor.publish("Users", function(){
         return Meteor.users.find({});
     });
@@ -289,6 +292,23 @@ Meteor.startup(function(){
     //         due_date: "2013-09-21",
     //         date_encashed: "",
     //         date_bounced: ""
+    //     });
+
+    //     customer_checks.insert({
+    //         amount: "500000",
+    //         bank: "BDO",
+    //         branch: "CEBU",
+    //         check_number: "lsakdlaskd",
+    //         control_number: "555",
+    //         customer_id: "Mwn8B6ELeNpK2fnoB",
+    //         date_bounced: "",
+    //         date_encashed: "",
+    //         date_in: "2013-08-28",
+    //         due_date: "2013-09-24",
+    //         month_due: "September",
+    //         month_in: "August",
+    //         year_due: "2013",
+    //         year_in: "2013"
     //     });
     // }
 });
