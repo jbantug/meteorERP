@@ -10,14 +10,6 @@ Template.inventory.inventory_list = function() {
 	return car_info.find(Session.get('inventory_find'), {sort: {date_in: -1}});
 }
 
-Template.purchase_inventory.inventory_list = function() {
-	return car_info.find(Session.get('inventory_find'), {sort: {date_in: -1}});
-}
-
-Template.sales_inventory.inventory_list = function() {
-	return car_info.find(Session.get('inventory_find'), {sort: {date_in: -1}});
-}
-
 Template.inventory.events({
 	'click .btnRemoveItem': function (e,t){
 		Meteor.flush();
@@ -39,6 +31,25 @@ Template.inventory.events({
 	}
 });
 
+Template.purchase_inventory.inventory_list = function() {
+	return car_info.find(Session.get('inventory_find'), {sort: {date_in: -1}});
+}
+
+Template.sales_inventory.inventory_list = function() {
+	return car_info.find(Session.get('inventory_find'), {sort: {date_in: -1}});
+}
+
+Template.sales_inventory.events({
+	'click .btnRemoveItem': function (e,t){
+		Meteor.flush();
+		car_info.remove({_id: e.target.id });
+		
+	},
+	'click .btnSellItem' : function (e,t){
+		Session.set('car_to_sell', this._id);
+	},
+});
+
 Template.to_be_sold.car_info = function() {
 	return car_info.findOne({id: Session.get('car_to_sell')});
 }
@@ -56,17 +67,6 @@ Template.to_be_sold.events({
 
 		Session.set('car_to_sell',null);
 	}
-});
-
-Template.sales_inventory.events({
-	'click .btnRemoveItem': function (e,t){
-		Meteor.flush();
-		car_info.remove({_id: e.target.id });
-		
-	},
-	'click .btnSellItem' : function (e,t){
-		Session.set('car_to_sell', this._id);
-	},
 });
 
 Template.to_be_sold_sales.car_info = function() {
@@ -114,7 +114,6 @@ Template.sale_order_items.items = function(){
 Template.add_inventory_form.editing_car = function(){
 	return Session.equals('editing_car', true);
 }
-
 
 Template.add_inventory_form.info = function(){
 	if(Session.equals('car_id', null)){

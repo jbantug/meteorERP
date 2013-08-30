@@ -25,8 +25,42 @@
                 <button href="#sales-invoice-modal" data-toggle="modal" class="btn btn-primary btn-small btnSalesInvoice" id="{{_id}}">S/I</button>
             </td>
             <td>
-                <button href="#statement-modal" data-toggle="modal" class="btn btn-primary btn-small btnSalesInvoice" id="{{_id}}">S/A</button>
+                <button href="#statement-modal" data-toggle="modal" class="btn btn-primary btn-small btnStatement" id="{{_id}}">S/A</button>
             </td>
+            <td>
+                <button class="btn btn-primary btn-small btnEditCustomer" id="{{_id}}">
+                    <i class="icon-edit"></i>
+                </button>
+            </td>
+            <td>
+                <button class="btn btn-primary btn-small btnRemoveCustomer" id="{{_id}}">
+                    <i class="icon-trash"></i>
+                </button>
+            </td>
+        </tr>
+        {{/each}}
+    </table>
+</template>
+
+<template name="customers2">
+    <table class="table table-striped">
+        <tr>
+            <th>Contact Person</th>
+            <th>Position</th>
+            <th>Company Name</th>
+            <th>Company Address</th>
+            <th>Contact #</th>
+            <th>Email</th>
+            <th colspan="2">Actions</th>
+        </tr>
+        {{#each customers}}
+        <tr>
+            <td>{{contact_person}}</td>
+            <td>{{position}}</td>
+            <td>{{company_name}}</td>
+            <td>{{company_address}}</td>
+            <td>{{contact_number}}</td>
+            <td>{{email}}</td>
             <td>
                 <button class="btn btn-primary btn-small btnEditCustomer" id="{{_id}}">
                     <i class="icon-edit"></i>
