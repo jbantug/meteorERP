@@ -1,115 +1,3 @@
-<template name="billings">
-    {{#each get_car_list}}    
-        <table class="table table-striped" style="border-collapse: collapse; padding:10px; margin: 0 auto; width: 100%;">
-            <span><h5>{{maker}} {{model}}  C/N: {{control_number}}</h5></span>
-            <tr style="border: 1px solid; padding:20px;">
-                <th style="border: 1px solid; padding:10px;">Check Number</th>
-                <th style="border: 1px solid; padding:10px;">Date</th>
-                <th style="border: 1px solid; padding:10px;">Amount</th>
-            </tr>
-            {{#each get_payments control_number}}
-            <tr style="border: 1px solid; padding:10px;">
-                {{#if check_number}}
-                <td style="border: 1px solid; padding:10px;">{{check_number}}</td>
-                {{else}}
-                <td style="border: 1px solid; padding:10px;">CASH</td>
-                {{/if}}
-
-                {{#if check_number}}
-                    {{#if date_encashed}}
-                <td style="border: 1px solid; padding:10px;">{{date_encashed}}</td>
-                    {{else}}
-                <td style="border: 1px solid; padding:10px;">{{due_date}}</td>
-                    {{/if}}
-                {{else}}
-                <td style="border: 1px solid; padding:10px;">{{date_in}}</td>
-                {{/if}}
-
-                <td style="border: 1px solid; padding:10px;">{{amount}}</td>
-            </tr>
-            {{/each}}
-        </table>
-    {{/each}}        
-</template>
-
-<template name="billing_item_list">
-    {{#each get_car_list}}    
-        <span><h5>{{maker}} {{model}}  C/N: {{control_number}}</h5></span>
-    {{/each}}        
-</template>
-
-<template name="invoices">
-    {{#each get_car_list}}    
-        <table class="table table-striped">
-            <span><h5>{{maker}} {{model}}  C/N: {{control_number}}</h5></span>
-            <tr>
-                <th>Check Number</th>
-                <th>Date</th>
-                <th>Amount</th>
-                <th>Status</th>
-            </tr>
-            {{#each get_payments control_number}}
-            <tr>
-                {{#if check_number}}
-                <td>{{check_number}}</td>
-                {{else}}
-                <td>CASH</td>
-                {{/if}}
-
-                {{#if check_number}}
-                    {{#if date_encashed}}
-                <td>{{date_encashed}}</td>
-                    {{else}}
-                <td>{{due_date}}</td>
-                    {{/if}}
-                {{else}}
-                <td>{{date_in}}</td>
-                {{/if}}
-
-                <td>{{amount}}</td>
-
-                {{#if check_number}}
-                    {{#if date_encashed}}
-                <td>PAID</td>
-                    {{else}}
-                <td>DUE</td>
-                    {{/if}}
-                {{else}}
-                <td>PAID</td>
-                {{/if}}
-            </tr>
-            {{/each}}
-        </table>
-    {{/each}}
-    <table class="table table-striped">
-        <tr>
-            <th>Item</th>
-            <th>Check #</th>
-            <th>Date</th>
-            <th>Amount</th>
-       
-        </tr>
-        <tr>
-            <td>000069</td>
-            <td>434-029-457</td>
-            <td>September 15, 2013</td>
-            <td>$ 500,000</td>
-        </tr>
-        <tr>
-            <td>041069</td>
-            <td>434-029-999</td>
-            <td>December 15, 2013</td>
-            <td>$ 1,200,000</td>
-        </tr>
-         <tr>
-            <td>910692</td>
-            <td>268-029-999</td>
-            <td>August 15, 2013</td>
-            <td>$ 4,200,000</td>
-        </tr>
-    </table>
-</template>
-
 <template name="billing">
     <div id="billing-statement-modal" class="modal fade" role="dialog" aria-hidden="true" style="display:none;">
         <div class="modal-dialog">
@@ -123,7 +11,7 @@
                         <div class="form-group clearfix">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <label class="col-lg-12 control-label">{{date}}</label>
+                                    <label class="col-lg-12 control-label">As of {{date}}</label>
                                     <h4 class="col-lg-12 control-label"></h4>
                                     <div class="col-offset-4 col-lg-4" id="billing-header" style="text-align: center;">
                                                <p><strong>{{customer.contact_person}}</strong></p>
@@ -154,22 +42,17 @@
                         <div class="form-group clearfix">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <label class="col-lg-12 control-label">{{date}}</label>
-                                    <div class="col-offset-4 col-lg-4">
-                                       <p><strong>{{customer.contact_person}}</strong></p>
-                                       <p>{{customer.company_name}}</p>
-                                       <p>{{customer.company_address}}</p>
-                                    </div>
-                                    <div class="list-group col-lg-12">             
-                                        <div class="tab-content" style="padding-left: 15px;">
-                                            <div class="tab-pane active" id="billing-modal">
-                                                <div class="table-body" style="overflow-x:hidden;" >
-                                                    {{> billing_item_list}}
-                                                </div>
-                                            </div>
-                                            <div class="col-offset-2 col-lg-8" id="billing-note" style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
-                                                <p>NOTE : PLEASE ISSUE CHECK PAYABLE TO: TRUCK SPECIALISTS,INC.</p>
-                                            </div>
+                                    <label class="col-lg-12 control-label">As of {{date}}</label>
+                                    <div class="col-lg-4">
+                                        <br/>
+                                        <p>Customer: <strong>{{customer.contact_person}}</strong></p>
+                                        <p>Company: {{customer.company_name}}</p>
+                                        <p>Company Address: {{customer.company_address}}</p>
+                                        Purchased cars:
+                                    </div>        
+                                    <div style="padding-left: 15px;">
+                                        <div class="col-lg-12" >                                            
+                                            {{> billing_item_list}}
                                         </div>
                                     </div>
                                 </div>
@@ -188,8 +71,59 @@
     </div>
 </template>
 
+<template name="billings">
+    {{#each get_car_list}}   
+        {{#unless check_payment control_number}}
+        <table class="table table-striped" style="border-collapse: collapse; padding:10px; margin: 0 auto; width: 100%;">
+        <span><h5>{{maker}} {{model}}  C/N: {{control_number}}</h5></span>
+        {{#if get_check_count control_number}}         
+            <tr style="padding:20px;">
+                <th style="padding:10px;">Check Number</th>
+                <th style="padding:10px;">Date</th>
+                <th style="padding:10px; padding-left:0px; text-align:right;">Amount</th>
+            </tr>
+            {{#each get_unpaid control_number}}
+            <tr style="padding:10px;">
+                {{#if check_number}}
+                <td style="padding:10px; text-align:center;">{{check_number}}</td>
+                {{else}}
+                <td style="padding:10px; text-align:center;">CASH</td>
+                {{/if}}
+
+                {{#if check_number}}
+                    {{#if date_encashed}}
+                <td style="padding:10px; text-align:center;">{{date_encashed}}</td>
+                    {{else}}
+                <td style="padding:10px; text-align:center;">{{due_date}}</td>
+                    {{/if}}
+                {{else}}
+                <td style="padding:10px; text-align:center;">{{date_in}}</td>
+                {{/if}}
+
+                <td style="padding:10px; padding-left:0px; text-align:right;">{{amount}}</td>
+            </tr>
+            {{/each}}
+        {{/if}}
+            <tr>
+                <td style="padding:10px; text-align:center;">BALANCE</td>
+                <td style="padding:10px; text-align:center;"></td>
+                <td style="padding:10px; text-align:right;">{{get_unpaid_per_car control_number}}</td>
+            </tr>
+        </table>
+        {{/unless}}
+    {{/each}}        
+</template>
+
+<template name="billing_item_list">
+    {{#each get_car_list}}
+        {{#unless check_payment control_number}}    
+        <span><h5><input type="checkbox" id="{{_id}}">{{maker}} {{model}}  C/N: {{control_number}}</h5></span>
+        {{/unless}}
+    {{/each}}        
+</template>
+
 <template name="sales_invoice">
-    <div id="sales-invoice-modal" class="modal fade" role="dialog" aria-hidden="true" style="display:none;"> 
+    <div id="sales-invoice-modal" class="modal fade" role="dialog" aria-hidden="true" style="display:none;">
         <div class="modal-dialog">
             <form id="billing">
                 <div class="modal-content">
@@ -197,26 +131,59 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left:20px;">&times;</button>
                         <h3 class="modal-title">Sales Invoice</h3>
                     </div>                    
-                    <div class="modal-body" id="print-receipt">
+                    <div class="modal-body" id="printable2">
                         <div class="form-group clearfix">
                             <div class="row">
-                                <label class="col-lg-2 control-label">{{date}}</label>
-                                <br>
                                 <div class="col-lg-12">
-                                    <h4 class="col-lg-2 control-label">{{customer}}</h4>
+                                    <label class="col-lg-12 control-label">{{date}}</label>
+                                    <h4 class="col-lg-12 control-label"></h4>
+                                    <div class="col-lg-4" id="billing-header" style="text-align: center;">
+                                               <p><strong>{{customer.contact_person}}</strong></p>
+                                               <p>{{customer.company_name}}</p>
+                                               <p>{{customer.company_address}}</p>
+                                            </div>
                                     <div class="list-group col-lg-12">             
-                                        <div class="tab-content">
-                                            <div class="tab-pane active" id="invoice-modal">
+                                        <div class="tab-content" style="padding-left: 15px;">
+                                            <div class="tab-pane active" id="billing-modal">
                                                 <div class="table-body" style="overflow-x:hidden;" >
                                                     {{> invoices}}
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4 billing-signature">
-                                                <p>Approved by:</p>
-                                                <p>______________________</p>
-                                                <p>Signature over printed name</p>
-                                            </div>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="modal-body" id="non-printable2">
+                        <div class="form-horizontal">
+                            <div class="form-group clearfix">
+                                <label class="col-lg-2 control-label">Start Date</label>
+                                <div class="col-lg-4">
+                                    <input type="date" class="form-control" name="start_date2" id="start_date2">
+                                </div>
+                                <label class="col-lg-2 control-label">End Date</label>
+                                <div class="col-lg-4">
+                                    <input type="date" class="form-control" name="end_date2" id="end_date2">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="col-lg-4">
+                                       <p><strong>{{customer.contact_person}}</strong></p>
+                                       <p>{{customer.company_name}}</p>
+                                       <p>{{customer.company_address}}</p>
+                                    </div>
+                                    <div class="list-group col-lg-12">             
+                                        <div class="tab-content" style="padding-left: 15px;">
+                                            <div class="tab-pane active" id="billing-modal">
+                                                <div class="table-body" style="overflow-x:hidden;" >
+                                                    {{> invoices}}
+                                                </div>
+                                            </div>
                                     </div>
                                 </div>
                             </div>
@@ -232,4 +199,192 @@
             </form>
         </div>
     </div>
+</template>
+
+<template name="invoices">
+    {{#each get_car_list}}  
+        {{#if get_check_count control_number}}
+        <span><h5>{{maker}} {{model}}  C/N: {{control_number}}</h5></span>
+        {{#if get_paid_count control_number}}
+        Paid:  
+        <table class="table table-striped" style="border-collapse: collapse; padding:10px; margin: 0 auto; width: 100%;">
+            <tr style="padding:20px;">
+                <th style="padding:10px;">Check Number</th>
+                <th style="padding:10px;">Date</th>
+                <th style="padding:10px;">Amount</th>
+            </tr>
+            {{#each get_paid control_number}}
+            <tr style="padding:10px;">
+                {{#if check_number}}
+                <td style="padding:10px; text-align: center;">{{check_number}}</td>
+                {{else}}
+                <td style="padding:10px;">CASH</td>
+                {{/if}}
+
+                {{#if check_number}}
+                    {{#if date_encashed}}
+                <td style="padding:10px;">{{date_encashed}}</td>
+                    {{else}}
+                <td style="padding:10px;">{{due_date}}</td>
+                    {{/if}}
+                {{else}}
+                <td style="padding:10px;">{{date_in}}</td>
+                {{/if}}
+
+                <td style="padding:10px; text-align:right;">{{amount}}</td>
+            </tr>
+            {{/each}}
+        </table>
+        {{/if}}
+        {{/if}}
+    {{/each}} 
+</template>
+
+<template name="statement">
+    <div id="statement-modal" class="modal fade" role="dialog" aria-hidden="true" style="display:none;">
+        <div class="modal-dialog">
+            <form id="billing">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left:20px;">&times;</button>
+                        <h3 class="modal-title">Statement of Account</h3>
+                    </div>                    
+                    <div class="modal-body" id="printable3">
+                        <div class="form-group clearfix">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label class="col-lg-12 control-label">{{date}}</label>
+                                    <h4 class="col-lg-12 control-label"></h4>
+                                    <div class="col-lg-4" id="billing-header" style="text-align: center;">
+                                               <p><strong>{{customer.contact_person}}</strong></p>
+                                               <p>{{customer.company_name}}</p>
+                                               <p>{{customer.company_address}}</p>
+                                            </div>
+                                    <div class="list-group col-lg-12">             
+                                        <div class="tab-content" style="padding-left: 15px;">
+                                            <div class="tab-pane active" id="billing-modal">
+                                                <div class="table-body" style="overflow-x:hidden;" >
+                                                    {{> statements}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="modal-body" id="non-printable3">
+                        <div class="form-horizontal">
+                            <div class="form-group clearfix">
+                                <label class="col-lg-2 control-label">Start Date</label>
+                                <div class="col-lg-4">
+                                    <input type="date" class="form-control" name="start_date3" id="start_date3">
+                                </div>
+                                <label class="col-lg-2 control-label">End Date</label>
+                                <div class="col-lg-4">
+                                    <input type="date" class="form-control" name="end_date3" id="end_date3">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="col-lg-4">
+                                       <p><strong>{{customer.contact_person}}</strong></p>
+                                       <p>{{customer.company_name}}</p>
+                                       <p>{{customer.company_address}}</p>
+                                    </div>
+                                    <div class="list-group col-lg-12">             
+                                        <div class="tab-content" style="padding-left: 15px;">
+                                            <div class="tab-pane active" id="billing-modal">
+                                                <div class="table-body" style="overflow-x:hidden;" >
+                                                    {{> statements}}
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="col-offset-10 col-lg-2" style="text-align:right;">
+                            <input type="button" value="Print" class="btn btn-primary" id="receipt-button">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</template>
+
+<template name="statements">
+    {{#each get_car_list}}  
+        {{#if get_check_count control_number}}
+        <span><h5>{{maker}} {{model}}  C/N: {{control_number}}</h5></span>
+        {{#if get_paid_count control_number}}
+        Paid:  
+        <table class="table table-striped" style="border-collapse: collapse; padding:10px; margin: 0 auto; width: 100%;">
+            <tr style="padding:20px;">
+                <th style="padding:10px; text-align:center;">Check Number</th>
+                <th style="padding:10px; text-align:center;">Date</th>
+                <th style="padding:10px; text-align:center;">Amount</th>
+            </tr>
+            {{#each get_paid control_number}}
+            <tr style="padding:10px;">
+                {{#if check_number}}
+                <td style="padding:10px; text-align: center;">{{check_number}}</td>
+                {{else}}
+                <td style="padding:10px; text-align:center;">CASH</td>
+                {{/if}}
+
+                {{#if check_number}}
+                    {{#if date_encashed}}
+                <td style="padding:10px; text-align:center;">{{date_encashed}}</td>
+                    {{else}}
+                <td style="padding:10px; text-align:center;">{{due_date}}</td>
+                    {{/if}}
+                {{else}}
+                <td style="padding:10px; text-align:center;">{{date_in}}</td>
+                {{/if}}
+
+                <td style="padding:10px; text-align:right;">{{amount}}</td>
+            </tr>
+            {{/each}}
+        </table>
+        {{/if}}
+        {{#if get_unpaid_count control_number}}
+        Unpaid:
+        <table class="table table-striped" style="border-collapse: collapse; padding:10px; margin: 0 auto; width: 100%;">
+            <tr style="padding:20px;">
+                <th style="padding:10px; text-align:center;">Check Number</th>
+                <th style="padding:10px; text-align:center;">Date</th>
+                <th style="padding:10px; text-align:center;">Amount</th>
+            </tr>
+            {{#each get_unpaid control_number}}
+            <tr style="padding:10px;">
+                {{#if check_number}}
+                <td style="padding:10px; text-align: center;">{{check_number}}</td>
+                {{else}}
+                <td style="padding:10px; text-align:center;">CASH</td>
+                {{/if}}
+
+                {{#if check_number}}
+                    {{#if date_encashed}}
+                <td style="padding:10px; text-align:center;">{{date_encashed}}</td>
+                    {{else}}
+                <td style="padding:10px; text-align:center;">{{due_date}}</td>
+                    {{/if}}
+                {{else}}
+                <td style="padding:10px; text-align:center;">{{date_in}}</td>
+                {{/if}}
+
+                <td style="padding:10px; text-align:right;">{{amount}}</td>
+            </tr>
+            {{/each}}
+        </table>
+        {{/if}}
+        {{/if}}
+    {{/each}}       
 </template>
