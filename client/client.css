@@ -5,7 +5,7 @@ body {
 }
 
 .container {
-/*	max-width: 940px;*/
+	max-width: 940px;
 	margin: 0 auto;
 }
 
@@ -133,8 +133,10 @@ body .modal-open {
 #login-dropdown-list .additional-link-container #forgot-password-link {
 	float: right;
 }
-.billing-approved, .billing-received, .invoice-receivedby {
+.billing-approved, .billing-approved2, .billing-received, .billing-received2, .invoice-receivedby {
 	margin-top: 30px;
+	position: fixed;
+	bottom: 0;
 }
 
 .style-btn {
@@ -150,26 +152,37 @@ body .modal-open {
 	border: 1px solid black;
 }
 
- #billing-note, {
- 	text-align: center;
- }
+#billing-note, {
+	text-align: center;
+}
 
- #billing-header p {
- 	text-align: center;
- }
+#billing-header p {
+	text-align: center;
+}
 
- #billing-total {
- 	text-align: right;
- }
- #table-style table tr {
- 	padding: 0px;
- }
+#billing-total {
+	text-align: right;
+}
 
- #printable {
- 	display: none;
- }
+#table-style table tr {
+	padding: 0px;
+}
 
- @media print {
- 	#non-printable {display:none;}
- 	#printable {display:block;}
- }
+#printable {
+	display: none;
+}
+#printable2 {
+	display: none;
+}
+#printable3 {
+	display: none;
+}
+
+@media print {
+	#non-printable {display:none;}
+	#printable {display:block;}
+	#non-printable2 {display:none;}
+	#printable2 {display:block;}
+	#non-printable3 {display:none;}
+	#printable3 {display:block;}
+}
