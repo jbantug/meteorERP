@@ -14,18 +14,6 @@ Template.sale_checks.salechecklist = function(){
 	return customer_checks.find(Session.get('checks_find'), {sort: {due_date: -1} } );
 };
 
-Template.purchase_checks.purchasechecklist = function(){
-	return supplier_checks.find(Session.get('checks_find'), {sort: {due_date: -1} } );
-};
-
-Template.accounts_receivable.checks = function(){
-	return customer_checks.find({}, {sort: {date_in: -1} } );
-};
-
-Template.sold_checks.checklist = function(){
-	return customer_checks.find({}, {sort: {contact_person: 1} } );
-};
-
 Template.sale_checks.events({
 	'click .btnBounce': function(e,t){
 		console.log(e.target.id);
@@ -56,6 +44,10 @@ Template.sale_checks.events({
 	}
 });
 
+Template.purchase_checks.purchasechecklist = function(){
+	return supplier_checks.find(Session.get('checks_find'), {sort: {due_date: -1} } );
+};
+
 Template.purchase_checks.events({
 	'click .btnBounce': function(e,t){
 		console.log(e.target.id);
@@ -80,6 +72,14 @@ Template.purchase_checks.events({
 	}
 
 });
+
+Template.accounts_receivable.checks = function(){
+	return customer_checks.find({}, {sort: {date_in: -1} } );
+};
+
+Template.sold_checks.checklist = function(){
+	return customer_checks.find({}, {sort: {contact_person: 1} } );
+};
 
 Template.sale_checksform.events({
 	'submit': function (e,t){
@@ -199,7 +199,6 @@ Template.purchase_checksform.events({
 		$.each( $("#addPurchaseChecks").serializeArray(),function(){
 			form[this.name] = this.value;
 		});
-
 		supplier_checks.update({_id: form['id']}, {$set: {control_number: form['control_number'], bank: form['bank'], branch: form['branch'], check_number: form['check_number'], amount: form['amount'], due_date: form['due_date'], description: form['description'] } });
 	}
 });
@@ -349,7 +348,7 @@ Template.bank_list.cash_in = function(){
 	checks_in.forEach(function (checks){
 		total_in += parseFloat(checks.amount);
 	});
-	return total_in;
+	return parseFloat(Math.round(total_in*100)/100).toFixed(2);
 };
 
 Template.bank_list.cash_out = function(){
@@ -358,23 +357,23 @@ Template.bank_list.cash_out = function(){
 	checks_out.forEach(function (checks){
 		total_out += parseFloat(checks.amount);
 	});
-	return total_out;
+	return parseFloat(Math.round(total_out*100)/100).toFixed(2);
 };
 
 Template.bank_list.total = function(){
-	var total_out = 0;
-	var total_in = 0;
-	var total = 0;
+	var total_out = 0.00;
+	var total_in = 0.00;
+	var total = 0.00;
 	var checks_out = supplier_checks.find(Session.get('bank_check'));
 	var checks_in = customer_checks.find(Session.get('bank_check'));
 	checks_out.forEach(function (checks){
-		total_out += parseFloat(Math.round(checks.amount*100)/100).toFixed(2);
+		total_out += parseFloat(checks.amount);
 	});
 	checks_in.forEach(function (checks){
-		total_in += parseFloat(Math.round(checks.amount*100)/100).toFixed(2);
+		total_in += parseFloat(checks.amount);
 	});
 	total = total_in - total_out;
-	return total;
+	return parseFloat(Math.round(total*100)/100).toFixed(2);
 }
 
 Template.bank_list.months = function(){
